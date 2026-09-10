@@ -1,0 +1,8 @@
+# โปรเจกต์เดโม่รอบแรก (Next.js) มี repo git ของตัวเอง — ไม่ push ใน repo นี้
+tea-showcase/
+
+# ไฟล์ระบบ/ชั่วคราว
+.DS_Store
+Thumbs.db
+*.log
+.serve.cjs

@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>สมาคมเอ็นโดดอนติกส์ไทย · ข้อเสนอ UX/UI — 20 แบบ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Chonburi&family=Noto+Serif+Thai:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff; --ink:#0f172a; --muted:#5b6b7f; --line:#e2e8f0; --soft:#f4f7fa;
+  --brand:#0f766e; --brand2:#134e4a; --gold:#c9a227;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fafbfd;color:var(--ink);font:400 16px/1.65 "IBM Plex Sans Thai",system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+h1,h2,h3,h4{font-family:Prompt,"IBM Plex Sans Thai",sans-serif;margin:0}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+.page{max-width:1200px;margin:0 auto;padding:0 28px}
+
+/* ---------- quick nav ---------- */
+.quicknav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.quicknav .in{max-width:1200px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.qn-brand{font:700 14px Prompt;display:flex;align-items:center;gap:8px;margin-right:auto}
+.qn-brand i{width:26px;height:26px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.qn-chips{display:flex;gap:6px;flex-wrap:wrap}
+.qn-chips a{font:600 12px Prompt;padding:5px 11px;border:1px solid var(--line);border-radius:99px;color:#334155;background:#fff}
+.qn-chips a:hover{border-color:var(--brand);color:var(--brand)}
+
+/* ---------- cover ---------- */
+.cover{padding:64px 0 40px;display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:start}
+.kicker{display:inline-flex;align-items:center;gap:8px;font:600 12px Prompt;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);border:1px solid #99d5cd;background:#ecfdf9;border-radius:99px;padding:6px 14px}
+.cover h1{font-size:42px;line-height:1.22;font-weight:800;margin:18px 0 14px}
+.cover h1 em{font-style:normal;color:var(--brand)}
+.cover .lead{font-size:17px;color:#3b4a5e;max-width:56ch}
+.cover .meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;font:500 13px Prompt;color:#475569}
+.cover .meta span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 12px}
+.cover-card{background:linear-gradient(160deg,#0b1220,#123a36);color:#e8f5f2;border-radius:20px;padding:26px 26px 22px;box-shadow:0 30px 60px -30px rgba(15,23,42,.45)}
+.cover-card h3{font-size:15px;color:#7ce4d3;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.cover-card ol{margin:12px 0 0;padding-left:20px;font-size:14px;color:#c7dbd6}
+.cover-card li{margin:7px 0}
+.cover-card b{color:#fff;font-weight:600}
+.refline{margin-top:18px;font-size:13px;color:var(--muted);line-height:1.8}
+.refline a{color:var(--brand);border-bottom:1px dotted #94a3b8}
+
+/* ---------- foundation ---------- */
+.foundation{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin:28px 0 8px}
+.foundation h2{font-size:20px;font-weight:700}
+.foundation .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:16px}
+.foundation h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.foundation ul{margin:8px 0 0;padding-left:18px;font-size:13.5px;color:#33415a}
+.foundation li{margin:5px 0}
+.note{margin-top:16px;background:#ecfdf9;border:1px solid #bfe8e0;color:#0b5e54;border-radius:12px;padding:12px 16px;font-size:13.5px}
+
+/* ---------- concept blocks ---------- */
+.concept{margin:84px 0}
+.con-head{display:flex;align-items:flex-start;gap:22px;margin-bottom:20px}
+.con-num{font:800 58px/1 Prompt;color:transparent;-webkit-text-stroke:2px var(--brand);letter-spacing:.02em;min-width:88px}
+.con-title h2{font-size:29px;font-weight:800}
+.con-title .en{font:600 12.5px Prompt;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.con-title .one{margin-top:8px;color:#3b4a5e;font-size:15.5px;max-width:70ch}
+.con-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.con-tags span{font:600 12px Prompt;color:#0b5e54;background:#e6f7f3;border:1px solid #bfe8e0;border-radius:99px;padding:4px 11px}
+
+/* browser frame */
+.frame{border-radius:18px;overflow:hidden;border:1px solid #d7dfe9;background:#fff;box-shadow:0 34px 70px -34px rgba(15,23,42,.35)}
+.framebar{height:40px;display:flex;align-items:center;gap:7px;padding:0 16px;background:#eef2f7;border-bottom:1px solid #dbe3ec}
+.framebar i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.framebar i:nth-child(1){background:#f87171}.framebar i:nth-child(2){background:#fbbf24}.framebar i:nth-child(3){background:#34d399}
+.framebar .url{margin-left:12px;background:#fff;border:1px solid #e2e8f0;border-radius:99px;padding:3px 16px;font:500 11.5px "IBM Plex Sans Thai";color:#64748b}
+.screen{position:relative;overflow:hidden}
+
+/* specs + recipe */
+.pal{display:flex;gap:8px;flex-wrap:wrap}
+.sw{display:inline-flex;align-items:center;gap:7px;font:500 12px "IBM Plex Sans Thai";color:#334155;border:1px solid var(--line);border-radius:10px;padding:5px 10px;background:#fff}
+.sw i{width:15px;height:15px;border-radius:5px;display:inline-block;flex:none;border:1px solid rgba(0,0,0,.08)}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.spec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.spec h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);font-weight:600}
+.spec ul{margin:8px 0 0;padding-left:17px;font-size:13.5px;color:#33415a}
+.spec li{margin:4.5px 0}
+.spec p{font-size:13.5px;color:#33415a;margin-top:8px}
+.recipe{margin-top:16px;background:#0b1220;color:#dbe7ef;border-radius:16px;padding:20px 24px;display:grid;grid-template-columns:1.2fr 1.2fr 1fr 1fr;gap:22px}
+.recipe h4{color:#5eead4;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:7px}
+.recipe p,.recipe li{font-size:13px;color:#b9c9d6;line-height:1.55}
+.recipe ul{margin:0;padding-left:16px}
+.recipe li{margin:3px 0}
+.dots{letter-spacing:2px;color:#5eead4;font-size:12px}
+.dots b{color:#e2e8f0}
+
+/* comparison table */
+.compare{margin:90px 0 30px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px}
+.compare h2{font-size:24px;font-weight:800}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13.5px}
+th{font:600 12px Prompt;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:#f8fafc}
+td b{font:600 13.5px Prompt}
+.nextsteps{margin:26px 0 90px;background:linear-gradient(150deg,#0b1220,#123a36);color:#e8f5f2;border-radius:20px;padding:30px 34px}
+.nextsteps h2{color:#7ce4d3;font-size:20px}
+.nextsteps ol{margin:14px 0 0;padding-left:20px;font-size:14.5px;color:#cfe6e1}
+.nextsteps li{margin:8px 0}
+.foot{padding:26px 0 46px;color:var(--muted);font-size:13px;text-align:center}
+
+/* =========================================================
+   MOCKUP SHARED MINI PARTS
+========================================================= */
+.mx-eyebrow{font:600 10px Prompt;letter-spacing:.18em;text-transform:uppercase}
+
+/* ================= M1 · NOCTURNE (dark premium) ================= */
+.m1{background:#0a1424;color:#e6eef7;font-size:12px}
+.m1::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 340px at 82% 18%,rgba(45,212,191,.18),transparent 60%),radial-gradient(500px 300px at 8% 85%,rgba(201,162,39,.10),transparent 60%);pointer-events:none}
+.m1-tick{position:relative;z-index:2;background:linear-gradient(90deg,#c9a227,#e7c964);color:#241c04;font:600 10.5px Prompt;letter-spacing:.04em;text-align:center;padding:6px 10px}
+.m1-nav{position:relative;z-index:2;display:flex;align-items:center;gap:18px;padding:14px 30px;border-bottom:1px solid rgba(255,255,255,.08)}
+.m1-logo{display:flex;align-items:center;gap:10px}
+.m1-logo b{width:34px;height:34px;border:1.5px solid #c9a227;color:#e7c964;border-radius:9px;display:grid;place-items:center;font:800 11px Prompt}
+.m1-logo span{font:600 12.5px Prompt;line-height:1.3}
+.m1-logo small{display:block;font:500 8.5px Prompt;letter-spacing:.14em;color:#8ba3bd}
+.m1-nav nav{margin-left:auto;display:flex;gap:16px;font:500 11.5px "IBM Plex Sans Thai";color:#b7c7d9}
+.m1-btn{border:1px solid #c9a227;color:#e7c964;border-radius:9px;padding:7px 14px;font:600 11px Prompt}
+.m1-hero{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:26px;padding:34px 30px 26px;align-items:center}
+.m1-hero h1{font:800 30px/1.25 Prompt;color:#fff;margin:10px 0 10px}
+.m1-hero h1 em{font-style:normal;color:#5eead4}
+.m1-hero p{color:#9db2c8;font-size:12.5px;max-width:44ch}
+.m1-cta{display:flex;gap:10px;margin-top:16px}
+.m1-cta .solid{background:#c9a227;color:#241c04;font:700 11.5px Prompt;border-radius:9px;padding:9px 16px}
+.m1-cta .ghost{border:1px solid rgba(255,255,255,.28);color:#dfe9f3;font:600 11.5px Prompt;border-radius:9px;padding:9px 16px}
+.m1-stats{display:flex;gap:22px;margin-top:22px;color:#8ba3bd;font-size:10.5px}
+.m1-stats b{display:block;color:#e6eef7;font:600 12px Prompt}
+.m1-visual{position:relative;min-height:230px}
+.m1-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:16px;opacity:.92}
+.m1-visual::after{content:"";position:absolute;inset:0;border-radius:16px;background:linear-gradient(200deg,rgba(10,20,36,0) 40%,rgba(10,20,36,.55));box-shadow:0 0 60px rgba(45,212,191,.25)}
+.m1-float{position:absolute;z-index:3;left:-14px;bottom:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);border-radius:13px;padding:11px 14px;max-width:230px}
+.m1-float b{font:700 11.5px Prompt;color:#5eead4;display:block}
+.m1-float span{font-size:10.5px;color:#c3d2e2}
+.m1-cards{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:6px 30px 30px}
+.m1-cards .c{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:14px}
+.m1-cards .c b{font:600 12px Prompt;color:#fff;display:block;margin:6px 0 4px}
+.m1-cards .c span{font-size:10.5px;color:#93a8bf;display:block}
+.m1-cards .c a{color:#e7c964;font:600 10.5px Prompt;display:inline-block;margin-top:8px}
+.m1-foot{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);padding:12px 30px;display:flex;gap:18px;color:#7d93ab;font-size:10px}
+
+/* ================= M2 · BENTO HUB ================= */
+.m2{background:#eef1f8;color:#171f2e;font-size:12px;padding:22px 26px 26px}
+.m2-nav{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #e4e8f2;border-radius:99px;padding:9px 18px;box-shadow:0 10px 24px -18px rgba(23,31,46,.35)}
+.m2-logo{display:flex;align-items:center;gap:8px;font:700 12px Prompt}
+.m2-logo i{width:26px;height:26px;border-radius:9px;background:#10b981;color:#fff;display:grid;place-items:center;font-style:normal;font:800 10px Prompt}
+.m2-nav nav{display:flex;gap:14px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#4b5568}
+.m2-search{background:#f1f4fa;border-radius:99px;padding:6px 13px;font-size:10.5px;color:#8b94a8}
+.m2-head{display:flex;align-items:baseline;gap:14px;margin:20px 2px 12px}
+.m2-head h1{font:800 22px Prompt}
+.m2-head p{font-size:11.5px;color:#69758c;margin-left:auto}
+.m2-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:118px;gap:13px}
+.m2-tile{border-radius:20px;padding:15px 16px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.m2-tile .mx-eyebrow{color:rgba(255,255,255,.85)}
+.m2-tile h3{font:700 14.5px/1.35 Prompt;margin-top:6px}
+.m2-tile p{font-size:10.5px;opacity:.92;margin-top:3px}
+.m2-tile .go{margin-top:auto;font:700 10.5px Prompt;display:flex;align-items:center;gap:6px}
+.t-big{grid-column:span 2;grid-row:span 2;background:linear-gradient(150deg,#0b3f33,#10b981 130%);color:#fff}
+.t-big .yr{font:800 40px Prompt;letter-spacing:.02em;margin-top:2px}
+.t-journal{grid-column:span 2;background:#312e81;color:#fff}
+.t-event{background:#fff7ea;color:#4a330d;border:1px solid #f1e3c5}
+.t-event .date{font:800 15px Prompt;color:#b45309}
+.t-line{background:#06c755;color:#fff}
+.t-docs{background:#fff;border:1px solid #e4e8f2;color:#171f2e}
+.t-docs .row{display:flex;gap:8px;align-items:center;font-size:10px;color:#4b5568;padding:4.5px 0;border-bottom:1px dashed #e8ecf4}
+.t-docs .row:last-child{border:0}
+.t-docs .pdf{flex:none;width:20px;height:20px;border-radius:6px;background:#fee2e2;color:#b91c1c;display:grid;place-items:center;font:700 7.5px Prompt}
+.t-cert{background:#12233f;color:#e7edf6}
+.m2-tile .go em{font-style:normal;border-bottom:1.5px solid currentColor}
+
+/* ================= M3 · BOLD STATEMENT ================= */
+.m3{background:#faf7f0;color:#101010;font-size:12px;padding:20px 24px 26px}
+.m3 .bd{border:2.5px solid #101010;box-shadow:5px 5px 0 #101010;background:#fff}
+.m3-nav{display:flex;align-items:center;gap:14px;padding:10px 16px;border-radius:14px}
+.m3-logo b{background:#101010;color:#d3f26a;font:800 12px Prompt;padding:6px 9px;border-radius:8px;display:inline-block}
+.m3-nav nav{display:flex;gap:13px;margin-left:auto;font:700 11px Prompt}
+.m3-nav .btn{background:#2545ff;color:#fff;font:800 11px Prompt;border-radius:9px;padding:7px 12px;box-shadow:3px 3px 0 #101010}
+.m3-tick{margin-top:14px;background:#101010;color:#fff;overflow:hidden;border-radius:10px;border:2.5px solid #101010}
+.m3-tick .track{display:inline-flex;gap:34px;white-space:nowrap;padding:7px 0;font:700 10.5px Prompt;letter-spacing:.06em;animation:m3m 16s linear infinite}
+.m3-tick span em{color:#d3f26a;font-style:normal;margin-right:8px}
+@keyframes m3m{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.m3-hero{margin-top:16px;display:grid;grid-template-columns:1.25fr .75fr;gap:16px;align-items:stretch}
+.m3-hero .l{border-radius:16px;padding:24px;position:relative}
+.m3-hero h1{font:800 33px/1.18 Prompt}
+.m3-hero h1 mark{background:#d3f26a;padding:0 6px;border-radius:6px}
+.m3-hero .l p{margin-top:10px;font-weight:500;color:#333}
+.m3-hero .l .btns{display:flex;gap:10px;margin-top:16px}
+.m3-hero .l .btns b{font:800 11.5px Prompt;border-radius:9px;padding:9px 14px;box-shadow:4px 4px 0 #101010}
+.m3-hero .l .btns b:first-child{background:#2545ff;color:#fff}
+.m3-hero .l .btns b:last-child{background:#fff}
+.m3-stick{position:absolute;top:-12px;right:-10px;transform:rotate(7deg);background:#d3f26a;border:2.5px solid #101010;border-radius:99px;font:800 10.5px Prompt;padding:7px 13px;box-shadow:3px 3px 0 #101010}
+.m3-hero .r{border-radius:16px;background:#cbe5ff;display:grid;place-items:center;padding:16px}
+.m3-hero .r .box{background:#fff;border:2.5px solid #101010;border-radius:13px;padding:14px;width:100%}
+.m3-hero .r b{font:800 12px Prompt;display:block;margin-bottom:6px}
+.m3-hero .r .row{font-size:10.5px;font-weight:600;border-top:2px dashed #c9cfdb;padding:6px 0;display:flex;justify-content:space-between}
+.m3-hero .r .row:last-child{border-bottom:0}
+.m3-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.m3-cards .c{border-radius:14px;padding:14px}
+.m3-cards .c b{font:800 12.5px Prompt;display:block;margin:5px 0 3px}
+.m3-cards .c span{font-size:10.5px;color:#333;font-weight:500}
+.m3-cards .c a{display:inline-block;margin-top:9px;font:800 10.5px Prompt;background:#101010;color:#d3f26a;border-radius:7px;padding:5px 10px}
+.m3-cards .c:nth-child(2){background:#d3f26a}
+.m3-cards .c:nth-child(1) i,.m3-cards .c:nth-child(3) i{font-style:normal;font-size:16px}
+
+/* ================= M4 · NEWSROOM ================= */
+.m4{background:#fff;color:#14181f;font-size:12px}
+.m4-top{display:flex;gap:14px;align-items:center;padding:7px 28px;background:#14181f;color:#aab4c2;font-size:10px}
+.m4-top .r{margin-left:auto;display:flex;gap:12px}
+.m4-mast{padding:16px 28px 12px;border-bottom:3px double #14181f;text-align:center}
+.m4-mast h1{font:800 24px Prompt;letter-spacing:.02em}
+.m4-mast h1 span{color:#d92d20}
+.m4-mast p{font:500 10.5px Prompt;letter-spacing:.22em;text-transform:uppercase;color:#6b7480;margin-top:2px}
+.m4-nav{display:flex;gap:4px;justify-content:center;padding:9px 20px;border-bottom:1px solid #e6e9ee;font:600 11px Prompt;flex-wrap:wrap}
+.m4-nav a{padding:4px 11px;border-radius:7px;color:#3c4654;display:inline-flex;align-items:center;gap:6px}
+.m4-nav i{width:7px;height:7px;border-radius:2px;display:inline-block}
+.m4-main{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;padding:18px 28px}
+.m4-feat{border:1px solid #e6e9ee;border-radius:14px;overflow:hidden}
+.m4-feat img{width:100%;height:170px;object-fit:cover;display:block}
+.m4-feat .pad{padding:13px 15px}
+.m4-cat{display:inline-block;font:700 9.5px Prompt;letter-spacing:.06em;color:#fff;border-radius:6px;padding:3px 9px;text-transform:uppercase}
+.m4-feat h2{font:700 16.5px/1.4 Prompt;margin:8px 0 5px}
+.m4-feat p{font-size:11px;color:#55606e}
+.m4-feat .dt{margin-top:8px;font:600 9.5px Prompt;letter-spacing:.1em;color:#98a1ad}
+.m4-list .li{display:flex;gap:12px;padding:10px 2px;border-bottom:1px solid #edf0f4}
+.m4-list .li:last-child{border:0}
+.m4-list h3{font:600 12px/1.5 Prompt;margin-top:2px}
+.m4-list .dt{font:600 9px Prompt;letter-spacing:.1em;color:#98a1ad}
+.m4-list .x{font-size:10.5px;color:#55606e}
+.m4-strips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:2px 28px 24px}
+.m4-strips .s{border-top:3px solid;border-radius:0 0 10px 10px;background:#fafbfc;padding:10px 12px}
+.m4-strips .s h4{font:700 11px Prompt;margin:4px 0 6px}
+.m4-strips .s p{font-size:10px;color:#55606e}
+
+/* ================= M5 · AURORA GLASS ================= */
+.m5{background:#f6f8ff;color:#1c2340;font-size:12px;padding:22px 28px 28px;position:relative}
+.m5 .blob{position:absolute;border-radius:50%;filter:blur(52px);opacity:.55;pointer-events:none}
+.m5 .b1{width:300px;height:300px;background:#8b5cf6;top:-70px;left:8%}
+.m5 .b2{width:280px;height:280px;background:#22d3ee;top:60px;right:4%}
+.m5 .b3{width:240px;height:240px;background:#f0abfc;bottom:-60px;left:34%}
+.m5-nav{position:relative;z-index:2;display:flex;align-items:center;gap:15px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(12px);border-radius:99px;padding:9px 20px;box-shadow:0 14px 34px -20px rgba(28,35,64,.4)}
+.m5-logo{display:flex;align-items:center;gap:8px;font:700 12px Prompt}
+.m5-logo i{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#22d3ee);color:#fff;display:grid;place-items:center;font-style:normal;font:800 10px Prompt}
+.m5-nav nav{display:flex;gap:14px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#45506e}
+.m5-nav .btn{background:linear-gradient(120deg,#7c3aed,#06b6d4);color:#fff;border-radius:99px;padding:7px 15px;font:600 11px Prompt}
+.m5-hero{position:relative;z-index:2;text-align:center;padding:38px 40px 26px}
+.m5-hero h1{font:800 30px/1.25 Prompt;background:linear-gradient(100deg,#5b21b6,#0e7490 60%,#a21caf);-webkit-background-clip:text;background-clip:text;color:transparent;margin:8px 0 10px}
+.m5-hero p{color:#4d5878;font-size:12.5px;max-width:52ch;margin:0 auto}
+.m5-cards{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:8px 34px 14px}
+.m5-cards .c{background:rgba(255,255,255,.58);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(14px);border-radius:18px;padding:15px 16px;box-shadow:0 18px 40px -24px rgba(28,35,64,.35)}
+.m5-cards .ico{width:32px;height:32px;border-radius:11px;display:grid;place-items:center;font-size:14px;margin-bottom:8px}
+.m5-cards b{font:700 12.5px Prompt;display:block;margin-bottom:3px}
+.m5-cards span{font-size:10.5px;color:#4d5878}
+.m5-cards a{display:inline-block;margin-top:9px;font:600 10.5px Prompt;background:linear-gradient(120deg,#7c3aed,#06b6d4);-webkit-background-clip:text;background-clip:text;color:#6d28d9;border-bottom:1.5px solid #a78bfa}
+.m5-band{position:relative;z-index:2;margin:12px 34px 20px;background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(12px);border-radius:16px;padding:12px 18px;display:flex;gap:16px;align-items:center;font-size:11px;color:#33406a}
+.m5-band b{font:700 11.5px Prompt;color:#1c2340}
+
+/* ================= M6 · JOURNAL COVERS ================= */
+.m6{background:#f6f0e4;color:#26221c;font-size:12px}
+.m6-mast{padding:13px 30px;border-bottom:2px solid #26221c;display:flex;align-items:baseline;gap:14px}
+.m6-mast b{font:700 12px "Noto Serif Thai",Prompt;letter-spacing:.06em}
+.m6-mast span{margin-left:auto;font:600 9.5px Prompt;letter-spacing:.24em;text-transform:uppercase;color:#7a715f}
+.m6-nav{display:flex;gap:18px;padding:10px 30px;border-bottom:1px solid #d8cdb6;font:500 11px "IBM Plex Sans Thai";color:#57503f}
+.m6-nav a:first-child{color:#7c1d3f;font-weight:600}
+.m6-hero{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;padding:28px 30px 22px;align-items:center}
+.m6-cover{background:#fff;border:1px solid #ddd2ba;border-radius:6px;box-shadow:14px 14px 0 -4px #e6dcc6,14px 14px 0 -3px #c9bda1;aspect-ratio:3/4.05;padding:16px 15px;display:flex;flex-direction:column}
+.m6-cover .top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #26221c;padding-bottom:7px}
+.m6-cover .top b{font:700 10px Prompt;letter-spacing:.18em}
+.m6-cover .top span{font-size:8.5px;color:#8a7f66}
+.m6-cover h2{font-family:Chonburi,"Noto Serif Thai",serif;font-size:30px;line-height:1.15;margin:14px 0 4px;color:#7c1d3f}
+.m6-cover .sub{font:600 10px Prompt;letter-spacing:.2em;text-transform:uppercase;color:#57503f}
+.m6-cover .teeth{margin:10px 0 8px;display:flex;gap:5px}
+.m6-cover .teeth i{flex:1;height:34px;border-radius:10px 10px 14px 14px;background:linear-gradient(180deg,#f2ede2,#ddd2ba);border:1px solid #c9bda1}
+.m6-cover .feat{margin:auto 0 12px;display:flex;flex-direction:column;gap:7px;font-size:10.5px;color:#4c463a;border-top:1px dashed #c9bda1;border-bottom:1px dashed #c9bda1;padding:11px 2px}
+.m6-cover .iss{border-top:1px solid #c9bda1;padding-top:7px;display:flex;justify-content:space-between;font:600 9px Prompt;letter-spacing:.14em;color:#7a715f}
+.m6-art .mx-eyebrow{color:#7c1d3f}
+.m6-art h1{font-family:"Noto Serif Thai",Prompt,serif;font:600 24px/1.35 "Noto Serif Thai";margin:9px 0 10px}
+.m6-art .body{columns:2;column-gap:22px;font-size:11px;color:#4c463a;line-height:1.75;text-align:justify}
+.m6-art .body::first-letter{initial-letter:2;color:#7c1d3f;font-family:Chonburi,serif}
+.m6-art .sig{margin-top:10px;font:600 10px Prompt;letter-spacing:.1em;color:#7a715f}
+.m6-art .acts{display:flex;gap:10px;margin-top:14px}
+.m6-art .acts a{border:1px solid #26221c;border-radius:8px;padding:7px 13px;font:600 10.5px Prompt}
+.m6-art .acts a.fill{background:#7c1d3f;border-color:#7c1d3f;color:#f9f4ea}
+.m6-shelf{display:flex;gap:12px;align-items:flex-end;padding:6px 30px 26px}
+.m6-shelf .lbl{font:600 10px Prompt;letter-spacing:.16em;text-transform:uppercase;color:#7a715f;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.75}
+.m6-shelf .bk{flex:1;height:74px;border-radius:4px 4px 2px 2px;background:#fff;border:1px solid #ddd2ba;display:flex;flex-direction:column;justify-content:space-between;padding:8px 9px;box-shadow:0 6px 14px -8px rgba(38,34,28,.4)}
+.m6-shelf .bk:nth-child(odd){background:#efe7d4}
+.m6-shelf .bk b{font:700 9.5px Prompt;color:#7c1d3f}
+.m6-shelf .bk span{font-size:8.5px;color:#7a715f}
+.m6-shelf .bk.more{background:transparent;border-style:dashed;display:grid;place-items:center;color:#7a715f;font:600 10px Prompt}
+
+/* ================= M7 · CONGRESS MODE ================= */
+.m7{background:#0d1633;color:#e8ecfa;font-size:12px;position:relative}
+.m7::before{content:"";position:absolute;inset:0;background:radial-gradient(640px 320px at 50% -10%,rgba(99,102,241,.35),transparent 65%);pointer-events:none}
+.m7-nav{position:relative;z-index:2;display:flex;align-items:center;gap:16px;padding:14px 30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.m7-logo b{font:800 12.5px Prompt;letter-spacing:.06em;color:#fbbf24}
+.m7-logo span{display:block;font:500 8.5px Prompt;letter-spacing:.2em;color:#8f9dc4}
+.m7-nav nav{margin-left:auto;display:flex;gap:15px;font:500 11px "IBM Plex Sans Thai";color:#b9c3e2}
+.m7-nav .reg{background:#fbbf24;color:#241a02;font:800 11px Prompt;border-radius:9px;padding:8px 15px}
+.m7-hero{position:relative;z-index:2;text-align:center;padding:34px 40px 22px}
+.m7-cd{display:flex;gap:9px;justify-content:center;margin-bottom:16px}
+.m7-cd i{font-style:normal;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:11px;padding:8px 12px;min-width:58px}
+.m7-cd b{display:block;font:800 16px Prompt;color:#fbbf24}
+.m7-cd span{font-size:8.5px;letter-spacing:.14em;color:#8f9dc4}
+.m7-hero h1{font:800 34px/1.15 Prompt;color:#fff}
+.m7-hero h1 span{color:#818cf8}
+.m7-hero p{margin:10px auto 0;max-width:60ch;color:#aeb9dc;font-size:12.5px}
+.m7-hero .date{margin-top:12px;display:inline-flex;gap:8px;align-items:center;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.4);color:#fde68a;border-radius:99px;padding:6px 15px;font:600 11px Prompt}
+.m7-hero .btns{display:flex;gap:11px;justify-content:center;margin-top:16px}
+.m7-hero .btns b{border-radius:10px;padding:10px 18px;font:700 11.5px Prompt}
+.m7-hero .btns b:first-child{background:#6366f1;color:#fff}
+.m7-hero .btns b:last-child{border:1px solid rgba(255,255,255,.3);color:#e8ecfa}
+.m7-agenda{position:relative;z-index:2;margin:14px 30px 24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 18px}
+.m7-tabs{display:flex;gap:8px;margin-bottom:12px}
+.m7-tabs i{font-style:normal;font:600 10.5px Prompt;border-radius:99px;padding:5px 13px;background:rgba(255,255,255,.08);color:#b9c3e2}
+.m7-tabs i.on{background:#6366f1;color:#fff}
+.m7-row{display:flex;gap:13px;align-items:center;padding:9px 4px;border-top:1px solid rgba(255,255,255,.08)}
+.m7-row .t{font:700 10.5px Prompt;color:#fbbf24;min-width:66px}
+.m7-row .a{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#a855f7);display:grid;place-items:center;font:700 9px Prompt;color:#fff;flex:none}
+.m7-row b{font:600 11.5px Prompt;color:#eef1fb}
+.m7-row span:last-child{margin-left:auto;font-size:9.5px;color:#8f9dc4}
+.m7-foot{position:relative;z-index:2;display:flex;gap:18px;padding:12px 30px 20px;border-top:1px solid rgba(255,255,255,.1);color:#8f9dc4;font-size:10px;align-items:center}
+.m7-foot b{color:#e8ecfa}
+
+/* ================= M8 · SERVICE JOURNEY ================= */
+.m8{background:#f6faf8;color:#15241f;font-size:12px;padding:20px 28px 26px}
+.m8-nav{display:flex;align-items:center;gap:15px;padding:10px 4px;border-bottom:1px solid #dcebe4}
+.m8-logo{display:flex;align-items:center;gap:8px;font:700 12px Prompt}
+.m8-logo i{width:26px;height:26px;border-radius:8px;background:#0f766e;color:#fff;display:grid;place-items:center;font-style:normal;font:800 10px Prompt}
+.m8-nav nav{display:flex;gap:14px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#4c6159}
+.m8-nav .btn{background:#0f766e;color:#fff;border-radius:9px;padding:7px 13px;font:600 10.5px Prompt}
+.m8-hero{text-align:center;padding:24px 30px 8px}
+.m8-hero h1{font:800 25px Prompt;margin-bottom:6px}
+.m8-hero h1 em{font-style:normal;color:#0f766e}
+.m8-hero p{color:#5c7168;font-size:12px}
+.m8-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0 6px}
+.m8-chips a{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #d5e6de;border-radius:99px;padding:8px 16px;font:600 11.5px Prompt;color:#12332b;box-shadow:0 8px 18px -14px rgba(15,118,110,.5)}
+.m8-chips i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:700 9.5px Prompt;color:#fff;background:linear-gradient(135deg,#0f766e,#14b8a6)}
+.m8-chips a.hot{background:#0f766e;color:#fff;border-color:#0f766e}
+.m8-chips a.hot i{background:rgba(255,255,255,.25)}
+.m8-journey{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;margin-top:16px}
+.m8-jcard{background:#fff;border:1px solid #dcebe4;border-radius:16px;padding:17px 19px}
+.m8-jcard .head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.m8-jcard .head b{font:700 13px Prompt}
+.m8-jcard .head span{margin-left:auto;font:700 9.5px Prompt;color:#0f766e;background:#e3f4f0;border-radius:99px;padding:3px 10px}
+.m8-step{display:flex;gap:12px;padding:11px 2px;border-top:1px dashed #dcebe4}
+.m8-step:first-of-type{border:0}
+.m8-step .n{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid #0f766e;color:#0f766e;display:grid;place-items:center;font:800 11px Prompt}
+.m8-step b{font:600 11.5px Prompt;display:block}
+.m8-step span{font-size:10.5px;color:#5c7168}
+.m8-step a{color:#0f766e;font:600 10px Prompt;border-bottom:1px solid #99d5cd}
+.m8-help{background:linear-gradient(170deg,#0b3d38,#0f766e);color:#eafaf6;border-radius:16px;padding:17px 19px;display:flex;flex-direction:column}
+.m8-help b{font:700 13px Prompt}
+.m8-help p{font-size:10.5px;color:#bfe6dd;margin-top:4px}
+.m8-help .ch{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.m8-help .ch a{display:flex;gap:9px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:11px;padding:9px 12px;font:600 11px Prompt}
+.m8-help .ch i{font-style:normal;font-size:13px}
+.m8-help .line-btn{background:#06c755;border-color:#06c755;color:#fff}
+
+/* ================= M9 · TEA POCKET ================= */
+.m9{background:linear-gradient(160deg,#eef4f2,#e7eef7);font-size:12px;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:26px 30px;align-items:center}
+.m9-pitch h1{font:800 24px/1.3 Prompt;margin:8px 0 8px}
+.m9-pitch h1 em{font-style:normal;color:#0e9f6e}
+.m9-pitch p{color:#4b5f58;font-size:12px;max-width:42ch}
+.m9-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.m9-list a{display:flex;gap:9px;align-items:center;font:600 11px Prompt;color:#20332c}
+.m9-list i{font-style:normal;width:22px;height:22px;border-radius:7px;background:#d6efe6;color:#0b6b4f;display:grid;place-items:center;font-size:11px}
+.m9-phone{justify-self:center;width:270px;background:#0d1512;border-radius:34px;padding:10px;box-shadow:0 30px 60px -24px rgba(13,21,18,.55)}
+.m9-scr{background:#f7faf9;border-radius:26px;overflow:hidden;position:relative}
+.m9-status{display:flex;justify-content:space-between;padding:8px 14px 4px;font:600 8.5px Prompt;color:#51665d}
+.m9-app{padding:4px 12px 0}
+.m9-hello{display:flex;align-items:center;gap:8px;padding:6px 2px 10px}
+.m9-hello b{font:700 11.5px Prompt;color:#122}
+.m9-hello span{margin-left:auto;background:#e6f7f1;color:#0b6b4f;font:700 8.5px Prompt;border-radius:99px;padding:3px 8px}
+.m9-stories{display:flex;gap:10px;padding:2px 2px 10px}
+.m9-stories .s{text-align:center;font-size:8px;color:#51665d;font-weight:600;width:44px}
+.m9-stories .s i{font-style:normal;display:block;width:38px;height:38px;margin:0 auto 3px;border-radius:50%;border:2px solid #0e9f6e;padding:2.5px}
+.m9-stories .s i b{display:grid;place-items:center;width:100%;height:100%;border-radius:50%;background:linear-gradient(140deg,#0e9f6e,#18b984);color:#fff;font:800 10px Prompt}
+.m9-stories .s:nth-child(2) i b{background:linear-gradient(140deg,#312e81,#6366f1)}
+.m9-stories .s:nth-child(3) i b{background:linear-gradient(140deg,#92400e,#f59e0b)}
+.m9-stories .s:nth-child(4) i b{background:linear-gradient(140deg,#831843,#db2777)}
+.m9-card{background:#fff;border:1px solid #e3ebe7;border-radius:14px;padding:10px 11px;margin-bottom:8px;box-shadow:0 8px 16px -14px rgba(13,21,18,.4)}
+.m9-card .tag{display:inline-block;font:700 8px Prompt;letter-spacing:.06em;border-radius:6px;padding:2px 7px;text-transform:uppercase}
+.m9-card b{display:block;font:600 10.5px/1.45 Prompt;margin:5px 0 2px;color:#12211b}
+.m9-card span{font-size:8.5px;color:#6b8078}
+.m9-tabbar{display:flex;border-top:1px solid #e3ebe7;background:#fff;padding:7px 6px 9px}
+.m9-tabbar a{flex:1;text-align:center;font:600 7.5px Prompt;color:#8ba39a}
+.m9-tabbar a.on{color:#0e9f6e}
+.m9-tabbar i{font-style:normal;display:block;font-size:13px;margin-bottom:1px}
+.m9-line{position:absolute;right:12px;bottom:58px;width:40px;height:40px;border-radius:50%;background:#06c755;color:#fff;display:grid;place-items:center;font:800 9px Prompt;box-shadow:0 10px 20px -8px rgba(6,199,85,.7);border:2.5px solid #fff}
+
+/* ================= M10 · HERITAGE ================= */
+.m10{background:#171310;color:#efe8d8;font-size:12px;position:relative}
+.m10::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 260px at 50% 0%,rgba(201,162,39,.12),transparent 70%);pointer-events:none}
+.m10-nav{position:relative;z-index:2;display:flex;align-items:center;gap:16px;padding:15px 30px;border-bottom:1px solid rgba(201,162,39,.35)}
+.m10-seal{width:38px;height:38px;border-radius:50%;border:1.5px solid #c9a227;display:grid;place-items:center;font-family:Chonburi,serif;font-size:11px;color:#e7c964}
+.m10-logo span{font-family:"Noto Serif Thai",Prompt,serif;font-weight:600;font-size:12.5px;display:block}
+.m10-logo small{font:500 8px Prompt;letter-spacing:.26em;color:#a08b57}
+.m10-nav nav{margin-left:auto;display:flex;gap:16px;font:500 11px "Noto Serif Thai";color:#c9bfa8}
+.m10-hero{position:relative;z-index:2;text-align:center;padding:36px 50px 26px}
+.m10-hero .mx-eyebrow{color:#c9a227}
+.m10-hero h1{font-family:"Noto Serif Thai",Prompt,serif;font-weight:600;font-size:27px;line-height:1.4;margin:10px 0 10px;color:#f7f1e3}
+.m10-hero p{color:#b3a88e;font-size:12px;max-width:56ch;margin:0 auto}
+.m10-line{position:relative;z-index:2;margin:10px 34px 4px}
+.m10-track{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;padding-top:18px}
+.m10-track::before{content:"";position:absolute;top:24px;left:4%;right:4%;height:1px;background:linear-gradient(90deg,transparent,#c9a227,transparent)}
+.m10-track .ms{text-align:center;position:relative}
+.m10-track .ms i{font-style:normal;width:13px;height:13px;border-radius:50%;background:#171310;border:2.5px solid #c9a227;display:inline-block;margin-bottom:9px}
+.m10-track .ms b{display:block;font-family:"Noto Serif Thai",Prompt,serif;font-weight:600;font-size:12px;color:#f0e8d5}
+.m10-track .ms span{font-size:9.5px;color:#a89d82}
+.m10-gal{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:16px 34px 24px}
+.m10-gal .g{border:1px solid rgba(201,162,39,.4);border-radius:12px;padding:15px;background:rgba(255,255,255,.03)}
+.m10-gal .g b{font-family:"Noto Serif Thai",Prompt,serif;font-weight:600;font-size:12.5px;color:#e7c964;display:block;margin-bottom:4px}
+.m10-gal .g span{font-size:10px;color:#b3a88e}
+.m10-gal .g a{display:inline-block;margin-top:9px;color:#c9a227;font:600 10px Prompt;border-bottom:1px solid rgba(201,162,39,.5)}
+.m10-foot{position:relative;z-index:2;border-top:1px solid rgba(201,162,39,.35);padding:12px 30px;display:flex;gap:16px;color:#a89d82;font-size:9.5px}
+
+/* ================= M11 · GLOW LINE (dark SaaS) ================= */
+.m11{background:#05070d;color:#e7ebf5;font-size:12px;position:relative}
+.m11::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(760px 460px at 50% 0%,#000 25%,transparent 75%);mask-image:radial-gradient(760px 460px at 50% 0%,#000 25%,transparent 75%)}
+.m11::after{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% -60px,rgba(99,102,241,.30),transparent 70%);pointer-events:none}
+.m11-nav{position:relative;z-index:2;display:flex;align-items:center;gap:14px;margin:16px 26px 0;background:rgba(13,16,28,.72);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:9px 18px;backdrop-filter:blur(10px)}
+.m11-logo{font:700 12px Prompt;display:flex;align-items:center;gap:8px;color:#fff}
+.m11-logo i{width:24px;height:24px;border-radius:8px;background:linear-gradient(135deg,#6366f1,#22d3ee);display:grid;place-items:center;font-style:normal;font-size:9px;font-weight:800;color:#fff}
+.m11-nav nav{display:flex;gap:14px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#9aa6c0}
+.m11-nav .btn{background:linear-gradient(120deg,#6366f1,#0ea5e9);color:#fff;border-radius:99px;padding:7px 14px;font:600 11px Prompt}
+.m11-hero{position:relative;z-index:2;text-align:center;padding:40px 60px 24px}
+.m11-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(129,140,248,.4);background:rgba(99,102,241,.12);color:#c7d2fe;border-radius:99px;padding:5px 14px;font:600 10.5px Prompt}
+.m11-chip i{font-style:normal;width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80}
+.m11-hero h1{font:800 31px/1.25 Prompt;margin:14px 0 10px;color:#fff}
+.m11-hero h1 span{background:linear-gradient(100deg,#a5b4fc,#67e8f9 55%,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.m11-hero p{color:#8b97b5;max-width:52ch;margin:0 auto;font-size:12.5px}
+.m11-cta{display:flex;gap:10px;justify-content:center;margin-top:18px}
+.m11-cta b{border-radius:11px;padding:10px 18px;font:700 11.5px Prompt}
+.m11-cta b:first-child{background:linear-gradient(120deg,#6366f1,#0ea5e9);color:#fff;box-shadow:0 10px 30px -10px rgba(99,102,241,.7)}
+.m11-cta b:last-child{border:1px solid rgba(255,255,255,.2);color:#e7ebf5}
+.m11-net{position:relative;z-index:2;display:flex;gap:26px;justify-content:center;color:#5b6784;font:600 9.5px Prompt;letter-spacing:.16em;text-transform:uppercase;padding:4px 0 14px}
+.m11-cards{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:4px 30px 24px}
+.m11-cards .c{border-radius:15px;padding:15px;background:linear-gradient(#0b0f1a,#0b0f1a) padding-box,linear-gradient(135deg,rgba(99,102,241,.7),rgba(34,211,238,.3)) border-box;border:1px solid transparent}
+.m11-cards .ico{width:30px;height:30px;border-radius:9px;background:rgba(99,102,241,.15);border:1px solid rgba(129,140,248,.35);display:grid;place-items:center;font-size:13px}
+.m11-cards b{font:700 12px Prompt;color:#fff;display:block;margin:8px 0 4px}
+.m11-cards span{font-size:10.5px;color:#8b97b5;display:block}
+.m11-cards a{display:inline-block;margin-top:8px;color:#67e8f9;font:600 10.5px Prompt}
+.m11-foot{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,.08);padding:11px 30px;color:#5b6784;font-size:10px;display:flex;gap:16px}
+
+/* ================= M12 · SOFT CLAY ================= */
+.m12{background:#e9f0fa;color:#202a3c;font-size:12px;padding:20px 26px 26px}
+.m12-nav{display:flex;align-items:center;gap:14px;background:#fff;border-radius:20px;padding:10px 18px;box-shadow:0 14px 30px -18px rgba(32,42,60,.35),inset 0 2px 4px rgba(255,255,255,.9)}
+.m12-logo{font:700 12px Prompt;display:flex;gap:8px;align-items:center}
+.m12-logo i{width:28px;height:28px;border-radius:10px;background:linear-gradient(145deg,#a5b4fc,#818cf8);box-shadow:inset 0 -3px 6px rgba(0,0,0,.12),inset 0 3px 5px rgba(255,255,255,.65);display:grid;place-items:center;font-style:normal;color:#fff;font-size:9px;font-weight:800}
+.m12-nav nav{display:flex;gap:13px;margin-left:auto;font:600 11px "IBM Plex Sans Thai";color:#55617a}
+.m12-nav .btn{background:linear-gradient(145deg,#8b5cf6,#6d28d9);color:#fff;border-radius:14px;padding:8px 15px;font:700 11px Prompt;box-shadow:inset 0 -4px 8px rgba(0,0,0,.18),inset 0 3px 6px rgba(255,255,255,.3),0 10px 20px -10px rgba(109,40,217,.6)}
+.m12-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center;margin-top:20px}
+.m12-hero h1{font:800 25px/1.3 Prompt}
+.m12-hero h1 em{font-style:normal;color:#6d28d9}
+.m12-hero p{color:#5c6a86;font-size:12.5px;margin-top:8px;max-width:44ch}
+.m12-cta{display:flex;gap:10px;margin-top:16px}
+.m12-cta b{border-radius:16px;padding:10px 17px;font:700 11.5px Prompt}
+.m12-cta b:first-child{background:linear-gradient(145deg,#8b5cf6,#6d28d9);color:#fff;box-shadow:inset 0 -4px 8px rgba(0,0,0,.2),inset 0 3px 6px rgba(255,255,255,.3),0 12px 22px -10px rgba(109,40,217,.55)}
+.m12-cta b:last-child{background:#fff;color:#4c1d95;box-shadow:0 12px 24px -12px rgba(32,42,60,.4),inset 0 2px 4px rgba(255,255,255,.9)}
+.m12-blobs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.m12-blobs .b{border-radius:28px;min-height:128px;display:grid;place-items:center;font-size:32px;box-shadow:inset 0 -8px 14px rgba(0,0,0,.08),inset 0 8px 12px rgba(255,255,255,.8),0 18px 34px -18px rgba(32,42,60,.3)}
+.m12-blobs .b1{background:linear-gradient(145deg,#dbeafe,#bfdbfe)}
+.m12-blobs .b2{background:linear-gradient(145deg,#ede9fe,#ddd6fe)}
+.m12-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.m12-cards .c{background:#fff;border-radius:22px;padding:15px;box-shadow:0 18px 36px -20px rgba(32,42,60,.35),inset 0 2px 4px rgba(255,255,255,.9)}
+.m12-cards .ico{width:38px;height:38px;border-radius:14px;display:grid;place-items:center;font-size:17px;margin-bottom:8px;box-shadow:inset 0 -4px 8px rgba(0,0,0,.08),inset 0 4px 6px rgba(255,255,255,.8)}
+.m12-cards b{font:700 12px Prompt;display:block;margin-bottom:3px}
+.m12-cards span{font-size:10.5px;color:#5c6a86;display:block}
+.m12-cards a{display:inline-block;margin-top:8px;font:700 10.5px Prompt;color:#6d28d9}
+
+/* ================= M13 · TEA INSIGHT (dashboard) ================= */
+.m13{background:#f1f4f9;color:#182130;font-size:12px;display:flex;min-height:420px}
+.m13-side{width:170px;flex:none;background:#101828;color:#c6d0e0;padding:16px 13px;display:flex;flex-direction:column;gap:3px}
+.m13-side .lg{display:flex;gap:8px;align-items:center;font:700 11.5px Prompt;color:#fff;margin-bottom:13px}
+.m13-side .lg i{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#22d3ee);display:grid;place-items:center;font-style:normal;font-size:8.5px;font-weight:800;color:#fff}
+.m13-side a{display:flex;gap:8px;align-items:center;padding:7px 10px;border-radius:9px;font:500 11px "IBM Plex Sans Thai";color:#9fb0c8}
+.m13-side a.on{background:rgba(37,99,235,.25);color:#fff;font-weight:600}
+.m13-side a.dot::after{content:"";margin-left:auto;width:7px;height:7px;border-radius:50%;background:#4ade80}
+.m13-side .exit{margin-top:auto;font-size:10px;color:#64748b;padding:7px 10px}
+.m13-main{flex:1;padding:15px 18px;min-width:0}
+.m13-top{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.m13-top h1{font:700 15px Prompt}
+.m13-top .srch{margin-left:auto;background:#fff;border:1px solid #dfe5ef;border-radius:9px;padding:6px 12px;font-size:10.5px;color:#8b98ad;width:150px}
+.m13-top .av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#22d3ee);display:grid;place-items:center;color:#fff;font:700 9px Prompt}
+.m13-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.m13-tiles .t{background:#fff;border:1px solid #e3e9f2;border-radius:13px;padding:11px 12px}
+.m13-tiles .tag{font:700 8px Prompt;border-radius:6px;padding:2px 7px;text-transform:uppercase;letter-spacing:.05em}
+.m13-tiles .t b{font:700 12px Prompt;display:block;margin-top:6px}
+.m13-tiles .t span{font-size:9.5px;color:#66738a}
+.m13-panels{display:grid;grid-template-columns:1.3fr 1fr;gap:11px;margin-top:11px}
+.m13-panel{background:#fff;border:1px solid #e3e9f2;border-radius:13px;padding:13px}
+.m13-panel h3{font:700 12px Prompt;margin-bottom:9px}
+.m13-bars{display:flex;gap:8px;align-items:flex-end;height:88px;padding:0 4px}
+.m13-bars i{flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#93c5fd,#2563eb)}
+.m13-feed .li{display:flex;gap:9px;padding:7.5px 0;border-top:1px dashed #e8edf5;font-size:10.5px;color:#41506a;align-items:center}
+.m13-feed .li:first-child{border-top:0}
+.m13-feed .li i{font-style:normal;width:20px;height:20px;flex:none;border-radius:7px;background:#e8f1fe;color:#2563eb;display:grid;place-items:center;font-size:10px}
+.m13-feed .li b{font-weight:600;display:block}
+.m13-feed .li span{color:#8b98ad;font-size:9.5px}
+
+/* ================= M14 · TEA ASSISTANT ================= */
+.m14{background:linear-gradient(180deg,#f0faf7,#eef4fd);color:#1c2a33;font-size:12px;padding:20px 30px 24px}
+.m14-top{display:flex;align-items:center;gap:14px}
+.m14-logo{font:700 12px Prompt;display:flex;gap:8px;align-items:center}
+.m14-logo i{width:26px;height:26px;border-radius:9px;background:#0f766e;color:#fff;display:grid;place-items:center;font-style:normal;font-size:9.5px;font-weight:800}
+.m14-top nav{display:flex;gap:13px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#52646e}
+.m14-hero{text-align:center;padding:18px 0 14px}
+.m14-hero h1{font:800 23px Prompt}
+.m14-hero h1 span{color:#0f766e}
+.m14-hero p{color:#5b6e78;font-size:12px;margin-top:4px}
+.m14-chat{max-width:520px;margin:0 auto;background:#fff;border-radius:22px;box-shadow:0 30px 60px -30px rgba(16,42,67,.4);overflow:hidden;border:1px solid #e6eef2}
+.m14-chead{display:flex;gap:9px;align-items:center;padding:12px 16px;border-bottom:1px solid #eef3f6}
+.m14-chead i{font-style:normal;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#14b8a6);display:grid;place-items:center;color:#fff;font-size:13px}
+.m14-chead b{font:700 12px Prompt;display:block}
+.m14-chead small{display:block;font-size:9.5px;color:#0e9f6e}
+.m14-chead .st{margin-left:auto;font:700 8.5px Prompt;color:#0e9f6e;background:#e2f7ef;border-radius:99px;padding:3px 9px}
+.m14-cbody{padding:13px 16px;display:flex;flex-direction:column;gap:9px;background:#fbfdfe}
+.m14-msg{max-width:80%;border-radius:14px;padding:9px 12px;font-size:11px;line-height:1.6}
+.m14-msg.u{align-self:flex-end;background:#0f766e;color:#fff;border-bottom-right-radius:5px}
+.m14-msg.b{align-self:flex-start;background:#eef6f4;border-bottom-left-radius:5px;color:#28404a}
+.m14-msg.b a{color:#0f766e;font-weight:600;text-decoration:underline}
+.m14-chips{display:flex;gap:7px;flex-wrap:wrap;padding:0 16px 11px}
+.m14-chips span{border:1px solid #cfe5df;color:#0b5e54;border-radius:99px;padding:5px 11px;font:600 10px Prompt;background:#fff}
+.m14-input{display:flex;gap:9px;align-items:center;border-top:1px solid #eef3f6;padding:11px 14px}
+.m14-input .box{flex:1;background:#f2f6f7;border-radius:12px;padding:8px 12px;font-size:10.5px;color:#8ba0a8}
+.m14-input .snd{width:30px;height:30px;border-radius:10px;background:#0f766e;color:#fff;display:grid;place-items:center;font-size:12px}
+.m14-foot{text-align:center;color:#7b8f98;font-size:10px;margin-top:12px}
+
+/* ================= M15 · MONO LUXE ================= */
+.m15{background:#fbfbf9;color:#121412;font-size:12px;padding:22px 34px 26px}
+.m15-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #d9d9d2;padding-bottom:10px;font:600 9.5px Prompt;letter-spacing:.22em;text-transform:uppercase;color:#8b8b80}
+.m15-top b{color:#121412;font-size:11px}
+.m15-hero{padding:42px 0 30px;border-bottom:1px solid #d9d9d2;display:grid;grid-template-columns:1.55fr 1fr;gap:34px}
+.m15-hero h1{font:700 42px/1.14 Prompt;letter-spacing:-.01em}
+.m15-hero h1 span{color:#0c3b2e}
+.m15-hero .side{font-size:12px;color:#4a4f48;line-height:1.85;border-left:1px solid #d9d9d2;padding-left:24px;align-self:end}
+.m15-list{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid #d9d9d2}
+.m15-item{padding:20px 18px 20px 0}
+.m15-item:nth-child(2),.m15-item:nth-child(3){border-left:1px solid #d9d9d2;padding-left:20px}
+.m15-item .no{font:700 10.5px Prompt;letter-spacing:.14em;color:#0c3b2e}
+.m15-item h3{font:600 15px Prompt;margin:8px 0 5px}
+.m15-item p{font-size:11px;color:#5c6157}
+.m15-item a{display:inline-block;margin-top:10px;font:600 10.5px Prompt;color:#121412;border-bottom:1.5px solid #0c3b2e;padding-bottom:2px}
+.m15-foot{display:flex;gap:22px;padding-top:13px;color:#8b8b80;font-size:10px}
+
+/* ================= M16 · COLOR FIELD (duotone) ================= */
+.m16{background:#fff4e6;color:#231a12;font-size:12px;padding:20px 24px 26px}
+.m16-nav{display:flex;align-items:center;gap:14px}
+.m16-logo b{background:#5b21b6;color:#fff;border-radius:12px;padding:6px 11px;font:800 11px Prompt}
+.m16-nav nav{display:flex;gap:13px;margin-left:auto;font:700 11px Prompt;color:#4b3a26}
+.m16-hero{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:148px;gap:12px;margin-top:16px}
+.m16-hero .cell{border-radius:24px;padding:16px;position:relative;overflow:hidden}
+.m16-hero .c1{grid-row:span 2;background:#5b21b6;color:#fff;display:flex;flex-direction:column}
+.m16-hero .c1 h1{font:800 24px/1.25 Prompt}
+.m16-hero .c1 p{font-size:11px;opacity:.92;margin-top:8px}
+.m16-hero .c1 .btn{margin-top:auto;align-self:flex-start;background:#ff5a3c;color:#fff;border-radius:12px;padding:8px 14px;font:800 11px Prompt}
+.m16-hero .c2{background:#ffc9a3}
+.m16-hero .c2 img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;filter:grayscale(1) contrast(1.05);opacity:.88}
+.m16-hero .c2 b{position:absolute;top:12px;left:14px;z-index:2;font:800 11.5px Prompt}
+.m16-hero .c3{background:#fff;border:2px solid #231a12}
+.m16-hero .c3 b{font:800 11.5px Prompt;display:block;margin-bottom:5px}
+.m16-hero .c3 .row{display:flex;justify-content:space-between;font:600 10.5px "IBM Plex Sans Thai";border-top:1px solid #eeddc6;padding:6px 0;color:#4b3a26}
+.m16-hero .c4{background:#ff5a3c;color:#fff;display:flex;flex-direction:column;justify-content:space-between}
+.m16-hero .c4 b{font:800 15px Prompt}
+.m16-hero .c4 span{font-size:10.5px;opacity:.95}
+.m16-strip{display:flex;gap:10px;margin-top:13px}
+.m16-strip a{flex:1;background:#fff;border-radius:16px;padding:11px 14px;font:700 11px Prompt;color:#231a12;border:1.5px solid #231a12;display:flex;justify-content:space-between;align-items:center}
+
+/* ================= M17 · STORYLINE (scrollytelling) ================= */
+.m17{background:#101418;color:#e8edf2;font-size:12px;position:relative;min-height:430px}
+.m17::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 340px at 82% 100%,rgba(255,107,74,.16),transparent 65%)}
+.m17-rail{position:absolute;z-index:3;left:22px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:13px;align-items:center}
+.m17-rail i{font-style:normal;width:9px;height:9px;border-radius:50%;background:#3b4450}
+.m17-rail i.on{background:#ff6b4a;box-shadow:0 0 12px rgba(255,107,74,.8)}
+.m17-rail .ln{width:1.5px;height:22px;background:#2b333d}
+.m17-ch{position:relative;z-index:2;display:flex;gap:26px;align-items:center;min-height:400px;padding:34px 40px 26px 84px}
+.m17-txt{flex:1.05}
+.m17-txt .mx-eyebrow{color:#ff6b4a}
+.m17-txt h1{font:800 29px/1.28 Prompt;margin:10px 0 12px;color:#fff}
+.m17-txt p{color:#9aa7b5;font-size:12.5px;max-width:46ch}
+.m17-txt a{display:inline-block;margin-top:16px;border:1px solid rgba(255,255,255,.25);border-radius:11px;padding:9px 16px;font:600 11px Prompt;color:#e8edf2}
+.m17-visual{flex:1;position:relative}
+.m17-visual .frame2{border-radius:18px;background:linear-gradient(160deg,#1a2027,#12161b);border:1px solid #2b333d;padding:14px;box-shadow:0 30px 60px -30px rgba(0,0,0,.85)}
+.m17-visual img{width:100%;height:190px;object-fit:cover;border-radius:12px;display:block}
+.m17-visual .cap{display:flex;justify-content:space-between;margin-top:10px;font:600 9px Prompt;letter-spacing:.14em;color:#66727f;text-transform:uppercase}
+.m17-next{position:relative;z-index:2;text-align:center;padding:0 0 16px;color:#66727f;font:600 9px Prompt;letter-spacing:.22em}
+
+/* ================= M18 · CARD DECK (swipe first) ================= */
+.m18{background:#eaf4fd;color:#0e1b29;font-size:12px;padding:20px 0 24px;overflow:hidden}
+.m18-nav{display:flex;align-items:center;gap:14px;padding:0 28px}
+.m18-logo{font:700 12px Prompt;display:flex;gap:8px;align-items:center}
+.m18-logo i{width:26px;height:26px;border-radius:9px;background:#0ea5e9;color:#fff;display:grid;place-items:center;font-style:normal;font-size:9.5px;font-weight:800}
+.m18-nav nav{display:flex;gap:13px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#48607a}
+.m18-head{display:flex;align-items:baseline;gap:14px;padding:22px 28px 12px}
+.m18-head h1{font:800 23px Prompt}
+.m18-head span{margin-left:auto;font:600 10.5px Prompt;color:#0284c7}
+.m18-deck{display:flex;gap:14px;padding:6px 28px 14px}
+.m18-card{flex:0 0 296px;background:#fff;border-radius:20px;padding:16px;box-shadow:0 24px 44px -26px rgba(14,27,41,.5);position:relative}
+.m18-card .tag{display:inline-block;font:700 8.5px Prompt;letter-spacing:.06em;border-radius:7px;padding:3px 9px;text-transform:uppercase}
+.m18-card h3{font:700 14px/1.45 Prompt;margin:8px 0 5px}
+.m18-card p{font-size:10.5px;color:#54708a}
+.m18-card .go{display:inline-block;margin-top:10px;font:700 10.5px Prompt;color:#0284c7}
+.m18-card.hi{background:#075985;color:#fff}
+.m18-card.hi p{color:#b8d8ee}
+.m18-card.hi .go{color:#7dd3fc}
+.m18-dots{display:flex;gap:7px;padding:2px 28px;align-items:center}
+.m18-dots i{font-style:normal;width:7px;height:7px;border-radius:50%;background:#b9d4ea}
+.m18-dots i.on{background:#075985;width:20px;border-radius:99px}
+
+/* ================= M19 · LAB NOTES (blueprint) ================= */
+.m19{background:#f2f6f5;color:#152220;font-size:12px;position:relative}
+.m19::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(21,52,44,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(21,52,44,.055) 1px,transparent 1px);background-size:30px 30px}
+.m19>*{position:relative;z-index:2}
+.m19-top{display:flex;justify-content:space-between;align-items:center;padding:13px 26px;border-bottom:1.5px solid #15342c;font-family:"Consolas","Courier New",monospace;font-size:10px;letter-spacing:.05em;color:#3d5a51}
+.m19-top b{font-size:11px;color:#0c2b24}
+.m19-mid{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;padding:24px 26px;border-bottom:1.5px solid #15342c}
+.m19-mid .mx-eyebrow{color:#0f766e;font-family:"Consolas","Courier New",monospace}
+.m19-mid h1{font:800 26px/1.3 Prompt;margin-top:8px}
+.m19-mid h1 span{color:#0f766e}
+.m19-mid p{margin-top:9px;color:#41544e;font-size:12px;max-width:46ch}
+.m19-mid .acts{display:flex;gap:10px;margin-top:15px}
+.m19-mid .acts b{border:1.5px solid #15342c;border-radius:8px;padding:8px 14px;font:700 11px Prompt}
+.m19-mid .acts b:first-child{background:#15342c;color:#e8f3ee}
+.m19-spec{border:1.5px solid #15342c;border-radius:12px;overflow:hidden;background:#fff}
+.m19-spec .h{padding:8px 12px;background:#15342c;color:#cfe8dd;font-family:"Consolas","Courier New",monospace;font-size:9.5px;letter-spacing:.1em}
+.m19-spec .row{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;border-top:1px dashed #c9d8d2;font-size:10.5px;align-items:center}
+.m19-spec .row:first-of-type{border-top:0}
+.m19-spec .row span{color:#5b6f68;font-family:"Consolas","Courier New",monospace;font-size:9px}
+.m19-spec .row b{font:600 11px "IBM Plex Sans Thai";text-align:right}
+.m19-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:#15342c;border-top:1.5px solid #15342c}
+.m19-strip .s{background:#f2f6f5;padding:12px 14px}
+.m19-strip .s b{display:block;font:700 11px Prompt;margin-top:4px}
+.m19-strip .s span{font-size:9px;color:#5b6f68;font-family:"Consolas","Courier New",monospace;letter-spacing:.04em}
+
+/* ================= M20 · SPLIT IDENTITY ================= */
+.m20{background:#101216;color:#f0f1f3;font-size:12px}
+.m20-nav{display:flex;align-items:center;gap:15px;padding:14px 28px;border-bottom:1px solid rgba(255,255,255,.09)}
+.m20-logo{font:700 12px Prompt;display:flex;gap:8px;align-items:center}
+.m20-logo i{width:26px;height:26px;border-radius:8px;background:#e0762e;color:#181104;display:grid;place-items:center;font-style:normal;font-size:9.5px;font-weight:800}
+.m20-nav nav{display:flex;gap:14px;margin-left:auto;font:500 11px "IBM Plex Sans Thai";color:#a6adb8}
+.m20-hero{display:grid;grid-template-columns:1fr 1fr;min-height:320px}
+.m20-hero .l{padding:36px 30px;display:flex;flex-direction:column;justify-content:center}
+.m20-hero .l h1{font:800 27px/1.3 Prompt;color:#fff}
+.m20-hero .l h1 em{font-style:normal;color:#e0762e}
+.m20-hero .l p{color:#a6adb8;font-size:12.5px;margin-top:10px;max-width:40ch}
+.m20-hero .l .cta{display:flex;gap:10px;margin-top:16px}
+.m20-hero .l .cta b{border-radius:10px;padding:9px 16px;font:700 11px Prompt}
+.m20-hero .l .cta b:first-child{background:#e0762e;color:#181104}
+.m20-hero .l .cta b:last-child{border:1px solid rgba(255,255,255,.25);color:#f0f1f3}
+.m20-hero .r{position:relative;overflow:hidden;min-height:280px}
+.m20-hero .r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.m20-hero .r::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#101216 0%,transparent 32%)}
+.m20-float{position:absolute;z-index:3;bottom:18px;right:20px;background:rgba(16,18,22,.85);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:13px;padding:11px 14px}
+.m20-float b{font:700 11px Prompt;color:#e0762e;display:block}
+.m20-float span{font-size:10px;color:#b9c0ca}
+.m20-rows{border-top:1px solid rgba(255,255,255,.09)}
+.m20-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(255,255,255,.09)}
+.m20-row .c{padding:17px 28px}
+.m20-row .c h3{font:700 13px Prompt;color:#fff;margin-bottom:4px}
+.m20-row .c p{font-size:11px;color:#a6adb8}
+.m20-row .c.tint{background:#e0762e}
+.m20-row .c.tint h3{color:#181104}
+.m20-row .c.tint p{color:#5c3306}
+.m20-row .c.rev{background:#16191e}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .cover{grid-template-columns:1fr}
+  .foundation .cols{grid-template-columns:1fr 1fr}
+  .specs{grid-template-columns:1fr}
+  .recipe{grid-template-columns:1fr 1fr}
+  .con-num{min-width:64px;font-size:44px}
+  .con-head{flex-direction:column;gap:8px}
+}
+@media (max-width:640px){
+  .foundation .cols,.recipe{grid-template-columns:1fr}
+  .m1-hero,.m3-hero,.m4-main,.m6-hero,.m8-journey,.m9{grid-template-columns:1fr}
+  .m1-cards,.m3-cards,.m5-cards,.m7-hero .btns,.m10-gal{grid-template-columns:1fr}
+  .m2-grid{grid-template-columns:1fr 1fr}
+  .m4-strips{grid-template-columns:1fr 1fr}
+  table{display:block;overflow-x:auto}
+}
+
+/* ---------- print ---------- */
+@media print{
+  .quicknav{display:none}
+  body{background:#fff}
+  .concept,.compare{break-inside:avoid;page-break-before:always;margin-top:24px}
+  .frame{box-shadow:none}
+}
+</style>
+</head>
+<body id="top">
+
+<!-- ===================== QUICK NAV ===================== -->
+<div class="quicknav">
+  <div class="in">
+    <span class="qn-brand"><i>TEA</i> ข้อเสนอดีไซน์ 20 แบบ · สมาคมเอ็นโดดอนติกส์ไทย</span>
+    <span class="qn-chips">
+      <a href="#c01">01 Nocturne</a><a href="#c02">02 Bento</a><a href="#c03">03 Bold</a><a href="#c04">04 Newsroom</a><a href="#c05">05 Aurora</a><a href="#c06">06 Journal</a><a href="#c07">07 Congress</a><a href="#c08">08 Journey</a><a href="#c09">09 Pocket</a><a href="#c10">10 Heritage</a><a href="#c11">11 Glow</a><a href="#c12">12 Clay</a><a href="#c13">13 Insight</a><a href="#c14">14 Assistant</a><a href="#c15">15 Mono Luxe</a><a href="#c16">16 Color Field</a><a href="#c17">17 Storyline</a><a href="#c18">18 Card Deck</a><a href="#c19">19 Lab Notes</a><a href="#c20">20 Split</a><a href="#compare">ตารางเปรียบเทียบ</a>
+    </span>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ===================== COVER ===================== -->
+<section class="cover">
+  <div>
+    <span class="kicker">UX/UI Proposal · Round 2 + 3 — รวม 20 แบบ</span>
+    <h1>20 ทิศทางดีไซน์<br>สำหรับเว็บไซต์<em>สมาคมเอ็นโดดอนติกส์ไทย</em><br>ที่สร้างจริงบน WordPress ได้ทุกแบบ</h1>
+    <p class="lead">แบบ 01–10 คือชุดรอบสองที่ต่างจากต้นแบบรอบแรก (สไตล์สถาบัน/ราชการ) และ <b>แบบ 11–20 คือชุดทันสมัยพิเศษรอบล่าสุด</b> ออกแบบตามเทรนด์เว็บสากลปัจจุบัน — ทุกแบบมีบุคลิกชัดเจนต่างกัน พร้อมระบุวิธีสร้างจริง ใช้ธีมและปลั๊กอิน WordPress ที่มีอยู่จริง ติดตั้งได้ทันที ไม่ต้องเขียนระบบใหม่จากศูนย์</p>
+    <div class="meta">
+      <span>ทุก mockup ใช้เนื้อหาและเอกสารจริงของสมาคม</span>
+      <span>โครงเนื้อหาชุดเดียวกันทั้ง 20 แบบ</span>
+      <span>พิมพ์เป็น PDF ได้ (Ctrl+P)</span>
+    </div>
+    <p class="refline">
+      อ้างอิงต้นทาง: เว็บเดโม่รอบแรก <a href="https://thai-endodontic-association-demo.condark1.chatgpt.site/" target="_blank" rel="noreferrer">thai-endodontic-association-demo</a> · เว็บเก่า <a href="https://www.thailandorganizer.com/thaiendodontics/" target="_blank" rel="noreferrer">thailandorganizer.com/thaiendodontics</a> — ลิงก์เอกสาร PDF ในหน้าตัวอย่างเปิดไฟล์จริงที่แนบมากับชุดนำเสนอนี้ได้
+    </p>
+  </div>
+  <aside class="cover-card">
+    <h3>วิธีอ่านชุดนี้</h3>
+    <ol>
+      <li>แต่ละแบบมี <b>ภาพหน้าแรก</b> วาดจากโทนสีและเลย์เอาต์จริงของแบบนั้น</li>
+      <li>กล่อง <b>"ทำจริงใน WordPress"</b> ใต้ทุกแบบ ระบุธีม ตัวสร้างหน้า และปลั๊กอินที่ใช้จริง พร้อมประมาณการเวลา</li>
+      <li>ท้ายเล่มมี <b>ตารางเปรียบเทียบ</b> และคำแนะนำการเลือก สำหรับใช้ตัดสินใจร่วมกับกรรมการ</li>
+      <li>เลือกได้แล้ว เราสร้างเว็บจริงตามแบบนั้นบน WordPress ได้ทันที (โครงเนื้อหาเหมือนกันทุกแบบ เปลี่ยนใจทีหลังก็ไม่เสียเนื้อหา)</li>
+    </ol>
+  </aside>
+</section>
+
+<!-- ===================== FOUNDATION ===================== -->
+<section class="foundation">
+  <h2>ฐานร่วมของทั้ง 20 แบบ — โครงสร้างเนื้อหาชุดเดียว สลับดีไซน์ได้ตลอดเวลา</h2>
+  <div class="cols">
+    <div>
+      <h4>ประเภทเนื้อหา (Custom Post Types)</h4>
+      <ul>
+        <li>ข่าวและประกาศ</li>
+        <li>กิจกรรม/การประชุมวิชาการ</li>
+        <li>เอกสารดาวน์โหลด (ชื่อ · หมวด · ปี · ไฟล์ PDF)</li>
+        <li>ทุนวิจัย ประจำปี</li>
+        <li>วารสารเอ็นโดดอนติกส์ไทย (ฉบับ)</li>
+      </ul>
+    </div>
+    <div>
+      <h4>ปลั๊กอินฐาน (ใช้ร่วมทุกแบบ)</h4>
+      <ul>
+        <li>Custom Post Type UI — สร้างประเภทเนื้อหา</li>
+        <li>WPForms / Fluent Forms — แบบฟอร์มติดต่อ-สมัคร</li>
+        <li>Rank Math SEO</li>
+        <li>FileBird — จัดโฟลเดอร์ไฟล์ PDF</li>
+        <li>UpdraftPlus — สำรองข้อมูลอัตโนมัติ</li>
+      </ul>
+    </div>
+    <div>
+      <h4>ระบบเดิมที่คงใช้งาน (เชื่อมด้วยลิงก์)</h4>
+      <ul>
+        <li>วารสาร TEJ บน TCI ThaiJO (he03.tci-thaijo.org)</li>
+        <li>ระบบใบประกาศ/กิจกรรม CDEC (thaiendodontics.com)</li>
+        <li>LINE OA @thaiendodontics · Facebook Thaiendodontics</li>
+      </ul>
+    </div>
+    <div>
+      <h4>ข้อมูลติดต่อ (คงที่ทุกแบบ)</h4>
+      <ul>
+        <li>02-218-8795</li>
+        <li>thaiendodontics@gmail.com</li>
+        <li>ภาควิชาทันตกรรมหัตถการ คณะทันตแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย กรุงเทพฯ 10330</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">ข้อดีเชิงกลยุทธ์: เพราะทั้ง 20 แบบใช้โครงเนื้อหาชุดเดียวกัน กรรมการจึงเลือกแบบได้ไม่ต้องกลัว "ล็อกอยู่กับดีไซน์" — หากใช้ไป 1–2 ปีอยากเปลี่ยนหน้าตา ก็เปลี่ยนเฉพาะธีม/เลย์เอาต์ ข้อมูลข่าว เอกสาร และทุนวิจัยยังอยู่ครบ ไม่ต้องกรอกใหม่</p>
+</section>
+
+<!-- ===================== 01 NOCTURNE ===================== -->
+<section class="concept" id="c01">
+  <div class="con-head">
+    <span class="con-num">01</span>
+    <div class="con-title">
+      <h2>Nocturne — พรีเมียมโทนมืด</h2>
+      <div class="en">Dark Premium Clinical</div>
+      <p class="one">ภาพลักษณ์ทันสมัยและน่าเชื่อถือแบบสถาบันการแพทย์เฉพาะทางระดับสากล ใช้ภาพฟันพอร์ซเลนบนพื้นน้ำเงินเข้ม เน้นพื้นที่ว่าง ตัวอักษรสว่าง และรายละเอียดทองอ่อน ให้ความรู้สึก "องค์กรวิชาชีพชั้นสูง" ต่างจากเว็บราชการทั่วไปอย่างชัดเจน</p>
+      <div class="con-tags"><span>ภาพลักษณ์พรีเมียม</span><span>โทนมืด</span><span>เหมาะสร้างความประทับใจแรก</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 01)</span></div>
+    <div class="screen m1">
+      <div class="m1-tick">ประกาศ: เปิดรับสมัครทุนวิจัยอุดหนุนการวิจัย ประจำปี 2569 แล้ว — อ่านหลักเกณฑ์และดาวน์โหลดใบสมัครได้ที่หมวดทุนวิจัย</div>
+      <div class="m1-nav">
+        <span class="m1-logo"><b>TEA</b><span>สมาคมเอ็นโดดอนติกส์ไทย<small>THAI ENDODONTIC ASSOCIATION</small></span></span>
+        <nav><span>เกี่ยวกับสมาคม</span><span>ข่าวและประกาศ</span><span>วารสาร TEJ</span><span>ทุนวิจัย</span><span>เอกสาร</span><span>ติดต่อ</span></nav>
+        <span class="m1-btn">เข้าระบบสมาชิก</span>
+      </div>
+      <div class="m1-hero">
+        <div>
+          <span class="mx-eyebrow" style="color:#c9a227">Thai Endodontic Association · Knowledge · Research · Standards</span>
+          <h1>ยกระดับการแพทย์รากฟัน<br>สู่<em>มาตรฐานสากล</em></h1>
+          <p>ศูนย์กลางองค์ความรู้ งานวิจัย และกิจกรรมวิชาการด้านเอ็นโดดอนติกส์ของประเทศไทย สำหรับทันตแพทย์ นักวิจัย และผู้รับบริการ</p>
+          <div class="m1-cta"><span class="solid">สมัครทุนวิจัย 2569</span><span class="ghost">อ่านวารสาร TEJ ↗</span></div>
+          <div class="m1-stats">
+            <span><b>เครือข่ายทั่วประเทศ</b>ทันตแพทย์เอ็นโดฯ</span>
+            <span><b>ทุนวิจัยประจำปี</b>เปิดรับทุกปี</span>
+            <span><b>ใบรับรอง CDEC</b>ตรวจสอบออนไลน์</span>
+          </div>
+        </div>
+        <div class="m1-visual">
+          <img src="generated/teal-porcelain-molar-hero.png" alt="ฟันกรามพอร์ซเลนบนฐาน โทนน้ำเงินเข้ม">
+          <div class="m1-float"><b>Thai Endodontic Journal</b><span>อ่านฉบับล่าสุดและส่งบทความผ่าน TCI ThaiJO</span></div>
+        </div>
+      </div>
+      <div class="m1-cards">
+        <div class="c"><span class="mx-eyebrow" style="color:#5eead4">NEWS &amp; ANNOUNCEMENTS</span><b>ข่าวและประกาศ</b><span>ทุนวิจัย 2569 · รับสนับสนุนบทความวิชาการ</span><a>ดูทั้งหมด →</a></div>
+        <div class="c"><span class="mx-eyebrow" style="color:#5eead4">EVENTS</span><b>Endodontic Uncovered</b><span>10 กรกฎาคม 2569 · คณะทันตแพทยศาสตร์ จุฬาฯ</span><a>รายละเอียดกิจกรรม →</a></div>
+        <div class="c"><span class="mx-eyebrow" style="color:#5eead4">DOWNLOADS</span><b>คลังเอกสาร</b><span>ใบสมัครทุนวิจัย แบบฟอร์มบทความ หลักเกณฑ์</span><a>เข้าคลังเอกสาร →</a></div>
+      </div>
+      <div class="m1-foot"><span>สมาคมเอ็นโดดอนติกส์ไทย · จุฬาลงกรณ์มหาวิทยาลัย</span><span>02-218-8795</span><span>thaiendodontics@gmail.com</span><span style="margin-left:auto">LINE @thaiendodontics</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#0a1424"></i>#0A1424 น้ำเงินคราม</span>
+        <span class="sw"><i style="background:#2dd4bf"></i>#2DD4BF เขียวมรกต</span>
+        <span class="sw"><i style="background:#c9a227"></i>#C9A227 ทองอ่อน</span>
+        <span class="sw"><i style="background:#e6eef7"></i>#E6EEF7 ขาวนวล</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt SemiBold/Bold</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — ตั้งค่าได้จากธีมโดยตรง ไม่ต้องแก้โค้ด</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>แถบประกาศทองด้านบนสุด — ประกาศสำคัญเห็นก่อนเสมอ</li>
+        <li>ภาพฮีโร่คุณภาพสูง + การ์ดลอยแนะนำวารสาร</li>
+        <li>ปุ่มทองเดียวที่สุดในหน้า (ทุนวิจัย) — สายตาถูกนำไปที่ CTA หลักทันที</li>
+        <li>โหมดมืดทั้งเว็บลดความเหนื่อยตา อ่านเนื้อหายาวได้</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence (ฟรี)</b> + Kadence Blocks หรือธีม Astra + Spectra ตั้ง Global Palette ตามโทนนี้ใน Customizer ได้เลย สลับโหมดสีได้ทั้งไซต์ รูปฮีโร่ใช้ไฟล์ที่เตรียมไว้แล้วในชุดนี้</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks — hero, แถวไอคอน</li><li>Custom Post Type UI + FileBird</li><li>WPForms — แบบฟอร์มสอบถาม</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>Query Loop ดึง "ประกาศ" ล่าสุดอัตโนมัติ</li><li>เอกสารดึงจาก CPT เอกสาร</li><li>วารสารเชื่อมลิงก์ ThaiJO</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–7 วันทำงาน</p><p>เหมาะกับ: อยากได้ภาพลักษณ์ทันสมัย กระชับพรีเมียม</p></div>
+  </div>
+</section>
+
+<!-- ===================== 02 BENTO HUB ===================== -->
+<section class="concept" id="c02">
+  <div class="con-head">
+    <span class="con-num">02</span>
+    <div class="con-title">
+      <h2>Bento Hub — ตะกร้าเนื้อหาทันสมัย</h2>
+      <div class="en">Bento Grid Layout</div>
+      <p class="one">จัดทุกอย่างในหน้าแรกเป็น "กล่องเบนโตะ" ขนาดต่างกันตามความสำคัญ — ทุนวิจัยใหญ่ที่สุด ตามด้วยวารสาร กิจกรรม เอกสาร และ LINE ผู้ใช้เห็นภาพรวมทั้งสมาคมภายใน 3 วินาที สไตล์นี้เป็นเทรนด์เว็บสมัยใหม่ (แนวทางเดียวกับหน้าผลิตภัณฑ์ของ Apple) และสร้างด้วยบล็อกพื้นฐานของ WordPress ได้เกือบทั้งหมด</p>
+      <div class="con-tags"><span>ทันสมัย</span><span>ข้อมูลหนาแน่นแต่จัดชัด</span><span>สแกนเร็ว</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 02)</span></div>
+    <div class="screen m2">
+      <div class="m2-nav">
+        <span class="m2-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+        <span class="m2-search">ค้นหา…</span>
+      </div>
+      <div class="m2-head"><h1>ทุกอย่างของสมาคม ในหน้าเดียว</h1><p>อัปเดตล่าสุด 11 กันยายน 2569</p></div>
+      <div class="m2-grid">
+        <div class="m2-tile t-big">
+          <span class="mx-eyebrow">RESEARCH GRANT · เปิดรับสมัคร</span>
+          <div class="yr">2569</div>
+          <h3>ทุนอุดหนุนการวิจัย ประจำปี</h3>
+          <p>อ่านหลักเกณฑ์และดาวน์โหลดใบสมัครได้ที่คลังเอกสาร</p>
+          <span class="go">สมัครทุนวิจัย <em>→</em></span>
+        </div>
+        <div class="m2-tile t-journal">
+          <span class="mx-eyebrow">THAI ENDODONTIC JOURNAL</span>
+          <h3>วารสารเอ็นโดดอนติกส์ไทย (TEJ)</h3>
+          <p>อ่านฉบับล่าสุด · ส่งบทความผ่าน TCI ThaiJO</p>
+          <span class="go">เปิดวารสาร <em>↗</em></span>
+        </div>
+        <div class="m2-tile t-line">
+          <span class="mx-eyebrow">LINE OFFICIAL</span>
+          <h3>@thaiendodontics</h3>
+          <span class="go">เพิ่มเพื่อน สอบถามเจ้าหน้าที่ <em>+</em></span>
+        </div>
+        <div class="m2-tile t-event">
+          <span class="mx-eyebrow" style="color:#b45309">UPCOMING EVENT</span>
+          <div class="date">10 ก.ค. 69</div>
+          <h3>Endodontic Uncovered</h3>
+          <span class="go" style="color:#b45309">ดูรายละเอียด <em>→</em></span>
+        </div>
+        <div class="m2-tile t-cert">
+          <span class="mx-eyebrow">CERTIFICATE</span>
+          <h3>ใบรับรองกิจกรรม CDEC</h3>
+          <span class="go">ตรวจสอบ/พิมพ์ใบประกาศ <em>↗</em></span>
+        </div>
+        <div class="m2-tile t-docs" style="grid-column:span 2">
+          <span class="mx-eyebrow" style="color:#10b981">เอกสารดาวน์โหลดล่าสุด</span>
+          <a class="row" href="ใบสมัครทุนวิจัย%2069.pdf"><span class="pdf">PDF</span>ใบสมัครทุนวิจัย ประจำปี 2569</a>
+          <a class="row" href="document-01.pdf"><span class="pdf">PDF</span>หลักเกณฑ์การให้ทุนอุดหนุนการวิจัย ปี 2569</a>
+          <a class="row" href="แบบขอรับเงินสนับสนุนบทความ.pdf"><span class="pdf">PDF</span>แบบขอรับเงินสนับสนุนบทความวิชาการ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#eef1f8"></i>#EEF1F8 เทาฟ้าอ่อน</span>
+        <span class="sw"><i style="background:#10b981"></i>#10B981 เขียว</span>
+        <span class="sw"><i style="background:#312e81"></i>#312E81 ม่วงคราม</span>
+        <span class="sw"><i style="background:#06c755"></i>#06C755 เขียวไลน์</span>
+        <span class="sw"><i style="background:#f59e0b"></i>#F59E0B อำพัน</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — แต่ละกล่องใช้สีประจำหมวด ช่วยจำตำแหน่ง</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>สแกนครบทุกบริการในหน้าเดียว — เหมาะผู้ใช้ที่รู้ว่าต้องการอะไร</li>
+        <li>ลำดับความสำคัญสื่อด้วย "ขนาดกล่อง" ไม่ต้องอ่านตัวหนา</li>
+        <li>เอกสารจริง 3 ไฟล์แนบในกล่อง — กดโหลดได้ทันทีในตัวอย่างนี้</li>
+        <li>ระบบสีต่อหมวดช่วยผู้ใช้กลับมาหาของเดิมได้เร็ว</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Twenty Twenty-Five หรือ Kadence</b> สร้างด้วยบล็อกแกน (Group + Columns + Cover) วาง CSS Grid เสริมเล็กน้อยผ่าน Global Styles ไม่ต้องพึ่งตัวสร้างหน้าราคาแพง</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks (แถว/แท็บ)</li><li>Custom Post Type UI</li><li>FileBird + WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>กล่องทุนวิจัย = หน้าประกาศหลัก</li><li>กล่องเอกสาร = Query Loop CPT เอกสาร 3 อันล่าสุด</li><li>กล่องกิจกรรมดึงจาก CPT กิจกรรม</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●○○ <b>ง่าย</b></p><p>4–5 วันทำงาน</p><p>เหมาะกับ: สื่อสารหลายเรื่องพร้อมกัน อยากได้หน้าแรก "จบในตัว"</p></div>
+  </div>
+</section>
+
+<!-- ===================== 03 BOLD STATEMENT ===================== -->
+<section class="concept" id="c03">
+  <div class="con-head">
+    <span class="con-num">03</span>
+    <div class="con-title">
+      <h2>Bold Statement — เส้นหนา ตัวโต ชัดเจน</h2>
+      <div class="en">Neo-Brutalist / High Contrast</div>
+      <p class="one">ดีไซน์เส้นขอบหนา เงาทึบ และตัวอักษรใหญ่ตรงไปตรงมา จุดขายคือ "อ่านไม่มีทางพลาด" — ประกาศไหนสำคัญ มันจะใหญ่และเด่นจริง ๆ เหมาะกับองค์กรที่อยากดูตรงไปตรงมา มีพลัง ไม่รกด้วยของประดับ และแยกตัวจากเว็บสมาคมทั่วไปที่หน้าตาเหมือนกันหมด</p>
+      <div class="con-tags"><span>โดดเด่นสุด ๆ</span><span>อ่านง่าย</span><span>เอกลักษณ์ชัด</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 03)</span></div>
+    <div class="screen m3">
+      <div class="m3-nav bd">
+        <span class="m3-logo"><b>TEA</b></span>
+        <nav><span>สมาคม</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+        <span class="btn">สมัครทุน 2569</span>
+      </div>
+      <div class="m3-tick"><div class="track"><span>✦ ทุนวิจัย 2569 เปิดรับสมัครแล้ว</span><span><em>◆</em>วารสาร TEJ รับบทความใหม่</span><span><em>◆</em>Endodontic Uncovered 10 ก.ค. 69</span><span><em>◆</em>ดาวน์โหลดแบบฟอร์มทุกใบ</span><span>✦ ทุนวิจัย 2569 เปิดรับสมัครแล้ว</span><span><em>◆</em>วารสาร TEJ รับบทความใหม่</span><span><em>◆</em>Endodontic Uncovered 10 ก.ค. 69</span><span><em>◆</em>ดาวน์โหลดแบบฟอร์มทุกใบ</span></div></div>
+      <div class="m3-hero">
+        <div class="l bd">
+          <span class="m3-stick">ประกาศด่วน!</span>
+          <h1>ความรู้เอ็นโดฯ<br>ตรงปก <mark>ไม่มีตกหล่น</mark></h1>
+          <p>ข่าว ทุนวิจัย วารสาร และทุกแบบฟอร์มของสมาคมเอ็นโดดอนติกส์ไทย — เข้าถึงง่ายเหมือนโปสเตอร์หน้าห้อง</p>
+          <div class="btns"><b>ดูประกาศล่าสุด</b><b>เข้าคลังเอกสาร</b></div>
+        </div>
+        <div class="r bd">
+          <div class="box">
+            <b>เอกสารฮิตโหลด</b>
+            <div class="row"><span>ใบสมัครทุนวิจัย 69</span><span>↓</span></div>
+            <div class="row"><span>หลักเกณฑ์ทุนอุดหนุน 69</span><span>↓</span></div>
+            <div class="row"><span>แบบขอสนับสนุนบทความ</span><span>↓</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="m3-cards">
+        <div class="c bd"><i>📰</i><b>ข่าวและประกาศ</b><span>อัปเดตทุกสัปดาห์ อ่านจบใน 1 หน้า</span><a>ไปดู →</a></div>
+        <div class="c"><i>🎓</i><b>ทุนวิจัย 2569</b><span>เปิดถึง 30 มิ.ย. 2569 · อ่านก่อนเตรียมใบสมัคร</span><a>อ่านหลักเกณฑ์ →</a></div>
+        <div class="c bd"><i>🪪</i><b>ใบรับรอง CDEC</b><span>ตรวจสอบและพิมพ์ใบประกาศกิจกรรมออนไลน์</span><a>เข้าระบบ ↗</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#101010"></i>#101010 ดำหมึก</span>
+        <span class="sw"><i style="background:#2545ff"></i>#2545FF ครามสด</span>
+        <span class="sw"><i style="background:#d3f26a"></i>#D3F26A เขียวมะนาว</span>
+        <span class="sw"><i style="background:#faf7f0"></i>#FAF7F0 กระดาษ</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold</b> ขนาดใหญ่ผิดปกติ · เนื้อความ: <b>IBM Plex Sans Thai Medium</b></p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ลำดับความสำคัญสื่อด้วยขนาดจริง ๆ — ใหญ่ = สำคัญ</li>
+        <li>แถบตัววิ่ง (ticker) สรุปประกาศสำคัญตลอดเวลา</li>
+        <li>คอนทราสต์สูงมาก ดีต่อผู้ใช้สูงวัยและจอความสว่างต่ำ</li>
+        <li>สร้างจากบล็อกพื้นฐาน + CSS เส้นขอบ/เงา ไม่ต้องพึ่งปลั๊กอินภาพ</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Twenty Twenty-Five / GeneratePress</b> + GenerateBlocks เสริม ขอบหนา เงาทึบ และแถบตัววิ่ง ทำด้วย CSS สั้น ๆ ใน Global Styles หรือปลั๊กอิน WPCode ทั้งหมดคือบล็อกแกนเป็นหลัก</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>GenerateBlocks / Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>WPCode (จัดการ CSS เสริม)</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ประกาศเด่น = หัวใหญ่บนสุด</li><li>แถบตัววิ่งดึงจากหมวดประกาศด่วน</li><li>กล่องเอกสารฮิต = ลิงก์ไฟล์ตรง</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>4–6 วันทำงาน</p><p>เหมาะกับ: อยากให้เว็บ "จำได้" และแหล่งข่าวหลักของสมาชิก</p></div>
+  </div>
+</section>
+<!-- ===================== 04 NEWSROOM ===================== -->
+<section class="concept" id="c04">
+  <div class="con-head">
+    <span class="con-num">04</span>
+    <div class="con-title">
+      <h2>Newsroom — หน้าหนังสือพิมพ์ออนไลน์</h2>
+      <div class="en">Association News Portal</div>
+      <p class="one">วางสมาคมในฐานะ "สำนักข่าวของวงการเอ็นโดฯ" — ข่าวเด่นใหญ่พร้อมภาพ คอลัมน์ข่าวล่าสุดเรียงตามวันที่ และแถบหมวดข่าวแยกสีชัดเจน เหมาะกับสมาคมที่มีประกาศถี่ ต้องอัปเดตบ่อย และอยากให้สมาชิกเปิดเว็บเป็นกิจวัตร สร้างจากระบบข่าวพื้นฐานของ WordPress ได้โดยตรง</p>
+      <div class="con-tags"><span>อัปเดตบ่อย</span><span>ข่าวเป็นพระเอก</span><span>หมวดชัดเจน</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 04)</span></div>
+    <div class="screen m4">
+      <div class="m4-top"><span>วันพฤหัสบดี · 11 กันยายน 2569</span><div class="r"><span>02-218-8795</span><span>thaiendodontics@gmail.com</span><span>LINE @thaiendodontics</span></div></div>
+      <div class="m4-mast">
+        <h1>TEA <span>NEWSROOM</span></h1>
+        <p>สมาคมเอ็นโดดอนติกส์ไทย · Thai Endodontic Association</p>
+      </div>
+      <div class="m4-nav">
+        <a><i style="background:#2563eb"></i>ทุนวิจัย</a>
+        <a><i style="background:#7c3aed"></i>วารสาร</a>
+        <a><i style="background:#ea580c"></i>กิจกรรม</a>
+        <a><i style="background:#dc2626"></i>ประกาศ</a>
+        <a><i style="background:#475569"></i>เอกสาร</a>
+        <a><i style="background:#059669"></i>เครือข่าย</a>
+      </div>
+      <div class="m4-main">
+        <div class="m4-feat">
+          <img src="generated/academic-collaboration.png" alt="คณะกรรมการและนักวิจัยร่วมประชุมงานวิจัย">
+          <div class="pad">
+            <span class="m4-cat" style="background:#2563eb">ทุนวิจัย</span>
+            <h2>เปิดรับสมัครทุนอุดหนุนการวิจัย ประจำปี 2569</h2>
+            <p>สมาคมเอ็นโดดอนติกส์ไทยเปิดรับข้อเสนอโครงการวิจัยด้านการแพทย์รากฟัน พร้อมหลักเกณฑ์และใบสมัครฉบับปี 2569 ให้ดาวน์โหลดแล้วในคลังเอกสาร</p>
+            <div class="dt">เผยแพร่ 1 กันยายน 2569 · อ่านต่อ →</div>
+          </div>
+        </div>
+        <div class="m4-list">
+          <div class="li"><div><span class="m4-cat" style="background:#7c3aed">วารสาร</span><h3>วารสารเอ็นโดดอนติกส์ไทย เปิดรับบทความใหม่</h3><span class="x">ส่งผ่านระบบ TCI ThaiJO ฟรี ตลอดปี</span></div><span class="dt">28 ส.ค. 69</span></div>
+          <div class="li"><div><span class="m4-cat" style="background:#dc2626">ประกาศ</span><h3>แนวทางการให้เงินสนับสนุนบทความวิชาการ</h3><span class="x">ตรวจเงื่อนไขก่อนยื่นขอสนับสนุนค่าตีพิมพ์</span></div><span class="dt">20 ส.ค. 69</span></div>
+          <div class="li"><div><span class="m4-cat" style="background:#ea580c">กิจกรรม</span><h3>Endodontic Uncovered — รวมพลคนเอ็นโดฯ</h3><span class="x">10 ก.ค. 2569 · คณะทันตแพทยศาสตร์ จุฬาฯ</span></div><span class="dt">12 ส.ค. 69</span></div>
+          <div class="li"><div><span class="m4-cat" style="background:#475569">เอกสาร</span><h3>แบบฟอร์มฉบับปี 2569 พร้อมดาวน์โหลด</h3><span class="x">ใบสมัครทุน แบบขอสนับสนุน และหลักเกณฑ์</span></div><span class="dt">1 ส.ค. 69</span></div>
+          <div class="li"><div><span class="m4-cat" style="background:#059669">เครือข่าย</span><h3>ข่าวจากคณะกรรมการทันตกรรมและสมาคมพันธมิตร</h3><span class="x">รวมข่าววิชาชีพจากหน่วยงานเครือข่าย</span></div><span class="dt">25 ก.ค. 69</span></div>
+        </div>
+      </div>
+      <div class="m4-strips">
+        <div class="s" style="border-color:#2563eb"><h4>ทุนวิจัย</h4><p>สรุปปฏิทินรับสมัครทุน และโครงการที่ได้รับทุนปีก่อน</p></div>
+        <div class="s" style="border-color:#7c3aed"><h4>วารสาร</h4><p>ฉบับล่าสุด บทความถูกอ่านมากที่สุด และคำเชิญเขียน</p></div>
+        <div class="s" style="border-color:#ea580c"><h4>กิจกรรม</h4><p>ปฏิทินประชุมวิชาการ สัมมนา และกิจกรรมใบรับรอง</p></div>
+        <div class="s" style="border-color:#475569"><h4>เอกสาร</h4><p>แบบฟอร์มอัปเดตล่าสุดทั้งหมด จัดเรียงตามปี</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#14181f"></i>#14181F หมึกดำ</span>
+        <span class="sw"><i style="background:#d92d20"></i>#D92D20 แดงหนังสือพิมพ์</span>
+        <span class="sw"><i style="background:#2563eb"></i>#2563EB ทุนวิจัย</span>
+        <span class="sw"><i style="background:#ea580c"></i>#EA580C กิจกรรม</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · วันที่/เลเบล: <b>Prompt Medium ตัวพิมพ์ใหญ่</b> เว้นระยะแบบสำนักพิมพ์</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ระบบสีต่อหมวดข่าว — สแกนหาหมวดที่สนใจได้ทันที</li>
+        <li>ข่าวเด่น + ลิสต์ย่อย = ทั้ง "เรื่องวันนี้" และ "ทุกเรื่องที่พลาดไป" ในจอเดียว</li>
+        <li>โครงสร้างเนื้อหาเป็นข่าว 100% — ใช้ระบบข่าวเดิมของ WordPress ไม่ต้องมีตัวสร้างหน้าเลย</li>
+        <li>เหมาะกับทีมเจ้าหน้าที่ที่โพสต์ข่าวเป็นงานประจำ แค่เขียนโพสต์ก็มีหน้าเว็บสวยอัตโนมัติ</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Blocksy (ฟรี)</b> — ธีมข่าว/นิตยสารยอดนิยม ตั้งค่าหมวดสี คอลัมน์ และความกว้างได้จาก Customizer ทั้งหมด โครงข่าวนี้คือจุดแข็งในตัวของ WordPress เอง</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Blocksy Companion</li><li>Custom Post Type UI (ทุนวิจัย/เอกสาร)</li><li>FileBird</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>หมวดข่าว = Category ปกติ + สีประจำหมวด</li><li>ข่าวเด่น = Sticky Post</li><li>วารสารเชื่อม ThaiJO</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●○○ <b>ง่าย</b></p><p>3–5 วันทำงาน</p><p>เหมาะกับ: ข่าวเยอะ อัปเดตบ่อย ทีมงานไม่เชี่ยวชาญเทคนิค</p></div>
+  </div>
+</section>
+
+<!-- ===================== 05 AURORA GLASS ===================== -->
+<section class="concept" id="c05">
+  <div class="con-head">
+    <span class="con-num">05</span>
+    <div class="con-title">
+      <h2>Aurora Glass — แสงออโรราบนกระจกฝ้า</h2>
+      <div class="en">Aurora Gradients + Glassmorphism</div>
+      <p class="one">เสน่ห์อยู่ที่ความนุ่มนวลและแสงสี — พื้นหลังไล่เฉดม่วง-ฟ้า-ชมพูแบบแสงเหนือ การ์ดกระจกฝ้าโปร่งแสง และเมนูแคปซูลลอย เหมาะกับการสื่อสารว่า "วิชาการก็เข้าถึงได้ง่าย ไม่น่ากลัว" โดยเฉพาะกับกลุ่มนักศึกษาและทันตแพทย์รุ่นใหม่ ทุกเอฟเฟกต์ทำด้วย CSS ล้วน เบาและเร็ว</p>
+      <div class="con-tags"><span>อบอุ่นเป็นมิตร</span><span>ทันสมัยแบบนุ่มนวล</span><span>เอฟเฟกต์เบา</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 05)</span></div>
+    <div class="screen m5">
+      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+      <div class="m5-nav">
+        <span class="m5-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าวและกิจกรรม</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+        <span class="btn">ติดต่อสมาคม</span>
+      </div>
+      <div class="m5-hero">
+        <span class="mx-eyebrow" style="color:#7c3aed">Thai Endodontic Association</span>
+        <h1>ประสานความรู้<br>สู่การรักษาที่ดีขึ้น</h1>
+        <p>พื้นที่แห่งการเรียนรู้และเครือข่ายของคนเอ็นโดดอนติกส์ไทย — ข่าวสาร ทุนวิจัย วารสาร และเอกสารทุกชนิด อยู่ในที่เดียว</p>
+      </div>
+      <div class="m5-cards">
+        <div class="c">
+          <span class="ico" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">🔬</span>
+          <b>ทุนวิจัย 2569 เปิดแล้ว</b>
+          <span>อ่านหลักเกณฑ์และเตรียมใบสมัครก่อนใคร</span>
+          <a>ดูรายละเอียด</a>
+        </div>
+        <div class="c">
+          <span class="ico" style="background:linear-gradient(135deg,#cffafe,#a5f3fc)">📘</span>
+          <b>วารสาร TEJ</b>
+          <span>อ่านฉบับล่าสุดและส่งบทความผ่าน ThaiJO</span>
+          <a>เปิดวารสาร ↗</a>
+        </div>
+        <div class="c">
+          <span class="ico" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">🫧</span>
+          <b>กิจกรรมใกล้ที่สุด</b>
+          <span>Endodontic Uncovered · 10 ก.ค. 2569</span>
+          <a>ดูปฏิทินกิจกรรม</a>
+        </div>
+      </div>
+      <div class="m5-band">
+        <b>ชวนรู้จักสมาคมใน 1 นาที</b>
+        <span>พันธกิจ · คณะกรรมการ · เส้นทางการเป็นสมาชิก — ลิงก์ลัดด้านล่างนี้</span>
+        <span style="margin-left:auto;display:flex;gap:8px"><span style="background:#fff;border-radius:99px;padding:5px 12px;font-weight:600">เกี่ยวกับสมาคม</span><span style="background:#fff;border-radius:99px;padding:5px 12px;font-weight:600">สมัครสมาชิก</span></span>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f6f8ff"></i>#F6F8FF ขาวบริสุทธิ์</span>
+        <span class="sw"><i style="background:#8b5cf6"></i>#8B5CF6 ม่วง</span>
+        <span class="sw"><i style="background:#22d3ee"></i>#22D3EE ฟ้า</span>
+        <span class="sw"><i style="background:#f0abfc"></i>#F0ABFC ชมพู</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold ไล่เฉดสี</b> (gradient text) · เนื้อความ: <b>IBM Plex Sans Thai</b></p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ให้ความรู้สึก "เป็นมิตร ไม่รู้หนังสือราชการ" — จุดแข็งกับกลุ่มหนุ่มสาว</li>
+        <li>การ์ดกระจกโปร่งแสงแยกเนื้อหาโดยไม่ต้องใช้เส้นแบ่ง</li>
+        <li>เอฟเฟกต์เป็น CSS ล้วน ไม่มีสคริปต์หนัก — คะแนนความเร็วยังดี</li>
+        <li>เมนูแคปซูลลอยรองรับมือถือสวยงามทันที</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + Kadence Blocks</b> (หรือ Elementor ฟรี) พื้นหลังไล่เฉดและกระจกฝ้าทำด้วย CSS สั้น ๆ (backdrop-filter) ใส่ผ่านคลาสที่เตรียมให้ ไม่ต้องซื้อแอดดอนเสริม</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>LiteSpeed Cache (เพิ่มความเร็ว)</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>การ์ดสามใบดึงจาก CPT ประกาศ/กิจกรรม</li><li>แถบชวนรู้จัก = ลิงก์หน้าเกี่ยวกับ/สมาชิก</li><li>วารสารเชื่อม ThaiJO</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–6 วันทำงาน</p><p>เหมาะกับ: สื่อสารกับรุ่นใหม่ อยากได้เว็บ "สวยแบบนุ่มนวล"</p></div>
+  </div>
+</section>
+
+<!-- ===================== 06 JOURNAL COVERS ===================== -->
+<section class="concept" id="c06">
+  <div class="con-head">
+    <span class="con-num">06</span>
+    <div class="con-title">
+      <h2>Journal Covers — วารสารคือพระเอก</h2>
+      <div class="en">Editorial Magazine / Museum of Issues</div>
+      <p class="one">ออกแบบหน้าแรกเหมือน "โชว์หน้าปกวารสาร" — ฉบับล่าสุดวางเด่นแบบปกหนังสือ พร้อมบทความเด่นตัวอักษรมีเชิงแบบตำรา และชั้นวางฉบับย้อนหลัง เหมาะกับช่วงที่สมาคมต้องการยกระดับชื่อเสียงวิชาการและดึงดูดบทความเข้า TEJ มากขึ้น โดยระบบวารสารเดิมบน ThaiJO ยังใช้ต่อได้ทั้งหมด</p>
+      <div class="con-tags"><span>เชิงวิชาการชัด</span><span>ภาพลักษณ์นิตยสาร</span><span>ยกระดับ TEJ</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 06)</span></div>
+    <div class="screen m6">
+      <div class="m6-mast"><b>สมาคมเอ็นโดดอนติกส์ไทย</b><span>Thai Endodontic Association · Bangkok</span></div>
+      <div class="m6-nav"><a>วารสาร</a><a>ข่าวสมาคม</a><a>ทุนวิจัย</a><a>เอกสาร</a><a>เกี่ยวกับ</a><a>ติดต่อ</a></div>
+      <div class="m6-hero">
+        <div class="m6-cover">
+          <div class="top"><b>TEJ</b><span>ISSUE · ล่าสุด</span></div>
+          <h2>Thai<br>Endodontic<br>Journal</h2>
+          <span class="sub">รับบทความใหม่ · TCI ระบุฐาน</span>
+          <div class="feat">
+            <span>● บทความวิจัยเด่นประจำฉบับ</span>
+            <span>● กรณีคลินิกเพื่อการตัดสินใจ</span>
+            <span>● มุมสำหรับผู้เริ่มเขียนบทความ</span>
+          </div>
+          <div class="teeth"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="iss"><span>THAIJO</span><span>อ่านฉบับล่าสุด ↗</span></div>
+        </div>
+        <div class="m6-art">
+          <span class="mx-eyebrow">จากสารบรรณาธิการ</span>
+          <h1>อ่านก่อนส่ง: สิ่งที่บทความดีที่สุดของปีทำเหมือนกัน</h1>
+          <div class="body">
+            <p>ทุกฉบับที่ออกไป ทีมกองบรรณาธิการได้เห็นคำถามเดียวกันจากผู้เขียนมากมาย — บทความแบบไหนจึงได้รับการตีพิมพ์ คำตอบสั้น ๆ คือ คำถามวิจัยที่ชัด วิธีการที่ทำซ้ำได้ และการอ่านต้นฉบับอย่างจริงจัง เรารวมแนวทางทั้งหมดไว้ในหลักเกณฑ์การสนับสนุนบทความฉบับล่าสุดของสมาคม พร้อมแบบฟอร์มขอรับเงินสนับสนุนที่ปรับปรุงใหม่</p>
+            <p>หน้านี้รวมทุกอย่างที่ผู้เขียนต้องรู้ ตั้งแต่หลักเกณฑ์ แบบฟอร์ม ไปจนถึงทางเข้าระบบส่งบทความจริงบน TCI ThaiJO โดยไม่ต้องโหลดไฟล์ซ้ำจากหลายที่เหมือนเมื่อก่อน</p>
+          </div>
+          <div class="sig">— ทีมกองบรรณาธิการวารสารเอ็นโดดอนติกส์ไทย</div>
+          <div class="acts"><a class="fill">ส่งบทความผ่าน ThaiJO ↗</a><a href="แบบขอรับเงินสนับสนุนบทความ.pdf">ดาวน์โหลดแบบฟอร์มสนับสนุน</a></div>
+        </div>
+      </div>
+      <div class="m6-shelf">
+        <span class="lbl">ฉบับย้อนหลัง</span>
+        <div class="bk"><b>TEJ</b><span>ฉบับที่ผ่านมา · อ่านทั้งหมด</span></div>
+        <div class="bk"><b>TEJ</b><span>ฉบับที่ผ่านมา · อ่านทั้งหมด</span></div>
+        <div class="bk"><b>TEJ</b><span>ฉบับที่ผ่านมา · อ่านทั้งหมด</span></div>
+        <div class="bk"><b>TEJ</b><span>ฉบับที่ผ่านมา · อ่านทั้งหมด</span></div>
+        <div class="bk more">ดูทั้งหมดใน ThaiJO ↗</div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f6f0e4"></i>#F6F0E4 กระดาษครีม</span>
+        <span class="sw"><i style="background:#26221c"></i>#26221C หมึกดำ</span>
+        <span class="sw"><i style="background:#7c1d3f"></i>#7C1D3F แดงเลือดหมู</span>
+        <span class="sw"><i style="background:#c9bda1"></i>#C9BDA1 ทรายทอง</span>
+      </p>
+      <p>หัวข้อ/ปก: <b>Chonburi / Noto Serif Thai</b> (มีเชิง) · เนื้อความ: <b>IBM Plex Sans Thai</b> — ฟอนต์ไทยมีเชิงให้บรรยากาศตำราแพทย์คลาสสิก</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>หน้าแรกตอบโจทย์ "ส่งบทความ/อ่านวารสาร" ทันที — ผู้เขียนใหม่ไม่หลงทาง</li>
+        <li>ชั้นหนังสือฉบับย้อนหลังเชิญชวนสำรวจ สร้างความรู้สึกมรดกวิชาการ</li>
+        <li>ปุ่มหลักชัดเจน 2 อัน: ส่งบทความ / โหลดแบบฟอร์ม (ไฟล์จริงแนบในตัวอย่าง)</li>
+        <li>เอกลักษณ์สูง เหมาะเป็น "หน้าตาทางวิชาการ" ประจำสมาคมระยะยาว</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence หรือ Blocksy</b> + CPT "ฉบับวารสาร" (ปก, เลขฉบับ, ลิงก์ ThaiJO) ปกเป็นรูปอัปโหลดผ่าน WordPress ปกติ โซนบทความเด่นใช้บล็อกแกน + ฟอนต์มีเชิงจาก Google Fonts</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Custom Post Type UI (ฉบับวารสาร)</li><li>Kadence Blocks</li><li>WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>เจ้าหน้าที่เพิ่ม "ฉบับใหม่" ครั้งละ 1 ระเบียน</li><li>ปุ่มส่งบทความชี้ลิงก์ ThaiJO ตรง</li><li>แบบฟอร์ม PDF จัดใน FileBird</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5 วันทำงาน</p><p>เหมาะกับ: ยกระดับชื่อเสียงวิชาการ เก็บบทความเข้า TEJ ให้มากขึ้น</p></div>
+  </div>
+</section>
+
+<!-- ===================== 07 CONGRESS MODE ===================== -->
+<section class="concept" id="c07">
+  <div class="con-head">
+    <span class="con-num">07</span>
+    <div class="con-title">
+      <h2>Congress Mode — หน้าประชุมวิชาการก่อน ข่าวทั่วไปตามหลัง</h2>
+      <div class="en">Event-First Homepage</div>
+      <p class="one">ช่วงก่อนประชุมใหญ่ คนเข้าเว็บเพื่ออย่างเดียวคือ "งาน" — แบบนี้จึงเปิดด้วยนามบัตรงาน Endodontic Uncovered นับถอยหลัง ตารางวิชาการแยกช่วงเช้า/บ่าย ปุ่มลงทะเบียนติดไว้ทุกจุด และเก็บข่าวสมาคมทั่วไปไว้ลำดับรอง เมื่องานจบแล้วหน้านี้คือคลังสไลด์และภาพย้อนหลังของงานนั้น</p>
+      <div class="con-tags"><span>เหมาะช่วงก่อนงานใหญ่</span><span>ลงทะเบียนง่าย</span><span>ปุ่ม CTA ชัด</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 07)</span></div>
+    <div class="screen m7">
+      <div class="m7-nav">
+        <span class="m7-logo"><b>TEA · ANNUAL MEETING</b><span>สมาคมเอ็นโดดอนติกส์ไทย</span></span>
+        <nav><span>หัวข้อวิชาการ</span><span>ผู้บรรยาย</span><span>ลงทะเบียน</span><span>สถานที่</span><span>งานย้อนหลัง</span></nav>
+        <span class="reg">ลงทะเบียนเข้าร่วม</span>
+      </div>
+      <div class="m7-hero">
+        <div class="m7-cd">
+          <i><b>212</b><span>วัน</span></i>
+          <i><b>08</b><span>ชั่วโมง</span></i>
+          <i><b>45</b><span>นาที</span></i>
+          <i><b>30</b><span>วินาที</span></i>
+        </div>
+        <h1>ENDODONTIC <span>UNCOVERED</span></h1>
+        <p>Resolving Clinical Dilemmas Across Specialties — ประชุมวิชาการประจำปีของสมาคมเอ็นโดดอนติกส์ไทย ร่วมไขข้อข้องใจกรณีคลินิกข้ามสาขา พร้อมหน่วยความรู้ผ่านระบบ CDEC</p>
+        <div class="date">📅 10 กรกฎาคม 2569 · คณะทันตแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</div>
+        <div class="btns"><b>ลงทะเบียนเข้าร่วม</b><b>ดูหัวข้อวิชาการทั้งหมด</b></div>
+      </div>
+      <div class="m7-agenda">
+        <div class="m7-tabs"><i class="on">ช่วงเช้า</i><i>ช่วงบ่าย</i><i>กรณีคลินิกเด่น</i></div>
+        <div class="m7-row"><span class="t">08:30–09:00</span><span class="a">R1</span><b>ลงทะเบียนและรับเอกสาร</b><span>ชั้น 1 · อาคารปฏิบัติการ</span></div>
+        <div class="m7-row"><span class="t">09:00–10:30</span><span class="a">S1</span><b>Dilemmas in Perio–Endo Interplay</b><span>บรรยายหลัก · Q&amp;A</span></div>
+        <div class="m7-row"><span class="t">10:45–12:00</span><span class="a">S2</span><b>Trauma &amp; Resorption: ตัดสินใจเก็บหรือถอน</b><span>บรรยายหลัก · กรณีศึกษา</span></div>
+      </div>
+      <div class="m7-foot"><span><b>หน่วยความรู้:</b> บันทึกอัตโนมัติเข้าระบบ CDEC</span><span><b>สอบถาม:</b> 02-218-8795</span><span><b>LINE:</b> @thaiendodontics</span><span style="margin-left:auto"><b>งานที่ผ่านมา:</b> สไลด์และภาพย้อนหลัง →</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#0d1633"></i>#0D1633 ครามเข้ม</span>
+        <span class="sw"><i style="background:#6366f1"></i>#6366F1 ม่วงครามสด</span>
+        <span class="sw"><i style="background:#fbbf24"></i>#FBBF24 เหลืองทอง</span>
+        <span class="sw"><i style="background:#e8ecfa"></i>#E8ECFA ขาวฟ้า</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold</b> · ตารางเวลา: <b>Prompt SemiBold + ตัวเลขเด่น</b></p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>นาฬิกานับถอยหลังสร้างความเร่งด่วน — คนตัดสินใจลงทะเบียนเร็วขึ้น</li>
+        <li>ตารางวิชากรแยกแท็บเช้า/บ่าย อ่านทันทีโดยไม่ต้องโหลด PDF ตาราง</li>
+        <li>ปุ่มลงทะเบียนเห็นตลอด พร้อมข้อมูลหน่วยความรู้ CDEC</li>
+        <li>หลังงานจบ หน้าเดิมเปลี่ยนเป็นคลังย้อนหลัง — ทำซ้ำได้ทุกปี</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Astra หรือ Blocksy + The Events Calendar</b> (ปลั๊กอินจัดกิจกรรมอันดับหนึ่ง ฟรี) นาฬิกานับถอยหลังใช้บล็อก Countdown ของ Kadence Blocks หน้าลงทะเบียนใช้ WPForms พร้อมอีเมลยืนยันอัตโนมัติ</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>The Events Calendar</li><li>Kadence Blocks (Countdown)</li><li>WPForms</li><li>Custom Post Type UI</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>งานแต่ละปี = 1 Event พร้อมตาราง</li><li>งานย้อนหลัง = หมวดเก็บสไลด์/ภาพ</li><li>ข่าวทั่วไปยังโพสต์ได้ตามปกติ</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●● <b>ยากสุดในชุด</b></p><p>7–10 วันทำงาน</p><p>เหมาะกับ: ปีที่มีงานใหญ่ อยากให้เว็บเป็นแผนกลงทะเบียนของงาน</p></div>
+  </div>
+</section>
+<!-- ===================== 08 SERVICE JOURNEY ===================== -->
+<section class="concept" id="c08">
+  <div class="con-head">
+    <span class="con-num">08</span>
+    <div class="con-title">
+      <h2>Service Journey — เว็บที่ถามว่า "วันนี้ต้องการอะไร?"</h2>
+      <div class="en">Task-First Navigation</div>
+      <p class="one">เว็บสมาคมส่วนใหญ่จัดตามโครงสร้างองค์กร แต่ผู้มาใหม่นึกไม่ออกว่า "งาน" อยู่หมวดไหน — แบบนี้จึงเริ่มด้วยชิป "ฉันต้องการ…" ให้เลือกงานที่ทำ แล้วพาเดินเป็นขั้น ๆ (อ่านหลักเกณฑ์ → เตรียมแบบฟอร์ม → ส่ง/ติดต่อ) ทุกเส้นทางมีเอกสารจริงและช่องทางช่วยเหลือครบ ช่วยลดโทรศัพท์เข้าเจ้าหน้าที่อย่างเห็นผล</p>
+      <div class="con-tags"><span>ลดงานเจ้าหน้าที่</span><span>ใช้งานง่ายสุดในชุด</span><span>ผู้ใหม่ไม่หลง</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 08)</span></div>
+    <div class="screen m8">
+      <div class="m8-nav">
+        <span class="m8-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับสมาคม</span><span>ข่าวและประกาศ</span><span>วารสาร</span><span>เอกสารทั้งหมด</span></nav>
+        <span class="btn">สอบถามเจ้าหน้าที่</span>
+      </div>
+      <div class="m8-hero">
+        <h1>วันนี้ คุณต้องการ<em>ทำอะไร</em>กับสมาคม?</h1>
+        <p>เลือกงานที่ต้องการ เราพาไปทีละขั้น พร้อมเอกสารที่ถูกต้องของปีนั้น ๆ</p>
+        <div class="m8-chips">
+          <a class="hot"><i>1</i>สมัครทุนวิจัย</a>
+          <a><i>2</i>ส่งบทความลงวารสาร</a>
+          <a><i>3</i>ขอใบรับรอง CDEC</a>
+          <a><i>4</i>ดาวน์โหลดแบบฟอร์ม</a>
+          <a><i>5</i>สมัครสมาชิก</a>
+          <a><i>6</i>เข้าร่วมกิจกรรม</a>
+        </div>
+      </div>
+      <div class="m8-journey">
+        <div class="m8-jcard">
+          <div class="head"><b>เส้นทาง: สมัครทุนวิจัย ประจำปี 2569</b><span>ใช้เวลาเตรียม ~1 สัปดาห์</span></div>
+          <div class="m8-step"><span class="n">1</span><div><b>อ่านหลักเกณฑ์การให้ทุน</b><span>ตรวจคุณสมบัติและเงื่อนไขก่อนเตรียมเอกสาร</span> <a href="document-01.pdf">เปิดหลักเกณฑ์ (PDF)</a></div></div>
+          <div class="m8-step"><span class="n">2</span><div><b>กรอกใบสมัครฉบับปี 2569</b><span>ใช้แบบฟอร์มปีที่ถูกต้องเท่านั้น — ไฟล์ล่าสุดอยู่ตรงนี้</span> <a href="ใบสมัครทุนวิจัย%2069.pdf">ดาวน์โหลดใบสมัคร (PDF)</a></div></div>
+          <div class="m8-step"><span class="n">3</span><div><b>ส่งและติดตามผล</b><span>ยืนยันช่องทางและกำหนดเวลาตามประกาศ หรือสอบถามเจ้าหน้าที่ได้ทางขวามือ</span></div></div>
+        </div>
+        <div class="m8-help">
+          <b>ติดขัดตรงไหน ถามได้เลย</b>
+          <p>เจ้าหน้าที่สมาคมตอบในเวลาทำการ จันทร์–ศุกร์</p>
+          <div class="ch">
+            <a class="line-btn"><i>💬</i> LINE @thaiendodontics</a>
+            <a><i>☎</i> 02-218-8795</a>
+            <a><i>✉</i> thaiendodontics@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f6faf8"></i>#F6FAF8 ขาวมิ้นต์</span>
+        <span class="sw"><i style="background:#0f766e"></i>#0F766E เขียวทีล</span>
+        <span class="sw"><i style="background:#14b8a6"></i>#14B8A6 เขียวสด</span>
+        <span class="sw"><i style="background:#06c755"></i>#06C755 เขียวไลน์</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — ใช้สีเดียวเป็นหลัก เน้นความชัดเจน ไม่แข่งกันเอง</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>เริ่มจากงานที่ผู้ใช้ต้องทำ ไม่ใช่โครงสร้างองค์กร — แนวคิด UX ที่ถูกต้องที่สุดสำหรับเว็บบริการ</li>
+        <li>แต่ละเส้นทางลด "โหลดไฟล์ผิดปี" — ปัญหาเจ็บของเว็บเก่า</li>
+        <li>ช่องทางช่วยเหลือ (LINE/โทร/เมล) ติดอยู่กับทุกเส้นทาง</li>
+        <li>วัดผลได้จริง: นับจำนวนคลิกต่อเส้นทางเพื่อปรับปรุงต่อได้</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + Kadence Blocks</b> ชิป "ฉันต้องการ" คือปุ่มลิงก์แองเกอร์ไปยังเส้นทางในหน้าเดียวกัน เส้นทางเป็นหน้าลูกแยกปี เชื่อม PDF จากคลังเอกสาร ต่อยอดระบบสมาชิกภายหลังได้ด้วย Ultimate Member</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks</li><li>WPForms (ฟอร์มสอบถามตามงาน)</li><li>FileBird + Custom Post Type UI</li><li>Joinchat (ปุ่ม LINE ลอย)</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>1 เส้นทาง = 1 หน้า (ทุน 69, บทความ, CDEC…)</li><li>อัปเดตปีใหม่ = แก้ไฟล์และปีในหน้าเดียว</li><li>ข่าวยังอยู่เมนูบนตามปกติ</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●○○ <b>ง่าย</b></p><p>4–6 วันทำงาน</p><p>เหมาะกับ: ต้องการใช้งานจริง ลดโทรศัพท์เข้าเจ้าหน้าที่ — คำแนะนำอันดับต้น</p></div>
+  </div>
+</section>
+
+<!-- ===================== 09 TEA POCKET ===================== -->
+<section class="concept" id="c09">
+  <div class="con-head">
+    <span class="con-num">09</span>
+    <div class="con-title">
+      <h2>TEA Pocket — เว็บที่ใช้เหมือนแอปในมือถือ</h2>
+      <div class="en">Mobile-First / App-like + LINE</div>
+      <p class="one">สถิติจริงของเว็บสมาคมส่วนใหญ่คือ 70–80% เข้าจากมือถือ — แบบนี้จึงออกแบบจากหน้าจอโทรศัพท์ก่อน ข่าวเป็นฟีดการ์ดเลื่อนได้ มีวงกลม "ประเด็นด่วน" แบบสตอรี่ แถบเมนูล่างคล้ายแอป และปุ่ม LINE ลอยตลอดเวลา ติดตั้งลงหน้าจอโทรศัพท์เป็นแอปได้ (PWA) โดยไม่ต้องผ่านสโตร์</p>
+      <div class="con-tags"><span>มือถือมาก่อน</span><span>เชื่อม LINE เต็มระบบ</span><span>ติดตั้งเป็นแอปได้</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรกมุมมองมือถือ (ต้นแบบ 09)</span></div>
+    <div class="screen m9">
+      <div class="m9-pitch">
+        <span class="mx-eyebrow" style="color:#0b6b4f">MOBILE-FIRST · PWA READY</span>
+        <h1>สมาคมใน<em>อุ้งมือ</em>ของสมาชิก</h1>
+        <p>เปิดด้วยฟีดข่าวเลื่อนได้ทันที ประเด็นด่วนอยู่บนสุดแบบสตอรี่ และแตะ LINE เพื่อคุยกับเจ้าหน้าที่ได้จากทุกหน้า — สมาชิกเพิ่มลงหน้าจอโทรศัพท์เป็น "แอป TEA" ได้ในคลิกเดียว</p>
+        <div class="m9-list">
+          <a><i>⚡</i> ฟีดข่าวการ์ด เลื่อนอ่านเร็ว ไม่ต้องจิ้มเมนู</a>
+          <a><i>🟢</i> ปุ่ม LINE ลอยทุกหน้า เชื่อม @thaiendodontics</a>
+          <a><i>📲</i> PWA — ติดตั้งลงมือถือเป็นแอป ไม่ผ่านสโตร์</a>
+          <a><i>🔔</i> แจ้งเตือนประกาศสำคัญ (ทุนวิจัย/กิจกรรม)</a>
+        </div>
+      </div>
+      <div class="m9-phone">
+        <div class="m9-scr">
+          <div class="m9-status"><span>09:41</span><span>TEA APP</span></div>
+          <div class="m9-app">
+            <div class="m9-hello"><b>สวัสดี ทพ. 👋</b><span>สมาชิก 2569</span></div>
+            <div class="m9-stories">
+              <div class="s"><i><b>ด่วน</b></i>ประกาศด่วน</div>
+              <div class="s"><i><b>ทุน</b></i>ทุนวิจัย 69</div>
+              <div class="s"><i><b>TEJ</b></i>วารสาร</div>
+              <div class="s"><i><b>ภาพ</b></i>กิจกรรม</div>
+            </div>
+            <div class="m9-card"><span class="tag" style="background:#fee2e2;color:#b91c1c">ด่วน</span><b>ประกาศรับสมัครทุนวิจัย ประจำปี 2569</b><span>เปิดแล้ว · อ่านหลักเกณฑ์ 4 นาที</span></div>
+            <div class="m9-card"><span class="tag" style="background:#ede9fe;color:#6d28d9">กิจกรรม</span><b>Endodontic Uncovered — 10 ก.ค. 69</b><span>จุฬาฯ · ลงทะเบียนจากการ์ดนี้ได้เลย</span></div>
+            <div class="m9-card"><span class="tag" style="background:#dcfce7;color:#15803d">เอกสาร</span><b>แบบฟอร์มสนับสนุนบทความ (ใหม่)</b><span>PDF · โหลดครั้งล่าสุดวันนี้</span></div>
+          </div>
+          <span class="m9-line">LINE</span>
+          <div class="m9-tabbar">
+            <a class="on"><i>⌂</i>หน้าแรก</a>
+            <a><i>📰</i>ข่าว</a>
+            <a><i>📄</i>เอกสาร</a>
+            <a><i>📘</i>วารสาร</a>
+            <a><i>👤</i>ของฉัน</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f7faf9"></i>#F7FAF9 ขาวเขียวจาง</span>
+        <span class="sw"><i style="background:#0e9f6e"></i>#0E9F6E เขียวแอป</span>
+        <span class="sw"><i style="background:#06c755"></i>#06C755 เขียวไลน์</span>
+        <span class="sw"><i style="background:#0d1512"></i>#0D1512 เข้มขอบเครื่อง</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt SemiBold</b> ขนาดอ่านบนมือถือ · เนื้อความ: <b>IBM Plex Sans Thai</b></p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>เมนูล่างนิ้วโป้งถึงเสมอ — มาตรฐานแอป ผู้ใช้ไม่ต้องเรียนรู้</li>
+        <li>วงกลมสตอรี่สำหรับประกาศด่วน เปิดอ่านเร็วและหมดอายุเอง</li>
+        <li>LINE คือช่องทางหลักของสมาคมอยู่แล้ว — ยกระดับให้เป็นปุ่มหลักของเว็บ</li>
+        <li>PWA ทำให้ไอคอน TEA อยู่บนหน้าจอสมาชิก กลับมาง่ายกว่า bookmark</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Blocksy (mobile-first, ฟรี)</b> + เมนูล่างทำด้วย CSS/Kadence ปุ่ม LINE ใช้ปลั๊กอิน <b>Joinchat</b> (ฟรี ทำเพื่อ LINE โดยเฉพาะ) และ <b>Super Progressive Web Apps</b> สำหรับติดตั้งเป็นแอป + แจ้งเตือน</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Joinchat — ปุ่มลอย LINE</li><li>Super Progressive Web Apps</li><li>Custom Post Type UI</li><li>WPForms</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ฟีดหน้าแรก = โพสต์ล่าสุดตามหมวด</li><li>สตอรี่ = หมวด "ประกาศด่วน"</li><li>เอกสารเข้าถึงจากแท็บล่างตรง</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–7 วันทำงาน</p><p>เหมาะกับ: สมาชิกที่สื่อสารผ่านมือถือ/LINE เป็นหลัก</p></div>
+  </div>
+</section>
+
+<!-- ===================== 10 HERITAGE ===================== -->
+<section class="concept" id="c10">
+  <div class="con-head">
+    <span class="con-num">10</span>
+    <div class="con-title">
+      <h2>Heritage &amp; Horizon — มรดกวิชาชีพสู่อนาคต</h2>
+      <div class="en">Archive &amp; Legacy Museum</div>
+      <p class="one">บุคลิก "ห้องหอจดหมายเหตุ" โทนหมึกดำ-ทอง-งาช้าง ตัวอักษรมีเชิง เปิดด้วยเส้นทางประวัติสมาคมแบบไทม์ไลน์ คลังภาพกิจกรรมย้อนหลัง และเกียรติคุณของผู้ร่วมก่อตั้ง เหมาะกับองค์กรที่อยากสื่อ "ความต่อเนื่องและความน่าเชื่อถือระยะยาว" โดยเฉพาะปีที่มีงานครบรอบหรือโอนย้ายผู้บริหารรุ่นใหม่</p>
+      <div class="con-tags"><span>ภูมิฐาน ต่อเนื่อง</span><span>เกียรติประวัติเด่น</span><span>โทนทองบนหมึก</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 10)</span></div>
+    <div class="screen m10">
+      <div class="m10-nav">
+        <span class="m10-seal">TEA</span>
+        <span class="m10-logo"><span>สมาคมเอ็นโดดอนติกส์ไทย</span><small>THAI ENDODONTIC ASSOCIATION</small></span>
+        <nav><span>ประวัติความเป็นมา</span><span>คณะกรรมการ</span><span>กิจกรรมย้อนหลัง</span><span>วารสาร</span><span>เอกสาร</span></nav>
+      </div>
+      <div class="m10-hero">
+        <span class="mx-eyebrow">ประวัติศาสตร์ · วิชาการ · ความเชื่อมั่น</span>
+        <h1>จากรุ่นสู่รุ่น<br>สู่มาตรฐานรากฟันของประเทศไทย</h1>
+        <p>สมาคมเอ็นโดดอนติกส์ไทย รวมคณะผู้เชี่ยวชาญเพื่อพัฒนาวิชาการ สนับสนุนงานวิจัย และยกระดับการรักษา — เส้นทางทุกยุคถูกเก็บไว้เป็นหลักฐานและแรงบันดาลใจของรุ่นถัดไป</p>
+      </div>
+      <div class="m10-line">
+        <div class="m10-track">
+          <div class="ms"><i></i><b>การก่อตั้งสมาคม</b><span>รวมกลุ่มผู้เชี่ยวชาญเอ็นโดฯ ไทย</span></div>
+          <div class="ms"><i></i><b>วารสารเอ็นโดดอนติกส์ไทย</b><span>ตีพิมพ์ต่อเนื่อง · TCI ThaiJO</span></div>
+          <div class="ms"><i></i><b>ประชุมวิชาการประจำปี</b><span>Endodontic Uncovered และรุ่นก่อน</span></div>
+          <div class="ms"><i></i><b>ระบบใบรับรองออนไลน์</b><span>ตรวจสอบหน่วยความรู้ผ่าน CDEC</span></div>
+        </div>
+      </div>
+      <div class="m10-gal">
+        <div class="g"><b>หอกิจกรรมย้อนหลัง</b><span>ภาพและสไลด์การประชุมวิชาการทุกรุ่น ค้นตามปี</span><a>เข้าชมหอภาพ →</a></div>
+        <div class="g"><b>เกียรติคุณและผู้ร่วมก่อตั้ง</b><span>บันทึกผู้วางรากฐานวิชาชีพและกรรมการทุกวาระ</span><a>อ่านบันทึกเกียรติคุณ →</a></div>
+        <div class="g"><b>คลังสิ่งพิมพ์และเอกสาร</b><span>ประกาศ หลักเกณฑ์ และแบบฟอร์มตามปี จัดหมวดครบ</span><a href="ประกาศหลักเกณฑ์การให้เงินสนับสนุนบทความวิชาการ.pdf">เปิดคลังเอกสาร →</a></div>
+      </div>
+      <div class="m10-foot"><span>ภาควิชาทันตกรรมหัตถการ คณะทันตแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย</span><span>02-218-8795</span><span style="margin-left:auto">thaiendodontics@gmail.com</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#171310"></i>#171310 หมึกน้ำตาลเข้ม</span>
+        <span class="sw"><i style="background:#c9a227"></i>#C9A227 ทองเก่า</span>
+        <span class="sw"><i style="background:#efe8d8"></i>#EFE8D8 งาช้าง</span>
+        <span class="sw"><i style="background:#a89d82"></i>#A89D82 เทาทราย</span>
+      </p>
+      <p>หัวข้อ: <b>Noto Serif Thai</b> (มีเชิง หนักแน่น) · เนื้อความ: <b>IBM Plex Sans Thai</b> — ตราสัญลักษณ์วงแหวนทองสื่อความต่อเนื่อง</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ไทม์ไลน์สรุป "ทำไมต้องเชื่อสมาคมนี้" ใน 10 วินาทีแรก</li>
+        <li>หอภาพ/คลังสิ่งพิมพ์จัดตามปี — ค้นของเก่าได้จริง ไม่ใช่แค่ประดับ</li>
+        <li>เหมาะเป็นหน้า "เกี่ยวกับเรา" ที่ดีที่สุดของทุกแบบ — ใช้ผสมกับแบบอื่นได้</li>
+        <li>โทนมืด-ทองตัดกับเว็บมหาวิทยาลัยทั่วไป จำง่าย ภูมิฐาน</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence หรือ Blocksy</b> ไทม์ไลน์ใช้บล็อก Timeline ของ Kadence Blocks หรือปลั๊กอิน Timeline Blocks (ฟรี) หอภาพใช้แกลเลอรีแกนของ WordPress + กล่องไฟ Lightbox ทั้งหมดไม่ต้องเขียนโค้ด</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks (Timeline)</li><li>FileBird + Custom Post Type UI</li><li>WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ไทม์ไลน์ = เนื้อหาคงที่ เพิ่มหมุดใหม่เมื่อมีเหตุการณ์</li><li>หอภาพ = คลังสื่อแยกโฟลเดอร์ตามปี</li><li>เอกสารตามปีใช้หมวด CPT</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–7 วันทำงาน</p><p>เหมาะกับ: เน้นความต่อเนื่อง เกียรติประวัติ และปีครบรอบ</p></div>
+  </div>
+</section>
+
+<!-- ===================== 11 GLOW LINE ===================== -->
+<section class="concept" id="c11">
+  <div class="con-head">
+    <span class="con-num">11</span>
+    <div class="con-title">
+      <h2>Glow Line — ดาร์กโหมดสายเทค</h2>
+      <div class="en">Dark SaaS / Glow Border Style</div>
+      <p class="one">แนวทางเดียวกับเว็บสตาร์ทอัพเทคโนโลยีระดับโลก (สไตล์ Linear / Vercel) — พื้นดำอมน้ำเงินมีเส้นกริดจาง ๆ การ์ดขอบเรืองแสงไล่เฉด ข้อความไล่สี และชิปสถานะเขียว "เปิดรับอยู่" ให้สมาคมดูโมเดิร์นแบบองค์กรนวัตกรรม ต่างจากแบบ 01 ตรงที่เป็นเทค-พรีซิสชัดเจน ไม่ใช่คลินิกหรู</p>
+      <div class="con-tags"><span>ทันสมัยแบบไฮเทค</span><span>ดาร์กโหมด</span><span>ขอบเรืองแสง</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 11)</span></div>
+    <div class="screen m11">
+      <div class="m11-nav">
+        <span class="m11-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+        <span class="btn">ติดต่อสมาคม</span>
+      </div>
+      <div class="m11-hero">
+        <span class="m11-chip"><i></i>ทุนวิจัย ประจำปี 2569 — เปิดรับสมัครอยู่</span>
+        <h1>ศูนย์กลางวิชาการเอ็นโดฯ<br><span>ที่ทันสมัยที่สุดของไทย</span></h1>
+        <p>ข่าวสาร ทุนวิจัย วารสาร และเอกสารทุกชนิด อยู่ในที่เดียว ออกแบบให้ใช้งานง่ายเหมือนผลิตภัณฑ์เทคโนโลยี ไม่ใช่เว็บราชการ</p>
+        <div class="m11-cta"><b>สมัครทุนวิจัย 2569</b><b>อ่านวารสาร TEJ ↗</b></div>
+      </div>
+      <div class="m11-net"><span>เครือข่าย</span><span>คณะทันตแพทยศาสตร์ จุฬาฯ</span><span>TCI ThaiJO</span><span>ระบบ CDEC</span><span>LINE OA</span></div>
+      <div class="m11-cards">
+        <div class="c"><span class="ico">🔬</span><b>ทุนวิจัยและทุนบทความ</b><span>หลักเกณฑ์และแบบฟอร์มฉบับล่าสุดปี 2569</span><a>ดูรายละเอียด →</a></div>
+        <div class="c"><span class="ico">📘</span><b>วารสารเอ็นโดดอนติกส์ไทย</b><span>อ่านและส่งบทความผ่านระบบ TCI ThaiJO</span><a>เปิดวารสาร ↗</a></div>
+        <div class="c"><span class="ico">🗂️</span><b>คลังเอกสารดิจิทัล</b><span>ค้นแบบฟอร์มตามหมวดและปี พร้อมดาวน์โหลด</span><a>เข้าคลังเอกสาร →</a></div>
+      </div>
+      <div class="m11-foot"><span>© สมาคมเอ็นโดดอนติกส์ไทย</span><span>02-218-8795</span><span style="margin-left:auto">LINE @thaiendodontics</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#05070d"></i>#05070D ดำน้ำเงิน</span>
+        <span class="sw"><i style="background:#6366f1"></i>#6366F1 อินดิโก</span>
+        <span class="sw"><i style="background:#22d3ee"></i>#22D3EE ฟ้านีออน</span>
+        <span class="sw"><i style="background:#4ade80"></i>#4ADE80 จุดสถานะ</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold + ข้อความไล่สี</b> · เนื้อความ: <b>IBM Plex Sans Thai</b></p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ชิปสถานะ "เปิดรับอยู่" พร้อมจุดเรืองแสง — รู้ทันทีว่าอะไรกำลังเปิด</li>
+        <li>การ์ดขอบไล่เฉดสร้างลำดับสายตาโดยไม่ต้องใช้พื้นสีจัด</li>
+        <li>เส้นกริดจางบนพื้นดำให้ความรู้สึก "ผลิตภัณฑ์จริงจัง"</li>
+        <li>เหมาะกับผู้บริหาร/กรรมการรุ่นใหม่ที่คุ้นเคยกับเว็บเทค</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Blocksy หรือ Kadence</b> ตั้งสี Global เป็นโทนดำ + ใส่ CSS ขอบไล่เฉดและกริดพื้นหลังสั้น ๆ ที่เตรียมให้ ทุกเอฟเฟกต์เป็น CSS ล้วน เร็วและไม่ต้องพึ่งปลั๊กอินเสริม</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ชิปสถานะผูกกับหมวด "กำลังเปิดรับ"</li><li>การ์ดสามใบดึงจาก CPT อัตโนมัติ</li><li>วารสารเชื่อม ThaiJO</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–6 วันทำงาน</p><p>เหมาะกับ: ภาพลักษณ์นวัตกรรม ทันสมัยที่สุดในชุดนี้</p></div>
+  </div>
+</section>
+
+<!-- ===================== 12 SOFT CLAY ===================== -->
+<section class="concept" id="c12">
+  <div class="con-head">
+    <span class="con-num">12</span>
+    <div class="con-title">
+      <h2>Soft Clay — นุ่มนวลแบบดินน้ำมัน</h2>
+      <div class="en">Claymorphism</div>
+      <p class="one">เทรนด์ดีไซน์ที่กำลังมาแรง: ปุ่มและการ์ดหนานุ่มเหมือนดินน้ำมัน มุมโค้งมาก เงาชั้นใน-ชั้นนอกซ้อนกัน และไอคอนวงกลมพองตัว ให้ความรู้สึกเป็นมิตรและทันสมัยไปพร้อมกัน เหมาะกับการทำให้เว็บวิชาการดู "อบอุ่น เข้าถึงได้ง่าย" โดยเฉพาะกับนักศึกษาและประชาชนทั่วไป</p>
+      <div class="con-tags"><span>เป็นมิตรสุด</span><span>นุ่มนวล กลมกอด</span><span>เทรนด์ปัจจุบัน</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 12)</span></div>
+    <div class="screen m12">
+      <div class="m12-nav">
+        <span class="m12-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span></nav>
+        <span class="btn">ติดต่อเรา</span>
+      </div>
+      <div class="m12-hero">
+        <div>
+          <h1>วิชาการเอ็นโดฯ<br>ที่<em>นุ่มนวล</em>และเข้าถึงง่าย</h1>
+          <p>ข่าวสมาคม ทุนวิจัย วารสาร และเอกสารทุกใบ จัดอย่างเป็นระเบียบกดถึงได้ในไม่กี่คลิก สำหรับทันตแพทย์ นักวิจัย และทุกคนที่สนใจ</p>
+          <div class="m12-cta"><b>ดูประกาศล่าสุด</b><b>เข้าคลังเอกสาร</b></div>
+        </div>
+        <div class="m12-blobs">
+          <div class="b b1">🦷</div>
+          <div class="b b2">🔬</div>
+        </div>
+      </div>
+      <div class="m12-cards">
+        <div class="c"><span class="ico" style="background:linear-gradient(145deg,#d1fae5,#a7f3d0)">🎓</span><b>ทุนวิจัย 2569</b><span>เปิดรับสมัครแล้ว อ่านหลักเกณฑ์ก่อนเตรียมใบสมัคร</span><a>อ่านต่อ →</a></div>
+        <div class="c"><span class="ico" style="background:linear-gradient(145deg,#dbeafe,#bfdbfe)">📘</span><b>วารสาร TEJ</b><span>ฉบับล่าสุดพร้อมอ่านบน TCI ThaiJO</span><a>เปิดวารสาร ↗</a></div>
+        <div class="c"><span class="ico" style="background:linear-gradient(145deg,#fce7f3,#fbcfe8)">🗓️</span><b>กิจกรรมใกล้ตัว</b><span>Endodontic Uncovered · 10 ก.ค. 2569 จุฬาฯ</span><a>ดูปฏิทิน →</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#e9f0fa"></i>#E9F0FA ฟ้านวลนุ่ม</span>
+        <span class="sw"><i style="background:#8b5cf6"></i>#8B5CF6 ม่วงดินเหนียว</span>
+        <span class="sw"><i style="background:#bfdbfe"></i>#BFDBFE ฟ้าอ่อน</span>
+        <span class="sw"><i style="background:#ddd6fe"></i>#DDD6FE ลาเวนเดอร์</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — เงาซ้อนชั้นใน/ชั้นนอกคือเอกลักษณ์ของสไตล์นี้</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ปุ่มนุ่มมีมิติ กดแล้ว "รู้สึกว่ากด" — CTA เด่นโดยธรรมชาติ</li>
+        <li>มุมโค้งกว้างลดความรู้สึกเอกสารราชการโดยสิ้นเชิง</li>
+        <li>พื้นสีอ่อนทั้งหมด อ่านสบายตาและถ่ายภาพหน้าจอสวย</li>
+        <li>ทุกอย่างทำด้วย CSS เงาล้วน ไม่ต้องใช้รูปภาพประกอบเลย</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + Kadence Blocks</b> ใส่ CSS เงาดินน้ำมัน (เตรียมให้ครบเป็นคลาสพร้อมใช้) กับการ์ด/ปุ่ม ทุกบล็อกใช้ของแกน WordPress กับ Kadence เท่านั้น</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>FileBird</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>การ์ดสามใบดึงจาก CPT ประกาศ/กิจกรรม</li><li>ไอคอนอีโมจิแทนรูปถ่าย ลดภาระทีมเนื้อหา</li><li>เอกสารจากคลัง FileBird</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>4–6 วันทำงาน</p><p>เหมาะกับ: อยากได้เว็บที่ "สดใสแต่ทันสมัย" ไม่จำเจ</p></div>
+  </div>
+</section>
+
+<!-- ===================== 13 TEA INSIGHT ===================== -->
+<section class="concept" id="c13">
+  <div class="con-head">
+    <span class="con-num">13</span>
+    <div class="con-title">
+      <h2>TEA Insight — ห้องปฏิบัติการข้อมูลของสมาคม</h2>
+      <div class="en">Operations Dashboard UI</div>
+      <p class="one">ยกระดับเว็บให้เป็น "แดชบอร์ด" แบบแอปธุรกิจยุคใหม่ — เมนูข้าง การ์ดสรุปสถานะ กราฟประกาศรายเดือน และฟีดกิจกรรมล่าสุด เหมาะกับสมาคมที่ต้องการสื่อความเป็นองค์กรขับเคลื่อนด้วยข้อมูล และมีสมาชิกที่กลับมาใช้งานเป็นประจำ นี่คือรูปแบบที่ "ทันสมัยแบบใช้งานจริง" ที่สุด</p>
+      <div class="con-tags"><span>ขับเคลื่อนด้วยข้อมูล</span><span>เมนูข้างแบบแอป</span><span>สรุปสถานะชัด</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 13)</span></div>
+    <div class="screen m13">
+      <aside class="m13-side">
+        <span class="lg"><i>TEA</i> TEA Insight</span>
+        <a class="on">📊 ภาพรวม</a>
+        <a>📰 ข่าวและประกาศ</a>
+        <a class="dot">🎓 ทุนวิจัย 2569</a>
+        <a>📘 วารสาร TEJ</a>
+        <a>🗂️ คลังเอกสาร</a>
+        <a>🗓️ กิจกรรม</a>
+        <span class="exit">⚙ ตั้งค่า · ออกจากระบบ</span>
+      </aside>
+      <div class="m13-main">
+        <div class="m13-top"><h1>สวัสดี สมาคมเอ็นโดดอนติกส์ไทย 👋</h1><span class="srch">ค้นหาประกาศ เอกสาร…</span><span class="av">TEA</span></div>
+        <div class="m13-tiles">
+          <div class="t"><span class="tag" style="background:#dcfce7;color:#15803d">เปิดรับอยู่</span><b>ทุนวิจัย ปี 2569</b><span>สมัครถึง 30 มิ.ย. 69</span></div>
+          <div class="t"><span class="tag" style="background:#ede9fe;color:#6d28d9">กิจกรรม</span><b>Endodontic Uncovered</b><span>10 ก.ค. 69 · จุฬาฯ</span></div>
+          <div class="t"><span class="tag" style="background:#dbeafe;color:#1d4ed8">เอกสารใหม่</span><b>3 ไฟล์ล่าสุด</b><span>ทุนวิจัย + บทความ</span></div>
+          <div class="t"><span class="tag" style="background:#ffedd5;color:#c2410c">วารสาร</span><b>TEJ ฉบับล่าสุด</b><span>อ่านบน TCI ThaiJO</span></div>
+        </div>
+        <div class="m13-panels">
+          <div class="m13-panel">
+            <h3>จังหวะการสื่อสารของสมาคม (ตัวอย่างกราฟ)</h3>
+            <div class="m13-bars"><i style="height:42%"></i><i style="height:66%"></i><i style="height:34%"></i><i style="height:78%"></i><i style="height:52%"></i><i style="height:90%"></i><i style="height:60%"></i><i style="height:44%"></i><i style="height:70%"></i><i style="height:56%"></i><i style="height:84%"></i><i style="height:48%"></i></div>
+          </div>
+          <div class="m13-panel m13-feed">
+            <h3>ล่าสุดในสัปดาห์นี้</h3>
+            <div class="li"><i>📢</i><div><b>ประกาศรับสมัครทุนวิจัย 2569</b><span>เปิดแล้ว · อ่านหลักเกณฑ์</span></div></div>
+            <div class="li"><i>📄</i><div><b>แบบฟอร์มสนับสนุนบทความ (ใหม่)</b><span>ดาวน์โหลดได้แล้ว</span></div></div>
+            <div class="li"><i>🗓️</i><div><b>เปิดลงทะเบียนงานประชุมประจำปี</b><span>Endodontic Uncovered</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#101828"></i>#101828 สเลตเข้ม</span>
+        <span class="sw"><i style="background:#2563eb"></i>#2563EB น้ำเงินแอป</span>
+        <span class="sw"><i style="background:#22d3ee"></i>#22D3EE ฟ้าสว่าง</span>
+        <span class="sw"><i style="background:#f1f4f9"></i>#F1F4F9 เทาอมฟ้า</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt SemiBold</b> · ตัวเลข/ป้าย: <b>Prompt ตัวเล็กตัวพิมพ์ใหญ่</b> แบบแดชบอร์ด SaaS</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>เมนูข้างคงที่ ทุกส่วนของสมาคมเข้าถึงได้ในคลิกเดียว</li>
+        <li>การ์ดสถานะบอก "อะไรกำลังเปิด/ใกล้ถึง" ได้ในพริบตา</li>
+        <li>ฟีดล่าสุดทำให้หน้าแรกมีชีวิต กลับมาเจอของใหม่ทุกครั้ง</li>
+        <li>กราฟทำจากข้อมูลจริงของสมาคม เช่น จำนวนประกาศ/เดือน</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Blocksy + ปลั๊กอิน Visualizer หรือ wpDataTables</b> (ฟรี) สำหรับกราฟจากข้อมูลจริง การ์ดสรุปใช้ Query Loop + CSS โครงเมนูข้างทำด้วย Kadence ไม่ต้องเขียนระบบแดชบอร์ดเอง</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Visualizer / wpDataTables</li><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>SearchWP หรือ Relevanssi (ค้นเก่งขึ้น)</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>การ์ดสถานะดึงจาก CPT ตามหมวด</li><li>กราฟอัปเดตจากจำนวนโพสต์จริงต่อเดือน</li><li>ฟีดล่าสุด = Query Loop ลำดับวันที่</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●● <b>ยาก</b></p><p>7–9 วันทำงาน</p><p>เหมาะกับ: สมาคมที่มีข้อมูลสรุปและสมาชิกใช้ประจำ</p></div>
+  </div>
+</section>
+
+<!-- ===================== 14 TEA ASSISTANT ===================== -->
+<section class="concept" id="c14">
+  <div class="con-head">
+    <span class="con-num">14</span>
+    <div class="con-title">
+      <h2>TEA Assistant — เว็บที่ตอบคำถามให้คุณ</h2>
+      <div class="en">AI Concierge / Conversational Homepage</div>
+      <p class="one">รูปแบบที่ทันสมัยที่สุดเชิงบริการ: หน้าแรกคือหน้าต่างแชท "ถามสมาคมได้เลย" — ผู้ใช้พิมพ์ว่า "มีทุนวิจัยไหม" ระบบตอบพร้อมลิงก์เอกสารที่ถูกต้องทันที โดยตอบจากฐานความรู้เอกสารของสมาคม และโอนต่อให้เจ้าหน้าที่ผ่าน LINE ได้เมื่อคำถามเกินขอบเขต ช่วยลดงานตอบซ้ำ ๆ ของเจ้าหน้าที่อย่างเห็นผล</p>
+      <div class="con-tags"><span>ทันสมัยสุดเชิงบริการ</span><span>ตอบคำถามอัตโนมัติ</span><span>ลดงานซ้ำ</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 14)</span></div>
+    <div class="screen m14">
+      <div class="m14-top">
+        <span class="m14-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>เอกสาร</span></nav>
+      </div>
+      <div class="m14-hero">
+        <h1>ถามสมาคมได้เลย <span>24 ชั่วโมง</span></h1>
+        <p>ผู้ช่วย TEA ตอบจากประกาศและเอกสารจริงของสมาคม พร้อมลิงก์ดาวน์โหลดที่ถูกต้องเสมอ</p>
+      </div>
+      <div class="m14-chat">
+        <div class="m14-chead"><i>🤖</i><span><b>ผู้ช่วย TEA</b><small>ออนไลน์ · ตอบจากข้อมูลสมาคม</small></span><span class="st">ONLINE</span></div>
+        <div class="m14-cbody">
+          <div class="m14-msg u">มีทุนวิจัยให้สมัครไหมปีนี้ครับ?</div>
+          <div class="m14-msg b">มีครับ ✅ สมาคมเปิดรับสมัคร<b>ทุนอุดหนุนการวิจัย ประจำปี 2569</b> — ดาวน์โหลด <a>หลักเกณฑ์การให้ทุน (PDF)</a> และ <a>ใบสมัครฉบับปี 2569 (PDF)</a> ได้เลย หรือให้ผมพาไปทีละขั้นไหมครับ?</div>
+          <div class="m14-msg u">ขอบคุณครับ แล้วใบรับรองกิจกรรมล่ะ?</div>
+          <div class="m14-msg b">ตรวจสอบและพิมพ์ใบรับรองได้ที่ระบบ <b>CDEC</b> ของสมาคมครับ — หากต้องการเจ้าหน้าที่ กดข้างล่างเพื่อคุยผ่าน LINE ได้ทันที</div>
+        </div>
+        <div class="m14-chips"><span>สมัครทุนวิจัย</span><span>ขอใบประกาศ CDEC</span><span>ส่งบทความลงวารสาร</span><span>ดาวน์โหลดแบบฟอร์ม</span></div>
+        <div class="m14-input"><span class="box">พิมพ์คำถามของคุณ…</span><span class="snd">➤</span></div>
+      </div>
+      <div class="m14-foot">คำตอบอ้างอิงจากประกาศและเอกสารทางการของสมาคม · ติดต่อเจ้าหน้าที่ 02-218-8795 หรือ LINE @thaiendodontics</div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f0faf7"></i>#F0FAF7 ขาวมิ้นต์</span>
+        <span class="sw"><i style="background:#0f766e"></i>#0F766E เขียวทีล</span>
+        <span class="sw"><i style="background:#14b8a6"></i>#14B8A6 เขียวสด</span>
+        <span class="sw"><i style="background:#eef6f4"></i>#EEF6F4 ฟองนม</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · ข้อความแชท: <b>IBM Plex Sans Thai</b> — ฟองแชทโค้งมนแบบแอปแชทจริง</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ผู้ใช้ไม่ต้อง "หาเมนู" — พิมพ์สิ่งที่ต้องการได้เลย</li>
+        <li>ตอบพร้อมลิงก์ไฟล์ถูกปี ตัดปัญหาโหลดเอกสารผิดฉบับ</li>
+        <li>มีขีดจำกัดชัดเจน: คำถามเกินขอบเขตโอนสู่ LINE ทันที</li>
+        <li>ชิปคำถามยอดฮิตช่วยคนที่ไม่รู้จะถามอะไร</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + ปลั๊กอิน AI ChatBot (ฟรี)</b> หรือฝังบริการแชทบอทพร้อมใช้ (Chatbase / Botpress — สคริปต์เดียวจบ) ฐานความรู้คือ PDF ประกาศของสมาคม และ <b>Joinchat</b> เป็นทางถึงเจ้าหน้าที่จริง</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>AI ChatBot / Chatbase embed</li><li>Joinchat (LINE สำรอง)</li><li>Relevanssi (ค้นเอกสาร)</li><li>Custom Post Type UI</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>เตรียม FAQ จากคำถามที่เจ้าหน้าที่ตอบบ่อย</li><li>บอทอ้างลิงก์ PDF ในคลังเอกสารตรงเสมอ</li><li>เก็บสถิติคำถามเพื่อปรับคำตอบรอบถัดไป</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>6–8 วันทำงาน</p><p>เหมาะกับ: ต้องการความทันสมัยระดับ "ผลิตภัณฑ์ AI" + ลดงานตอบซ้ำ</p></div>
+  </div>
+</section>
+
+<!-- ===================== 15 MONO LUXE ===================== -->
+<section class="concept" id="c15">
+  <div class="con-head">
+    <span class="con-num">15</span>
+    <div class="con-title">
+      <h2>Mono Luxe — เรียบน้อย มีค่ามาก</h2>
+      <div class="en">Quiet Luxury / Swiss Minimal</div>
+      <p class="one">ไม่มีการ์ด ไม่มีเงา ไม่มีของประดับ — มีแค่ตัวอักษรใหญ่ที่จัดวางอย่างแม่นยำ เส้นบาง ๆ คั่น และสีเขียวเข้มจุดเดียวเป็นพระเอก สไตล์ "quiet luxury" ของแบรนด์ระดับพรีเมียม ให้สมาคมดูสุขุม มั่นใจ และจริงจังกับตัวหนังสือ (เหมาะกับองค์กรที่เชื่อว่าเนื้อหาคือทุกอย่าง)</p>
+      <div class="con-tags"><span>เรียบหรู</span><span>ตัวอักษรเป็นพระเอก</span><span>โปร่งสบายตา</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 15)</span></div>
+    <div class="screen m15">
+      <div class="m15-top"><b>สมาคมเอ็นโดดอนติกส์ไทย</b><span>Thai Endodontic Association · Est. Bangkok</span></div>
+      <div class="m15-hero">
+        <h1>ความรู้ที่หนักแน่น<br>นำเสนออย่าง<span>เบาบาง</span></h1>
+        <p class="side">สมาคมเอ็นโดดอนติกส์ไทย รวมผู้เชี่ยวชาญเพื่อพัฒนาวิชาการ สนับสนุนงานวิจัย และยกระดับมาตรฐานการแพทย์รากฟันของประเทศ เราเชื่อว่าเนื้อหาที่ดีไม่ต้องการของประดับ</p>
+      </div>
+      <div class="m15-list">
+        <div class="m15-item"><span class="no">01 — ทุนวิจัย</span><h3>ทุนอุดหนุนการวิจัย 2569</h3><p>หลักเกณฑ์และใบสมัครฉบับปีนี้ เปิดรับแล้ว</p><a>อ่านหลักเกณฑ์</a></div>
+        <div class="m15-item"><span class="no">02 — วารสาร</span><h3>วารสารเอ็นโดดอนติกส์ไทย</h3><p>อ่านฉบับล่าสุดและส่งบทความผ่าน TCI ThaiJO</p><a>เปิดวารสาร</a></div>
+        <div class="m15-item"><span class="no">03 — เอกสาร</span><h3>คลังแบบฟอร์มทุกฉบับ</h3><p>จัดเรียงตามหมวดและปี ค้นหาง่าย โหลดได้ทันที</p><a>เข้าคลังเอกสาร</a></div>
+      </div>
+      <div class="m15-foot"><span>02-218-8795</span><span>thaiendodontics@gmail.com</span><span>จุฬาลงกรณ์มหาวิทยาลัย กรุงเทพฯ 10330</span><span style="margin-left:auto">LINE @thaiendodontics</span></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#fbfbf9"></i>#FBFBF9 ขาวกระดาษ</span>
+        <span class="sw"><i style="background:#121412"></i>#121412 ดำหมึก</span>
+        <span class="sw"><i style="background:#0c3b2e"></i>#0C3B2E เขียวป่าเข้ม</span>
+        <span class="sw"><i style="background:#d9d9d2"></i>#D9D9D2 เส้นบาง</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold ขนาดใหญ่มาก ระยะบีบ</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — ใช้เส้น 1px แทนกล่องทั้งหมด</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ไม่มีสิ่งรบกวนสายตาแม้แต่อย่างเดียว — โฟกัสที่เนื้อหา 100%</li>
+        <li>ลิงก์ข้อความเส้นใต้ชัด สไตล์สำนักพิมพ์คุณภาพ</li>
+        <li>โหลดเร็วมากเพราะไม่มีรูปประดับ — คะแนน Core Web Vitals ดี</li>
+        <li>ดู "แพง" ด้วยวิธีธรรมชาติที่สุด: พื้นที่ว่างและการจัดวาง</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: GeneratePress + GenerateBlocks</b> — คู่นี้เบาที่สุดในตลาด เหมาะกับสไตล์มินิมอลพอดี ตั้งฟอนต์หัวข้อใหญ่และเส้นคั่นจาก Customizer ได้เกือบทั้งหมด</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>GenerateBlocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>สามคอลัมน์บริการ = Query Loop ตามหมวด</li><li>หัวใหญ่แก้ไขได้จากหน้าแรกโดยตรง</li><li>ไม่มีรูปประกอบก็สวย — ภาระทีมเนื้อหาต่ำสุด</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●○○ <b>ง่าย</b></p><p>3–5 วันทำงาน</p><p>เหมาะกับ: ภาพลักษณ์สุขุมพรีเมียม + เว็บเร็วที่สุดในชุด</p></div>
+  </div>
+</section>
+
+<!-- ===================== 16 COLOR FIELD ===================== -->
+<section class="concept" id="c16">
+  <div class="con-head">
+    <span class="con-num">16</span>
+    <div class="con-title">
+      <h2>Color Field — สีจัดจ้านแบบสตูดิโอดีไซน์</h2>
+      <div class="en">Bold Duotone / Color Blocking</div>
+      <p class="one">พลังของสีล้วน ๆ แบบสตูดิโอเอเจนซีชั้นนำ — บล็อกสีม่วง-ส้มปะทะกัน รูปถ่ายแปลงเป็นโทนดูโอโทนให้เข้าชุดกันทั้งหน้า และป้ายขอบดำแบบสติกเกอร์ เหมาะกับการสื่อสารว่าสมาคมนี้มีชีวิตชีวา มีพลัง และ "กล้าต่าง" จากเว็บวิชาการทั่วไปอย่างชัดเจนที่สุดในชุดนี้</p>
+      <div class="con-tags"><span>มีพลังสุด</span><span>ดูโอโทน</span><span>จำได้ทันที</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 16)</span></div>
+    <div class="screen m16">
+      <div class="m16-nav">
+        <span class="m16-logo"><b>TEA</b></span>
+        <nav><span>สมาคม</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+      </div>
+      <div class="m16-hero">
+        <div class="cell c1">
+          <h1>แหล่งรวมคนรากฟัน<br>ของประเทศไทย</h1>
+          <p>ข่าว ทุนวิจัย วารสาร และเอกสาร ของสมาคมเอ็นโดดอนติกส์ไทย — จัดเต็ม ชัดเจน ไม่ต้องค้นนาน</p>
+          <span class="btn">ดูสิ่งที่กำลังเปิดรับ →</span>
+        </div>
+        <div class="cell c2"><b>งานวิจัยของเรา</b><img src="generated/academic-collaboration.png" alt="ทีมทันตแพทย์ร่วมกันทบทวนภาพรังสี"></div>
+        <div class="cell c3">
+          <b>เอกสารฮิตโหลด</b>
+          <div class="row"><span>ใบสมัครทุนวิจัย 69</span><span>↓</span></div>
+          <div class="row"><span>หลักเกณฑ์ทุนอุดหนุน 69</span><span>↓</span></div>
+          <div class="row"><span>แบบขอสนับสนุนบทความ</span><span>↓</span></div>
+        </div>
+        <div class="cell c4"><span>กิจกรรมใหญ่ประจำปี</span><b>Endodontic Uncovered<br>10 ก.ค. 2569</b><span>คณะทันตแพทยศาสตร์ จุฬาฯ →</span></div>
+      </div>
+      <div class="m16-strip">
+        <a>ประกาศล่าสุด <span>→</span></a>
+        <a>วารสาร TEJ <span>↗</span></a>
+        <a>ใบรับรอง CDEC <span>↗</span></a>
+        <a>ติดต่อสมาคม <span>→</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#5b21b6"></i>#5B21B6 ม่วงเข้ม</span>
+        <span class="sw"><i style="background:#ff5a3c"></i>#FF5A3C ส้มแดง</span>
+        <span class="sw"><i style="background:#ffc9a3"></i>#FFC9A3 พีช</span>
+        <span class="sw"><i style="background:#fff4e6"></i>#FFF4E6 ครีม</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold</b> · รูปถ่าย: <b>ฟิลเตอร์ดูโอโทน CSS</b> (ขาว-ดำ + เบลนด์สีพื้น) ให้ทุกรูปเข้าโทนโดยไม่ต้องแต่งรูปใหม่</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>สีบอกหมวดหมู่แทนคำอธิบาย — จำตำแหน่งได้ด้วยสัญชาตญาณ</li>
+        <li>รูปถ่ายดูโอโทนทำให้ภาพจากงานจริง (แสง/สีไม่สม่ำเสมอ) ดูเป็นระบบทันที</li>
+        <li>การ์ดเอกสารดาวน์โหลดอยู่บนหน้าแรกเสมอ</li>
+        <li>เหมาะกับคอนเทนต์โซเชียล — จับภาพหน้าจอไปใช้ต่อได้สวย</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence หรือ Blocksy</b> + ฟิลเตอร์ดูโอโทนเป็น CSS สั้น ๆ (grayscale + mix-blend-mode) ใส่กับรูปทุกรูปผ่านคลาสเดียว บล็อกสีใช้ Cover/Group ของแกน WordPress</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>FileBird</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>บล็อกใหญ่ = ประกาศเด่นประจำเดือน</li><li>รูปจากกิจกรรมจริงขึ้นดูโอโทนอัตโนมัติ</li><li>แถบล่าง = ทางลัด 4 บริการหลัก</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5 วันทำงาน</p><p>เหมาะกับ: อยากให้เว็บมีพลัง จำได้ และต่างจากใคร ๆ</p></div>
+  </div>
+</section>
+
+<!-- ===================== 17 STORYLINE ===================== -->
+<section class="concept" id="c17">
+  <div class="con-head">
+    <span class="con-num">17</span>
+    <div class="con-title">
+      <h2>Storyline — หน้าแรกที่เล่าเรื่อง</h2>
+      <div class="en">Scrollytelling / Chapter Navigation</div>
+      <p class="one">เปลี่ยนการเลื่อนหน้าให้เป็นการ "อ่านนิทานเรื่องใหญ่" — แต่ละบท (ประวัติ → งานวิจัย → กิจกรรม → บริการ) กินพื้นจอเต็ม มีแถบบทด้านซ้ายบอกว่าอ่านถึงไหน ภาพประกอบสลับขึ้นตามจังหวะการเลื่อน ผู้ชมเข้าใจภาพรวมของสมาคมได้โดยแค่ปล่อยเมาส์เลื่อน สไตล์ที่แบรนด์ระดับโลกใช้เล่าเรื่องและรายงานประจำปี</p>
+      <div class="con-tags"><span>เล่าเรื่องเป็นบท</span><span>เอฟเฟกต์ตามการเลื่อน</span><span>ดูแล้วจบในตัว</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 17)</span></div>
+    <div class="screen m17">
+      <div class="m17-rail"><i class="on"></i><span class="ln"></span><i></i><span class="ln"></span><i></i><span class="ln"></span><i></i></div>
+      <div class="m17-ch">
+        <div class="m17-txt">
+          <span class="mx-eyebrow">บทที่ 02 / 04 — งานวิจัยและทุน</span>
+          <h1>ทุกโครงงานวิจัย<br>เริ่มได้ด้วยทุนที่พร้อม</h1>
+          <p>ทุนอุดหนุนการวิจัยประจำปีของสมาคม พร้อมหลักเกณฑ์ที่อ่านเข้าใจง่ายและแบบฟอร์มฉบับถูกปี — ส่วนนี้พาไปทีละขั้นจนถึงการส่ง</p>
+          <a>ดูทุนวิจัยปี 2569 →</a>
+        </div>
+        <div class="m17-visual">
+          <div class="frame2">
+            <img src="generated/clinical-microscope.png" alt="กล้องจุลทรรศน์ทางทันตกรรมในห้องคลินิกสว่าง">
+            <div class="cap"><span>LAB / RESEARCH</span><span>TEA · 2569</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="m17-next">เลื่อนต่อเพื่ออ่านบทที่ 03 — กิจกรรมวิชาการ ↓</div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#101418"></i>#101418 ถ่านดำ</span>
+        <span class="sw"><i style="background:#ff6b4a"></i>#FF6B4A เขม่าส้ม</span>
+        <span class="sw"><i style="background:#9aa7b5"></i>#9AA7B5 เทาเมฆ</span>
+        <span class="sw"><i style="background:#1a2027"></i>#1A2027 กราไฟต์</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold</b> · เลเบลบท: <b>Prompt + ตัวพิมพ์ใหญ่เว้นระยะ</b> แบบไทเทิลภาพยนตร์</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>แถบบทบอกตำแหน่งเสมอ — ผู้ใช้รู้ว่าเหลืออะไรอีก</li>
+        <li>หนึ่งจอต่อหนึ่งใจความ ไม่มีสิ่งใดแข่งกันเอง</li>
+        <li>จบการเลื่อนหนึ่งรอบ = รู้จักสมาคมครบทุกด้าน</li>
+        <li>เหมาะทำประกอบรายงานประจำปี/ฉลองครบรอบด้วย</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Astra/Kadence + Elementor ฟรี (motion effects)</b> หรือปลั๊กอิน Scrollsequence ทำฉากตามการเลื่อน แถบบทใช้ CSS sticky ที่เตรียมให้ ไม่ต้องเขียน JavaScript เอง</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Elementor / Scrollsequence</li><li>Kadence Blocks</li><li>Custom Post Type UI</li><li>WPForms</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>4 บทหลัก = 4 เซกชันเต็มจอ เนื้อหาคงที่</li><li>ลิงก์เข้าหน้าบริการจริงปิดท้ายแต่ละบท</li><li>ข่าวยังอยู่หน้าปกติเมนูบน</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●● <b>ยาก</b></p><p>7–9 วันทำงาน</p><p>เหมาะกับ: การนำเสนอที่ต้อง "ว้าว" และเล่าเรื่ององค์กร</p></div>
+  </div>
+</section>
+
+<!-- ===================== 18 CARD DECK ===================== -->
+<section class="concept" id="c18">
+  <div class="con-head">
+    <span class="con-num">18</span>
+    <div class="con-title">
+      <h2>Card Deck — หน้าแรกแบบสไลด์ไพ่</h2>
+      <div class="en">Swipe-First Card Carousel</div>
+      <p class="one">ยืมภาษาภาพจาก App Store และ Netflix: สิ่งที่กำลังเกิดขึ้นกับสมาคมถูกวางเป็น "ไพ่" ใบใหญ่เรียงซ้อนเลื่อนข้างได้ การ์ดใบเด่นสีเข้มขนาดใหญ่กว่าใคร ใบถัด ๆ ไปส่องขอบไว้ชวนเลื่อนต่อ ดูสนุก ทันสมัย และเหมาะกับเนื้อหาที่มีตัวยกใหม่บ่อย ๆ</p>
+      <div class="con-tags"><span>เลื่อนสนุก</span><span>ตัวยกใหม่เด่น</span><span>คุ้นเคยจากแอป</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 18)</span></div>
+    <div class="screen m18">
+      <div class="m18-nav">
+        <span class="m18-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>เอกสาร</span></nav>
+      </div>
+      <div class="m18-head"><h1>กำลังเกิดขึ้นกับสมาคม</h1><span>เลื่อนดูทั้งหมด →</span></div>
+      <div class="m18-deck">
+        <div class="m18-card hi">
+          <span class="tag" style="background:#0ea5e9;color:#fff">เปิดรับแล้ว</span>
+          <h3>ทุนอุดหนุนการวิจัย ประจำปี 2569</h3>
+          <p>อ่านหลักเกณฑ์และเตรียมใบสมัครจากไฟล์ฉบับปีนี้</p>
+          <span class="go">เปิดดู →</span>
+        </div>
+        <div class="m18-card">
+          <span class="tag" style="background:#ede9fe;color:#6d28d9">วารสาร</span>
+          <h3>TEJ เปิดรับบทความใหม่</h3>
+          <p>ส่งผ่านระบบ TCI ThaiJO ฟรีตลอดปี พร้อมแนวทางการสนับสนุนค่าตีพิมพ์</p>
+          <span class="go">เปิดดู →</span>
+        </div>
+        <div class="m18-card">
+          <span class="tag" style="background:#ffedd5;color:#c2410c">กิจกรรม</span>
+          <h3>Endodontic Uncovered</h3>
+          <p>10 ก.ค. 2569 · จุฬาฯ — ลงทะเบียนและดูหัวข้อวิชาการ</p>
+          <span class="go">เปิดดู →</span>
+        </div>
+        <div class="m18-card">
+          <span class="tag" style="background:#dcfce7;color:#15803d">เอกสาร</span>
+          <h3>แบบฟอร์มฉบับปี 2569</h3>
+          <p>รวมทุกใบที่อัปเดตล่าสุด จัดตามหมวด โหลดได้ทันที</p>
+          <span class="go">เปิดดู →</span>
+        </div>
+      </div>
+      <div class="m18-dots"><i class="on"></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#eaf4fd"></i>#EAF4FD ฟ้าลม</span>
+        <span class="sw"><i style="background:#075985"></i>#075985 น้ำเงินลึก</span>
+        <span class="sw"><i style="background:#0ea5e9"></i>#0EA5E9 ฟ้าสด</span>
+        <span class="sw"><i style="background:#ffffff"></i>#FFFFFF การ์ดขาว</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · ป้ายหมวด: <b>Prompt ตัวพิมพ์ใหญ่</b> — การ์ดเด่นพื้นเข้ม 1 ใบ ที่เหลือขาว</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ขอบการ์ดใบถัดไป "ล่อ" ให้เลื่อน — ผู้ใช้ดูเนื้อหามากขึ้นโดยธรรมชาติ</li>
+        <li>การ์ดใบเด่นพื้นเข้ม = เรื่องสำคัญที่สุดของเดือนชัดเจนประชันกันไม่ได้</li>
+        <li>ลากเลื่อนบนมือถือแบบเดียวกับแอป ไม่ต้องเรียนรู้</li>
+        <li>เพิ่มเรื่องใหม่ = เพิ่มโพสต์ การ์ดเรียงเองอัตโนมัติ</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + Kadence Blocks (Advanced Slider)</b> หรือ Stackable carousel — ทั้งหมดลากวางได้ ดึงโพสต์ล่าสุดเข้าการ์ดอัตโนมัติด้วย Dynamic Content</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks หรือ Stackable</li><li>Custom Post Type UI</li><li>WPForms</li><li>Rank Math SEO</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>การ์ด = โพสต์ตามหมวด เรียงวันที่</li><li>ตั้งหมวด "เด่นประจำเดือน" สำหรับใบพื้นเข้ม</li><li>แตะการ์ด = เปิดโพสต์เต็ม</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–6 วันทำงาน</p><p>เหมาะกับ: ข่าว/กิจกรรมใหม่บ่อย อยากให้หน้าแรกมีชีวิต</p></div>
+  </div>
+</section>
+
+<!-- ===================== 19 LAB NOTES ===================== -->
+<section class="concept" id="c19">
+  <div class="con-head">
+    <span class="con-num">19</span>
+    <div class="con-title">
+      <h2>Lab Notes — แบลูพรินต์วิชาชีพ</h2>
+      <div class="en">Technical Spec-Sheet Aesthetic</div>
+      <p class="one">ดีไซน์ "เอกสารกำกับทางเทคนิค" ที่กำลังมาแรงในงานดีไซน์สายเวิร์ก — พื้นกริดกราฟกระดาษวิศวกรรม เส้นขอบหนามุมตรง ตัวอักษรโมโนสเปซกำกับทุกหัวข้อ และตารางสเปกบริการ ให้ความรู้สึกแม่นยำ ตรวจสอบได้ และเป็นวิชาการอย่างมีสไตล์ เหมาะกับองค์กรที่ภาพจำคือ "ความแม่นยำ"</p>
+      <div class="con-tags"><span>แม่นยำแบบวิศวกร</span><span>โมโนสเปซ</span><span>เอกลักษณ์แรง</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 19)</span></div>
+    <div class="screen m19">
+      <div class="m19-top"><b>สมาคมเอ็นโดดอนติกส์ไทย / THAI ENDODONTIC ASSOCIATION</b><span>DOC-REF: TEA-2569 · REV.1</span></div>
+      <div class="m19-mid">
+        <div>
+          <span class="mx-eyebrow">// ABOUT-TEA</span>
+          <h1>มาตรฐานที่<span>ตรวจสอบได้</span><br>ทุกหน่วยความรู้</h1>
+          <p>สมาคมเอ็นโดดอนติกส์ไทย จัดระบบวิชาการ ทุนวิจัย และเอกสารทุกฉบับไว้เป็นหมวดหมู่ชัดเจน อ้างอิงได้ว่าเป็นฉบับใด ปีใด ปรับปรุงเมื่อใด</p>
+          <div class="acts"><b>ดูประกาศล่าสุด</b><b>เข้าคลังเอกสาร</b></div>
+        </div>
+        <div class="m19-spec">
+          <div class="h">SPEC-SHEET / SERVICES v.2569</div>
+          <div class="row"><span>GRANT-69</span><b>ทุนวิจัย 2569 — เปิดรับ</b></div>
+          <div class="row"><span>TEJ-JOURNAL</span><b>วารสาร — รับบทความ</b></div>
+          <div class="row"><span>CDEC-CERT</span><b>ใบรับรอง — ออนไลน์</b></div>
+          <div class="row"><span>FORMS</span><b>แบบฟอร์ม — 12 ฉบับ</b></div>
+        </div>
+      </div>
+      <div class="m19-strip">
+        <div class="s"><span>01/NEWS</span><b>ข่าวและประกาศ</b><span>อัปเดตต่อเนื่อง</span></div>
+        <div class="s"><span>02/GRANT</span><b>ทุนวิจัยประจำปี</b><span>เปิดถึง 30.06.69</span></div>
+        <div class="s"><span>03/JOURNAL</span><b>วารสาร TEJ</b><span>TCI THAIJO ↗</span></div>
+        <div class="s"><span>04/CONTACT</span><b>ติดต่อสมาคม</b><span>TEL 02-218-8795</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#f2f6f5"></i>#F2F6F5 ขาวเขียวจาง</span>
+        <span class="sw"><i style="background:#15342c"></i>#15342C เขียวหมึก</span>
+        <span class="sw"><i style="background:#0f766e"></i>#0F766E เขียวทีล</span>
+        <span class="sw"><i style="background:#c9d8d2"></i>#C9D8D2 เส้นกริด</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt Bold</b> · ป้ายกำกับ: <b>ฟอนต์โมโนสเปซ</b> (Consolas/Mono) ทุกจุด — คู่ตัวอักษรที่สื่อ "สเปกทางเทคนิค"</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>ตารางสเปกสรุปบริการแบบอ้างอิงรหัส — ค้นเร็วและชันสาตร์</li>
+        <li>กริดพื้นหลังช่วยการอ่านแบบเรียงบรรทัด (สายตาไม่หลง)</li>
+        <li>เส้นขอบหนาทุกชิ้นทำให้เขตเนื้อหาชัดเจนสมบูรณ์</li>
+        <li>เอกลักษณ์แรงมาก ไม่มีเว็บสมาคมไหนหน้าตาแบบนี้</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: GeneratePress + GenerateBlocks</b> กริดพื้นหลังเป็น CSS สองบรรทัด ฟอนต์โมโนเป็นฟอนต์ระบบ (ไม่ต้องโหลดเพิ่ม) ตารางสเปกใช้บล็อกตารางแกนของ WordPress</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>GenerateBlocks</li><li>Custom Post Type UI</li><li>WPForms</li><li>WPCode (CSS กริด)</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ตารางสเปก = หมวดบริการ + สถานะจาก CPT</li><li>รหัสอ้างอิงเอกสารใช้จากระบบไฟล์จริง</li><li>แถบล่าง = ทางลัดสี่ส่วนหลัก</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5 วันทำงาน</p><p>เหมาะกับ: ภาพลักษณ์แม่นยำ เป็นระบบ มีเอกลักษณ์</p></div>
+  </div>
+</section>
+
+<!-- ===================== 20 SPLIT IDENTITY ===================== -->
+<section class="concept" id="c20">
+  <div class="con-head">
+    <span class="con-num">20</span>
+    <div class="con-title">
+      <h2>Split Identity — ครึ่งคำ ครึ่งภาพ</h2>
+      <div class="en">Split-Screen Editorial</div>
+      <p class="one">โครงหน้าแบบครึ่งจอซ้าย-ขวาที่เว็บพอร์ตโฟลิโอระดับรางวัลนิยมใช้: ครึ่งซ้ายคำพูดสำคัญบนพื้นดำ ครึ่งขวาภาพจริงเต็มสูง พร้อมการ์ดลอยสรุปข้อมูล ส่วนถัดไปสลับบล็อกสี ทำให้ทุกหน้าจอดู "ตั้งใจจัดวาง" ตั้งแต่วินาทีแรก สร้างง่าย ดูแลง่าย และดูดีทั้งจอใหญ่และจอเล็ก</p>
+      <div class="con-tags"><span>สมดุลคำ-ภาพ</span><span>จัดวางระดับรางวัล</span><span>ดูแลง่าย</span></div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="framebar"><i></i><i></i><i></i><span class="url">thaiendodontics.or.th — หน้าแรก (ต้นแบบ 20)</span></div>
+    <div class="screen m20">
+      <div class="m20-nav">
+        <span class="m20-logo"><i>TEA</i> สมาคมเอ็นโดดอนติกส์ไทย</span>
+        <nav><span>เกี่ยวกับ</span><span>ข่าว</span><span>วารสาร</span><span>ทุนวิจัย</span><span>เอกสาร</span></nav>
+      </div>
+      <div class="m20-hero">
+        <div class="l">
+          <h1>เห็นภาพชัด<br>ก่อนจะ<em>ลงมือทำ</em></h1>
+          <p>แหล่งรวมองค์ความรู้ ทุนวิจัย และบริการวิชาการด้านเอ็นโดดอนติกส์ของประเทศไทย ในการจัดวางที่อ่านง่ายที่สุด</p>
+          <div class="cta"><b>สมัครทุนวิจัย 2569</b><b>อ่านวารสาร TEJ</b></div>
+        </div>
+        <div class="r">
+          <img src="generated/clinical-microscope.png" alt="กล้องจุลทรรศน์ทางทันตกรรมในคลินิกสว่าง">
+          <div class="m20-float"><b>ทุนวิจัย 2569 เปิดรับแล้ว</b><span>อ่านหลักเกณฑ์และดาวน์โหลดใบสมัคร →</span></div>
+        </div>
+      </div>
+      <div class="m20-rows">
+        <div class="m20-row">
+          <div class="c tint"><h3>ประกาศสำคัญ · ทุนวิจัย 2569</h3><p>เปิดรับสมัครถึง 30 มิ.ย. 2569 — อ่านหลักเกณฑ์ก่อนเตรียมเอกสาร</p></div>
+          <div class="c"><h3>วารสารเอ็นโดดอนติกส์ไทย (TEJ)</h3><p>อ่านฉบับล่าสุดและส่งบทความผ่านระบบ TCI ThaiJO ↗</p></div>
+        </div>
+        <div class="m20-row">
+          <div class="c rev"><h3>คลังเอกสารดาวน์โหลด</h3><p>แบบฟอร์มทุกฉบับจัดตามหมวดและปี — โหลดได้ทันที ไม่ต้องรออีเมล</p></div>
+          <div class="c"><h3>ติดต่อสมาคม</h3><p>02-218-8795 · thaiendodontics@gmail.com · LINE @thaiendodontics</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="specs">
+    <div class="spec">
+      <h4>โทนสีและตัวอักษร</h4>
+      <p class="pal">
+        <span class="sw"><i style="background:#101216"></i>#101216 กราไฟต์</span>
+        <span class="sw"><i style="background:#e0762e"></i>#E0762E อำพันส้ม</span>
+        <span class="sw"><i style="background:#f0f1f3"></i>#F0F1F3 เงินนวล</span>
+        <span class="sw"><i style="background:#16191e"></i>#16191E ชาร์โคล</span>
+      </p>
+      <p>หัวข้อ: <b>Prompt ExtraBold</b> · เนื้อความ: <b>IBM Plex Sans Thai</b> — ภาพถ่ายจริงคือของประดับเพียงอย่างเดียวของหน้า</p>
+    </div>
+    <div class="spec">
+      <h4>จุดเด่น UX</h4>
+      <ul>
+        <li>สายตาแบ่งโซนอัตโนมัติ: ซ้ายอ่าน ขวาดู — ไม่มีอะไรแข่งกัน</li>
+        <li>แถวสลับสีทำให้สแกนประกาศสำคัญได้เร็วแบบมีจังหวะ</li>
+        <li>โครงนี้พับเป็นมือถือสวยทันที (ซ้อนบน-ล่าง)</li>
+        <li>บำรุงรักษาง่ายสุดในชุดทันสมัย — เปลี่ยนรูป/คำ ก็สวยใหม่ทั้งหน้า</li>
+      </ul>
+    </div>
+  </div>
+  <div class="recipe">
+    <div><h4>ทำจริงใน WordPress — ธีมและเครื่องมือ</h4><p><b style="color:#e2e8f0">ธีม: Kadence + Kadence Blocks หรือ Elementor ฟรี</b> — โครงครึ่งจอคือ Row Layout สองคอลัมน์พื้นฐาน การ์ดลอยคือคลาส CSS ที่เตรียมให้ สลับรูป/คำได้จากหน้าแก้ไข WordPress ปกติ</p></div>
+    <div><h4>ปลั๊กอินหลัก</h4><ul><li>Kadence Blocks / Elementor</li><li>Custom Post Type UI</li><li>WPForms</li><li>FileBird</li></ul></div>
+    <div><h4>การวางเนื้อหา</h4><ul><li>ฮีโร่ = หน้าประกาศหลัก + รูปประจำสมาคม</li><li>แถวสลับ = Query Loop ตามหมวดสำคัญ</li><li>รูปใหม่แค่ 1–2 รูปต่อปีก็เพียงพอ</li></ul></div>
+    <div><h4>ประมาณการ</h4><p class="dots">●●○ <b>ปานกลาง</b></p><p>5–6 วันทำงาน</p><p>เหมาะกับ: งบภาพถ่ายจำกัดแต่ต้องดู "ตั้งใจจัดวาง"</p></div>
+  </div>
+</section>
+
+<!-- ===================== COMPARISON ===================== -->
+<section class="compare" id="compare">
+  <h2>ตารางเปรียบเทียบทั้ง 20 แบบ</h2>
+  <table>
+    <thead><tr><th style="width:52px">แบบ</th><th>ชื่อ</th><th>บุคลิก</th><th>จุดแข็ง</th><th>ความยาก</th><th>เวลา</th><th>เหมาะกับ</th></tr></thead>
+    <tbody>
+      <tr><td><b>01</b></td><td>Nocturne</td><td>พรีเมียมโทนมืด</td><td>ความประทับใจแรกแรงสุด</td><td>●●○</td><td>5–7 วัน</td><td>ภาพลักษณ์สถาบันสมัยใหม่</td></tr>
+      <tr><td><b>02</b></td><td>Bento Hub</td><td>ทันสมัย จัดชัด</td><td>เห็นทุกบริการในหน้าเดียว</td><td>●○○</td><td>4–5 วัน</td><td>หน้าแรก "จบในตัว"</td></tr>
+      <tr><td><b>03</b></td><td>Bold Statement</td><td>เส้นหนา ตัวโต</td><td>ประกาศเด่นจริง จำได้</td><td>●●○</td><td>4–6 วัน</td><td>เว็บแหล่งข่าวหลัก</td></tr>
+      <tr><td><b>04</b></td><td>Newsroom</td><td>หนังสือพิมพ์ออนไลน์</td><td>อัปเดตบ่อยได้ไม่อึดอัด</td><td>●○○</td><td>3–5 วัน</td><td>ข่าวถี่ ทีมงานธรรมดา</td></tr>
+      <tr><td><b>05</b></td><td>Aurora Glass</td><td>นุ่มนวล เป็นมิตร</td><td>สวยแบบเบา ผู้ใหม่ชอบ</td><td>●●○</td><td>5–6 วัน</td><td>สื่อสารรุ่นใหม่</td></tr>
+      <tr><td><b>06</b></td><td>Journal Covers</td><td>นิตยสารวิชาการ</td><td>ยกวารสาร/บทความเป็นพระเอก</td><td>●●○</td><td>5 วัน</td><td>ยกระดับชื่อเสียง TEJ</td></tr>
+      <tr><td><b>07</b></td><td>Congress Mode</td><td>งานประชุมนำหน้า</td><td>ลงทะเบียนงานได้ดีที่สุด</td><td>●●●</td><td>7–10 วัน</td><td>ปีที่มีงานใหญ่</td></tr>
+      <tr><td><b>08</b></td><td>Service Journey</td><td>ใช้งานตรงจุด</td><td>ผู้ใช้ทำงานเองได้ ลดโทรเข้า</td><td>●○○</td><td>4–6 วัน</td><td>ใช้งานจริงระยะยาว ⭐</td></tr>
+      <tr><td><b>09</b></td><td>TEA Pocket</td><td>แอปในมือถือ</td><td>มือถือ+LINE เต็มระบบ</td><td>●●○</td><td>5–7 วัน</td><td>สมาชิกใช้มือถือหลัก</td></tr>
+      <tr><td><b>10</b></td><td>Heritage &amp; Horizon</td><td>ภูมิฐาน ต่อเนื่อง</td><td>เกียรติประวัติ/คลังของเก่า</td><td>●●○</td><td>5–7 วัน</td><td>ปีครบรอบ/โอนรุ่น</td></tr>
+      <tr><td><b>11</b></td><td>Glow Line</td><td>ดาร์กไฮเทค</td><td>ทันสมัยสายเทคชัดสุด</td><td>●●○</td><td>5–6 วัน</td><td>ภาพลักษณ์นวัตกรรม</td></tr>
+      <tr><td><b>12</b></td><td>Soft Clay</td><td>นุ่มนวล กลมกอด</td><td>เป็นมิตร + เทรนด์ปัจจุบัน</td><td>●●○</td><td>4–6 วัน</td><td>สื่อสารรุ่นใหม่/ประชาชน</td></tr>
+      <tr><td><b>13</b></td><td>TEA Insight</td><td>แดชบอร์ดข้อมูล</td><td>สถานะ/ข้อมูลสรุปชัดสุด</td><td>●●●</td><td>7–9 วัน</td><td>สมาชิกใช้ประจำ</td></tr>
+      <tr><td><b>14</b></td><td>TEA Assistant</td><td>แชทผู้ช่วย AI</td><td>ตอบคำถามอัตโนมัติ ลดงานซ้ำ</td><td>●●○</td><td>6–8 วัน</td><td>ทันสมัยเชิงบริการ ⭐</td></tr>
+      <tr><td><b>15</b></td><td>Mono Luxe</td><td>เรียบหรู โปร่ง</td><td>เร็วสุด เน้นเนื้อหา 100%</td><td>●○○</td><td>3–5 วัน</td><td>พรีเมียมสุขุม</td></tr>
+      <tr><td><b>16</b></td><td>Color Field</td><td>สีจัดจ้าน</td><td>มีพลัง จำได้ทันที</td><td>●●○</td><td>5 วัน</td><td>อยากต่างจากใคร ๆ</td></tr>
+      <tr><td><b>17</b></td><td>Storyline</td><td>เล่าเรื่องเป็นบท</td><td>ดูแล้วเข้าใจองค์กรครบ</td><td>●●●</td><td>7–9 วัน</td><td>นำเสนอ/ครบรอบ</td></tr>
+      <tr><td><b>18</b></td><td>Card Deck</td><td>สไลด์ไพ่สนุก</td><td>ตัวยกใหม่เด่น เลื่อนชวนดู</td><td>●●○</td><td>5–6 วัน</td><td>ข่าวใหม่บ่อย</td></tr>
+      <tr><td><b>19</b></td><td>Lab Notes</td><td>แบลูพรินต์แม่นยำ</td><td>เอกลักษณ์วิชาการ-เทคนิค</td><td>●●○</td><td>5 วัน</td><td>ภาพจำ "ความแม่นยำ"</td></tr>
+      <tr><td><b>20</b></td><td>Split Identity</td><td>ครึ่งคำ ครึ่งภาพ</td><td>สวยระดับโปรโตโฟลิโอ ดูแลง่าย</td><td>●●○</td><td>5–6 วัน</td><td>งบภาพจำกัด ⭐</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:18px">คำแนะนำในการเลือก — สาย<b>ใช้งานจริง</b>: 08 Service Journey หรือ 02 Bento Hub (ตอบโจทย์ผู้ใช้หลักดีสุด) · สาย<b>ทันสมัยตามที่ต้องการ</b>: 14 TEA Assistant (ลดงานตอบซ้ำด้วยผู้ช่วย AI), 11 Glow Line (ภาพลักษณ์ไฮเทค), 20 Split Identity (สวยระดับรางวัลแต่ดูแลง่าย) · สาย<b>ภาพลักษณ์ในที่ประชุมกรรมการ</b>: 01 Nocturne, 10 Heritage หรือ 15 Mono Luxe · มีงานประชุมใหญ่ปีนี้: 07 Congress Mode · ทุกแบบใช้โครงเนื้อหาเดียวกัน เลือกแล้วไม่ผูกมัดตลอดไป</p>
+</section>
+
+<!-- ===================== NEXT STEPS ===================== -->
+<section class="nextsteps">
+  <h2>ขั้นตอนต่อจากนี้</h2>
+  <ol>
+    <li>นำชุดนี้เสนอกรรมการ — เปิดไฟล์ในเบราว์เซอร์ หรือพิมพ์เป็น PDF แจกประชุม (Ctrl+P ทุกหน้าเรียงระเบียบแล้ว)</li>
+    <li>ให้กรรมการเลือก 2–3 แบบที่ชอบ แล้วผมทำ <b>ต้นแบบเต็มหน้า</b> (ทุกหน้าหลัก: หน้าแรก ข่าว วารสาร ทุนวิจัย คลังเอกสาร ติดต่อ) ให้แบบที่เลือกต่อ</li>
+    <li>เตรียมของจริงที่ควรส่งมา: โลโก้ต้นฉบับ (ไฟล์เวกเตอร์/PNG โปร่งใส), ภาพกิจกรรมจริง, รายชื่อคณะกรรมการ, และปฏิทินกิจกรรมปี 2569</li>
+    <li>เมื่อล็อกแบบแล้ว เริ่มสร้างเว็บ WordPress จริงตามสูตรในกล่อง "ทำจริงใน WordPress" ของแบบนั้นทันที — ธีมและปลั๊กอินทุกรายการในชุดนี้มีอยู่จริง ติดตั้งฟรีได้</li>
+  </ol>
+</section>
+
+</div>
+<div class="foot">ชุดข้อเสนอ UX/UI (รวม 20 แบบ: 01–10 ชุดหลากหลาย · 11–20 ชุดทันสมัยพิเศษ) · สมาคมเอ็นโดดอนติกส์ไทย (Thai Endodontic Association) · ต้นแบบทั้งหมดวาดด้วย CSS ล้วน เปิดได้แม้ไม่มีอินเทอร์เน็ต (ฟอนต์/รูปสำรองอัตโนมัติ)</div>
+</body>
+</html>
