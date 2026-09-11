@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+
+<html lang="th"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "secondary-container": "#76dcff", "background": "#f8f9ff", "on-secondary": "#ffffff", "on-tertiary-fixed": "#001e2f", "primary": "#000000", "surface-container": "#e5eeff", "surface-container-lowest": "#ffffff", "surface-container-high": "#dce9ff", "inverse-surface": "#213145", "surface-variant": "#d3e4fe", "on-primary-container": "#79849d", "error-container": "#ffdad6", "secondary": "#006780", "tertiary": "#000000", "surface": "#f8f9ff", "on-primary-fixed-variant": "#3d475d", "surface-container-low": "#eff4ff", "on-secondary-container": "#006077", "primary-fixed": "#d8e2fe", "surface-bright": "#f8f9ff", "on-secondary-fixed-variant": "#004e61", "tertiary-container": "#001e2f", "surface-dim": "#cbdbf5", "on-error-container": "#93000a", "on-tertiary-fixed-variant": "#004c6e", "on-primary-fixed": "#111b30", "on-tertiary-container": "#008cc7", "inverse-on-surface": "#eaf1ff", "on-primary": "#ffffff", "on-error": "#ffffff", "secondary-fixed-dim": "#6cd3f7", "primary-container": "#111b30", "primary-fixed-dim": "#bcc6e2", "tertiary-fixed": "#c9e6ff", "surface-tint": "#545e76", "on-surface-variant": "#45474d", "on-tertiary": "#ffffff", "on-background": "#0b1c30", "outline": "#75777d", "secondary-fixed": "#b7eaff", "surface-container-highest": "#d3e4fe", "on-secondary-fixed": "#001f28", "tertiary-fixed-dim": "#89ceff", "outline-variant": "#c5c6cd", "error": "#ba1a1a", "inverse-primary": "#bcc6e2", "on-surface": "#0b1c30" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "2.5rem", "space-md": "1rem", "margin": "3rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-mobile": "1rem" }, fontFamily: { "headline-md": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "label-sm": ["JetBrains Mono"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "label-md": ["JetBrains Mono"], "headline-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "700" }], "display-hero-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }], "label-sm": ["10px", { lineHeight: "14px", letterSpacing: "0.06em", fontWeight: "600" }], "body-lg": ["18px", { lineHeight: "28px", letterSpacing: "-0.005em", fontWeight: "400" }], "body-sm": ["13px", { lineHeight: "20px", letterSpacing: "0em", fontWeight: "400" }], "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.025em", fontWeight: "700" }], "display-hero": ["56px", { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "800" }], "body-md": ["15px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "400" }], "headline-lg-mobile": ["28px", { lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "700" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-28 w-full px-margin flex flex-col justify-between py-space-xs"><div class="w-full flex items-center justify-between py-space-xs border-b border-surface-container-high/60"><div class="flex items-center gap-space-sm"><div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div><div class="font-label-sm text-label-sm tracking-wider uppercase text-on-surface-variant flex items-center gap-space-xs"><span class="text-secondary font-bold">TEA BIO-SCI NETWORK:</span><span>THAI DENTAL COUNCIL INTEGRATED V4.8</span><span class="text-outline-variant">•</span><span>CPG: VITAL PULP THERAPY 2026 RELEASED</span><span class="text-outline-variant">•</span><span class="text-secondary font-semibold">CDEC SYNC ACTIVE</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[14px] text-secondary">verified_user</span><span>ISO/IEC 27001 COMPLIANT BIO-PORTAL</span></div><div class="w-px h-3 bg-surface-container-highest"></div><div class="font-label-sm text-label-sm text-secondary font-semibold tracking-wide">THAILAND ENDODONTIC ASSOCIATION</div></div></div><div class="w-full flex items-center justify-between"><div class="flex items-center gap-space-md"><img alt="Thai Endodontic Association Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WqO8SRBuGvz0ikNfqy8D4xNWxcKS6uuavamVOMPk7Gff4cQkdwCkAaIykKEbg0bSHJwBYoQnL4fl4ImONEsqaHBMzqOofbQ9rW04aFDZUElRUhHBpiHw9vEPSObmSsAzD56olQAHJoif0U2629WLCCefwCG4_gKdyGO2D-fsOkcvFgawOVlbxfz2a7fF-VUp2-v-VIA4ygma5y0eSb9pLtguDVq1Si9ZNHe1ORc3Zqjg2A_Tk9eIVnqQ"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none tracking-tight">สมาคมเอ็นโดดอนติกส์ไทย</span><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-primary-container text-on-tertiary-container font-mono uppercase">BIO-TECH SCIENCE</span></div><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider">THAI ENDODONTIC ASSOCIATION • EST. 1989</span></div></div><nav class="hidden xl:flex items-center gap-space-sm" data-active-classes="bg-primary-container text-on-tertiary-container font-bold rounded"><a aria-current="page" class="px-2.5 py-1.5 transition-colors bg-primary-container text-on-tertiary-container font-bold rounded" data-path="หน้าแรก" href="#">หน้าแรก</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สาส์นและวิสัยทัศน์" href="#">สาส์นและวิสัยทัศน์</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="งานประชุมวิชาการ-cde" href="#">งานประชุมวิชาการ &amp; CDE</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="วารสาร-tej" href="#">วารสาร TEJ</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ทุนวิจัยและนวัตกรรม" href="#">ทุนวิจัยและนวัตกรรม</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="บริการสมาชิก-cdec" href="#">บริการสมาชิก &amp; CDEC</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="คลัง-cpg" href="#">คลัง CPG</a><a class="px-2.5 py-1.5 font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สำหรับประชาชน" href="#">สำหรับประชาชน</a></nav><div class="flex items-center gap-space-sm"><a class="px-3 py-1.5 rounded font-label-md text-label-md bg-surface-container-low text-secondary hover:bg-surface-container hover:text-on-secondary-container transition-all flex items-center gap-space-xs" data-path="ตรวจสอบ-cdec-ออนไลน์" href="#"><span class="material-symbols-outlined text-[16px]">fingerprint</span><span>ตรวจสอบ CDEC ออนไลน์</span></a><a class="px-3.5 py-1.5 rounded font-label-md text-label-md bg-primary-container text-on-primary hover:bg-inverse-surface hover:text-inverse-on-surface transition-all flex items-center gap-space-xs shadow-[0_2px_8px_-1px_rgba(17,27,48,0.3)]" data-path="เข้าสู่ระบบสมาชิก-e-service" href="#"><span class="material-symbols-outlined text-[16px]">lock_open</span><span>เข้าสู่ระบบสมาชิก e-Service</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-28 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO SECTION (Evidence-Based Clinical & Research Institute) -->
+<section class="w-full bg-surface-container-lowest py-space-xl px-margin border-b border-surface-container-high/70">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left Hero Content -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded bg-surface-container-low text-secondary w-fit">
+<span class="material-symbols-outlined text-[15px] text-secondary">verified</span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase font-semibold">CLINICAL QUALITY &amp; EVIDENCE-BASED GOVERNANCE • APEC &amp; IFEA STANDARD</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface leading-tight font-bold tracking-tight">
+            ศูนย์ความเป็นเลิศทางคลินิก<br class="hidden sm:inline"/>และการวิจัยวิทยาเอ็นโดดอนต์เชิงประจักษ์
+          </h1>
+<p class="font-body-lead text-body-lead text-on-surface-variant leading-relaxed">
+<strong class="font-semibold text-on-surface">Evidence-Based Endodontic Excellence &amp; Clinical Innovation:</strong> ศูนย์กลางงานวิจัยระดับสูง การรักษาด้วยกล้องจุลทรรศน์ชีวภาพแพทย์ และการรับรองมาตรฐานเวชปฏิบัติการอนุรักษ์ฟันธรรมชาติของประเทศไทย มุ่งเน้นความแม่นยำทางทันตกรรมระดับไมโครเมตรและการฟื้นฟูเนื้อเยื่อชีวภาพ
+          </p>
+<!-- Quick Search Bar -->
+<div class="p-space-xs rounded-xl bg-surface-container-low shadow-sm flex flex-col sm:flex-row items-stretch gap-space-xs mt-space-sm">
+<div class="flex items-center px-space-sm bg-surface-container-lowest rounded-lg flex-1">
+<span class="material-symbols-outlined text-outline text-[20px] mr-2">search</span>
+<input class="w-full py-2.5 text-body-default font-body-default bg-transparent outline-none text-on-surface placeholder:text-outline" placeholder="ค้นหาแนวทางเวชปฏิบัติ CPG, บทความวิจัย TCI, หรือค้นหาแพทย์..." type="text"/>
+</div>
+<div class="flex items-center gap-space-xs">
+<select class="h-full px-space-sm py-2 rounded-lg bg-surface-container-lowest text-body-sm font-body-sm text-on-surface outline-none cursor-pointer">
+<option>ทุกหมวดหมู่วิชาการ</option>
+<option>แนวทาง CPG ล่าสุด</option>
+<option>บทความวิจัย TEJ</option>
+<option>ทันตแพทย์เฉพาะทาง</option>
+<option>ทุนวิจัยและนวัตกรรม</option>
+</select>
+<button class="px-space-lg py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center justify-center gap-1 shadow-sm">
+<span>สืบค้น</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Quick Tags -->
+<div class="flex flex-wrap items-center gap-space-xs pt-1">
+<span class="font-label-sm text-label-sm text-outline uppercase">หมวดหมู่ด่วน:</span>
+<a class="px-2 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors" href="#cpg-section">Vital Pulp Therapy</a>
+<a class="px-2 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors" href="#cpg-section">MTA / Bioceramic</a>
+<a class="px-2 py-0.5 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm hover:bg-secondary-fixed transition-colors" href="#disciplines-section">CBCT 3D Evaluation</a>
+<a class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold hover:bg-secondary-fixed-dim transition-colors" href="#flagship-section">Dental Trauma 2569</a>
+</div>
+</div>
+<!-- Right Hero Visual Card -->
+<div class="lg:col-span-5">
+<div class="rounded-xl bg-primary-container text-on-primary p-space-lg shadow-xl relative overflow-hidden flex flex-col gap-space-md">
+<!-- Micro-surgical Graphic Card Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-ping"></div>
+<span class="font-label-sm text-label-sm text-tertiary-fixed font-mono uppercase tracking-wider">OPTICAL BIO-SURGERY LAB</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-lowest/15 text-primary-fixed font-mono">CALIBRATION: 0.05 μm</span>
+</div>
+<!-- Optical Grid Visual -->
+<div class="relative w-full h-48 rounded-lg bg-inverse-surface/80 overflow-hidden flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="font-caption text-caption text-secondary-container uppercase tracking-wider">Magnification Unit</span>
+<span class="font-headline-md text-headline-md text-on-primary font-bold">20.4x HIGH MAG</span>
+</div>
+<div class="px-2 py-1 rounded bg-secondary/30 text-secondary-fixed text-[11px] font-mono flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">tune</span>
+<span>ZOOM LOCKED</span>
+</div>
+</div>
+<!-- Center Reticle Graphic -->
+<div class="flex items-center justify-center my-auto">
+<div class="relative flex items-center justify-center w-24 h-24 rounded-full bg-secondary/10">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">biotech</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-full h-px bg-secondary-container/40"></div>
+<div class="h-full w-px bg-secondary-container/40 absolute"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-end font-label-sm text-label-sm text-on-primary-container">
+<span>CANAL: MB2 (ISOLATED)</span>
+<span>WL: 21.5 mm | TORQUE: 1.5 Ncm</span>
+</div>
+</div>
+<!-- Metadata Card Body -->
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-secondary-container font-semibold tracking-wide">MICRO-SURGICAL ACCURACY: 20x Optical Precision</span>
+<p class="font-body-sm text-body-sm text-on-primary-container leading-relaxed">
+                การรักษาคลองรากฟันซับซ้อนด้วยกล้องจุลศัลยกรรมเฉพาะทางระดับประเมินผล เพิ่มอัตราการตรวจพบคลองรากฟันที่ซ่อนอยู่ (Hidden Canals) สูงขึ้นกว่า 94.6% ในฟันกรามแท้
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between border-t border-surface-container-lowest/10 text-on-primary-container font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary-container">lens_blur</span> Carl Zeiss Extaro Optics</span>
+<span class="text-tertiary-fixed font-mono">ISO 13485 CERTIFIED</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4 Key Metrics Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-space-md p-space-sm rounded-lg bg-surface-container-lowest">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">vital_signs</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary font-bold leading-none">99.2%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 font-semibold">Clinical Success Rate</span>
+<span class="font-caption text-caption text-outline">อัตราความสำเร็จของการรักษา 5-10 ปี</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md p-space-sm rounded-lg bg-surface-container-lowest">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">menu_book</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary font-bold leading-none">1,850+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 font-semibold">Indexed Studies</span>
+<span class="font-caption text-caption text-outline">คลังเอกสารและงานวิจัยเชิงประจักษ์</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md p-space-sm rounded-lg bg-surface-container-lowest">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary font-bold leading-none">Tier 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 font-semibold">TCI &amp; PMC Journal</span>
+<span class="font-caption text-caption text-outline">วารสารวิชาการมาตรฐานระดับนานาชาติ</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md p-space-sm rounded-lg bg-surface-container-lowest">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[26px]">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg text-primary font-bold leading-none">24.5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 font-semibold">CDEC Credits / Year</span>
+<span class="font-caption text-caption text-outline">เฉลี่ยหน่วยกิตการศึกษาต่อเนื่องสมาชิก</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: SCIENTIFIC GOVERNANCE & OFFICIAL PROTOCOLS (CPG & JOURNAL) -->
+<section class="w-full py-space-xl px-margin bg-surface" id="cpg-section">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">EVIDENCE-BASED PROTOCOLS &amp; SCIENTIFIC PEER-REVIEW</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">แนวทางเวชปฏิบัติ CPG 2569 และวารสารวิชาการ</h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-mono">UPDATED: Q1/2569</span>
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">IFEA ALIGNED</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Left Card: CPG Standard Code -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded bg-primary-container text-on-primary font-mono text-[11px] font-semibold">CODE: CPG-2026-01</span>
+<div class="flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>NATIONAL ENDO GUIDELINE</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+              Contemporary Protocols for Vital Pulp Therapy in Permanent Immature and Mature Teeth
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              แนวทางเวชปฏิบัติมาตรฐานการรักษาเนื้อเยื่อในที่มีชีวิต ในฟันแท้ที่รากฟันยังเจริญเติบโตไม่เต็มที่และในฟันแท้สมบูรณ์ ด้วยวัสดุชีวออกฤทธิ์ไฮดรอลิกซิลิเกตซีเมนต์ Bioceramic / MTA เพื่อสงวนความมีชีวิตของเนื้อเยื่อใน
+            </p>
+<!-- Evidence Badges -->
+<div class="grid grid-cols-3 gap-space-xs py-space-xs">
+<div class="p-2 rounded bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-outline">ระดับหลักฐาน</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">Level A (Meta-Analysis)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-outline">เกรดคำแนะนำ</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">Grade 1 (Consensus)</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-outline">กลุ่มเป้าหมาย</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Endodontists &amp; GPs</span>
+</div>
+</div>
+<!-- Key Clinical Flow: 3-Step Decision Algorithm -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase">3-Step Decision Algorithm:</span>
+<div class="flex flex-col gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-mono text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+<span><strong>Pulpal Bleeding Control:</strong> ประเมินการหยุดเลือดด้วย 2.5% NaOCl นานไม่เกิน 5 นาที</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-mono text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+<span><strong>Biocompatible Placement:</strong> ทาและปิดด้วย Hydraulic Calcium Silicate Formulation (MTA/Biodentine)</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-5 h-5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-mono text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+<span><strong>Coronal Hermetic Seal:</strong> บูรณะฟันปิดรอยต่อแบบ Immediate Moisture-Resistant ทันที</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<button class="px-space-md py-2 rounded bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">account_tree</span>
+<span>Interactive Decision Tree</span>
+</button>
+<button class="px-space-md py-2 rounded bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>ดาวน์โหลด Full CPG (PDF 4.8MB)</span>
+</button>
+</div>
+</div>
+<!-- Right Card: Thai Endodontic Journal (TEJ) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="px-2.5 py-0.5 rounded bg-surface-container text-secondary font-mono text-[11px] font-bold">ISSN: 2697-4401</span>
+<span class="px-2.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">TCI กลุ่ม 1 Tier 1</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">Vol. 17 No. 1 (2569)</span>
+</div>
+<!-- Incentive Banner -->
+<div class="p-space-xs px-space-sm rounded-lg bg-surface-container-low text-secondary flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">card_giftcard</span>
+<span class="font-label-sm text-label-sm font-bold">เงินรางวัลสนับสนุนการตีพิมพ์บทความวิชาการ 10,000 บาท/เรื่อง</span>
+</div>
+<span class="font-caption text-caption text-outline-variant">เงื่อนไขตามประกาศ</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+              Thai Endodontic Journal (TEJ)
+            </h3>
+<!-- Featured Article 1 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-1 text-[11px] font-mono text-secondary">
+<span class="material-symbols-outlined text-[13px]">article</span>
+<span>ORIGINAL RESEARCH ARTICLE • DOI: 10.14456/tej.2026.14</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">
+                "Comparative Sealing Ability of Bioceramic vs Resin-Based Sealers in Severely Curved Root Canals: A Micro-CT Analysis"
+              </span>
+<span class="font-caption text-caption text-on-surface-variant">คณะทันตแพทยศาสตร์ จุฬาลงกรณ์มหาวิทยาลัย และมหาวิทยาลัยมหิดล</span>
+</div>
+<!-- Clinical Review 2 -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1">
+<div class="flex items-center gap-1 text-[11px] font-mono text-secondary">
+<span class="material-symbols-outlined text-[13px]">clinical_notes</span>
+<span>SYSTEMATIC CLINICAL REVIEW</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">
+                "Regenerative Endodontic Procedures (REPs) in Immature Permanent Teeth: 5-Year Clinical Outcomes"
+              </span>
+<span class="font-caption text-caption text-on-surface-variant">การติดตามผลการงอกของผนังรากฟันและปิดยอดปลายรากในผู้ป่วยเด็ก</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<button class="px-space-md py-2 rounded bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">upload_file</span>
+<span>ส่งบทความวิจัยผ่านระบบ ThaiJO</span>
+</button>
+<button class="px-space-md py-2 rounded bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>สารบัญวารสารฉบับปัจจุบัน</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: ADVANCED CLINICAL DISCIPLINES & MODALITIES (4 Cards Grid) -->
+<section class="w-full py-space-xl px-margin bg-surface-container-low" id="disciplines-section">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1 max-w-3xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">SPECIALTY HORIZONS &amp; CLINICAL MODALITIES</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+          สาขาวิชาชีพและความเชี่ยวชาญคลินิกขั้นสูง
+        </h2>
+<p class="font-body-default text-body-default text-on-surface-variant">
+          มาตรฐานกระบวนการรักษาและงานวิจัยมุ่งเน้นการบูรณาการเทคโนโลยีระดับชีวการแพทย์ เพื่อการรักษาและคงไว้ซึ่งฟันธรรมชาติอย่างปลอดภัยสูงสุด
+        </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">cell_merge</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-mono font-semibold">MODALITY 01</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Regenerative Endodontics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              การฟื้นฟูเนื้อเยื่อโพรงฟันและปลายรากด้วยสเต็มเซลล์ SCAP &amp; Platelet-Rich Fibrin (PRF) เพื่อกระตุ้นการสร้างรากฟันแท้ในผู้ป่วยเด็กและวัยรุ่น
+            </p>
+</div>
+<div class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>อ่านเกณฑ์วิธีปฏิบัติ</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">view_in_ar</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-mono font-semibold">MODALITY 02</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">3D CBCT Micro-Endodontics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              การวินิจฉัยภาพรังสี 3 มิติความละเอียดสูง (High-Resolution CBCT) ตรวจหาคลองรากฟันที่ซับซ้อน รอยแตก และวางแผนจุลศัลยศาสตร์ปลายราก
+            </p>
+</div>
+<div class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>ดูแนวทางประเมินภาพรังสี</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">healing</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-mono font-semibold">MODALITY 03</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Complex Trauma &amp; Retreatment</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              การจัดการฟันหัก ฟันหลุดจากเบ้า (Dental Avulsion Triage) ตามแนวทาง IADT ล่าสุด และการรักษารากฟันซ้ำเคสติดเชื้อเรื้อรัง
+            </p>
+</div>
+<div class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>เกณฑ์การจัดการ Trauma</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[28px]">history_edu</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-mono font-semibold">MODALITY 04</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Continuous Education &amp; CDEC</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              หลักสูตร CDE ส่องกล้องจุลทรรศน์จริง (Hands-on Micro-Canals), การกำจัดเครื่องมือหัก (Broken File Removal) และการสัมมนาวิชาการระดับชาติ
+            </p>
+</div>
+<div class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1">
+<span>ตรวจสอบตารางหลักสูตร</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: DUAL FLAGSHIP SHOWCASE: งานประชุมใหญ่ประจำปี 2569 & ทุนอุดหนุนการวิจัย -->
+<section class="w-full py-space-xl px-margin bg-surface" id="flagship-section">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">OFFICIAL HIGHLIGHTS &amp; ACADEMIC GRANTS</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+            กิจกรรมวิชาการและการสนับสนุนการวิจัย 2569 (Flagship Programs &amp; Academic Announcements)
+          </h2>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span>สมาคมเอ็นโดดอนติกส์ไทย รับรองโดยทันตแพทยสภา</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Left Column: งานประชุมวิชาการประจำปี ครั้งที่ 34 (Full Poster Display) -->
+<div class="rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col">
+<!-- Full Uncropped Poster Display -->
+<div class="w-full bg-surface-container-low flex items-center justify-center p-space-xs">
+<img alt="งานประชุมวิชาการประจำปี ครั้งที่ 34 สมาคมเอ็นโดดอนติกส์ไทย" class="w-full h-auto object-contain block rounded-lg shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm32KNdDH85DONM2Hx2izq6emZBs5NWCfZJesuZi3xDmfYC05_99G94AMy7ye6aMaz2MmimjT7Yxx0z_xAAW-e0dP0N0VjGLCMcSIq-pXFrw79a8zea6Qv5D2dIRoL6h5P-9NZTbGwVRNjquHIStyrGldMXuGE_NGSOl-9amP6ABkh36G2SBcKENIPjor6ufeYP4euHRvgQ4A2GdPz_X-oDno7VoDQwSww-m05xbeneEpLwd4oUyYLU9AF0gt4Zrwz8w"/>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<span class="px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold">
+                รับรอง 6.5 หน่วยกิต CDEC โดยทันตแพทยสภา
+              </span>
+<span class="font-label-sm text-label-sm text-secondary font-mono font-bold">THE 34th ANNUAL CONGRESS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold leading-tight">
+              งานประชุมวิชาการประจำปี ครั้งที่ 34: "Dental Trauma and Root Resorption: Guideline Updates and Clinical Management"
+            </h3>
+<!-- Event Details Meta -->
+<div class="flex flex-col gap-2 p-space-sm rounded-lg bg-surface-container-low font-body-sm text-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<span><strong>วันอาทิตย์ที่ 30 พฤศจิกายน 2569</strong> (เวลา 08:30 - 16:30 น.)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">location_on</span>
+<span>ห้องแกรนด์ บอลรูม โรงแรม Grande Centre Point Lumphini กรุงเทพฯ</span>
+</div>
+</div>
+<!-- Early Bird Rate Table -->
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm font-bold text-on-surface uppercase">อัตราค่าลงทะเบียน Early Bird (ถึง 31 ต.ค. 2569):</span>
+<div class="grid grid-cols-3 gap-2 text-center pt-1 font-body-sm text-body-sm">
+<div class="p-1.5 rounded bg-surface-container-lowest">
+<span class="block text-caption text-outline">สมาชิกสมาคมฯ</span>
+<span class="font-bold text-secondary">1,800 บาท</span>
+</div>
+<div class="p-1.5 rounded bg-surface-container-lowest">
+<span class="block text-caption text-outline">ทันตแพทย์ทั่วไป</span>
+<span class="font-bold text-on-surface">2,500 บาท</span>
+</div>
+<div class="p-1.5 rounded bg-surface-container-lowest">
+<span class="block text-caption text-outline">ทันตแพทย์ประจำบ้าน</span>
+<span class="font-bold text-on-surface">1,500 บาท</span>
+</div>
+</div>
+</div>
+<!-- Keynote Speakers -->
+<div class="flex flex-col gap-1">
+<span class="font-caption text-caption text-outline uppercase font-semibold">วิทยากรผู้ทรงคุณวุฒิระดับนานาชาติ:</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                รศ. ทพ. ดร. นภาพร ธีรานุสรณ์ (นายกสมาคมฯ วาระ 2569–2570), รศ. ทพ. ดร. ศรุตยา ติรศิริโรจน์, รศ. ทพ. ดร. วรพจน์ ธนกิจไพศาล, IFEA Global Envoy Specialist
+              </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-xs pt-space-xs">
+<button class="flex-1 px-space-md py-2.5 rounded bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span>ลงทะเบียนออนไลน์ทันที (รับสิทธิ์ CDEC)</span>
+</button>
+<button class="px-space-md py-2.5 rounded bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>ดาวน์โหลดกำหนดการและหนังสืออนุมัติราชการ (.pdf)</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: เปิดรับสมัครทุนอุดหนุนการวิจัยทางทันตกรรม 2569 (Full Poster Display) -->
+<div class="rounded-xl bg-surface-container-lowest shadow-md overflow-hidden flex flex-col">
+<!-- Full Uncropped Poster Display -->
+<div class="w-full bg-surface-container-low flex items-center justify-center p-space-xs">
+<img alt="ประกาศเปิดรับสมัครทุนอุดหนุนการวิจัยทางทันตกรรม สมาคมเอ็นโดดอนติกส์ไทย ประจำปี 2569" class="w-full h-auto object-contain block rounded-lg shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwt-11h3-xmXtuolFfnodhu4YISxNj0XIMsqLwHA0vUSJrnvAsXUNpjBFZuqi9ePSnApDDDlPYJG_Em_YbCaLivJSAwggoYL0JYzmb6nVDtxwFK_IkFeWmPJ5pfTUYrdvQXnkodaHqReLqRiPR9A2UKmn3_Fdx600ffuzQdHQMEE1yjSjOHXEQ0E3XH9LfljytD4JU4zzed8u660OpAVQJbOCl40mDop2tLn4gzlqB39xSZBbtkiofiMxBXhKSBMek8A"/>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-xs">
+<span class="px-2.5 py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+                วงเงินทุนละไม่เกิน 100,000 บาท*
+              </span>
+<span class="font-label-sm text-label-sm text-secondary font-mono font-bold">RESEARCH GRANT ROUND 1/2569</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold leading-tight">
+              เปิดรับสมัครทุนอุดหนุนการวิจัยทางทันตกรรม สาขาวิทยาเอ็นโดดอนต์ รอบที่ 1 ประจำปี 2569
+            </h3>
+<!-- Funding Details -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-2 font-body-sm text-body-sm">
+<div class="flex items-start gap-2 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">verified</span>
+<span><strong>ขอบเขตทุน:</strong> งานวิจัยวิทยาศาสตร์พื้นฐาน จุลชีววิทยาทางโพรงฟัน วัสดุชีวภาพ Bioceramics และนวัตกรรมคลินิก (ระยะเวลาโครงการไม่เกิน 2 ปี ไม่จำกัดจำนวนโครงการ)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">event_available</span>
+<span><strong>ระยะเวลารับสมัคร:</strong> 1 กันยายน – 31 ตุลาคม 2569 | <strong>ประกาศผล:</strong> 1 ธันวาคม 2569</span>
+</div>
+</div>
+<!-- Application Channels -->
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col gap-1 font-body-sm text-body-sm">
+<span class="font-label-sm text-label-sm font-bold text-on-surface uppercase">ช่องทางการส่งข้อเสนอโครงการวิจัย:</span>
+<div class="flex flex-col gap-1 text-on-surface-variant pt-1 font-mono text-[12px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">mail</span>
+<span>ส่งใบสมัครหลัก: <strong class="text-on-surface font-sans">thaiendo_secretary@outlook.com</strong></span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary">forward_to_inbox</span>
+<span>ส่งสำเนา (CC): <strong class="text-on-surface font-sans">thaiendodontics@gmail.com</strong></span>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-space-xs pt-space-xs">
+<button class="flex-1 px-space-md py-2.5 rounded bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>ดาวน์โหลดแบบฟอร์มข้อเสนอโครงการวิจัย (.docx / .pdf)</span>
+</button>
+<button class="px-space-md py-2.5 rounded bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-surface-container-high transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>ระเบียบการให้ทุน</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: CLINICAL TRIAGE & REFERRAL PROTOCOL FOR DENTISTS (ระบบส่งต่อผู้ป่วยเคสเฉพาะทาง) -->
+<section class="w-full py-space-xl px-margin bg-surface-container-low">
+<div class="max-w-[1280px] mx-auto">
+<div class="rounded-2xl bg-primary-container text-on-primary p-space-xl shadow-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Left: Clinical criteria & referral -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-xs text-secondary-container font-label-sm text-label-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">swap_horizontal_circle</span>
+<span>SPECIALIST REFERRAL &amp; TRIAGE PROTOCOL</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-primary font-bold">
+              ระบบส่งต่อผู้ป่วยเคสเฉพาะทางวิทยาเอ็นโดดอนต์
+            </h2>
+<p class="font-body-default text-body-default text-on-primary-container leading-relaxed">
+              สมาคมเอ็นโดดอนติกส์ไทยสนับสนุนการเชื่อมโยงระบบการส่งต่อระหว่างทันตแพทย์ทั่วไปและทันตแพทย์เฉพาะทาง เพื่อให้ผู้ป่วยได้รับการดูแลรักษาฟันแท้ที่ซับซ้อนตามเกณฑ์มาตรฐานสากล
+            </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-surface-container-lowest/10">
+<span class="material-symbols-outlined text-secondary-container text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary font-bold">Severe Canal Calcification</span>
+<span class="font-body-sm text-body-sm text-on-primary-container">คลองรากฟันตีบตัน รอยตีบแคบระดับรุนแรง</span>
+</div>
+</div>
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-surface-container-lowest/10">
+<span class="material-symbols-outlined text-secondary-container text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary font-bold">Separated Instrument</span>
+<span class="font-body-sm text-body-sm text-on-primary-container">การนำเครื่องมือหักออกจากคลองรากฟัน</span>
+</div>
+</div>
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-surface-container-lowest/10">
+<span class="material-symbols-outlined text-secondary-container text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary font-bold">Endodontic Microsurgery</span>
+<span class="font-body-sm text-body-sm text-on-primary-container">จุลศัลยศาสตร์ปลายรากฟัน (Apicoectomy)</span>
+</div>
+</div>
+<div class="flex items-start gap-2 p-space-sm rounded-lg bg-surface-container-lowest/10">
+<span class="material-symbols-outlined text-secondary-container text-[18px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-primary font-bold">Root Resorption</span>
+<span class="font-body-sm text-body-sm text-on-primary-container">การจัดการการละลายของรากฟันภายใน/ภายนอก</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<button class="px-space-md py-2.5 rounded bg-secondary text-on-secondary font-label-md text-label-md hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>ดาวน์โหลดแบบฟอร์มส่งต่อ (E-Referral Form)</span>
+</button>
+<button class="px-space-md py-2.5 rounded bg-surface-container-lowest/15 text-primary-fixed font-label-md text-label-md hover:bg-surface-container-lowest/25 transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">assignment</span>
+<span>เกณฑ์การประเมินความยากเคส (AAE Case Assessment)</span>
+</button>
+</div>
+</div>
+<!-- Right: Search Endodontist Widget -->
+<div class="lg:col-span-5">
+<div class="rounded-xl bg-surface-container-lowest text-on-surface p-space-lg shadow-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between border-b border-surface-container pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">person_search</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">ค้นหาทันตแพทย์เฉพาะทาง</h3>
+</div>
+<span class="font-caption text-caption text-outline font-mono">TDC VERIFIED</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">เลือกจังหวัด / ภูมิภาค:</label>
+<select class="w-full px-space-sm py-2 rounded-lg bg-surface-container-low text-body-default font-body-default text-on-surface outline-none">
+<option>กรุงเทพมหานครและปริมณฑล</option>
+<option>เชียงใหม่ / ภาคเหนือ</option>
+<option>ขอนแก่น / ภาคตะวันออกเฉียงเหนือ</option>
+<option>ชลบุรี / ภาคตะวันออก</option>
+<option>สงขลา / ภาคใต้</option>
+</select>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">สังกัดสถานพยาบาล:</label>
+<select class="w-full px-space-sm py-2 rounded-lg bg-surface-container-low text-body-default font-body-default text-on-surface outline-none">
+<option>ทุกสังกัด (โรงพยาบาลรัฐ / มหาวิทยาลัย / เอกชน)</option>
+<option>โรงพยาบาลมหาวิทยาลัยและศูนย์การแพทย์</option>
+<option>โรงพยาบาลศูนย์ / โรงพยาบาลทั่วไป กระทรวงสาธารณสุข</option>
+<option>คลินิกเฉพาะทางและโรงพยาบาลเอกชน</option>
+</select>
+</div>
+<!-- Interactive Map Mock Box -->
+<div class="w-full h-32 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant font-label-sm text-label-sm" data-location="Bangkok, Thailand" style="">
+<div class="flex items-center gap-1.5 p-2 rounded bg-surface-container-lowest/90 shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">location_searching</span>
+<span>แสดงตำแหน่งศูนย์ทันตกรรมเฉพาะทาง 142 แห่ง</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">search</span>
+<span>ค้นหารายชื่อทันตแพทย์เฉพาะทางใกล้คุณ</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: PATIENT EDUCATION & CLINICAL SAFETY (สาระความรู้การรักษารากฟันเชิงประจักษ์สำหรับประชาชน) -->
+<section class="w-full py-space-xl px-margin bg-surface">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">PUBLIC HEALTH &amp; EVIDENCE-BASED PATIENT EDUCATION</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+            สาระความรู้การรักษารากฟันเชิงประจักษ์สำหรับประชาชน
+          </h2>
+</div>
+<a class="text-secondary font-label-sm text-label-sm font-bold flex items-center gap-1 hover:underline" href="#">
+<span>ดูบทความความรู้ทั้งหมด</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Article Card 1 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">health_and_safety</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-semibold">NATURAL TOOTH PRESERVATION</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+              รักษารากฟัน VS ถอนฟันใส่รากเทียม ทางเลือกไหนเหมาะสมกับคุณ?
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              เปรียบเทียบข้อดี ข้อจำกัด และอัตราความสำเร็จระยะยาวเชิงสถิติ ทำไมการอนุรักษ์ฟันธรรมชาติของตนเองไว้จึงยังคงเป็นมาตรฐานที่ดีที่สุดสำหรับร่างกาย
+            </p>
+</div>
+<a class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:underline" href="#">
+<span>อ่านบทความฉบับเต็ม</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</div>
+<!-- Article Card 2 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">sentiment_satisfied</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-semibold">PAIN MANAGEMENT</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+              การรักษารากฟันเจ็บจริงหรือไม่? ขั้นตอนการดูแลด้วยยาชาและเลเซอร์
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              ไขข้อข้องใจด้วยวิทยาการระงับความรู้สึกสมัยใหม่ การล้างฆ่าเชื้อด้วยพลังคลื่นเสียง (Ultrasonic) ช่วยให้การรักษาสะดวกสบาย ปราศจากความเจ็บปวด
+            </p>
+</div>
+<a class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:underline" href="#">
+<span>อ่านบทความฉบับเต็ม</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</div>
+<!-- Article Card 3 -->
+<div class="rounded-xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col justify-between gap-space-md hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[26px]">medical_services</span>
+</div>
+<span class="font-caption text-caption text-secondary uppercase font-semibold">POST-ENDODONTIC CARE</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-snug">
+              ทำไมหลังรักษารากฟันจึงต้องทำครอบฟันหรืออุดฟันแบบพิเศษ?
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              ความสำคัญของการบูรณะส่วนตัวฟันเพื่อป้องกันการแตกหักและป้องกันเชื้อโรคซึมซ้ำเข้าสู่คลองรากฟัน (Coronal Microleakage)
+            </p>
+</div>
+<a class="pt-space-xs text-secondary font-label-sm text-label-sm font-semibold flex items-center gap-1 hover:underline" href="#">
+<span>อ่านบทความฉบับเต็ม</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: CONTINUING PROFESSIONAL EDUCATION TIMELINE & CDEC LOOKUP -->
+<section class="w-full py-space-xl px-margin bg-surface-container-low border-t border-surface-container-high/60">
+<div class="max-w-[1280px] mx-auto flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Interactive CDEC Lookup Card -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">INSTANT CREDENTIAL VERIFICATION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">
+              ระบบตรวจสอบหน่วยกิตสะสม CDEC
+            </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              ทันตแพทย์สมาชิกสามารถกรอกเลขที่ใบอนุญาตประกอบวิชาชีพทันตกรรม (เลข ว.) เพื่อตรวจสอบคะแนน CDEC จากงานประชุมวิชาการของสมาคมฯ ได้ทันที
+            </p>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface font-semibold">เลขที่ใบอนุญาตฯ (เลข ว.):</label>
+<div class="flex items-center gap-space-xs">
+<input class="flex-1 px-space-sm py-2.5 rounded-lg bg-surface-container-low text-body-default font-body-default text-on-surface outline-none border border-surface-container" id="cdec-license-input" placeholder="เช่น 9876" type="text"/>
+<button class="px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-secondary transition-colors shadow-sm" id="cdec-lookup-btn">
+                  ตรวจสอบ
+                </button>
+</div>
+</div>
+<!-- Lookup Result Box (Default Mock State) -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5" id="cdec-result-box">
+<div class="flex items-center justify-between text-[12px] font-mono">
+<span class="text-on-surface-variant">สถานะการเชื่อมโยง:</span>
+<span class="text-secondary font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> TDC SYNCED</span>
+</div>
+<div class="flex items-center justify-between pt-1 border-t border-surface-container">
+<span class="font-body-sm text-body-sm text-on-surface-variant">หน่วยกิตสะสมปี 2569:</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">24.5 / 20.0 CDEC</span>
+</div>
+<span class="font-caption text-caption text-outline">ผ่านเกณฑ์การต่ออายุใบอนุญาตฯ ประจำรอบ</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Academic Events Calendar Timeline -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">CONTINUOUS PROFESSIONAL TIMELINE</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">ปฏิทินกิจกรรมวิชาการและการอบรม</h3>
+</div>
+<a class="font-label-sm text-label-sm text-secondary font-bold hover:underline flex items-center gap-1" href="#">
+<span>ดาวน์โหลดปฏิทินประจำปี (.ics)</span>
+<span class="material-symbols-outlined text-[15px]">calendar_month</span>
+</a>
+</div>
+<div class="flex flex-col gap-space-xs">
+<!-- Event Item 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-caption text-caption text-secondary font-bold uppercase">NOV</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary leading-none">30</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold font-mono">ANNUAL SCIENTIFIC CONGRESS</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">The 34th Annual Scientific Congress 2026</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ณ รร. Grande Centre Point Lumphini (6.5 CDEC)</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold text-center shrink-0">
+                เปิดรับลงทะเบียน
+              </span>
+</div>
+<!-- Event Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-caption text-caption text-secondary font-bold uppercase">DEC</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary leading-none">18</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold font-mono">HANDS-ON WORKSHOP</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">CBCT Guided Microsurgical Endodontics Hands-on</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ศูนย์ฝึกทักษะทันตแพทย์ขั้นสูง จุฬาฯ (จำกัด 24 ที่นั่ง)</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-surface-container text-on-secondary-container font-label-sm text-label-sm font-semibold text-center shrink-0">
+                ใกล้เต็ม (เหลือ 4 ที่)
+              </span>
+</div>
+<!-- Event Item 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex flex-col items-center justify-center shrink-0">
+<span class="font-caption text-caption text-secondary font-bold uppercase">FEB</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary leading-none">20</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary font-semibold font-mono">BOARD EXAMINATION</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Examination Royal College of Dental Surgeons</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">การสอบเพื่อหนังสืออนุมัติฯ สาขาวิทยาเอ็นโดดอนต์ ประจำปี 2570</span>
+</div>
+</div>
+<span class="px-3 py-1 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm font-semibold text-center shrink-0">
+                ประกาศระเบียบการ
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript for CDEC Lookup Simulation -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('cdec-lookup-btn');
+      const input = document.getElementById('cdec-license-input');
+      const resultBox = document.getElementById('cdec-result-box');
+
+      if (btn && input && resultBox) {
+        btn.addEventListener('click', () => {
+          const val = input.value.trim();
+          if (!val) {
+            input.focus();
+            return;
+          }
+          resultBox.innerHTML = `
+            <div class="flex items-center justify-between text-[12px] font-mono">
+              <span class="text-on-surface-variant">ทันตแพทย์หมายเลข ว.${val}</span>
+              <span class="text-secondary font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> VERIFIED</span>
+            </div>
+            <div class="flex items-center justify-between pt-1 border-t border-surface-container">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">หน่วยกิตสะสมประจำปี 2569:</span>
+              <span class="font-headline-sm text-headline-sm font-bold text-secondary">26.0 / 20.0 CDEC</span>
+            </div>
+            <div class="flex items-center justify-between text-caption text-outline">
+              <span>สถานะ: ผ่านเกณฑ์การศึกษาต่อเนื่อง</span>
+              <span class="text-secondary font-semibold">อัปเดตล่าสุด: เมื่อสักครู่</span>
+            </div>
+          `;
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter pb-space-lg"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-3 h-3 rounded bg-secondary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[10px]">biotech</span></div><span class="font-headline-sm text-headline-sm font-bold text-on-surface">สมาคมเอ็นโดดอนติกส์ไทย</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">Thai Endodontic Association (ชมรมวิทยาเอนโดดอนต์แห่งประเทศไทย) สถาบันวิชาการเพื่อการส่งเสริมและพัฒนางานชีววิทยาเนื้อเยื่อใน โพรงฟัน ชีววิทยารอบปลายราก และจุลศัลยศาสตร์ทางเอ็นโดดอนติกส์ระดับสากล</p><div class="flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">เครือข่ายความร่วมมือและมาตรฐานสากล (Accreditation)</span><div class="flex flex-wrap items-center gap-space-sm pt-space-xs"><div class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface flex items-center gap-space-xs"><span class="material-symbols-outlined text-[14px] text-secondary">military_tech</span><span class="font-label-sm text-label-sm font-semibold">ทันตแพทยสภา (TDC)</span></div><div class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface flex items-center gap-space-xs"><span class="material-symbols-outlined text-[14px] text-secondary">public</span><span class="font-label-sm text-label-sm font-semibold">IFEA MEMBER</span></div><div class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface flex items-center gap-space-xs"><span class="material-symbols-outlined text-[14px] text-secondary">hub</span><span class="font-label-sm text-label-sm font-semibold">APEC ENDO FEDERATION</span></div></div></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md uppercase text-secondary font-bold tracking-wider">บริการวิชาการ &amp; วิจัย</span><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="วารสาร-tej" href="#">Thai Endodontic Journal (TEJ)</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="คลัง-cpg" href="#">CPG แนวทางการรักษาโรคโพรงฟัน</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ทุนวิจัยและนวัตกรรม" href="#">ทุนวิจัยเทคโนโลยีทางทันตกรรม</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="งานประชุมวิชาการ-cde" href="#">ปฏิทินงานประชุมวิชาการประจำปี</a></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md uppercase text-secondary font-bold tracking-wider">สมาชิกภาพและ CDEC</span><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="เข้าสู่ระบบสมาชิก-e-service" href="#">เข้าสู่ระบบ e-Service ส่วนบุคคล</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ตรวจสอบ-cdec-ออนไลน์" href="#">ระบบตรวจสอบหน่วยกิตสะสม CDEC</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="บริการสมาชิก-cdec" href="#">การสมัครสมาชิกรายปีและตลอดชีพ</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สาส์นและวิสัยทัศน์" href="#">ข้อบังคับและจริยธรรมวิชาชีพ</a></div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md uppercase text-secondary font-bold tracking-wider">คลินิกและข้อมูลประชาชน</span><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สำหรับประชาชน" href="#">ความรู้การรักษารากฟันสำหรับประชาชน</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สำหรับประชาชน" href="#">ค้นหาทันตแพทย์เฉพาะทางเอ็นโดดอนต์</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="สาส์นและวิสัยทัศน์" href="#">ติดต่อสำนักงานเลขาธิการสมาคมฯ</a><div class="pt-space-xs font-label-sm text-label-sm text-on-surface-variant"><span class="block font-semibold text-on-surface">สำนักงานสมาคมฯ:</span><span>อาคารทันตแพทยสภา กระทรวงสาธารณสุข นนทบุรี 11000</span></div></div></div></div><div class="pt-space-md border-t border-surface-container-high/80 flex flex-col md:flex-row items-center justify-between gap-space-sm"><div class="font-label-sm text-label-sm text-on-surface-variant">© 2026 สมาคมเอ็นโดดอนติกส์ไทย (Thai Endodontic Association). สงวนลิขสิทธิ์ตามกฎหมาย.</div><div class="flex items-center gap-space-md"><span class="font-label-sm text-label-sm text-secondary flex items-center gap-space-xs"><span class="material-symbols-outlined text-[12px]">shield</span>SYSTEM SECURED &amp; AUDITED BY DENTAL IT SECURITY</span></div></div></div></footer></body></html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ชุดนำเสนอดีไซน์เว็บไซต์ — สมาคมเอ็นโดดอนติกส์ไทย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --ink:#0F2033; --body:#33475C; --muted:#64748B;
+    --teal:#0E7C7B; --navy:#123B5C; --deep:#0B1E30;
+    --paper:#F5F8FA; --line:#DCE5EC; --card:#FFFFFF;
+    --gold:#C9A24B; --ok:#0E7C7B;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:"Noto Sans Thai", system-ui, sans-serif;
+    background:var(--paper); color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit; cursor:pointer;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    display:none; align-items:center; gap:10px;
+    padding:10px 14px;
+    background:rgba(11,30,48,.94); color:#EAF2F8;
+    backdrop-filter:blur(6px);
+  }
+  body.mode-slide .topbar{display:flex;}
+  .topbar .brand{font-weight:700; font-size:14px; color:#9FC3DE; white-space:nowrap;}
+  .topbar .badge{
+    background:#1C4B70; border-radius:999px; padding:4px 12px;
+    font-size:13px; font-weight:600; white-space:nowrap;
+  }
+  .topbar .name{
+    flex:1; min-width:0; font-size:13px; color:#C9DCEB;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .tbtn{
+    border:1px solid #2E5B7E; background:#143A57; color:#EAF2F8;
+    border-radius:9px; padding:7px 13px; font-size:13px; font-weight:600;
+    white-space:nowrap;
+  }
+  .tbtn:hover{background:#1C4B70;}
+  .tbtn.primary{background:var(--teal); border-color:var(--teal);}
+  .tbtn.primary:hover{background:#0A6766;}
+  .tbtn.picked{background:var(--gold); border-color:var(--gold); color:#3A2C07;}
+
+  /* ---------- Stage (slide view) ---------- */
+  .stage{display:none; position:fixed; inset:52px 0 0 0; background:#fff;}
+  body.mode-slide .stage{display:block;}
+  .stage iframe{width:100%; height:100%; border:0; display:block;}
+
+  /* ---------- Cover + grid ---------- */
+  .wrap{max-width:1180px; margin:0 auto; padding:34px 22px 90px;}
+  body.mode-slide .wrap{display:none;}
+  .kicker{
+    display:inline-block; letter-spacing:.14em; font-size:12px; font-weight:700;
+    color:var(--teal); border:1px solid #BFE0DF; background:#E9F5F4;
+    border-radius:999px; padding:5px 14px; margin-bottom:14px;
+  }
+  h1{font-size:clamp(26px,4vw,38px); font-weight:800; line-height:1.25;}
+  .sub{color:var(--body); margin-top:10px; max-width:760px; line-height:1.75; font-size:15px;}
+  .notice{
+    margin-top:18px; border-left:4px solid var(--gold);
+    background:#FBF6EA; border-radius:0 12px 12px 0;
+    padding:12px 16px; font-size:13.5px; color:#6B5A2A; line-height:1.7;
+  }
+  .howto{
+    margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; font-size:12.5px; color:var(--muted);
+  }
+  .howto span{background:#EDF2F6; border:1px solid var(--line); border-radius:999px; padding:5px 12px;}
+
+  .grid{
+    margin-top:30px; display:grid; gap:18px;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; display:flex; flex-direction:column;
+    transition:box-shadow .18s, transform .18s;
+    position:relative;
+  }
+  .card:hover{box-shadow:0 10px 28px rgba(15,42,66,.12); transform:translateY(-2px);}
+  .card .thumb{
+    position:relative; width:100%; aspect-ratio:16/10; background:#E8EEF3;
+    overflow:hidden; cursor:pointer; border-bottom:1px solid var(--line);
+  }
+  .card .thumb iframe{
+    width:1280px; height:800px; border:0;
+    transform-origin:0 0; pointer-events:none; position:absolute; left:0; top:0;
+  }
+  .card .coverlink{position:absolute; inset:0; z-index:2; background:transparent; border:0;}
+  .card .body{padding:14px 16px 16px; display:flex; gap:10px; align-items:flex-start;}
+  .num{
+    flex:none; width:34px; height:34px; border-radius:10px;
+    background:var(--deep); color:#fff; font-weight:800; font-size:14px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .card h3{font-size:15px; font-weight:700; line-height:1.45;}
+  .card .open{
+    margin-left:auto; flex:none; font-size:12.5px; font-weight:700;
+    color:var(--teal); background:#E9F5F4; border:1px solid #BFE0DF;
+    border-radius:9px; padding:6px 10px; white-space:nowrap;
+  }
+  .pickmark{
+    position:absolute; z-index:3; top:10px; left:10px;
+    background:var(--gold); color:#3A2C07; font-weight:800; font-size:12px;
+    border-radius:999px; padding:4px 10px; display:none;
+  }
+  .card.picked .pickmark{display:block;}
+  .card.picked{border-color:var(--gold); box-shadow:0 0 0 2px #E8D9AE inset;}
+
+  /* ---------- Pick tray ---------- */
+  .tray{
+    position:fixed; z-index:60; right:18px; bottom:18px;
+    display:flex; flex-direction:column; align-items:flex-end; gap:10px;
+  }
+  .traybtn{
+    border:0; border-radius:999px; padding:12px 20px;
+    font-size:14px; font-weight:700; color:#fff;
+    background:var(--deep); box-shadow:0 8px 22px rgba(11,30,48,.35);
+  }
+  .traybtn .count{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--gold); color:#3A2C07; border-radius:999px;
+    min-width:22px; height:22px; padding:0 6px; margin-left:8px; font-size:12.5px;
+  }
+  /* ---------- Summary modal ---------- */
+  .modalbg{
+    position:fixed; inset:0; z-index:100; background:rgba(9,20,32,.55);
+    display:none; align-items:center; justify-content:center; padding:20px;
+  }
+  .modalbg.show{display:flex;}
+  .modal{
+    background:#fff; border-radius:18px; max-width:520px; width:100%;
+    padding:26px 26px 22px; box-shadow:0 24px 70px rgba(0,0,0,.35);
+  }
+  .modal h2{font-size:19px; font-weight:800; margin-bottom:4px;}
+  .modal p{font-size:13.5px; color:var(--muted); margin-bottom:14px; line-height:1.7;}
+  .modal ol{margin:0 0 16px 20px; display:flex; flex-direction:column; gap:8px;}
+  .modal li{font-size:14.5px; font-weight:600;}
+  .modal li small{display:block; font-weight:400; color:var(--muted); font-size:12.5px;}
+  .modal .empty{font-size:14px; color:var(--muted); padding:10px 0 18px;}
+  .modal .row{display:flex; gap:10px; flex-wrap:wrap;}
+  .mbtn{
+    border:1px solid var(--line); background:#F2F6F9; color:var(--ink);
+    border-radius:10px; padding:10px 16px; font-size:13.5px; font-weight:700;
+  }
+  .mbtn.primary{background:var(--teal); border-color:var(--teal); color:#fff;}
+  .mbtn.danger{background:#FDF0F0; border-color:#EBC9C9; color:#8C3A3A;}
+
+  .footer-note{margin-top:34px; font-size:12.5px; color:var(--muted); line-height:1.8;}
+
+  @media (max-width:640px){
+    .topbar{flex-wrap:wrap; padding:8px 10px;}
+    .topbar .name{order:9; flex-basis:100%;}
+    .stage{top:96px;}
+    .tbtn{padding:6px 10px; font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= Top bar (slide mode) ================= -->
+<div class="topbar">
+  <span class="brand">TEA · ชุดดีไซน์</span>
+  <span class="badge" id="tbNum">แบบที่ 1/23</span>
+  <span class="name" id="tbName"></span>
+  <button class="tbtn" id="btnPrev">← ก่อนหน้า</button>
+  <button class="tbtn" id="btnNext">ถัดไป →</button>
+  <button class="tbtn primary" id="btnPick">♡ เลือกแบบนี้</button>
+  <button class="tbtn" id="btnGrid">☰ สารบัญ</button>
+</div>
+
+<!-- ================= Stage (full design) ================= -->
+<div class="stage"><iframe id="stageFrame" title="ตัวอย่างดีไซน์"></iframe></div>
+
+<!-- ================= Cover + grid ================= -->
+<div class="wrap">
+  <span class="kicker">DESIGN PRESENTATION · 23 แบบ</span>
+  <h1>ชุดนำเสนอดีไซน์เว็บไซต์<br/>สมาคมเอ็นโดดอนติกส์ไทย</h1>
+  <p class="sub">
+    เว็บไซต์ใหม่จะสร้างบน WordPress โดยใช้ธีมและปลั๊กอินฟรีทั้งหมด ไม่มีค่า license รายปี
+    ทุกแบบในชุดนี้สร้างเป็นหน้าจริงได้ และโครงสร้างเนื้อหา (ข่าว ประกาศ วารสาร ทุนวิจัย เอกสาร)
+    เหมือนกันทุกแบบ — เลือกดีไซน์ที่ถูกใจได้เลย โดยไม่ต้องกังวลว่าเนื้อหาจะเสีย
+  </p>
+  <div class="notice">
+    ข้อความ ชื่อ และรูปภาพในตัวอย่างเป็นข้อมูลตัวอย่างบางส่วน เพื่อการนำเสนอดีไซน์เท่านั้น
+    เมื่อเลือกแบบได้แล้ว จะแทนที่ด้วยข้อมูลจริงของสมาคมทุกจุดก่อนเผยแพร่
+  </div>
+  <div class="howto">
+    <span>◀ ▶ ปุ่มลูกศรซ้าย–ขวาเพื่อเลื่อนแบบ</span>
+    <span>กด ♡ เลือกแบบที่ชอบได้หลายแบบ</span>
+    <span>กด “สรุปการเลือก” มุมล่างขวาเพื่อดูรายการ</span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <p class="footer-note">
+    สมาคมเอ็นโดดอนติกส์ไทย · Thai Endodontic Association — จัดทำเพื่อประกอบการประชุมเลือกดีไซน์เว็บไซต์ใหม่
+  </p>
+</div>
+
+<!-- ================= Pick tray ================= -->
+<div class="tray">
+  <button class="traybtn" id="btnSummary">สรุปการเลือก <span class="count" id="pickCount">0</span></button>
+</div>
+
+<!-- ================= Summary modal ================= -->
+<div class="modalbg" id="modalbg">
+  <div class="modal">
+    <h2>แบบที่ทีกำลังพิจารณา</h2>
+    <p>กด “คัดลอกข้อความ” แล้วส่งกลับให้ผู้พัฒนา หรือจดหมายเลขแบบไว้ได้เลย</p>
+    <div id="pickList"></div>
+    <div class="row">
+      <button class="mbtn primary" id="btnCopy">คัดลอกข้อความ</button>
+      <button class="mbtn danger" id="btnClear">ล้างการเลือก</button>
+      <button class="mbtn" id="btnClose">ปิด</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const DESIGNS = [
+  {n:1,  file:"designs/design-01.html", title:"มาตรฐานวิชาการสู่ความเป็นเลิศ ระดับสากล"},
+  {n:2,  file:"designs/design-02.html", title:"บทความวิชาการ: Dental Trauma & Root Resorption"},
+  {n:3,  file:"designs/design-03.html", title:"ศูนย์รวมบริการดิจิทัลและวิชาการ"},
+  {n:4,  file:"designs/design-04.html", title:"นวัตกรรมชีววิทยาและเอ็นโดดอนต์ขั้นสูง"},
+  {n:5,  file:"designs/design-05.html", title:"สู่มาตรฐานสากลระดับเอเชียแปซิฟิก"},
+  {n:6,  file:"designs/design-06.html", title:"ศูนย์ความเป็นเลิศทางคลินิกและการวิจัย"},
+  {n:7,  file:"designs/design-07.html", title:"สำหรับประชาชน: เก็บฟันแท้ไว้ตลอดชีวิต"},
+  {n:8,  file:"designs/design-08.html", title:"สถาบันการเรียนรู้ดิจิทัลและคลังความรู้"},
+  {n:9,  file:"designs/design-09.html", title:"เชิดชูอัตลักษณ์วิชาชีพ ยกระดับมาตรฐานรักษา"},
+  {n:10, file:"designs/design-10.html", title:"ยกระดับมาตรฐานด้วยวิทยาการสมัยใหม่"},
+  {n:11, file:"designs/design-11.html", title:"พื้นที่กลางแลกเปลี่ยนวิชาการ / ปรึกษาเคส"},
+  {n:12, file:"designs/design-12.html", title:"ศาสตร์และศิลป์อนุรักษ์ฟัน ความแม่นยำระดับจุลทรรศน์"},
+  {n:13, file:"designs/design-13.html", title:"หน้าแรก + สารจากนายกสมาคม"},
+  {n:15, file:"designs/design-15.html", title:"สารจากนายกสมาคม (อีกรูปแบบ)"},
+  {n:16, file:"designs/design-16.html", title:"ศูนย์กลางวิชาการและเวชปฏิบัติระดับสากล"},
+  {n:17, file:"designs/design-17.html", title:"ศาสตร์และศิลป์อนุรักษ์ฟัน สู่มาตรฐานสากล"},
+  {n:18, file:"designs/design-18.html", title:"ความเป็นเลิศทางวิทยาการรากฟัน ระดับไมโคร"},
+  {n:19, file:"designs/design-19.html", title:"ศาสตร์และศิลป์อนุรักษ์ฟัน (อีกรูปแบบ)"},
+  {n:20, file:"designs/design-20.html", title:"ศูนย์กลางวิทยาการเอ็นโดดอนต์ระดับสากล"},
+  {n:21, file:"designs/design-21.html", title:"สารจากนายกสมาคมและพันธกิจความเป็นเลิศ"},
+  {n:22, file:"designs/design-22.html", title:"หน้าบทความ: Dental Trauma and Root Resorption"},
+  {n:23, file:"designs/design-23.html", title:"สถาบันวิชาการเอ็นโดดอนติกส์ขั้นสูงแห่งประเทศไทย"},
+  {n:24, file:"designs/design-24.html", title:"โปรไฟล์ผู้เชี่ยวชาญ / ทำเนียบทันตแพทย์"},
+];
+const KEY = "tea-design-picks";
+
+const $ = (s) => document.querySelector(s);
+const grid = $("#grid");
+let picks = new Set(JSON.parse(localStorage.getItem(KEY) || "[]"));
+let cur = -1;
+
+/* ---------- build grid ---------- */
+DESIGNS.forEach((d, i) => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.id = "card-" + i;
+  card.innerHTML = `
+    <span class="pickmark">✓ เลือกแบบนี้</span>
+    <div class="thumb"><iframe loading="lazy" src="${d.file}" tabindex="-1" aria-hidden="true"></iframe></div>
+    <button class="coverlink" aria-label="เปิดดูแบบที่ ${d.n}" data-i="${i}"></button>
+    <div class="body">
+      <div class="num">${d.n}</div>
+      <h3>${d.title}</h3>
+      <button class="open" data-i="${i}">ดูแบบเต็ม →</button>
+    </div>`;
+  grid.appendChild(card);
+  requestAnimationFrame(() => fitThumb(card.querySelector(".thumb")));
+});
+new ResizeObserver((entries) => {
+  for (const e of entries) fitThumb(e.target);
+}).observe && document.querySelectorAll(".card .thumb").forEach(t => {
+  try { new ResizeObserver(() => fitThumb(t)).observe(t); } catch (e) {}
+});
+
+function fitThumb(t) {
+  const f = t.querySelector("iframe");
+  if (!f) return;
+  const s = t.clientWidth / 1280;
+  f.style.transform = `scale(${s})`;
+}
+
+/* ---------- mode switching ---------- */
+function openDesign(i) {
+  cur = (i + DESIGNS.length) % DESIGNS.length;
+  const d = DESIGNS[cur];
+  $("#stageFrame").src = d.file;
+  $("#tbNum").textContent = `แบบที่ ${d.n} · จากทั้งหมด ${DESIGNS.length} แบบ`;
+  $("#tbName").textContent = d.title;
+  updatePickBtn();
+  document.body.classList.add("mode-slide");
+  window.scrollTo(0, 0);
+  history.replaceState(null, "", "#d" + d.n);
+}
+function closeDesign() {
+  document.body.classList.remove("mode-slide");
+  $("#stageFrame").src = "about:blank";
+  history.replaceState(null, "", "#");
+  refreshCards();
+}
+function refreshCards() {
+  document.querySelectorAll(".card").forEach((c, i) => {
+    c.classList.toggle("picked", picks.has(DESIGNS[i].n));
+  });
+  $("#pickCount").textContent = picks.size;
+}
+refreshCards();
+
+/* ---------- picks ---------- */
+function togglePick() {
+  if (cur < 0) return;
+  const n = DESIGNS[cur].n;
+  picks.has(n) ? picks.delete(n) : picks.add(n);
+  localStorage.setItem(KEY, JSON.stringify([...picks]));
+  updatePickBtn();
+}
+function updatePickBtn() {
+  const b = $("#btnPick");
+  const on = cur >= 0 && picks.has(DESIGNS[cur].n);
+  b.classList.toggle("picked", on);
+  b.textContent = on ? "✓ เลือกแบบนี้แล้ว" : "♡ เลือกแบบนี้";
+}
+
+/* ---------- summary modal ---------- */
+function showSummary() {
+  const list = $("#pickList");
+  const chosen = DESIGNS.filter(d => picks.has(d.n));
+  if (chosen.length === 0) {
+    list.innerHTML = `<div class="empty">ยังไม่ได้เลือกแบบ — เปิดดูแบบแล้วกดปุ่ม “♡ เลือกแบบนี้” ที่แถบด้านบน</div>`;
+  } else {
+    list.innerHTML = "<ol>" + chosen.map(d =>
+      `<li>แบบที่ ${d.n} — ${d.title}</li>`).join("") + "</ol>";
+  }
+  $("#modalbg").classList.add("show");
+}
+$("#btnCopy").onclick = async () => {
+  const chosen = DESIGNS.filter(d => picks.has(d.n));
+  if (chosen.length === 0) return;
+  const text = "ผลการเลือกดีไซน์เว็บไซต์สมาคมเอ็นโดดอนติกส์ไทย:\n" +
+    chosen.map(d => `- แบบที่ ${d.n}: ${d.title}`).join("\n");
+  try { await navigator.clipboard.writeText(text); $("#btnCopy").textContent = "คัดลอกแล้ว ✓"; }
+  catch (e) { window.prompt("คัดลอกข้อความนี้:", text); }
+  setTimeout(() => $("#btnCopy").textContent = "คัดลอกข้อความ", 1600);
+};
+$("#btnClear").onclick = () => {
+  picks = new Set();
+  localStorage.setItem(KEY, "[]");
+  refreshCards(); updatePickBtn(); showSummary();
+};
+$("#btnClose").onclick = () => $("#modalbg").classList.remove("show");
+$("#modalbg").addEventListener("click", (e) => {
+  if (e.target === $("#modalbg")) $("#modalbg").classList.remove("show");
+});
+
+/* ---------- events ---------- */
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-i]");
+  if (b) openDesign(+b.dataset.i);
+});
+$("#btnPrev").onclick = () => openDesign(cur - 1);
+$("#btnNext").onclick = () => openDesign(cur + 1);
+$("#btnGrid").onclick = closeDesign;
+$("#btnPick").onclick = togglePick;
+$("#btnSummary").onclick = showSummary;
+
+document.addEventListener("keydown", (e) => {
+  if (document.body.classList.contains("mode-slide")) {
+    if (e.key === "ArrowRight") openDesign(cur + 1);
+    if (e.key === "ArrowLeft") openDesign(cur - 1);
+    if (e.key === "Escape") closeDesign();
+  } else if (e.key === "Escape") {
+    $("#modalbg").classList.remove("show");
+  }
+});
+
+let touchX = null;
+document.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, {passive:true});
+document.addEventListener("touchend", (e) => {
+  if (touchX === null || !document.body.classList.contains("mode-slide")) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 60) openDesign(cur + (dx < 0 ? 1 : -1));
+  touchX = null;
+}, {passive:true});
+
+/* ---------- deep link #d5 ---------- */
+const m = location.hash.match(/^#d(\d+)$/);
+if (m) {
+  const idx = DESIGNS.findIndex(d => d.n === +m[1]);
+  if (idx >= 0) openDesign(idx);
+}
+</script>
+</body>
+</html>
