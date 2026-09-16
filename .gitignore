@@ -6,3 +6,17 @@ tea-showcase/
 Thumbs.db
 *.log
 .serve.cjs
+
+# WordPress runtime, exports, and member/content uploads stay on the host.
+# Only the custom theme and custom plugins below are versioned.
+tea-site/deploy/
+tea-site/tea-site-export.sql
+tea-site/wordpress/wp-admin/
+tea-site/wordpress/wp-includes/
+tea-site/wordpress/wp-content/uploads/
+tea-site/wordpress/wp-content/plugins/akismet/
+tea-site/wordpress/wp-content/plugins/hello.php
+tea-site/wordpress/wp-content/plugins/polylang/
+tea-site/wordpress/wp-content/upgrade/
+tea-site/wordpress/*.php
+tea-site/wordpress/wp-config.php

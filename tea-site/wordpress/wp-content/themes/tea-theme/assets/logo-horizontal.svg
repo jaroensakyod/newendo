@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 128" role="img" aria-labelledby="title desc">
+  <title id="title">สมาคมเอ็นโดดอนติกส์ไทย Thai Endodontic Association</title>
+  <desc id="desc">โลโก้สมาคมเอ็นโดดอนติกส์ไทย</desc>
+  <defs>
+    <linearGradient id="wordmark-purple" x1="145" y1="24" x2="438" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#26005a"/>
+      <stop offset="0.55" stop-color="#4c1d95"/>
+      <stop offset="1" stop-color="#7c3fbc"/>
+    </linearGradient>
+    <linearGradient id="wordmark-accent" x1="147" y1="98" x2="219" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fe932c"/>
+      <stop offset="1" stop-color="#c85b00"/>
+    </linearGradient>
+    <filter id="wordmark-depth" x="-8%" y="-25%" width="116%" height="160%">
+      <feDropShadow dx="0" dy="1" stdDeviation=".45" flood-color="#ffffff" flood-opacity=".9"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="1.15" flood-color="#26005a" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <circle cx="64" cy="64" r="58" fill="#340075"/><circle cx="64" cy="64" r="50" fill="none" stroke="#FE932C" stroke-width="3"/>
+  <path d="M35 39c9 7 14 6 20 3 4-2 7-3 9-3s5 1 9 3c6 3 11 4 20-3-1 18-5 25-9 31-4 7-4 15-5 23-1 8-5 13-8 13s-6-4-7-11c-1 7-4 11-7 11s-7-5-8-13c-1-8-1-16-5-23-4-6-8-13-9-31Z" fill="#fff"/>
+  <path d="M64 43v47M64 52c-6 4-6 9 0 13s6 9 0 13" fill="none" stroke="#340075" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="25" cy="64" r="3" fill="#FE932C"/><circle cx="103" cy="64" r="3" fill="#FE932C"/>
+  <text x="145" y="54" fill="url(#wordmark-purple)" stroke="#ffffff" stroke-width=".28" paint-order="stroke" font-family="Noto Sans Thai, Tahoma, sans-serif" font-size="27" font-weight="800" filter="url(#wordmark-depth)">สมาคมเอ็นโดดอนติกส์ไทย</text>
+  <text x="147" y="84" fill="#4d3b63" font-family="Manrope, Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="1.45">THAI ENDODONTIC ASSOCIATION</text>
+  <rect x="147" y="98" width="72" height="4" rx="2" fill="url(#wordmark-accent)"/>
+</svg>

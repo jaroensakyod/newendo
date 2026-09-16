@@ -1,0 +1,4 @@
+/* TEA Announcements v2 — สไตล์ตามต้นฉบับ (รูปแบบหลักอยู่ในธีม tea-theme) */
+.tea-modal-slide[hidden] { display: none; }
+.tea-modal-slide img { animation: tea-slide-fade 260ms ease-out; }
+@keyframes tea-slide-fade { from { opacity: 0.45; transform: scale(0.99); } to { opacity: 1; transform: scale(1); } }

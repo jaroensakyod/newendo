@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-labelledby="title desc">
+  <title id="title">สมาคมเอ็นโดดอนติกส์ไทย Thai Endodontic Association</title>
+  <desc id="desc">ตราสัญลักษณ์และชื่อสมาคมเอ็นโดดอนติกส์ไทย</desc>
+  <circle cx="210" cy="150" r="112" fill="#340075"/><circle cx="210" cy="150" r="96" fill="none" stroke="#FE932C" stroke-width="5"/>
+  <path d="M181 91c15 11 27 10 39 5 7-3 12-5 18-5s11 2 18 5c12 5 24 6 39-5-2 34-9 48-17 60-8 14-8 28-10 44-2 15-9 24-16 24-6 0-11-8-13-21-2 13-7 21-13 21-7 0-14-9-16-24-2-16-2-30-10-44-8-12-15-26-17-60Z" fill="#fff"/>
+  <path d="M210 98v91M210 115c-12 8-12 17 0 26s12 18 0 27" fill="none" stroke="#340075" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="133" cy="150" r="6" fill="#FE932C"/><circle cx="287" cy="150" r="6" fill="#FE932C"/>
+  <text x="210" y="315" text-anchor="middle" fill="#340075" font-family="Noto Sans Thai, Tahoma, sans-serif" font-size="27" font-weight="800">สมาคมเอ็นโดดอนติกส์ไทย</text>
+  <text x="210" y="348" text-anchor="middle" fill="#62566f" font-family="Manrope, Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1">THAI ENDODONTIC ASSOCIATION</text>
+  <rect x="174" y="370" width="72" height="4" rx="2" fill="#FE932C"/>
+</svg>

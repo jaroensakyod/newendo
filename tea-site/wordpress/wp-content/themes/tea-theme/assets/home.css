@@ -1,0 +1,1108 @@
+/* ============================================================
+   หน้าแรกสไตล์ กฟภ. (PEA) — สีสมาคมเอ็นโดดอนติกส์ไทย
+   ม่วง #340075 / ม่วงอ่อน #4c1d95 / ส้ม #fe932c
+   ============================================================ */
+.pea {
+  --pea-primary: #340075;
+  --pea-primary-2: #4c1d95;
+  --pea-accent: #fe932c;
+  --pea-accent-dark: #8a4500;
+  --pea-surface: #f9f9ff;
+  --pea-surface-2: #f0f3ff;
+  --pea-ink: #241a3e;
+  --pea-muted: #5d5570;
+  --pea-line: rgba(76, 29, 149, 0.14);
+  --pea-radius: 14px;
+  font-size: 16px;
+}
+.pea-shell { width: min(100% - 48px, 1240px); margin: 0 auto; }
+.pea-sec-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+.pea-sec-head.row { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 16px; }
+.pea-sec-head h2 { margin: 0; font-size: 1.5rem; font-weight: 800; color: var(--pea-primary); line-height: 1.35; }
+.pea-kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #b45309; }
+.pea-more { display: inline-flex; align-items: center; gap: 2px; font-size: 0.85rem; font-weight: 700; color: var(--pea-primary-2); text-decoration: none; }
+.pea-more:hover { text-decoration: underline; }
+.pea-more .material-symbols-outlined { font-size: 16px; }
+
+/* ---------- ปุ่ม ---------- */
+.pea-btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+  border-radius: 12px; font-size: 0.92rem; font-weight: 700; text-decoration: none;
+  transition: translate 150ms, box-shadow 150ms, background 150ms;
+}
+.pea-btn .material-symbols-outlined { font-size: 19px; }
+.pea-btn:hover { translate: 0 -2px; }
+.pea-btn-accent { background: var(--pea-accent); color: #331a00; box-shadow: 0 6px 18px rgba(254, 147, 44, 0.35); }
+.pea-btn-accent:hover { background: #f5841a; }
+.pea-btn-ghost { background: rgba(255, 255, 255, 0.14); color: #fff; border: 1px solid rgba(255, 255, 255, 0.45); }
+.pea-btn-ghost:hover { background: rgba(255, 255, 255, 0.22); }
+.pea-btn.sm { padding: 10px 16px; font-size: 0.85rem; justify-content: center; }
+
+/* ============ HERO SLIDER ============ */
+.pea-hero { position: relative; background: var(--pea-primary); }
+.pea-track { position: relative; overflow: hidden; }
+.pea-slide {
+  display: none; position: relative; min-height: 480px;
+  background-image: linear-gradient(100deg, rgba(26, 0, 58, 0.96) 0%, rgba(52, 0, 117, 0.88) 46%, rgba(76, 29, 149, 0.55) 100%), var(--bg);
+  background-size: cover; background-position: center;
+}
+.pea-slide.is-active { display: block; animation: pea-fade 500ms ease-out; }
+@keyframes pea-fade { from { opacity: 0.35; } to { opacity: 1; } }
+.pea-slide-in { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: center; min-height: 480px; padding: 54px 0 84px; }
+.pea-copy { position: relative; z-index: 2; }
+.pea-badge {
+  display: inline-flex; align-items: center; padding: 6px 14px; margin-bottom: 16px;
+  border-radius: 999px; background: rgba(254, 147, 44, 0.2); border: 1px solid rgba(254, 147, 44, 0.55);
+  color: #ffd9ae; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.05em;
+}
+.pea-badge-orange { background: var(--pea-accent); border-color: var(--pea-accent); color: #331a00; }
+.pea-copy h1 {
+  margin: 0 0 12px; font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 800; color: #fff;
+  line-height: 1.22; text-shadow: 0 2px 18px rgba(20, 0, 45, 0.55);
+}
+.pea-copy h1 span { display: block; font-size: 0.55em; font-weight: 700; color: #ffcf9e; }
+.pea-sub { margin: 0 0 18px; max-width: 560px; font-size: 1rem; color: rgba(255, 255, 255, 0.92); line-height: 1.75; }
+.pea-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.pea-meta span {
+  display: inline-flex; align-items: center; gap: 7px; padding: 7px 14px;
+  border-radius: 10px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff; font-size: 0.85rem; font-weight: 600;
+}
+.pea-meta .material-symbols-outlined { font-size: 18px; color: #ffcf9e; }
+.pea-meta .cde { background: rgba(254, 147, 44, 0.25); border-color: rgba(254, 147, 44, 0.6); }
+.pea-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.pea-art { position: relative; z-index: 2; display: flex; justify-content: center; }
+.pea-art img {
+  width: 100%; max-width: 300px; max-height: 380px; object-fit: contain; border-radius: 16px;
+  box-shadow: 0 26px 70px rgba(10, 0, 28, 0.65), 0 0 0 6px rgba(255, 255, 255, 0.08);
+}
+.pea-nav {
+  position: absolute; top: 50%; translate: 0 -50%; z-index: 10;
+  width: 44px; height: 44px; display: grid; place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%;
+  background: rgba(20, 0, 50, 0.45); color: #fff; cursor: pointer; transition: background 150ms;
+}
+.pea-nav:hover { background: var(--pea-accent); color: #331a00; border-color: var(--pea-accent); }
+.pea-nav.prev { left: 14px; } .pea-nav.next { right: 14px; }
+.pea-nav .material-symbols-outlined { font-size: 26px; }
+.pea-dots { position: absolute; left: 0; right: 0; bottom: 52px; z-index: 10; display: flex; justify-content: center; gap: 8px; }
+.pea-dots button { width: 11px; height: 11px; padding: 0; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.38); cursor: pointer; transition: width 200ms, background 200ms; }
+.pea-dots button.is-active { width: 30px; background: var(--pea-accent); }
+
+/* ---------- การ์ดลัดบริการลอยทับขอบล่าง ---------- */
+.pea-shortcuts {
+  position: relative; z-index: 5; margin-top: -52px;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius);
+  box-shadow: 0 18px 50px rgba(42, 12, 84, 0.14); overflow: hidden;
+}
+.pea-shortcuts a {
+  display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 18px 10px 16px;
+  border-right: 1px solid var(--pea-line); text-decoration: none;
+  transition: background 150ms;
+}
+.pea-shortcuts a:last-child { border-right: 0; }
+.pea-shortcuts a:hover { background: var(--pea-surface-2); }
+.pea-shortcuts .ic { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 13px; background: rgba(76, 29, 149, 0.09); color: var(--pea-primary-2); }
+.pea-shortcuts .ic .material-symbols-outlined { font-size: 25px; }
+.pea-shortcuts a:hover .ic { background: var(--pea-primary); color: #fff; }
+.pea-shortcuts b { font-size: 0.82rem; font-weight: 700; color: var(--pea-ink); }
+
+/* ============ บริการแบบแท็บ ============ */
+.pea-services { padding: 54px 0 26px; background: var(--pea-surface); }
+.pea-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.pea-tabs button {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px;
+  border: 1px solid var(--pea-line); border-radius: 999px; background: #fff;
+  color: var(--pea-muted); font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  transition: background 150ms, color 150ms, border-color 150ms;
+}
+.pea-tabs button .material-symbols-outlined { font-size: 20px; }
+.pea-tabs button:hover { border-color: var(--pea-primary-2); color: var(--pea-primary-2); }
+.pea-tabs button.is-active { background: var(--pea-primary); border-color: var(--pea-primary); color: #fff; }
+.pea-panel { display: none; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.pea-panel.is-active { display: grid; animation: pea-fade 300ms ease-out; }
+
+/* การ์ดบริการ (ไอคอน+ข้อความ) */
+.pea-sv {
+  display: flex; align-items: center; gap: 14px; padding: 18px;
+  background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius);
+  text-decoration: none; transition: border-color 150ms, translate 150ms, box-shadow 150ms;
+}
+.pea-sv:hover { border-color: var(--pea-primary-2); translate: 0 -3px; box-shadow: 0 12px 28px rgba(52, 0, 117, 0.1); }
+.pea-sv .ic { width: 52px; height: 52px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 13px; background: rgba(76, 29, 149, 0.08); color: var(--pea-primary-2); }
+.pea-sv .ic .material-symbols-outlined { font-size: 28px; }
+.pea-sv > div { flex: 1; min-width: 0; }
+.pea-sv b { display: block; font-size: 0.98rem; font-weight: 800; color: var(--pea-ink); line-height: 1.4; }
+.pea-sv small { display: block; margin-top: 3px; font-size: 0.8rem; color: var(--pea-muted); line-height: 1.5; }
+.pea-sv .arr { flex: 0 0 auto; font-size: 20px; color: rgba(76, 29, 149, 0.35); }
+.pea-sv:hover .arr { color: var(--pea-accent-dark); }
+
+/* การ์ดกิจกรรม (รูปจริง) */
+.pea-evt {
+  display: flex; flex-direction: column; border: 1px solid var(--pea-line); border-radius: var(--pea-radius);
+  background: #fff; overflow: hidden; text-decoration: none;
+  transition: border-color 150ms, translate 150ms, box-shadow 150ms;
+}
+.pea-evt:hover { border-color: var(--pea-primary-2); translate: 0 -3px; box-shadow: 0 12px 28px rgba(52, 0, 117, 0.1); }
+.pea-evt img { width: 100%; height: 168px; object-fit: cover; display: block; }
+.pea-evt > div { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.pea-evt .chip { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: rgba(254, 147, 44, 0.15); color: var(--pea-accent-dark); font-size: 0.74rem; font-weight: 700; }
+.pea-evt .chip .material-symbols-outlined { font-size: 14px; }
+.pea-evt b { font-size: 0.95rem; font-weight: 800; color: var(--pea-ink); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ============ ข่าว 2 คอลัมน์ ============ */
+.pea-newsband { padding: 40px 0 52px; background: var(--pea-surface); }
+.pea-newsband .pea-shell { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: start; }
+.pea-news-left { min-width: 0; }
+.pea-feat {
+  display: grid; grid-template-columns: 300px 1fr; gap: 18px; align-items: center;
+  padding: 14px; margin-bottom: 14px; background: #fff; border: 1px solid var(--pea-line);
+  border-radius: var(--pea-radius); text-decoration: none; transition: border-color 150ms, box-shadow 150ms;
+}
+.pea-feat:hover { border-color: var(--pea-primary-2); box-shadow: 0 12px 30px rgba(52, 0, 117, 0.1); }
+.pea-feat img { width: 100%; height: 178px; object-fit: cover; border-radius: 10px; display: block; }
+.pea-feat .chip { display: inline-flex; padding: 4px 12px; border-radius: 999px; background: var(--pea-primary); color: #fff; font-size: 0.72rem; font-weight: 700; }
+.pea-feat b { display: block; margin: 8px 0; font-size: 1.08rem; font-weight: 800; color: var(--pea-ink); line-height: 1.5; }
+.pea-feat time { font-size: 0.78rem; color: var(--pea-muted); font-weight: 600; }
+.pea-row {
+  display: flex; align-items: center; gap: 14px; padding: 13px 6px;
+  border-top: 1px dashed rgba(76, 29, 149, 0.2); text-decoration: none;
+}
+.pea-row:hover b { color: var(--pea-primary-2); }
+.pea-row .chip { flex: 0 0 auto; padding: 4px 11px; border-radius: 999px; background: rgba(76, 29, 149, 0.08); color: var(--pea-primary-2); font-size: 0.72rem; font-weight: 700; }
+.pea-row b { flex: 1; min-width: 0; font-size: 0.92rem; font-weight: 700; color: var(--pea-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pea-row time { flex: 0 0 auto; font-size: 0.78rem; color: var(--pea-muted); font-weight: 600; }
+.pea-news-library {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 16px;
+  margin-top: 22px; padding: 18px 20px; border: 1px solid #ddd2eb; border-radius: 16px;
+  background: linear-gradient(115deg, #faf7fe 0%, #f0eafa 100%); box-shadow: 0 8px 22px rgba(43,11,93,.06);
+}
+.pea-news-library-copy { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.pea-news-library-copy > .material-symbols-outlined { display: grid; flex: 0 0 auto; place-items: center; width: 42px; height: 42px; border-radius: 12px; color: #fff; background: linear-gradient(135deg, var(--pea-primary), var(--pea-primary-2)); font-size: 21px; }
+.pea-news-library b, .pea-news-library small { display: block; }
+.pea-news-library b { color: var(--pea-ink); font-size: .94rem; font-weight: 800; }
+.pea-news-library small { margin-top: 3px; color: var(--pea-muted); font-size: .76rem; line-height: 1.45; }
+.pea-news-library-primary { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 4px; padding: 9px 13px; border-radius: 10px; color: #fff; background: var(--pea-primary); font-size: .78rem; font-weight: 800; text-decoration: none; }
+.pea-news-library-primary:hover { background: var(--pea-primary-2); }
+.pea-news-library-primary .material-symbols-outlined { font-size: 17px; }
+.pea-news-library-tools { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; padding-top: 4px; }
+.pea-news-library-tools a { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 10px; border: 1px solid #ddd1eb; border-radius: 10px; color: #4e168f; background: #fff; font-size: .76rem; font-weight: 800; text-align: center; text-decoration: none; }
+.pea-news-library-tools a:hover { border-color: #a76ad5; background: #f8f3fe; }
+.pea-news-library-tools .material-symbols-outlined { color: #b45309; font-size: 18px; }
+
+@media (min-width: 1101px) {
+  .pea-newsband .pea-shell { align-items: stretch; }
+  .pea-news-left { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 14px; align-content: start; }
+  .pea-news-left .pea-sec-head, .pea-news-left .pea-feat, .pea-news-left .pea-news-library { grid-column: 1 / -1; }
+  .pea-news-left .pea-row { min-height: 78px; padding: 13px 10px; align-items: flex-start; }
+  .pea-news-left .pea-row b { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.42; }
+  .pea-news-left .pea-row time { display: none; }
+  .pea-news-library { margin-top: 10px; }
+}
+
+/* คอลัมน์ขวา: ประกาศ + นับถอยหลัง */
+.pea-panel-box { background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius); overflow: hidden; }
+.pea-panel-box .pb-head { display: flex; align-items: center; gap: 9px; padding: 15px 18px; border-bottom: 2px solid var(--pea-primary); font-size: 0.98rem; font-weight: 800; color: var(--pea-primary); }
+.pea-panel-box .pb-head .material-symbols-outlined { font-size: 21px; color: #e07800; }
+.pea-panel-box .pb-item { display: flex; align-items: baseline; gap: 10px; padding: 12px 18px; border-top: 1px solid rgba(76, 29, 149, 0.08); text-decoration: none; }
+.pea-panel-box .pb-item:first-of-type { border-top: 0; }
+.pea-panel-box .pb-item b { flex: 1; min-width: 0; font-size: 0.87rem; font-weight: 700; color: var(--pea-ink); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pea-panel-box .pb-item:hover b { color: var(--pea-primary-2); }
+.pea-panel-box .pb-item time { flex: 0 0 auto; font-size: 0.73rem; color: var(--pea-muted); font-weight: 600; }
+.pea-panel-box .pb-all { display: flex; justify-content: center; align-items: center; gap: 4px; padding: 12px; border-top: 1px solid rgba(76, 29, 149, 0.1); background: var(--pea-surface-2); font-size: 0.82rem; font-weight: 700; color: var(--pea-primary-2); text-decoration: none; }
+.pea-panel-box .pb-all .material-symbols-outlined { font-size: 16px; }
+
+.pea-count-card { margin-top: 18px; padding: 20px; border-radius: var(--pea-radius); background: linear-gradient(135deg, var(--pea-primary) 0%, var(--pea-primary-2) 100%); color: #fff; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 14px 34px rgba(52, 0, 117, 0.3); }
+.pea-count-card .k { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 700; color: #ffcf9e; }
+.pea-count-card .k .material-symbols-outlined { font-size: 19px; }
+.pea-count { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.pea-count > div { padding: 10px 4px 8px; border-radius: 10px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.16); text-align: center; }
+.pea-count b { display: block; font-size: 1.45rem; font-weight: 800; line-height: 1; }
+.pea-count small { display: block; margin-top: 4px; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; color: #ffcf9e; }
+.pea-count > div:last-child b { color: #ffb35c; }
+
+/* ============ แถบ CTA ============ */
+.pea-cta { padding: 0 0 46px; background: linear-gradient(180deg, #e9e5f7, #f0edfa); }
+.pea-cta .pea-shell {
+  display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap;
+  padding: 30px 34px; border-radius: 18px;
+  background: linear-gradient(100deg, var(--pea-primary) 0%, var(--pea-primary-2) 70%, #6d28d9 100%);
+  box-shadow: 0 18px 44px rgba(52, 0, 117, 0.32); color: #fff;
+  position: relative; overflow: hidden;
+}
+.pea-cta .pea-shell::after { content: ""; position: absolute; right: -70px; top: -90px; width: 260px; height: 260px; border-radius: 50%; background: rgba(254, 147, 44, 0.22); }
+.pea-cta h2 { position: relative; z-index: 1; margin: 0 0 4px; font-size: 1.35rem; font-weight: 800; }
+.pea-cta p { position: relative; z-index: 1; margin: 0; max-width: 560px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.88); line-height: 1.65; }
+.pea-cta-btns { position: relative; z-index: 1; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ============ ฟีดเฟซบุ๊ก ============ */
+.pea-fb { padding: 8px 0 40px; background: var(--pea-surface); }
+.pea-fb-duo { display: grid; grid-template-columns: 500px 1fr; gap: 20px; align-items: start; }
+.pea-fb-frame { display: flex; flex-direction: column; gap: 10px; }
+.pea-fb-frame iframe { width: 100% !important; max-width: 500px; height: 560px !important; border-radius: var(--pea-radius); background: #fff; box-shadow: 0 8px 30px rgba(21, 28, 39, 0.12); }
+.pea-fb-note { margin: 0; text-align: center; font-size: 0.78rem; color: var(--pea-muted); }
+.pea-fb-side { padding: 22px 22px 20px; background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius); display: flex; flex-direction: column; gap: 9px; }
+.pea-fb-side h3 { margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--pea-primary); line-height: 1.45; }
+.pea-ch-list { display: flex; flex-direction: column; gap: 8px; }
+.pea-ch { display: flex; align-items: center; gap: 11px; padding: 8px 12px; border: 1px solid var(--pea-line); border-radius: 10px; background: var(--pea-surface); text-decoration: none; transition: border-color 150ms, translate 150ms; }
+.pea-ch:hover { border-color: var(--pea-primary-2); translate: 0 -2px; }
+.pea-ch .ic { width: 34px; height: 34px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 9px; color: #fff; }
+.pea-ch.facebook .ic { background: #1877f2; }
+.pea-ch.line .ic { background: #06c755; color: #06381c; }
+.pea-ch.instagram .ic { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.pea-ch.email .ic { background: var(--pea-primary-2); }
+.pea-ch > span:nth-child(2) { flex: 1; min-width: 0; }
+.pea-ch b { display: block; font-size: 0.82rem; font-weight: 800; color: var(--pea-ink); }
+.pea-ch small { display: block; font-size: 0.71rem; color: var(--pea-muted); margin-top: 1px; }
+.pea-ch .material-symbols-outlined { font-size: 17px; color: rgba(76, 29, 149, 0.5); }
+.pea-ch-contact { display: flex; gap: 9px; align-items: flex-start; margin-top: 2px; padding: 10px 13px; border-radius: 10px; background: rgba(76, 29, 149, 0.06); font-size: 0.76rem; color: var(--pea-muted); line-height: 1.55; }
+.pea-ch-contact .material-symbols-outlined { font-size: 17px; color: var(--pea-primary-2); }
+.pea-ch-contact b { color: var(--pea-ink); }
+
+/* ============ องค์กรเครือข่าย ============ */
+.pea-partners { padding: 30px 0 44px; background: #fff; border-top: 1px solid var(--pea-line); }
+.pea-partner-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.pea-partner-row a, .pea-partner-row span { padding: 9px 18px; background: var(--pea-surface); border: 1px solid var(--pea-line); border-radius: 999px; font-size: 0.8rem; font-weight: 700; color: var(--pea-primary-2); text-decoration: none; }
+.pea-partner-row a:hover { background: rgba(76, 29, 149, 0.08); border-color: var(--pea-primary-2); }
+.pea-partner-row span.is-plain { color: var(--pea-muted); }
+
+/* ============ Responsive ============ */
+@media (max-width: 1100px) {
+  .pea-slide-in { grid-template-columns: 1fr; gap: 22px; padding: 44px 0 90px; }
+  .pea-art { display: none; }
+  .pea-newsband .pea-shell { grid-template-columns: 1fr; }
+  .pea-fb-duo { grid-template-columns: 1fr; }
+  .pea-shortcuts { grid-template-columns: repeat(3, 1fr); }
+  .pea-shortcuts a:nth-child(3n) { border-right: 0; }
+  .pea-shortcuts a:nth-child(-n+3) { border-bottom: 1px solid var(--pea-line); }
+}
+@media (max-width: 760px) {
+  .pea-slide { min-height: 420px; }
+  .pea-slide-in { min-height: 420px; }
+  .pea-panel { grid-template-columns: 1fr; }
+  .pea-feat { grid-template-columns: 1fr; }
+  .pea-feat img { height: 200px; }
+  .pea-shortcuts { grid-template-columns: repeat(2, 1fr); }
+  .pea-shortcuts a { border-right: 0; }
+  .pea-shortcuts a:nth-child(odd) { border-right: 1px solid var(--pea-line); }
+  .pea-shortcuts a:nth-child(-n+3) { border-bottom: 1px solid var(--pea-line); }
+  .pea-cta .pea-shell { padding: 24px 20px; }
+  .pea-copy h1 { font-size: 1.45rem; }
+}
+
+/* Publication shelf: selectable book-style cards on the homepage.  Artwork is
+   always contained, so real issue covers remain intact at every breakpoint. */
+.pea-journal-showcase { position: relative; padding: 4px 42px 28px; }
+.pea-journal-showcase .carousel-viewport { overflow: hidden; }
+.pea-journal-showcase .carousel-track { display: flex; gap: 20px; transition: transform .45s cubic-bezier(.2,.75,.2,1); will-change: transform; }
+.pea-journal-book { flex: 0 0 calc((100% - 40px) / 3); min-width: 0; display: block; overflow: hidden; border: 1px solid #ddd1eb; border-radius: 16px; background: #fff; color: #2b0b5d; text-decoration: none; box-shadow: 0 8px 22px rgba(43,11,93,.09); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.pea-journal-book:hover { transform: translateY(-5px); border-color: #8e47c0; box-shadow: 0 16px 28px rgba(43,11,93,.16); }
+.pea-book-cover { display: grid; place-items: center; height: 190px; padding: 14px; overflow: hidden; background: linear-gradient(145deg, #f3edfa, #fff); }
+.pea-book-cover img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pea-book-cover.issue { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 7px; padding: 20px; overflow: hidden; color: #fff; background: linear-gradient(145deg, #190044 0%, #4c1d95 55%, #8f3bc3 100%); }
+.pea-book-cover.issue::before { content: ""; position: absolute; width: 160px; height: 160px; right: -44px; top: -54px; border: 1px solid rgba(255,255,255,.32); border-radius: 50%; box-shadow: 0 0 0 21px rgba(255,255,255,.06), 0 0 0 43px rgba(255,255,255,.05); }
+.pea-book-cover.issue::after { content: ""; position: absolute; width: 68%; height: 4px; left: 20px; bottom: 18px; background: #ff9b36; }
+.pea-book-cover.issue > * { position: relative; z-index: 1; }
+.pea-book-cover.issue .pea-cover-mark { align-self: flex-end; margin-bottom: auto; padding: 4px 8px; border: 1px solid rgba(255,255,255,.55); font-size: .64rem; font-weight: 900; letter-spacing: .13em; }
+.pea-book-cover.issue strong { color: #fff; font-size: 1.06rem; line-height: 1.06; letter-spacing: .02em; }
+.pea-book-cover.issue em { color: #ffd9a6; font-size: .77rem; font-style: normal; font-weight: 850; }
+.pea-book-cover.issue small { margin-bottom: 8px; color: rgba(255,255,255,.9); font-size: .63rem; font-weight: 800; letter-spacing: .09em; }
+.pea-book-cover.issue-2025 { background: linear-gradient(145deg, #1f074c, #6b21a8 60%, #cc6f18); }
+.pea-book-cover.issue-2024 { background: linear-gradient(145deg, #102948, #225a87 60%, #7e3cc0); }
+.pea-book-cover.issue-2023 { background: linear-gradient(145deg, #1b3145, #167c80 60%, #8845a4); }
+.pea-book-cover.issue-2022 { background: linear-gradient(145deg, #32123f, #8b254c 60%, #d17a32); }
+.pea-journal-book > div:last-child { padding: 15px 16px 17px; }
+.pea-journal-book > div:last-child > span { display: block; color: #a94300; font-size: .66rem; font-weight: 850; letter-spacing: .12em; }
+.pea-journal-book h3 { margin: 6px 0 5px; color: #2b0b5d; font-size: 1.05rem; line-height: 1.35; }
+.pea-journal-book p { min-height: 2.6em; margin: 0 0 13px; color: #655975; font-size: .79rem; line-height: 1.55; }
+.pea-journal-book b { display: inline-flex; align-items: center; gap: 3px; color: #5a1aa3; font-size: .78rem; }
+.pea-journal-book b .material-symbols-outlined { font-size: 16px; }
+.pea-journal-book.archive .pea-book-cover { align-content: center; gap: 7px; padding: 18px; background: linear-gradient(145deg, #260052, #6a28a3); color: #fff; }
+.pea-journal-book.archive .pea-book-cover .material-symbols-outlined { width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: #ffd8a8; font-size: 25px; }
+.pea-journal-book.archive .pea-book-cover strong { color: #fff; font-size: 1.25rem; letter-spacing: .08em; }
+.pea-journal-book.archive .pea-book-cover small { color: #ffd8a8; font-size: .65rem; font-weight: 800; letter-spacing: .14em; }
+.pea-journal-book.authors .pea-book-cover { background: #fff7ee; }
+.pea-journal-nav { position: absolute; z-index: 2; top: 42%; width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #d9cceb; border-radius: 50%; background: #fff; color: #4c1d95; box-shadow: 0 4px 12px rgba(43,11,93,.14); cursor: pointer; }
+.pea-journal-nav.prev { left: 0; }.pea-journal-nav.next { right: 0; }
+.pea-journal-nav:hover { background: #4c1d95; color: #fff; }
+.pea-journal-dots { display: flex; justify-content: center; gap: 7px; margin-top: 16px; }
+.pea-journal-dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 99px; background: #d8c9e9; cursor: pointer; }.pea-journal-dots button.is-active { width: 22px; background: #b45309; }
+@media (max-width: 900px) { .pea-journal-book { flex-basis: calc((100% - 20px) / 2); } }
+@media (max-width: 600px) { .pea-journal-showcase { padding-inline: 30px; }.pea-journal-book { flex-basis: 100%; }.pea-book-cover { height: 175px; }.pea-journal-nav { width: 30px; height: 30px; }.pea-journal-nav.prev { left: -2px; }.pea-journal-nav.next { right: -2px; } }
+
+/* ---- ชั้นวารสาร: แสดงหน้าแรกของ PDF จริงเหมือนชั้นปกเล่ม ---- */
+.pea-journal-library { display: grid; grid-template-columns: minmax(230px, .88fr) minmax(0, 1.9fr); gap: 30px; align-items: center; padding: 40px; overflow: hidden; border-radius: 22px; color: #fff; background: radial-gradient(circle at 88% 0%, rgba(196, 130, 255, .66), transparent 35%), linear-gradient(120deg, #110026, #25114d 53%, #12132f); box-shadow: 0 18px 40px rgba(37, 17, 77, .22); }
+.pea-journal-intro h3 { margin: 13px 0 12px; color: #fff; font-size: clamp(1.7rem, 2.5vw, 2.25rem); line-height: 1.22; }
+.pea-journal-intro p { margin: 0 0 22px; color: rgba(255,255,255,.82); font-size: .94rem; line-height: 1.85; }
+.pea-library-tag { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border: 1px solid rgba(232, 189, 255, .45); border-radius: 99px; color: #f2d5ff; background: rgba(137, 55, 193, .42); font-size: .69rem; font-weight: 850; letter-spacing: .06em; }
+.pea-library-tag .material-symbols-outlined { font-size: 16px; }
+.pea-library-cta { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; background: linear-gradient(100deg, #c32aff, #6c22ff); color: #fff; font-size: .82rem; font-weight: 800; text-decoration: none; box-shadow: 0 8px 20px rgba(105, 33, 255, .38); }
+.pea-library-cta:hover { transform: translateY(-2px); color: #fff; }.pea-library-cta .material-symbols-outlined { font-size: 18px; }
+.pea-pdf-carousel { position: relative; min-width: 0; padding: 0 30px; }
+.pea-pdf-shelf { display: flex; gap: 16px; align-items: stretch; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+.pea-pdf-shelf::-webkit-scrollbar { display: none; }
+.pea-pdf-issue { display: block; flex: 0 0 calc((100% - 32px) / 3); min-width: 0; scroll-snap-align: start; padding: 14px; border-radius: 16px; background: rgba(9, 1, 30, .7); color: #fff; text-decoration: none; box-shadow: 0 12px 26px rgba(0,0,0,.25); transition: transform .2s ease, background .2s ease; }
+.pea-pdf-scroll { position: absolute; z-index: 2; top: 42%; width: 34px; height: 34px; display: grid; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: #fff; color: #4c1d95; box-shadow: 0 5px 14px rgba(0,0,0,.24); cursor: pointer; }
+.pea-pdf-scroll.prev { left: -5px; }.pea-pdf-scroll.next { right: -5px; }.pea-pdf-scroll:hover { background: #6a20bb; color: #fff; }
+.pea-pdf-issue:hover { transform: translateY(-5px); background: rgba(27, 9, 63, .92); color: #fff; }
+.pea-pdf-page { position: relative; width: 100%; aspect-ratio: .707 / 1; overflow: hidden; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: #fff; box-shadow: 0 7px 18px rgba(0,0,0,.38); }
+.pea-pdf-page iframe { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.pea-pdf-page img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; background: #fff; }
+.pea-pdf-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; color: #fff; text-align: center; background: linear-gradient(155deg, #f9dfc9 0%, #bf8d54 46%, #4b173e 47%, #1b0b36 100%); }
+.pea-pdf-fallback::before { content: ""; position: absolute; inset: 11px; border: 1px solid rgba(255,255,255,.6); border-radius: 4px; pointer-events: none; }.pea-pdf-fallback > * { position: relative; z-index: 1; }
+.pea-pdf-fallback span { font-size: .68rem; font-weight: 900; letter-spacing: .15em; }.pea-pdf-fallback strong { color: #fff4d2; font-size: clamp(3rem, 6vw, 5rem); line-height: .9; font-family: Georgia, serif; }.pea-pdf-fallback small { max-width: 10em; color: #fff; font-size: .69rem; font-weight: 800; line-height: 1.35; }
+.pea-pdf-fallback.vol-one { background: linear-gradient(155deg, #cbeaf1 0%, #94b8d7 49%, #244d75 50%, #101b45 100%); }.pea-pdf-fallback.anniversary { background: linear-gradient(155deg, #efe6d2 0%, #bc8d4e 46%, #603e25 47%, #1f1724 100%); }
+.pea-pdf-fallback.tej-current { background: linear-gradient(155deg, #c8b3ef 0%, #8876bd 43%, #2a3f89 44%, #112258 100%); }
+.pea-pdf-issue h3 { min-height: 3em; margin: 11px 0 8px; color: #fff; font-size: .81rem; line-height: 1.45; }
+.pea-pdf-issue > span { display: inline-flex; align-items: center; gap: 4px; color: #ef86df; font-size: .7rem; font-weight: 800; }.pea-pdf-issue > span .material-symbols-outlined { font-size: 15px; }
+@media (max-width: 900px) { .pea-journal-library { grid-template-columns: 1fr; }.pea-pdf-shelf { max-width: 720px; }.pea-pdf-issue { flex-basis: calc((100% - 16px) / 2); }.pea-journal-intro { max-width: 600px; } }
+@media (max-width: 600px) { .pea-journal-library { padding: 25px 18px; gap: 24px; border-radius: 16px; }.pea-pdf-carousel { padding: 0 24px; }.pea-pdf-shelf { gap: 9px; }.pea-pdf-issue { flex-basis: 100%; padding: 7px; border-radius: 10px; }.pea-pdf-scroll { width: 30px; height: 30px; }.pea-pdf-scroll.prev { left: -3px; }.pea-pdf-scroll.next { right: -3px; }.pea-pdf-issue h3 { min-height: 0; margin: 8px 0 5px; font-size: .63rem; }.pea-pdf-issue > span { font-size: .58rem; }.pea-pdf-issue > span .material-symbols-outlined { font-size: 12px; } }
+
+/* Preserve supplied imagery across the homepage: frames may be fixed, but
+   the image itself must remain whole rather than being zoomed or cropped. */
+.pea-pres-photo,
+.pea-committee-member,
+.pea-committee,
+.pea-fb-card,
+.pea-gallery-grid a { background-color: #f4eff9; }
+.pea-pres-photo img,
+.pea-committee-member img,
+.pea-committee img,
+.pea-fb-card > img,
+.pea-gallery-grid img {
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+}
+.pea-fb-card:hover > img,
+.pea-gallery-grid a:hover img { transform: none !important; }
+
+/* ---- FB เดี่ยวกลางหน้า + แถวไอคอนโซเชียลเล็ก (ตามแพทเทิร์นสมาคมพี่น้อง) ---- */
+.pea-fb-solo { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.pea-fb-solo .pea-fb-frame iframe { height: 500px !important; max-width: 420px; }
+.pea-social-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.pea-social-row a { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; border: 1px solid var(--pea-line); border-radius: 999px; background: #fff; text-decoration: none; transition: border-color 150ms, translate 150ms; }
+.pea-social-row a:hover { border-color: var(--pea-primary-2); translate: 0 -2px; }
+.pea-social-row .s-ic { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: #fff; }
+.pea-social-row .s-ic.facebook { background: #1877f2; }
+.pea-social-row .s-ic.line { background: #06c755; color: #06381c; }
+.pea-social-row .s-ic.instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.pea-social-row .s-ic.email { background: var(--pea-primary-2); }
+.pea-social-row b { font-size: 0.8rem; font-weight: 700; color: var(--pea-ink); }
+.pea-fb-solo .pea-fb-frame { width: 420px; max-width: 100%; }
+
+/* ---- BLEND (thaidental + thaioperdent + thapd): ข่าว 2 คอลัมน์ — ซ้ายข่าว+ประกาศ / ขวา FB+นับถอยหลัง+โซเชียล ---- */
+.pea-newsband .pea-shell { grid-template-columns: minmax(0, 1.55fr) 500px; }
+.pea-ann-in-news { margin-top: 20px; }
+.pea-news-side { display: flex; flex-direction: column; gap: 16px; align-items: stretch; }
+.pea-news-side .pea-fb-frame { width: 100%; }
+.pea-news-side .pea-fb-frame iframe { width: 100% !important; max-width: none; height: 580px !important; }
+.pea-news-side .pea-social-row { justify-content: flex-start; }
+.pea-news-side .pea-count-card { margin-top: 0; }
+@media (max-width: 1100px) {
+  .pea-newsband .pea-shell { grid-template-columns: 1fr; }
+  .pea-news-side .pea-fb-frame iframe { max-width: 500px; margin: 0 auto; }
+  .pea-news-side .pea-social-row { justify-content: center; }
+}
+
+/* ---- Hero สงบ: ไม่มีรูปพื้นหลัง/โปสเตอร์ — ไล่เฉดม่วงนุ่ม + ลวดลายจางๆ ---- */
+.pea-slide {
+  background-image:
+    radial-gradient(900px 420px at 82% -10%, rgba(254, 147, 44, 0.16), transparent 60%),
+    radial-gradient(700px 500px at -8% 110%, rgba(109, 40, 217, 0.5), transparent 60%),
+    linear-gradient(105deg, #2a005e 0%, #340075 55%, #4c1d95 100%);
+}
+.pea-slide:nth-child(2) { background-image:
+    radial-gradient(900px 420px at 85% 0%, rgba(254, 147, 44, 0.2), transparent 55%),
+    linear-gradient(105deg, #340075 0%, #3b0d80 55%, #5b21b6 100%); }
+.pea-slide:nth-child(3) { background-image:
+    radial-gradient(800px 400px at 10% -10%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(700px 500px at 100% 110%, rgba(254, 147, 44, 0.14), transparent 60%),
+    linear-gradient(105deg, #2a005e 0%, #451494 60%, #6d28d9 100%); }
+.pea-slide-in { grid-template-columns: minmax(0, 1fr); max-width: 900px; gap: 0; }
+.pea-copy h1 { text-shadow: none; }
+
+/* ---- คืนรูปพื้นหลัง hero: เห็นภาพจริงแต่โอเวอร์เลย์ม่วงหนา นุ่ม อ่านง่าย (ทับกฎเฉยๆ ก่อนหน้า) ---- */
+.pea-slide, .pea-slide:nth-child(2), .pea-slide:nth-child(3) {
+  background-image:
+    linear-gradient(102deg, rgba(24, 0, 54, 0.93) 0%, rgba(52, 0, 117, 0.82) 46%, rgba(76, 29, 149, 0.5) 100%),
+    var(--bg),
+    linear-gradient(105deg, #2a005e, #4c1d95);
+  background-size: cover, cover, cover;
+  background-position: center;
+  background-color: #340075;
+}
+
+/* ---- สารนายกสมาคม (กลับมาในหน้าแรก) ---- */
+.pea-president { padding: 44px 0 8px; background: var(--pea-surface); }
+.pea-pres-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.pea-pres-card { display: flex; gap: 22px; padding: 26px; background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius); }
+.pea-pres-photo { flex: 0 0 148px; }
+.pea-pres-photo .ph { width: 148px; height: 178px; border-radius: 14px; background: var(--pea-surface-2); border: 1px dashed rgba(76, 29, 149, 0.35); display: grid; place-items: center; color: var(--pea-primary-2); }
+.pea-pres-photo .ph .material-symbols-outlined { font-size: 54px; }
+.pea-pres-photo img { width: 148px; height: 178px; object-fit: cover; border-radius: 14px; }
+.pea-pres-body { min-width: 0; }
+.pea-pres-body .role { display: inline-block; padding: 4px 12px; border-radius: 999px; background: #ffdcc3; color: #2f1500; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.pea-pres-body h3 { margin: 10px 0 2px; font-size: 1.35rem; font-weight: 800; color: var(--pea-primary); }
+.pea-pres-body .sub { margin: 0 0 12px; font-size: 0.82rem; color: var(--pea-muted); }
+.pea-pres-body p { margin: 0 0 10px; font-size: 0.92rem; line-height: 1.85; color: #322a45; }
+.pea-pres-body blockquote { margin: 14px 0 12px; padding: 4px 0 4px 16px; border-left: 4px solid var(--pea-accent); font-size: 1rem; line-height: 1.8; color: var(--pea-primary); font-weight: 600; }
+.pea-pres-side { display: flex; flex-direction: column; gap: 14px; }
+.pea-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; border-radius: var(--pea-radius); background: linear-gradient(135deg, var(--pea-primary), var(--pea-primary-2)); color: #fff; }
+.pea-stats .st { padding: 10px 12px; border-radius: 10px; background: rgba(255, 255, 255, 0.1); }
+.pea-stats b { display: block; font-size: 1.05rem; font-weight: 800; }
+.pea-stats small { display: block; margin-top: 2px; font-size: 0.68rem; color: #ffcf9e; font-weight: 700; letter-spacing: 0.04em; }
+.pea-committee { margin: 0; position: relative; flex: 1; min-height: 150px; border-radius: var(--pea-radius); overflow: hidden; }
+.pea-committee img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.pea-committee figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 10px; background: linear-gradient(0deg, rgba(26, 0, 58, 0.88), transparent); color: #fff; font-size: 0.78rem; font-weight: 700; }
+.pea-pres-side .pea-committee { flex: 0 0 auto; min-height: 0; aspect-ratio: 16 / 9; }
+@media (max-width: 1100px) { .pea-pres-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .pea-pres-card { flex-direction: column; } .pea-pres-photo .ph, .pea-pres-photo img { width: 132px; height: 158px; } }
+
+/* ---- อ่านสบายตาชัวร์: โอเวอร์เลย์หนาขึ้นทั่วสไลด์ + เงาตัวหนังสือ + ปุ่มส้มเข้มตัวขาว ---- */
+.pea-slide, .pea-slide:nth-child(2), .pea-slide:nth-child(3) {
+  background-image:
+    linear-gradient(100deg, rgba(20, 0, 48, 0.96) 0%, rgba(42, 0, 94, 0.9) 42%, rgba(58, 10, 120, 0.8) 100%),
+    var(--bg),
+    linear-gradient(105deg, #2a005e, #4c1d95);
+}
+.pea-copy h1, .pea-sub, .pea-meta span { text-shadow: 0 1px 16px rgba(15, 0, 35, 0.65); }
+.pea-btn-accent { background: #b45309; color: #fff; box-shadow: 0 6px 18px rgba(180, 83, 9, 0.35); }
+.pea-btn-accent:hover { background: #9a4406; color: #fff; }
+
+/* ================= ภาษาดีไซน์ thaioperdent (สีม่วง-ส้มของเรา) ================= */
+/* Hero: glow orbs เรืองแสงนุ่ม */
+.pea-hero { position: relative; overflow: hidden; }
+.pea-hero::before, .pea-hero::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 1;
+}
+.pea-hero::before {
+  width: 420px; height: 420px; top: -140px; right: -120px;
+  background: radial-gradient(circle, rgba(254, 147, 44, 0.28), transparent 65%);
+}
+.pea-hero::after {
+  width: 520px; height: 520px; bottom: -220px; left: -160px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent 65%);
+}
+.pea-track, .pea-nav, .pea-dots { position: relative; z-index: 2; }
+.pea-hero .pea-nav, .pea-hero .pea-dots { position: absolute; }
+
+/* การ์ดลัดบริการ: กระจกบน hero แบบการ์ดบริการของเขา */
+.pea-shortcuts {
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(15, 0, 40, 0.35);
+  margin-top: -110px;
+}
+.pea-shortcuts a { border-right: 1px solid rgba(255, 255, 255, 0.16); }
+.pea-shortcuts a:hover { background: rgba(255, 255, 255, 0.12); }
+.pea-shortcuts .ic { background: rgba(255, 255, 255, 0.14); color: #fff; }
+.pea-shortcuts a:hover .ic { background: #b45309; color: #fff; }
+.pea-shortcuts b { color: #fff; }
+.pea-slide-in { padding-bottom: 150px; }
+
+/* Section ขาวสะอาด + หัวข้อใหญ่แบบเขา (h2 30px/800) */
+.pea-services, .pea-newsband, .pea-president, .pea-fb, .pea-partners { background: #fff; }
+.pea-sec-head h2 { font-size: 1.875rem; letter-spacing: -0.01em; }
+.pea-president { padding-top: 54px; }
+.pea-partners { border-top: 1px solid var(--pea-line); }
+@media (max-width: 1100px) { .pea-shortcuts { margin-top: -84px; } }
+@media (max-width: 1100px) {
+  /* On narrow screens the shortcut panel crosses from the hero onto a light
+     section. Keep its surface opaque so the lower row never loses contrast. */
+  .pea-shortcuts {
+    background: linear-gradient(145deg, #2a005e, #4c1d95) !important;
+    border-color: rgba(255, 255, 255, 0.22);
+    backdrop-filter: none;
+  }
+  .pea-shortcuts a { background: transparent; }
+  .pea-shortcuts .ic { background: rgba(255, 255, 255, 0.16); color: #fff; }
+  .pea-shortcuts b { color: #fff; }
+}
+@media (max-width: 760px) {
+  .pea-shortcuts {
+    margin-top: -70px;
+    background: linear-gradient(145deg, #2a005e, #4c1d95);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: none;
+  }
+  .pea-shortcuts a { min-height: 104px; }
+  .pea-shortcuts .ic { background: rgba(255, 255, 255, 0.16); }
+  .pea-slide-in { padding-bottom: 130px; }
+}
+
+/* ---- FB widget เป็นการ์ดมีหัวข้อ (แทนกล่อง iframe ลอยๆ ที่ตัดโพสต์กลางคัน) ---- */
+.pea-news-side .pea-fb-widget { background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius); overflow: hidden; box-shadow: 0 6px 22px rgba(42, 12, 84, 0.08); }
+.pea-news-side .pea-fb-widget .fb-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px; background: linear-gradient(100deg, var(--pea-primary), var(--pea-primary-2)); color: #fff; }
+.pea-news-side .fb-head .t { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 800; letter-spacing: 0.02em; }
+.pea-news-side .fb-head a { display: inline-flex; align-items: center; gap: 3px; color: #ffd9ae; font-size: 0.74rem; font-weight: 700; text-decoration: none; }
+.pea-news-side .fb-head a:hover { color: #fff; }
+.pea-news-side .fb-head .material-symbols-outlined { font-size: 14px; }
+.pea-news-side .pea-fb-frame { width: 100%; }
+.pea-news-side .pea-fb-frame iframe { width: 100% !important; max-width: none; height: 620px !important; border-radius: 0; box-shadow: none; background: #fff; display: block; }
+.pea-news-side .pea-fb-card {
+  display: block; position: relative; overflow: hidden; min-height: 290px;
+  background: #210046; color: #fff; text-decoration: none;
+}
+.pea-news-side .pea-fb-card > img {
+  width: 100%; height: 290px; object-fit: cover; opacity: .52;
+  filter: saturate(.9) contrast(1.04); transition: transform .25s ease, opacity .25s ease;
+}
+.pea-news-side .pea-fb-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(32,0,70,.08), rgba(32,0,70,.9));
+}
+.pea-news-side .pea-fb-card-copy {
+  position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 22px;
+  display: grid; gap: 5px;
+}
+.pea-news-side .pea-fb-card-copy b { font-size: 1.13rem; line-height: 1.35; }
+.pea-news-side .pea-fb-card-copy small { color: rgba(255,255,255,.84); line-height: 1.55; }
+.pea-news-side .pea-fb-card-copy em { display: inline-flex; align-items: center; gap: 6px; margin-top: 7px; color: #ffcf9e; font-size: .76rem; font-style: normal; font-weight: 800; }
+.pea-news-side .pea-fb-card-copy .material-symbols-outlined { font-size: 16px; }
+.pea-news-side .pea-fb-card:hover > img { transform: scale(1.04); opacity: .65; }
+
+/* ---- ข่าวเต็มความกว้าง (FB ย้ายลงล่างแล้ว) + FB โซนล่างสุด ---- */
+.pea-newsband .pea-shell { grid-template-columns: minmax(0, 1fr); }
+.pea-newsband .pea-count-card { margin-top: 22px; }
+.pea-fb-bottom { padding: 26px 0 56px; background: linear-gradient(180deg, #efeaf9, #e9e5f7); }
+.pea-fb-bottom .pea-shell { display: flex; justify-content: center; }
+.pea-fb-bottom .pea-fb-widget { width: 500px; max-width: 100%; background: #fff; border: 1px solid var(--pea-line); border-radius: var(--pea-radius); overflow: hidden; box-shadow: 0 6px 22px rgba(42, 12, 84, 0.08); }
+.pea-fb-bottom .fb-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 16px; background: linear-gradient(100deg, var(--pea-primary), var(--pea-primary-2)); color: #fff; }
+.pea-fb-bottom .fb-head .t { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 800; }
+.pea-fb-bottom .fb-head a { display: inline-flex; align-items: center; gap: 3px; color: #ffd9ae; font-size: 0.74rem; font-weight: 700; text-decoration: none; }
+.pea-fb-bottom .fb-head a:hover { color: #fff; }
+.pea-fb-bottom .fb-head .material-symbols-outlined { font-size: 14px; }
+.pea-fb-bottom .pea-fb-frame { width: 100%; }
+.pea-fb-bottom iframe { width: 100% !important; max-width: none; height: 620px !important; display: block; }
+
+/* ---- คืน 2 คอลัมน์โซนข่าว: ซ้ายข่าว+ประกาศ / ขวา FB+นับถอยหลัง (ที่เดิม) ---- */
+.pea-newsband .pea-shell { grid-template-columns: minmax(0, 1.55fr) 500px; }
+.pea-newsband .pea-count-card { margin-top: 0; }
+
+/* ---- แถบ CTA: หัวข้อขาวบนพื้นม่วง (เดิมม่วงเข้มบนม่วง มองไม่เห็น) ---- */
+.pea-cta h2 { color: #fff; }
+.pea-cta p { color: rgba(255, 255, 255, 0.92); }
+
+/* ================================================================
+   PRO DESIGN PASS — ต้านความโล้น (เรียนจาก Stripe/thaioperdent/PEA)
+   ================================================================ */
+
+/* 1) Aurora art มุมขวาบนของ hero — ชั้นไล่เฉดสดใสซ้อนบนภาพจริง */
+.pea-hero::before {
+  width: 640px; height: 640px; top: -260px; right: -180px;
+  background:
+    conic-gradient(from 210deg at 50% 50%,
+      rgba(254, 147, 44, 0.34), rgba(236, 72, 153, 0.22),
+      rgba(124, 58, 237, 0.30), rgba(56, 189, 248, 0.16),
+      rgba(254, 147, 44, 0.34));
+  filter: blur(46px);
+}
+.pea-hero::after {
+  width: 380px; height: 380px; top: 60px; right: 30%;
+  background: radial-gradient(circle, rgba(255, 214, 170, 0.22), transparent 62%);
+  filter: blur(30px);
+}
+
+/* 2) หัวข้อ section: ขีดไล่เฉดใต้หัวข้อ */
+.pea-sec-head h2::after {
+  content: ""; display: block; width: 58px; height: 5px; margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pea-accent), #7c3aed);
+}
+.pea-sec-head.row h2::after { margin-bottom: -2px; }
+
+/* 3) ไอคอน chip ไล่เฉดม่วง + เงาการ์ดลึก */
+.pea-sv .ic { background: linear-gradient(135deg, #4c1d95, #8b5cf6); color: #fff; box-shadow: 0 8px 18px rgba(76, 29, 149, 0.28); }
+.pea-sv .ic .material-symbols-outlined { text-shadow: 0 1px 6px rgba(0, 0, 0, 0.18); }
+.pea-sv, .pea-evt { box-shadow: 0 3px 14px rgba(42, 12, 84, 0.07); }
+.pea-sv:hover, .pea-evt:hover { box-shadow: 0 16px 36px rgba(42, 12, 84, 0.14); }
+
+/* 4) จังหวะพื้นหลัง: dot-grid / ไล่เฉดอ่อน สลับกัน */
+.pea-services {
+  background:
+    radial-gradient(rgba(76, 29, 149, 0.1) 1.4px, transparent 1.4px) 0 0 / 22px 22px,
+    linear-gradient(180deg, #f1edfb 0%, #e9e4f8 100%);
+}
+.pea-newsband { background: linear-gradient(180deg, #efecf9 0%, #e6e2f6 100%); }
+.pea-president {
+  position: relative;
+  background:
+    radial-gradient(700px 300px at 108% 0%, rgba(124, 58, 237, 0.14), transparent 60%),
+    radial-gradient(rgba(76, 29, 149, 0.08) 1.4px, transparent 1.4px) 0 0 / 26px 26px,
+    linear-gradient(180deg, #f0edfa 0%, #e9e5f7 100%);
+}
+
+/* 5) การ์ดข่าวเด่น: แถบไล่เฉดด้านบน + ไฮไลต์ */
+.pea-feat { position: relative; overflow: hidden; border-left: 0; }
+.pea-feat::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; z-index: 2;
+  background: linear-gradient(90deg, var(--pea-accent), #7c3aed 60%, #38bdf8);
+}
+.pea-panel-box { box-shadow: 0 4px 18px rgba(42, 12, 84, 0.06); }
+.pea-count-card { background: linear-gradient(135deg, #2a005e 0%, #4c1d95 55%, #7c3aed 120%); }
+
+/* 6) ปุ่มหลักไล่เฉด */
+.pea-btn-accent { background: linear-gradient(135deg, #e07a1f, #b45309); }
+.pea-btn-accent:hover { background: linear-gradient(135deg, #c96c15, #9a4406); }
+
+/* 7) การ์ดสารนายก: ขอบบนไล่เฉด + สถิติเด่น */
+.pea-pres-card { position: relative; overflow: hidden; }
+.pea-pres-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--pea-accent), #7c3aed);
+}
+.pea-stats { background: linear-gradient(150deg, #2a005e, #4c1d95 60%, #6d28d9); }
+
+/* 8) ปุ่ม ghost บน hero เด่นขึ้นเล็กน้อย */
+.pea-btn-ghost { background: rgba(255, 255, 255, 0.10); border: 1px solid rgba(255, 255, 255, 0.55); }
+
+/* ---- spacing polish: การ์ดทุกใบหายใจเท่ากัน ---- */
+.pea-shortcuts { padding: 4px 0; }
+.pea-shortcuts a { padding: 16px 8px; }
+.pea-shortcuts b { text-align: center; line-height: 1.45; padding: 0 4px; }
+.pea-feat > div { min-width: 0; }
+.pea-feat b { line-height: 1.55; overflow-wrap: anywhere; }
+.pea-panel-box .pb-item b { line-height: 1.55; }
+.pea-evt > div { padding: 15px 16px 17px; }
+@media (max-width: 760px) {
+  .pea-copy { padding-right: 4px; }
+  .pea-meta { gap: 8px; }
+  .pea-meta span { font-size: 0.8rem; padding: 7px 11px; }
+}
+
+/* ---- ภาพ hero ชัดขึ้น: โอเวอร์เลย์บางลง (ซ้ายเข้มพอสำหรับตัวหนังสือ ขวาเห็นภาพจริง) ---- */
+.pea-slide, .pea-slide:nth-child(2), .pea-slide:nth-child(3) {
+  background-image:
+    linear-gradient(96deg, rgba(20, 0, 48, 0.88) 0%, rgba(42, 0, 94, 0.62) 44%, rgba(58, 10, 120, 0.28) 100%),
+    var(--bg),
+    linear-gradient(105deg, #2a005e, #4c1d95);
+}
+.pea-copy h1 { text-shadow: 0 2px 14px rgba(15, 0, 35, 0.8); }
+.pea-sub { text-shadow: 0 1px 10px rgba(15, 0, 35, 0.75); }
+
+/* ---- การ์ดสารนายก: ไล่เฉดม่วงเข้ม + ป้าย/ขีดส้มทอง (แบบ design-15 ที่อนุมัติ) ---- */
+.pea-pres-card {
+  background: linear-gradient(140deg, #2a005e 0%, #340075 45%, #4c1d95 100%);
+  border: 1px solid rgba(255, 217, 174, 0.3);
+  box-shadow: 0 18px 44px rgba(26, 0, 60, 0.35);
+  position: relative; overflow: hidden;
+}
+.pea-pres-card::after {
+  content: ""; position: absolute; right: -70px; top: -90px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 147, 44, 0.3), transparent 65%);
+  pointer-events: none;
+}
+.pea-pres-body .role { background: #fe932c; color: #331a00; }
+.pea-pres-body h3 { color: #fff; }
+.pea-pres-body .sub { color: #ffcf9e; font-weight: 700; }
+.pea-pres-body p { color: rgba(255, 255, 255, 0.92); }
+.pea-pres-body blockquote { border-left-color: #fe932c; color: #ffd9ae; }
+.pea-pres-photo .ph { background: rgba(255, 255, 255, 0.08); border: 1px dashed rgba(255, 217, 174, 0.55); color: #ffd9ae; }
+.pea-pres-photo .ph .material-symbols-outlined { color: #ffd9ae; }
+.pea-pres-body { position: relative; z-index: 1; }
+
+/* ---- พื้นหลังโซนล่าง: ม่วงอ่อนจางๆ ไม่ขาวโล้น (การ์ดขาวจะเด่นขึ้น) ---- */
+.pea-newsband { background: linear-gradient(180deg, #efeaf9 0%, #e6e2f6 100%); }
+.pea-fb { background: linear-gradient(180deg, #efeaf9 0%, #e6e2f6 100%); }
+.pea-cta { background: linear-gradient(180deg, #eceaf7, #f3f1fc); }
+.pea-partners { background: linear-gradient(180deg, #efeaf9, #e9e5f7); border-top: 0; }
+.pea-partners a, .pea-partner-row span { background: #fff; }
+
+/* ==================================================================
+   ASSOCIATION DESIGN SYSTEM — final editorial pass
+   Calm, evidence-led hierarchy: fewer effects, clearer reading order.
+   ================================================================== */
+.pea {
+  --pea-primary: #340075;
+  --pea-primary-2: #51209a;
+  --pea-accent: #e87818;
+  --pea-ink: #201033;
+  --pea-line: #e7def3;
+}
+.pea-hero::before,
+.pea-hero::after { display: none; }
+.pea-slide,
+.pea-slide:nth-child(2),
+.pea-slide:nth-child(3) {
+  background-image:
+    linear-gradient(90deg, rgba(29, 5, 64, .92) 0%, rgba(39, 7, 82, .75) 48%, rgba(39, 7, 82, .20) 100%),
+    var(--bg);
+}
+.pea-copy h1 { letter-spacing: -.025em; text-shadow: none; }
+.pea-copy h1, .pea-sub, .pea-meta span { text-shadow: none; }
+.pea-btn-accent,
+.pea-btn-accent:hover { box-shadow: none; }
+.pea .pea-btn-accent { background: #b45309; color: #fff; font-weight: 800; }
+.pea .pea-btn-accent:hover { background: #9a4406; color: #fff; }
+.pea-btn-ghost { background: transparent; border-color: rgba(255,255,255,.72); }
+.pea-shortcuts {
+  background: #fff;
+  border: 1px solid #e5dbf0;
+  box-shadow: 0 14px 32px rgba(37, 9, 77, .13);
+}
+.pea-shortcuts a { border-color: #eee8f5; }
+.pea-shortcuts a:hover { background: #f8f4fd; }
+.pea-shortcuts .ic { background: #f1eafd; color: #4b168d; }
+.pea-shortcuts a:hover .ic { background: #4b168d; color: #fff; }
+.pea-shortcuts b { color: #2c124e; }
+.pea-sec-head h2 { font-size: clamp(1.55rem, 3vw, 2rem); letter-spacing: -.02em; }
+.pea-sec-head h2::after {
+  width: 42px; height: 3px; margin-top: 9px;
+  background: #e87818;
+}
+.pea-services,
+.pea-president,
+.pea-newsband,
+.pea-fb,
+.pea-fb-bottom,
+.pea-partners {
+  background: #fbfafc;
+}
+.pea-president { border-top: 1px solid #f0ebf5; }
+.pea-services { border-block: 1px solid #f0ebf5; }
+.pea-sv,
+.pea-evt,
+.pea-panel-box,
+.pea-news-side .pea-fb-widget {
+  box-shadow: 0 2px 10px rgba(37, 9, 77, .06);
+  border-color: #e6deef;
+}
+.pea-sv:hover,
+.pea-evt:hover { box-shadow: 0 10px 24px rgba(37, 9, 77, .11); }
+.pea-sv .ic { background: #f1eafd; color: #4b168d; box-shadow: none; }
+.pea-feat::before,
+.pea-pres-card::before { height: 3px; background: #e87818; }
+.pea-count-card { background: #340075; }
+.pea-stats { background: #3d0b78; }
+.pea-pres-card { box-shadow: 0 14px 30px rgba(28, 3, 63, .18); }
+.pea-cta { background: #340075; }
+.pea-partners a,
+.pea-partner-row span { border: 1px solid #e6deef; box-shadow: none; }
+@media (max-width: 1100px) {
+  .pea-shortcuts { background: #fff !important; border-color: #e5dbf0; }
+  .pea-shortcuts a { background: transparent; }
+  .pea-shortcuts .ic { background: #f1eafd; color: #4b168d; }
+  .pea-shortcuts b { color: #2c124e; }
+}
+@media (max-width: 760px) {
+  /* The desktop news sidebar is 500px wide.  It must stack below news on
+     phones; otherwise the news column collapses to a handful of pixels. */
+  .pea-newsband .pea-shell { grid-template-columns: minmax(0, 1fr); }
+  .pea-news-side { width: 100%; min-width: 0; }
+  .pea-shortcuts { margin-top: -56px; border-radius: 16px; }
+  .pea-shortcuts a { min-height: 76px; padding: 9px 6px; }
+  .pea-shortcuts .ic { width: 38px; height: 38px; border-radius: 11px; }
+  .pea-shortcuts .ic .material-symbols-outlined { font-size: 21px; }
+  .pea-shortcuts b { font-size: .76rem; line-height: 1.28; }
+  .pea-slide-in { padding-bottom: 112px; }
+  .pea-copy h1 { font-size: clamp(1.75rem, 9vw, 2.4rem); }
+  .pea-hero .pea-nav { display: none; }
+}
+
+/* Executive committee: compact, continuously moving name cards on the home
+   page. The duplicate run makes the motion seamless; users may pause it. */
+.pea-committee-strip { margin-top: 18px; border: 1px solid rgba(255, 217, 174, .3); border-radius: 14px; overflow: hidden; background: rgba(15, 0, 42, .26); }
+.pea-committee-strip-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+.pea-committee-strip-head > span { color: #ffd9ae; font-size: .78rem; font-weight: 800; }
+.pea-committee-strip-head a { display: inline-flex; align-items: center; gap: 3px; color: #fff; font-size: .76rem; font-weight: 800; }
+.pea-committee-strip-head a:hover { color: #ffcf9e; }
+.pea-committee-strip-head .material-symbols-outlined { font-size: 16px; }
+.pea-committee-viewport { overflow: hidden; padding: 10px 0; }
+.pea-committee-track { display: flex; width: max-content; gap: 10px; animation: tea-committee-scroll 65s linear infinite; }
+.pea-committee-viewport:hover .pea-committee-track, .pea-committee-viewport:focus-within .pea-committee-track { animation-play-state: paused; }
+.pea-committee-member { width: 238px; min-height: 74px; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 9px; align-items: center; padding: 8px; border: 1px solid rgba(255, 255, 255, .18); border-radius: 10px; background: rgba(255, 255, 255, .11); }
+.pea-committee-member img { width: 52px; height: 58px; border-radius: 8px; object-fit: cover; object-position: center top; background: #fff; }
+.pea-committee-member b { display: block; color: #fff; font-size: .76rem; font-weight: 800; line-height: 1.38; }
+.pea-committee-member span { display: block; margin-top: 3px; color: #ffcf9e; font-size: .66rem; font-weight: 700; line-height: 1.35; }
+@keyframes tea-committee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .pea-committee-track { animation: none; } }
+@media (max-width: 640px) {
+  .pea-pres-card { align-items: center; }
+  .pea-pres-photo { flex-basis: auto; margin-inline: auto; }
+  .pea-pres-body { width: 100%; text-align: center; }
+  .pea-pres-body p, .pea-pres-body blockquote { text-align: left; }
+}
+
+/* Final visual corrections: keep panels distinct, images uncut, and mobile
+   controls compact without sacrificing the separator rules. */
+.pea-pres-card {
+  border: 2px solid #e87818;
+  box-shadow: 0 16px 32px rgba(28, 3, 63, .24), inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.pea-stats {
+  border: 2px solid #e87818;
+  box-shadow: 0 10px 22px rgba(28, 3, 63, .16);
+}
+.pea-stats .st { border: 1px solid rgba(255, 217, 174, .45); }
+
+/* The feature image is always framed at the same editorial ratio.  contain
+   preserves every poster instead of stretching or cutting its artwork. */
+.pea-feat img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #f6f2fa;
+  border: 1px solid #ece4f2;
+}
+
+/* Homepage committee ticker: deliberately light against the president card,
+   with larger type and portrait cards for desktop reading. */
+.pea-committee-strip { border: 2px solid #e87818; background: #fff; box-shadow: 0 8px 18px rgba(24, 0, 58, .18); }
+.pea-committee-strip-head { padding: 12px 16px; border-bottom-color: #e7def3; background: #faf7fd; }
+.pea-committee-strip-head > span { color: #6d28a8; font-size: .84rem; }
+.pea-committee-strip-head a { color: #4b168d; font-size: .82rem; }
+.pea-committee-strip-head a:hover { color: #b45309; }
+.pea-committee-viewport { padding: 12px 0; }
+.pea-committee-track { gap: 12px; animation-duration: 72s; }
+.pea-committee-member { width: 286px; min-height: 88px; grid-template-columns: 68px minmax(0, 1fr); gap: 11px; padding: 10px; border-color: #ded3e9; background: #fff; box-shadow: 0 2px 8px rgba(37,9,77,.06); }
+.pea-committee-member img { width: 68px; height: 72px; border-radius: 9px; }
+.pea-committee-member b { color: #30115b; font-size: .88rem; line-height: 1.4; }
+.pea-committee-member span { color: #ad4a05; font-size: .73rem; line-height: 1.4; }
+
+/* Affiliations are a quiet, icon-led marquee. Duplicate cards create a
+   seamless loop; motion pauses on hover and honours reduced-motion settings. */
+.pea-partner-viewport { margin-top: 14px; overflow: hidden; padding: 3px 0; }
+.pea-partner-row { display: flex; width: max-content; flex-wrap: nowrap; gap: 12px; margin: 0; animation: tea-partner-scroll 52s linear infinite; }
+.pea-partner-viewport:hover .pea-partner-row { animation-play-state: paused; }
+.pea-partner-row a, .pea-partner-row span {
+  width: 275px; min-height: 78px; display: grid; grid-template-columns: 34px minmax(0,1fr); column-gap: 10px; align-content: center;
+  padding: 12px 14px; border: 1px solid #ded3e9; border-radius: 12px; background: #fff; color: #35106c; text-decoration: none;
+}
+.pea-partner-row .material-symbols-outlined { grid-row: span 2; align-self: center; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; background: #f0e9fa; color: #5a1aa3; font-size: 20px; }
+.pea-partner-row b { font-size: .82rem; font-weight: 800; line-height: 1.3; }
+.pea-partner-row small { color: #62506f; font-size: .68rem; font-weight: 600; line-height: 1.35; }
+.pea-partner-row a:hover { border-color: #b775e0; background: #fcfaff; }
+.pea-partner-row span.is-plain { color: #35106c; }
+@keyframes tea-partner-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@media (max-width: 760px) {
+  .pea-shortcuts { margin-top: -42px; }
+  .pea-shortcuts a { min-height: 66px; gap: 6px; padding: 8px 5px; }
+  .pea-shortcuts .ic { width: 34px; height: 34px; border-radius: 10px; }
+  .pea-shortcuts .ic .material-symbols-outlined { font-size: 19px; }
+  .pea-shortcuts b { font-size: .72rem; line-height: 1.22; }
+  .pea-shortcuts a:nth-child(odd) { border-right: 1px solid #ded3e9 !important; }
+  .pea-shortcuts a:nth-child(even) { border-right: 0 !important; }
+  .pea-shortcuts a:nth-child(-n+4) { border-bottom: 1px solid #ded3e9; }
+  .pea-committee-member { width: 230px; min-height: 76px; grid-template-columns: 54px minmax(0, 1fr); padding: 8px; }
+  .pea-committee-member img { width: 54px; height: 58px; }
+  .pea-committee-member b { font-size: .76rem; }
+  .pea-committee-member span { font-size: .66rem; }
+  .pea-partner-row { animation-duration: 42s; }
+  .pea-partner-row a, .pea-partner-row span { width: 244px; min-height: 70px; }
+}
+@media (prefers-reduced-motion: reduce) { .pea-partner-row { animation: none; } }
+
+/* Shared framed treatment: affiliations now has the same intentional panel
+   boundary as the committee module instead of appearing as loose cards. */
+.pea-partner-panel { overflow: hidden; border: 2px solid #e87818; border-radius: 14px; background: #fff; box-shadow: 0 8px 18px rgba(24, 0, 58, .10); }
+.pea-partner-panel-head { padding: 12px 16px; border-bottom: 1px solid #e7def3; background: #faf7fd; }
+.pea-partner-panel-head .pea-kicker { display: block; color: #6d28a8; font-size: .76rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.pea-partner-viewport { margin: 0; padding: 12px 0; }
+.pea-partner-row { padding-inline: 12px; }
+.pea-partner-row a, .pea-partner-row span { width: 232px; min-height: 66px; grid-template-columns: 76px minmax(0,1fr); }
+.pea-partner-row > * > img { width: 62px; height: 44px; object-fit: contain; object-position: center; }
+.pea-partner-row > * > span { width: auto; min-width: 0; min-height: 0; display: block; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.pea-partner-row > * > span small { display: none; }
+.pea-partner-row > * > span b { display: block; overflow-wrap: anywhere; color: #35106c; font-size: .9rem; font-weight: 850; line-height: 1.25; }
+
+/* Keep the moving Affiliations carousel intentional: cards glide behind a
+   soft edge instead of appearing abruptly cut at both sides. */
+@media (min-width: 761px) {
+  .pea-partner-viewport {
+    padding-inline: 18px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 3.5%, #000 96.5%, transparent 100%);
+  }
+}
+
+/* The committee directory advances automatically from right to left. */
+.pea-committee-viewport { padding-inline: 12px; }
+.pea-committee-track { animation: tea-committee-scroll 100s linear infinite; }
+.pea-committee-viewport { overflow: hidden; }
+
+@media (max-width: 760px) {
+  .pea-partner-row { padding-inline: 8px; }
+  .pea-partner-row a, .pea-partner-row span { width: 214px; grid-template-columns: 58px minmax(0,1fr); }
+  .pea-partner-row > * > img { width: 56px; height: 44px; }
+}
+
+/* The closing homepage modules read as one centred invitation rather than
+   three left-aligned utility bands. */
+@media (min-width: 761px) {
+  .pea-cta { padding: 38px 0 52px; }
+  .pea-cta .pea-shell { min-height: 154px; flex-direction: column; justify-content: center; align-items: center; gap: 16px; padding: 28px 44px; text-align: center; }
+  .pea-cta .pea-shell > div:first-child { position: relative; z-index: 1; }
+  .pea-cta p { max-width: 680px; }
+  .pea-cta-btns { justify-content: center; }
+  .pea-partners { padding: 52px 0 56px; }
+  .pea-partner-panel-head { text-align: center; padding: 15px 18px; }
+  .pea-partner-panel-head .pea-kicker { display: inline-block; }
+}
+
+/* A marquee is intrinsically wide.  It must never become the minimum width
+   of the president grid on phones, or it pushes the portrait far off-screen. */
+@media (max-width: 760px) {
+  .pea-pres-grid { grid-template-columns: minmax(0, 1fr); }
+  .pea-pres-grid, .pea-pres-side, .pea-pres-card, .pea-committee-strip, .pea-committee-viewport { min-width: 0; max-width: 100%; }
+  .pea-pres-card { width: 100%; box-sizing: border-box; padding: 22px 18px 24px; }
+  .pea-pres-photo { width: 132px; }
+  .pea-pres-photo img { display: block; width: 132px; height: 158px; object-fit: cover; border-radius: 14px; }
+  .pea-pres-body { min-width: 0; }
+}
+
+/* Homepage information order: association, news/events, journal, notices,
+   activity imagery, then direct contact. */
+.pea { display: flex; flex-direction: column; }
+.pea-hero { order: 1; }
+.pea > .pea-shell { order: 2; }
+.pea-president { order: 3; }
+.pea-partners { order: 10; }
+.pea-services { display: none; }
+.pea-newsband { order: 5; }
+.pea-journal-home { order: 6; padding: 56px 0; background: #faf8fd; border-top: 1px solid #e7def3; }
+.pea-announcements-home { order: 7; padding: 56px 0; background: #fff; }
+.pea-gallery-home { order: 8; padding: 56px 0; background: #faf8fd; }
+.pea-cta { order: 9; }
+.pea-journal-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: 18px; }
+.pea-journal-card { min-width: 0; border: 1px solid #dfd4ec; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 6px 20px rgba(43, 11, 93, .08); }
+.pea-journal-tej { display: grid; grid-template-columns: minmax(200px, .9fr) minmax(0, 1.1fr); }
+.pea-journal-cover { display: grid; place-items: center; min-height: 236px; padding: 14px; background: linear-gradient(145deg, #f5effb, #fff); }
+.pea-journal-cover img { display: block; width: 100%; height: 100%; max-height: 280px; object-fit: contain; }
+.pea-journal-tej > div, .pea-journal-archive > div { padding: 25px; align-self: center; }
+.pea-journal-card > div > span, .pea-journal-archive > span { color: #a94300; font-size: .7rem; font-weight: 850; letter-spacing: .12em; }
+.pea-journal-card h3 { margin: 7px 0 8px; color: #2b0b5d; font-size: 1.35rem; line-height: 1.3; }
+.pea-journal-card h3 em { font-style: normal; font-size: .86em; font-weight: 650; }
+.pea-journal-card p { margin: 0 0 18px; color: #514360; line-height: 1.65; font-size: .9rem; }
+.pea-journal-archive { display: grid; grid-template-columns: 1fr; place-content: center; padding: 27px; background: linear-gradient(145deg, #31006f, #5b229d); }
+.pea-journal-archive > .material-symbols-outlined { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: rgba(255,255,255,.13); color: #ffd9ae; font-size: 27px; }
+.pea-journal-archive > div { padding: 18px 0 0; }
+.pea-journal-archive > div > span { color: #ffd9ae; }
+.pea-journal-archive h3, .pea-journal-archive p { color: #fff; }
+.pea-text-link { display: inline-flex; align-items: center; gap: 4px; color: #ffd9ae; font-size: .85rem; font-weight: 800; }
+.pea-text-link .material-symbols-outlined { font-size: 17px; }
+.pea-announcement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pea-announcement-card { min-width: 0; display: grid; grid-template-columns: 40px minmax(0,1fr) 20px; gap: 11px; align-items: center; padding: 17px; border: 1px solid #dfd4ec; border-radius: 14px; color: #2b0b5d; text-decoration: none; background: #fff; }
+.pea-announcement-card:hover { border-color: #b775e0; box-shadow: 0 6px 16px rgba(43,11,93,.08); }
+.pea-announcement-card > .material-symbols-outlined:first-child { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: #f0e9fa; color: #5a1aa3; }
+.pea-announcement-card small { display: block; margin-bottom: 4px; color: #a94300; font-size: .69rem; font-weight: 750; }
+.pea-announcement-card b { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: .88rem; line-height: 1.45; }
+.pea-announcement-card .arrow { color: #6d28a8; font-size: 18px; }
+.pea-gallery-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 14px; }
+.pea-gallery-grid a { position: relative; overflow: hidden; min-height: 230px; border-radius: 15px; background: #270054; color: #fff; text-decoration: none; }
+.pea-gallery-grid img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; transition: transform .35s ease; }
+.pea-gallery-grid a::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,0,45,.72), rgba(20,0,45,.03) 65%); }
+.pea-gallery-grid a:hover img { transform: scale(1.04); }
+.pea-gallery-grid span { position: absolute; z-index: 1; left: 17px; right: 17px; bottom: 15px; color: #fff; font-size: .9rem; font-weight: 800; line-height: 1.35; }
+.pea-upcoming-events { overflow: hidden; border: 1px solid #dfd4ec; border-radius: 14px; background: #fff; box-shadow: 0 5px 16px rgba(43,11,93,.06); }
+.pea-upcoming-head { display: flex; align-items: center; gap: 7px; padding: 11px 13px; border-bottom: 1px solid #e7def3; background: #faf7fd; color: #3d1477; }
+.pea-upcoming-head .material-symbols-outlined { color: #b45309; font-size: 19px; }
+.pea-upcoming-head b { font-size: .8rem; }
+.pea-upcoming-head a { margin-left: auto; color: #6d28a8; font-size: .7rem; font-weight: 800; text-decoration: none; }
+.pea-upcoming-item { display: grid; grid-template-columns: minmax(0,1fr) 18px; gap: 8px; padding: 11px 13px; border-bottom: 1px solid #eee8f5; color: #2b0b5d; text-decoration: none; }
+.pea-upcoming-item:last-child { border-bottom: 0; }
+.pea-upcoming-item time { grid-column: 1; color: #a94300; font-size: .67rem; font-weight: 750; }
+.pea-upcoming-item b { grid-column: 1; font-size: .79rem; line-height: 1.42; }
+.pea-upcoming-item .material-symbols-outlined { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: #6d28a8; font-size: 17px; }
+@media (max-width: 760px) {
+  .pea-journal-home, .pea-announcements-home, .pea-gallery-home { padding: 38px 0; }
+  .pea-journal-grid, .pea-journal-tej { grid-template-columns: minmax(0,1fr); }
+  .pea-journal-cover { min-height: 160px; max-height: 210px; padding: 10px; }
+  .pea-journal-cover img { min-height: 0; max-height: 190px; }
+  .pea-journal-tej > div, .pea-journal-archive > div { padding: 20px; }
+  .pea-journal-archive { padding: 20px; }
+  .pea-announcement-grid { grid-template-columns: 1fr; }
+  .pea-gallery-grid { grid-template-columns: 1fr 1fr; }
+  .pea-gallery-grid a { min-height: 165px; }
+  .pea-gallery-grid a:first-child { grid-column: span 2; min-height: 230px; }
+  .pea-news-library { grid-template-columns: 1fr; align-items: flex-start; padding: 16px; }
+  .pea-news-library-primary { grid-row: 2; }
+  .pea-news-library-tools { grid-template-columns: 1fr; }
+}
+
+/* President's message: editorial, light layout inspired by the approved
+   reference—portrait first, message second, committee ticker below. */
+.pea-president { padding: 64px 0 32px; background: #fff; border-top: 0; overflow: hidden; }
+.pea-president .pea-sec-head { position: relative; z-index: 1; }
+.pea-pres-grid { display: block; }
+.pea-pres-card { position: relative; display: grid; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.45fr); gap: clamp(28px, 4vw, 58px); max-width: 1120px; margin: 0 auto; padding: 26px; overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.pea-pres-card::before { content: 'TEA'; position: absolute; z-index: 0; top: -70px; right: 2%; height: auto; width: auto; background: none; color: rgba(52, 0, 117, .07); font-family: Arial, sans-serif; font-size: clamp(9rem, 21vw, 18rem); font-weight: 900; line-height: .8; letter-spacing: -.12em; }
+.pea-pres-card::after { display: none; }
+.pea-pres-photo { position: relative; z-index: 1; width: 100%; flex: none; }
+.pea-pres-photo::after { content: 'President\A Welcome'; position: absolute; left: -34px; bottom: 24px; display: grid; place-items: center; width: 102px; height: 102px; border-radius: 50%; background: #5a1aa3; color: #fff; font-family: Arial, sans-serif; font-size: .94rem; font-weight: 850; line-height: 1.08; white-space: pre-line; text-align: center; box-shadow: 0 12px 24px rgba(67, 15, 133, .24); }
+.pea-pres-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 20px; box-shadow: 0 15px 34px rgba(36, 21, 56, .18); }
+.pea-pres-body { position: relative; z-index: 1; align-self: center; min-width: 0; padding: 20px 0; text-align: left; }
+.pea-pres-body .role { padding: 0; border-radius: 0; background: transparent; color: #6d28a8; font-size: .74rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+.pea-pres-body .role::before { content: ''; display: inline-block; width: 48px; height: 2px; margin: 0 12px 4px 0; vertical-align: middle; background: #6d28a8; }
+.pea-pres-body h3 { margin: 12px 0 3px; color: #5a1aa3; font-size: clamp(1.7rem, 3.1vw, 2.5rem); line-height: 1.22; }
+.pea-pres-body .sub { margin: 0 0 17px; color: #573aa6; font-size: 1rem; font-weight: 750; }
+.pea-pres-body p { margin: 0 0 13px; color: #5b5965; font-size: .96rem; line-height: 1.78; }
+.pea-pres-body blockquote { margin: 18px 0; padding: 4px 0 4px 17px; border-left: 4px solid #fe932c; color: #35256a; font-size: 1.04rem; font-weight: 750; line-height: 1.65; }
+.pea-pres-side { display: block; max-width: 1120px; margin: 8px auto 0; }
+.pea-pres-side .pea-committee-strip { margin-top: 0; }
+@media (max-width: 760px) {
+  .pea-president { padding: 42px 0 26px; }
+  .pea-pres-card { grid-template-columns: 1fr; gap: 18px; padding: 12px 8px 18px; }
+  .pea-pres-card::before { top: -18px; right: -8px; font-size: 8rem; }
+  .pea-pres-photo { width: min(250px, 76vw); margin-inline: auto; }
+  .pea-pres-photo::after { left: -20px; bottom: 16px; width: 78px; height: 78px; font-size: .72rem; }
+  .pea-pres-photo img { height: auto; aspect-ratio: 4 / 5; border-radius: 16px; }
+  .pea-pres-body { padding: 5px 10px 0; text-align: center; }
+  .pea-pres-body .role::before { display: none; }
+  .pea-pres-body h3 { font-size: 1.55rem; }
+  .pea-pres-body .sub { font-size: .86rem; }
+  .pea-pres-body p, .pea-pres-body blockquote { text-align: left; font-size: .9rem; }
+  .pea-pres-side { margin-top: 0; }
+}
+
+/* Give the President's Message a gentle lavender canvas, while retaining
+   the editorial white space and contrast of the approved layout. */
+.pea-president {
+  background:
+    radial-gradient(circle at 16% 25%, rgba(117, 61, 184, .11), transparent 29%),
+    radial-gradient(circle at 84% 72%, rgba(94, 38, 156, .08), transparent 34%),
+    linear-gradient(135deg, #fbf9fe 0%, #f4effa 50%, #fcfaff 100%);
+}
+.pea-president::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .45;
+  background-image: radial-gradient(rgba(69, 23, 121, .16) .7px, transparent .7px);
+  background-size: 18px 18px;
+}
+.pea-president .pea-shell { position: relative; z-index: 1; }
+
+/* The moving committee cards are deliberately larger than the former
+   compact ticker, so faces, names and positions remain comfortably legible. */
+.pea-pres-side { max-width: 1180px; margin-top: 18px; }
+.pea-committee-strip { border-width: 2px; border-radius: 17px; }
+.pea-committee-strip-head { min-height: 58px; padding: 15px 20px; }
+.pea-committee-strip-head > span { font-size: 1rem; }
+.pea-committee-strip-head a { font-size: .94rem; }
+.pea-committee-viewport { padding: 16px 0; }
+.pea-committee-track { gap: 16px; }
+.pea-committee-member { width: 360px; min-height: 112px; grid-template-columns: 84px minmax(0, 1fr); gap: 14px; padding: 12px; border-radius: 13px; }
+.pea-committee-member img { width: 84px; height: 88px; border-radius: 11px; }
+.pea-committee-member b { font-size: 1rem; line-height: 1.4; }
+.pea-committee-member span { font-size: .82rem; line-height: 1.4; }
+@media (max-width: 760px) {
+  .pea-president { background: linear-gradient(160deg, #fbf9fe 0%, #f0eaf8 100%); }
+  .pea-president::before { background-size: 16px 16px; opacity: .3; }
+  .pea-pres-side { margin-top: 10px; }
+  .pea-committee-strip-head { min-height: 50px; padding: 12px 14px; }
+  .pea-committee-strip-head > span { font-size: .88rem; }
+  .pea-committee-strip-head a { font-size: .8rem; }
+  .pea-committee-viewport { padding: 12px 0; }
+  .pea-committee-member { width: 285px; min-height: 94px; grid-template-columns: 68px minmax(0, 1fr); gap: 11px; padding: 10px; }
+  .pea-committee-member img { width: 68px; height: 74px; }
+  .pea-committee-member b { font-size: .86rem; }
+  .pea-committee-member span { font-size: .72rem; }
+}
