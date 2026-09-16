@@ -90,7 +90,6 @@ $journal_articles = new WP_Query([
         </section>
         <?php endforeach; if (!$journal_groups) : ?><p><?php esc_html_e('ยังไม่มีไฟล์วารสารในคลัง', 'tea-theme'); ?></p><?php endif; ?>
         </div>
-      </div>
       <div class="library-tab-panel" id="library-tab-documents" role="tabpanel" aria-labelledby="library-tab-button-documents" data-library-panel="documents" hidden>
       <div class="library-pdf-grid">
       <?php if ($library_documents->have_posts()) : while ($library_documents->have_posts()) : $library_documents->the_post();
