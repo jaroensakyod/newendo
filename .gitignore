@@ -20,3 +20,4 @@ tea-site/wordpress/wp-content/plugins/polylang/
 tea-site/wordpress/wp-content/upgrade/
 tea-site/wordpress/*.php
 tea-site/wordpress/wp-config.php
+tools/node_modules

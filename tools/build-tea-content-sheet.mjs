@@ -1,0 +1,40 @@
+import fs from 'node:fs/promises';
+import { Workbook, SpreadsheetFile } from '@oai/artifact-tool';
+
+const outputDir = 'C:/Users/ASUS/Desktop/newendo/outputs/tea-content-cms';
+await fs.mkdir(outputDir, { recursive: true });
+const wb = Workbook.create();
+const font = { name: 'Arial', size: 10 };
+function sheet(name, title, note, headers, sample) {
+  const s = wb.worksheets.add(name);
+  s.showGridLines = false;
+  s.getRange('A1').values = [[title]];
+  s.getRange('A2').values = [[note]];
+  const last = String.fromCharCode(64 + headers.length);
+  s.getRange(`A4:${last}4`).values = [headers];
+  s.getRange(`A5:${last}5`).values = [sample];
+  s.getRange(`A1:${last}5`).format.font = font;
+  s.getRange(`A1:${last}1`).format.font = { name:'Arial', size:14, bold:true, color:'#340075' };
+  s.getRange(`A2:${last}2`).format.font = { name:'Arial', size:10, italic:true, color:'#555555' };
+  s.getRange(`A4:${last}4`).format = { fill:'#EDE9FE', font:{name:'Arial',size:10,bold:true,color:'#1F1147'}, verticalAlignment:'center', wrapText:true, borders:{preset:'outside',style:'thin',color:'#D8CDED'} };
+  s.getRange(`A5:${last}100`).format = { verticalAlignment:'center', wrapText:true };
+  s.getRange(`A4:${last}100`).format.borders = { preset:'outside', style:'thin', color:'#E7E0F0' };
+  s.getRange(`A1:${last}2`).format.columnWidth = 18;
+  s.getRange(`A1:${last}100`).format.autofitColumns();
+  s.getRange(`A1:${last}100`).format.rowHeight = 22;
+  s.getRange('A1').format.rowHeight = 28;
+  s.freezePanes.freezeRows(4);
+  return s;
+}
+sheet('เริ่มต้น', 'ศูนย์จัดการเนื้อหาเว็บไซต์ TEA', 'กรอกหรือแก้ไขเฉพาะแถวข้อมูลในแต่ละแท็บ แล้วเปลี่ยน สถานะ เป็น รอเผยแพร่ เมื่อพร้อม', ['ส่วนงาน','ทำอะไร','ข้อควรระวัง'], ['ทุกแท็บ','ใส่ 1 รายการต่อ 1 แถว','อย่าลบชื่อคอลัมน์']);
+sheet('ข่าวสาร', 'ข่าวสารและประกาศ', 'ใช้สำหรับข่าวทั่วไปและประกาศที่ไม่ต้องเป็น Popup', ['รหัส','ประเภท','หัวข้อไทย','หัวข้ออังกฤษ','คำเกริ่น','เนื้อหา','รูป URL','ลิงก์','วันที่เผยแพร่','สถานะ'], ['', 'news', '', '', '', '', '', '', '', 'ร่าง']);
+sheet('กิจกรรม', 'กิจกรรมและทุนวิจัย', 'เพิ่มวันจัดงานและวันสิ้นสุดการรับสมัครเมื่อมี', ['รหัส','ประเภท','หัวข้อไทย','หัวข้ออังกฤษ','คำเกริ่น','เนื้อหา','รูป URL','ลิงก์','วันเริ่ม','วันสิ้นสุด','สถานะ'], ['', 'event', '', '', '', '', '', '', '', '', 'ร่าง']);
+sheet('วารสารและเอกสาร', 'วารสารและเอกสารดาวน์โหลด', 'ใส่ลิงก์ไฟล์ PDF หรือ Google Drive ที่เปิดดาวน์โหลดได้', ['รหัส','ประเภท','ชื่อไทย','ชื่ออังกฤษ','คำอธิบาย','รูปปก URL','ไฟล์ URL','ฉบับ/ปี','สถานะ'], ['', 'document', '', '', '', '', '', '', 'ร่าง']);
+sheet('Hero Slides', 'สไลด์หน้าแรก', 'หนึ่งแถวคือหนึ่งสไลด์ เรียงตาม ลำดับ และใช้รูป URL ที่เปิดสาธารณะ', ['รหัส','ลำดับ','เปิดใช้','หัวข้อไทย','หัวข้ออังกฤษ','รายละเอียดไทย','รายละเอียดอังกฤษ','รูปพื้นหลัง URL','ปุ่มหลัก','ลิงก์ปุ่มหลัก','ปุ่มรอง','ลิงก์ปุ่มรอง'], ['', 1, 'ใช่', '', '', '', '', '', '', '', '', '']);
+sheet('Popups', 'Popup หน้าแรก', 'ตั้งวันเริ่ม–สิ้นสุดได้ และเลือกความถี่ once, daily หรือ always', ['รหัส','ลำดับ','เปิดใช้','หัวข้อไทย','หัวข้ออังกฤษ','คำเกริ่น','รูป URL','ลิงก์ปุ่ม','ข้อความปุ่ม','วันเริ่ม','วันสิ้นสุด','ความถี่','ธีม','สถานะ'], ['', 1, 'ใช่', '', '', '', '', '', '', '', '', 'once', 'ปกติ', 'ร่าง']);
+sheet('แกลเลอรี', 'ภาพกิจกรรมหน้าแรก', 'ใส่รูป 1 ภาพต่อ 1 แถว พร้อมคำบรรยายและลิงก์ปลายทาง', ['รหัส','ลำดับ','เปิดใช้','คำบรรยายไทย','คำบรรยายอังกฤษ','รูป URL','ลิงก์','สถานะ'], ['', 1, 'ใช่', '', '', '', '', 'ร่าง']);
+wb.recalculate();
+const out = await SpreadsheetFile.exportXlsx(wb);
+await out.save(`${outputDir}/TEA-Content-CMS.xlsx`);
+const preview = await wb.render({sheetName:'เริ่มต้น',range:'A1:C5',scale:2,format:'png'});
+await fs.writeFile(`${outputDir}/preview.png`, new Uint8Array(await preview.arrayBuffer()));

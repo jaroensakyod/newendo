@@ -18,6 +18,8 @@ $ann_q = new WP_Query(['post_type' => 'announcement', 'posts_per_page' => 5, 'no
 $evt_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 4, 'no_found_rows' => true]);
 /* กิจกรรมสมาคมที่กำลังจะมาถึง */
 $upcoming_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 3, 'no_found_rows' => true]);
+$sheet_hero = function_exists('tea_sheet_bridge_front_rows') ? tea_sheet_bridge_front_rows('hero') : [];
+$sheet_gallery = function_exists('tea_sheet_bridge_front_rows') ? tea_sheet_bridge_front_rows('gallery') : [];
 ?>
 
 <div class="pea">
@@ -25,6 +27,24 @@ $upcoming_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 3, 'no_f
   <!-- ============ HERO SLIDER (แบบ กฟภ.: สไลด์เต็มจอ + เนื้อหาซ้าย + โปสเตอร์ขวา) ============ -->
   <section class="pea-hero">
     <div class="pea-track" id="pea-track">
+
+      <?php if ($sheet_hero) : foreach ($sheet_hero as $slide) :
+        $is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
+        $title = ($is_en && !empty($slide['หัวข้ออังกฤษ'])) ? $slide['หัวข้ออังกฤษ'] : ($slide['หัวข้อไทย'] ?? '');
+        $detail = ($is_en && !empty($slide['รายละเอียดอังกฤษ'])) ? $slide['รายละเอียดอังกฤษ'] : ($slide['รายละเอียดไทย'] ?? '');
+        $background = esc_url($slide['รูปพื้นหลัง URL'] ?? '');
+      ?>
+      <div class="pea-slide<?php echo $slide === $sheet_hero[0] ? ' is-active' : ''; ?>"<?php echo $background ? ' style="--bg:url(\'' . $background . '\')"' : ''; ?>>
+        <div class="pea-shell pea-slide-in"><div class="pea-copy">
+          <h1><?php echo esc_html($title); ?></h1>
+          <?php if ($detail) : ?><p class="pea-sub"><?php echo esc_html($detail); ?></p><?php endif; ?>
+          <div class="pea-actions">
+          <?php if (!empty($slide['ลิงก์ปุ่มหลัก'])) : ?><a class="pea-btn pea-btn-accent" href="<?php echo esc_url($slide['ลิงก์ปุ่มหลัก']); ?>"><?php echo esc_html($slide['ปุ่มหลัก'] ?: __('อ่านเพิ่มเติม', 'tea-theme')); ?></a><?php endif; ?>
+          <?php if (!empty($slide['ลิงก์ปุ่มรอง'])) : ?><a class="pea-btn pea-btn-ghost" href="<?php echo esc_url($slide['ลิงก์ปุ่มรอง']); ?>"><?php echo esc_html($slide['ปุ่มรอง'] ?: __('รายละเอียด', 'tea-theme')); ?></a><?php endif; ?>
+          </div>
+        </div></div>
+      </div>
+      <?php endforeach; else : ?>
 
       <div class="pea-slide is-active" style="--bg:url('<?php echo $img('event-dental-trauma-nov-2026.png'); ?>')">
         <div class="pea-shell pea-slide-in">
@@ -62,6 +82,8 @@ $upcoming_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 3, 'no_f
           </div>
         </div>
       </div>
+
+      <?php endif; ?>
 
     </div>
 
@@ -314,9 +336,16 @@ $upcoming_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 3, 'no_f
     <div class="pea-shell">
       <div class="pea-sec-head row"><div><span class="pea-kicker">ACTIVITY HIGHLIGHTS</span><h2><?php esc_html_e('ภาพกิจกรรมของสมาคม', 'tea-theme'); ?></h2></div><a class="pea-more" href="https://www.facebook.com/Thaiendodontics/" target="_blank" rel="noreferrer"><?php esc_html_e('ดูภาพเพิ่มเติม', 'tea-theme'); ?> <span class="material-symbols-outlined">open_in_new</span></a></div>
       <div class="pea-gallery-grid">
+        <?php if ($sheet_gallery) : foreach ($sheet_gallery as $item) :
+          $is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
+          $caption = ($is_en && !empty($item['คำบรรยายอังกฤษ'])) ? $item['คำบรรยายอังกฤษ'] : ($item['คำบรรยายไทย'] ?? '');
+        ?>
+        <a href="<?php echo esc_url($item['ลิงก์'] ?? get_post_type_archive_link('event')); ?>"><img src="<?php echo esc_url($item['รูป URL'] ?? ''); ?>" alt="<?php echo esc_attr($caption); ?>" loading="lazy"><span><?php echo esc_html($caption); ?></span></a>
+        <?php endforeach; else : ?>
         <a href="<?php echo esc_url(get_post_type_archive_link('event')); ?>"><img src="<?php echo $img('fb-meeting1.jpg'); ?>" alt="<?php esc_attr_e('กิจกรรมสมาคมเอ็นโดดอนติกส์ไทย', 'tea-theme'); ?>" width="900" height="570" loading="lazy"><span><?php esc_html_e('การประชุมวิชาการประจำปี', 'tea-theme'); ?></span></a>
         <a href="<?php echo esc_url(get_post_type_archive_link('event')); ?>"><img src="<?php echo $img('fb-meeting2.jpg'); ?>" alt="<?php esc_attr_e('กิจกรรมสมาคมเอ็นโดดอนติกส์ไทย', 'tea-theme'); ?>" width="900" height="570" loading="lazy"><span><?php esc_html_e('เวทีวิชาการและเครือข่ายนานาชาติ', 'tea-theme'); ?></span></a>
         <a href="<?php echo esc_url(get_post_type_archive_link('event')); ?>"><img src="<?php echo $img('event-dental-trauma-nov-2026.png'); ?>" alt="<?php esc_attr_e('งานประชุม Dental Trauma and Root Resorption', 'tea-theme'); ?>" width="1536" height="864" loading="lazy"><span>Dental Trauma and Root Resorption</span></a>
+        <?php endif; ?>
       </div>
     </div>
   </section>

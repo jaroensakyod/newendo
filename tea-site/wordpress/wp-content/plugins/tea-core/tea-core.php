@@ -133,3 +133,56 @@ add_action('wp', function () {
         }
     }
 }, 99);
+
+/**
+ * Simplified admin for association staff.
+ * Keep technical settings available to administrators, while editors see
+ * only the content workflows they use every day.
+ */
+function tea_core_simplify_admin() {
+    if (!is_admin() || current_user_can('manage_options')) return;
+
+    remove_menu_page('edit.php');               // Posts
+    remove_menu_page('upload.php');             // Media
+    remove_menu_page('edit-comments.php');
+    remove_menu_page('themes.php');
+    remove_menu_page('plugins.php');
+    remove_menu_page('tools.php');
+    remove_menu_page('options-general.php');
+    remove_menu_page('users.php');
+    remove_menu_page('edit.php?post_type=page');
+
+}
+add_action('admin_menu', 'tea_core_simplify_admin', 999);
+
+function tea_core_admin_bar($bar) {
+    if (current_user_can('manage_options')) return;
+    $bar->remove_node('wp-logo');
+    $bar->remove_node('customize');
+    $bar->remove_node('comments');
+    $bar->remove_node('new-content');
+}
+add_action('admin_bar_menu', 'tea_core_admin_bar', 999);
+
+function tea_core_staff_dashboard() {
+    if (!is_admin() || current_user_can('manage_options')) return;
+    wp_add_dashboard_widget('tea_staff_welcome', 'การจัดการเว็บไซต์สมาคม', function () {
+        echo '<p>เลือกประเภทเนื้อหาจากเมนูด้านซ้ายเพื่อเพิ่มหรือแก้ไขข้อมูล</p>';
+        echo '<ul style="list-style:disc;margin-left:20px">';
+        echo '<li>ข่าวสาร — ข่าวประชาสัมพันธ์ทั่วไป</li>';
+        echo '<li>ประกาศ — ข้อความที่ต้องการแสดงเป็น Popup</li>';
+        echo '<li>กิจกรรม — งานประชุมและอบรม</li>';
+        echo '<li>ทุนวิจัย — กำหนดการและรายละเอียดทุน</li>';
+        echo '<li>วารสาร / เอกสาร — ไฟล์และเนื้อหาสำหรับดาวน์โหลด</li>';
+        echo '</ul>';
+        echo '<p><strong>เคล็ดลับ:</strong> หากไม่แน่ใจ ให้บันทึกเป็นฉบับร่างก่อนเผยแพร่</p>';
+    });
+}
+add_action('wp_dashboard_setup', 'tea_core_staff_dashboard');
+
+function tea_core_admin_footer() {
+    if (!current_user_can('manage_options')) {
+        echo 'ระบบจัดการเว็บไซต์สมาคมเอ็นโดดอนติกส์ไทย';
+    }
+}
+add_filter('admin_footer_text', 'tea_core_admin_footer');

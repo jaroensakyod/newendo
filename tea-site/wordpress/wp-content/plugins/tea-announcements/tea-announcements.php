@@ -94,7 +94,7 @@ function tea_ann_render() {
             // Use the generated responsive size. Some legacy originals are
             // unavailable through the public tunnel while this size is served
             // reliably and remains sharp in the popup.
-            'image'   => get_the_post_thumbnail_url($p, 'medium_large'),
+            'image'   => get_the_post_thumbnail_url($p, 'medium_large') ?: get_post_meta($p->ID, '_tea_sheet_image_url', true),
             'link'    => get_post_meta($p->ID, '_tea_ann_link', true) ?: get_permalink($p),
             'btnText' => get_post_meta($p->ID, '_tea_ann_btn_text', true) ?: __('อ่านรายละเอียด', 'tea-announcements'),
             'freq'    => get_post_meta($p->ID, '_tea_ann_freq', true) ?: 'once',
