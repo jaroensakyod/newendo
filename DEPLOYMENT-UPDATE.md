@@ -43,3 +43,8 @@
 - `tea-site/wordpress/wp-content/plugins/tea-auto-english-drafts/` — ระบบสร้างร่างภาษาอังกฤษ
 
 ไฟล์ระบบ WordPress ฐานข้อมูลที่ export และไฟล์อัปโหลดจริงถูกไม่นำขึ้น Git เพื่อไม่เก็บข้อมูลระบบหรือไฟล์ขนาดใหญ่ซ้ำซ้อนใน repository.
+## Facebook Reels carousel
+
+- Added a `Facebook Reels` admin menu to manage public Reel URLs (one per line, with an optional `| caption`).
+- The Thai/English homepage renders configured links as a horizontal, scrollable Facebook player carousel.
+- Public Reel URLs are embedded through Facebook's official player; private or restricted videos may not play.

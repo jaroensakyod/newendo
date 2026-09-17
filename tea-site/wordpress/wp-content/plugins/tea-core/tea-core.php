@@ -155,6 +155,65 @@ function tea_core_simplify_admin() {
 }
 add_action('admin_menu', 'tea_core_simplify_admin', 999);
 
+/**
+ * Facebook Reel links shown on the homepage.
+ * One line per item: Facebook URL | optional caption
+ */
+function tea_core_get_reels() {
+    $items = get_option('tea_facebook_reels', []);
+    return is_array($items) ? array_values(array_filter($items, function ($item) {
+        return is_array($item) && !empty($item['url']);
+    })) : [];
+}
+
+function tea_core_reels_admin_menu() {
+    if (!current_user_can('edit_posts')) return;
+    add_menu_page(
+        'Facebook Reels',
+        'Facebook Reels',
+        'edit_posts',
+        'tea-facebook-reels',
+        'tea_core_reels_settings_page',
+        'dashicons-video-alt3',
+        31
+    );
+}
+add_action('admin_menu', 'tea_core_reels_admin_menu', 1001);
+
+function tea_core_reels_settings_page() {
+    if (!current_user_can('edit_posts')) return;
+    if (!empty($_POST['tea_reels_save'])) {
+        check_admin_referer('tea_reels_save');
+        $lines = preg_split('/\r\n|\r|\n/', (string) wp_unslash($_POST['tea_reels'] ?? ''));
+        $items = [];
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if ($line === '') continue;
+            [$url, $caption] = array_pad(array_map('trim', explode('|', $line, 2)), 2, '');
+            $host = strtolower((string) wp_parse_url($url, PHP_URL_HOST));
+            if (!$url || !wp_http_validate_url($url) || !preg_match('/(^|\.)facebook\.com$|(^|\.)fb\.watch$/', $host)) continue;
+            $items[] = ['url' => esc_url_raw($url), 'caption' => sanitize_text_field($caption)];
+        }
+        update_option('tea_facebook_reels', $items, false);
+        echo '<div class="notice notice-success is-dismissible"><p>บันทึกลิงก์ Facebook Reel แล้ว</p></div>';
+    }
+    $lines = array_map(function ($item) {
+        return $item['url'] . (!empty($item['caption']) ? ' | ' . $item['caption'] : '');
+    }, tea_core_get_reels());
+    ?>
+    <div class="wrap">
+      <h1>Facebook Reels หน้าแรก</h1>
+      <p>ใส่ลิงก์ Reel สาธารณะของสมาคม บรรทัดละ 1 รายการ หากต้องการใส่ชื่อคลิปให้พิมพ์ต่อท้ายด้วยเครื่องหมาย <code>|</code></p>
+      <form method="post">
+        <?php wp_nonce_field('tea_reels_save'); ?>
+        <textarea name="tea_reels" rows="12" style="width: min(760px, 100%); font-family: monospace;" placeholder="https://www.facebook.com/reel/123456789/ | ชื่อกิจกรรม"><?php echo esc_textarea(implode("\n", $lines)); ?></textarea>
+        <p class="description">ระบบจะแสดงเป็นแถบเลื่อนบนหน้าแรก และกดเล่นผ่านตัวเล่นของ Facebook ได้</p>
+        <p><button type="submit" name="tea_reels_save" value="1" class="button button-primary">บันทึก Reel</button></p>
+      </form>
+    </div>
+    <?php
+}
+
 function tea_core_admin_bar($bar) {
     if (current_user_can('manage_options')) return;
     $bar->remove_node('wp-logo');

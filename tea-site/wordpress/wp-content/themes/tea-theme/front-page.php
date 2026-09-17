@@ -20,6 +20,7 @@ $evt_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 4, 'no_found_
 $upcoming_q = new WP_Query(['post_type' => 'event', 'posts_per_page' => 3, 'no_found_rows' => true]);
 $sheet_hero = function_exists('tea_sheet_bridge_front_rows') ? tea_sheet_bridge_front_rows('hero') : [];
 $sheet_gallery = function_exists('tea_sheet_bridge_front_rows') ? tea_sheet_bridge_front_rows('gallery') : [];
+$tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
 ?>
 
 <div class="pea">
@@ -332,6 +333,23 @@ $sheet_gallery = function_exists('tea_sheet_bridge_front_rows') ? tea_sheet_brid
   </section>
 
   <!-- ============ ภาพกิจกรรม ============ -->
+  <?php if ($tea_reels) : ?>
+  <section class="pea-reels-home" aria-label="<?php esc_attr_e('คลิปกิจกรรมจาก Facebook สมาคม', 'tea-theme'); ?>">
+    <div class="pea-shell">
+      <div class="pea-sec-head row"><div><span class="pea-kicker">FACEBOOK REELS</span><h2><?php esc_html_e('คลิปกิจกรรมของสมาคม', 'tea-theme'); ?></h2></div><a class="pea-more" href="https://www.facebook.com/Thaiendodontics/" target="_blank" rel="noreferrer"><?php esc_html_e('ดูทั้งหมดบน Facebook', 'tea-theme'); ?> <span class="material-symbols-outlined">open_in_new</span></a></div>
+      <div class="pea-reels-rail" role="list">
+        <?php foreach ($tea_reels as $reel) :
+          $embed = 'https://www.facebook.com/plugins/video.php?href=' . rawurlencode($reel['url']) . '&show_text=false&width=500';
+        ?>
+        <article class="pea-reel-card" role="listitem">
+          <div class="pea-reel-frame"><iframe src="<?php echo esc_url($embed); ?>" title="<?php echo esc_attr($reel['caption'] ?: __('คลิปกิจกรรมจาก Facebook สมาคม', 'tea-theme')); ?>" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <?php if (!empty($reel['caption'])) : ?><h3><?php echo esc_html($reel['caption']); ?></h3><?php endif; ?>
+        </article>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
   <section class="pea-gallery-home">
     <div class="pea-shell">
       <div class="pea-sec-head row"><div><span class="pea-kicker">ACTIVITY HIGHLIGHTS</span><h2><?php esc_html_e('ภาพกิจกรรมของสมาคม', 'tea-theme'); ?></h2></div><a class="pea-more" href="https://www.facebook.com/Thaiendodontics/" target="_blank" rel="noreferrer"><?php esc_html_e('ดูภาพเพิ่มเติม', 'tea-theme'); ?> <span class="material-symbols-outlined">open_in_new</span></a></div>
