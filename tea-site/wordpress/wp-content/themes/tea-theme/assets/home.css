@@ -988,13 +988,18 @@
 .pea-journal-archive h3, .pea-journal-archive p { color: #fff; }
 .pea-text-link { display: inline-flex; align-items: center; gap: 4px; color: #ffd9ae; font-size: .85rem; font-weight: 800; }
 .pea-text-link .material-symbols-outlined { font-size: 17px; }
-.pea-announcement-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.pea-announcement-card { min-width: 0; display: grid; grid-template-columns: 40px minmax(0,1fr) 20px; gap: 11px; align-items: center; padding: 17px; border: 1px solid #dfd4ec; border-radius: 14px; color: #2b0b5d; text-decoration: none; background: #fff; }
-.pea-announcement-card:hover { border-color: #b775e0; box-shadow: 0 6px 16px rgba(43,11,93,.08); }
-.pea-announcement-card > .material-symbols-outlined:first-child { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: #f0e9fa; color: #5a1aa3; }
-.pea-announcement-card small { display: block; margin-bottom: 4px; color: #a94300; font-size: .69rem; font-weight: 750; }
-.pea-announcement-card b { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: .88rem; line-height: 1.45; }
-.pea-announcement-card .arrow { color: #6d28a8; font-size: 18px; }
+.pea-announcement-grid { display: flex; gap: 22px; overflow-x: auto; padding: 2px 2px 14px; scroll-snap-type: x mandatory; scrollbar-color: #6d28a8 #eee8f5; }
+.pea-announcement-card { flex: 0 0 min(397px, 82vw); min-width: 0; overflow: hidden; scroll-snap-align: start; border: 1px solid #dfd4ec; border-radius: 16px; color: #2b0b5d; text-decoration: none; background: #fff; box-shadow: 0 7px 20px rgba(43,11,93,.08); transition: transform .2s ease, box-shadow .2s ease; }
+.pea-announcement-card:hover { transform: translateY(-3px); border-color: #b775e0; box-shadow: 0 10px 24px rgba(43,11,93,.14); }
+.pea-announcement-media { position: relative; height: 210px; overflow: hidden; background: #f0eaf8; }
+.pea-announcement-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pea-announcement-badge { position: absolute; top: 14px; left: 14px; padding: 6px 14px; border-radius: 999px; color: #fff; background: #4b0b91; font-size: .75rem; font-weight: 800; }
+.pea-announcement-body { min-height: 232px; padding: 20px 20px 18px; }
+.pea-announcement-body small { display: block; margin-bottom: 13px; color: #a94300; font-size: .72rem; font-weight: 750; letter-spacing: .08em; }
+.pea-announcement-body b { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: #2b0b5d; font-size: 1rem; line-height: 1.4; }
+.pea-announcement-body p { display: -webkit-box; overflow: hidden; margin: 13px 0 18px; color: #5e5570; font-size: .84rem; line-height: 1.65; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.pea-announcement-read { display: inline-flex; align-items: center; gap: 4px; color: #5a1aa3; font-size: .78rem; font-weight: 850; letter-spacing: .1em; }
+.pea-announcement-read .material-symbols-outlined { font-size: 16px; }
 .pea-gallery-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 14px; }
 .pea-gallery-grid a { position: relative; overflow: hidden; min-height: 230px; border-radius: 15px; background: #270054; color: #fff; text-decoration: none; }
 .pea-gallery-grid img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; transition: transform .35s ease; }
@@ -1024,7 +1029,9 @@
   .pea-journal-cover img { min-height: 0; max-height: 190px; }
   .pea-journal-tej > div, .pea-journal-archive > div { padding: 20px; }
   .pea-journal-archive { padding: 20px; }
-  .pea-announcement-grid { grid-template-columns: 1fr; }
+  .pea-announcement-card { flex-basis: min(320px, 84vw); }
+  .pea-announcement-media { height: 178px; }
+  .pea-announcement-body { min-height: 210px; padding: 17px; }
   .pea-gallery-grid { grid-template-columns: 1fr 1fr; }
   .pea-gallery-grid a { min-height: 165px; }
   .pea-gallery-grid a:first-child { grid-column: span 2; min-height: 230px; }

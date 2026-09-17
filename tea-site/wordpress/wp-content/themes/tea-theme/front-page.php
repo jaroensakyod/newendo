@@ -324,9 +324,16 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
   <section class="pea-announcements-home">
     <div class="pea-shell">
       <div class="pea-sec-head row"><div><span class="pea-kicker">NEWS UPDATE</span><h2><?php esc_html_e('ข่าวสารและทุนสนับสนุน', 'tea-theme'); ?></h2></div><?php $al = get_post_type_archive_link('news'); if ($al) : ?><a class="pea-more" href="<?php echo esc_url($al); ?>"><?php esc_html_e('ดูทั้งหมด', 'tea-theme'); ?> <span class="material-symbols-outlined">arrow_forward</span></a><?php endif; ?></div>
-      <div class="pea-announcement-grid">
-      <?php if ($ann_q->have_posts()) : $announcement_count = 0; while ($ann_q->have_posts() && $announcement_count < 3) : $ann_q->the_post(); $announcement_count++; ?>
-        <a class="pea-announcement-card" href="<?php the_permalink(); ?>"><span class="material-symbols-outlined">campaign</span><div><small><?php tea_the_date(); ?></small><b><?php the_title(); ?></b></div><span class="material-symbols-outlined arrow">arrow_forward</span></a>
+      <div class="pea-announcement-grid" role="list">
+      <?php if ($ann_q->have_posts()) : while ($ann_q->have_posts()) : $ann_q->the_post();
+        $ann_img = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large') : $img('research-grant.jpg');
+        $ann_type = tea_cpt_label(get_post_type(), 'ประกาศ');
+        $ann_excerpt = wp_trim_words(wp_strip_all_tags(get_the_excerpt()), 22, '…');
+      ?>
+        <a class="pea-announcement-card" href="<?php the_permalink(); ?>" role="listitem">
+          <div class="pea-announcement-media"><img src="<?php echo esc_url($ann_img); ?>" alt="" loading="lazy"><span class="pea-announcement-badge"><?php echo esc_html($ann_type); ?></span></div>
+          <div class="pea-announcement-body"><small><?php tea_the_date(); ?></small><b><?php the_title(); ?></b><?php if ($ann_excerpt) : ?><p><?php echo esc_html($ann_excerpt); ?></p><?php endif; ?><span class="pea-announcement-read"><?php esc_html_e('อ่านรายละเอียด', 'tea-theme'); ?> <span class="material-symbols-outlined">arrow_forward</span></span></div>
+        </a>
       <?php endwhile; wp_reset_postdata(); endif; ?>
       </div>
     </div>
