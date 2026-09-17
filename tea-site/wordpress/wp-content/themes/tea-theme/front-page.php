@@ -342,7 +342,7 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
           $embed = 'https://www.facebook.com/plugins/video.php?href=' . rawurlencode($reel['url']) . '&show_text=false&width=500';
         ?>
         <article class="pea-reel-card" role="listitem">
-          <div class="pea-reel-frame"><iframe src="<?php echo esc_url($embed); ?>" title="<?php echo esc_attr($reel['caption'] ?: __('คลิปกิจกรรมจาก Facebook สมาคม', 'tea-theme')); ?>" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
+          <div class="pea-reel-frame <?php echo (!empty($reel['orientation']) && $reel['orientation'] === 'landscape') ? 'is-landscape' : 'is-portrait'; ?>"><iframe src="<?php echo esc_url($embed); ?>" title="<?php echo esc_attr($reel['caption'] ?: __('คลิปกิจกรรมจาก Facebook สมาคม', 'tea-theme')); ?>" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe></div>
           <?php if (!empty($reel['caption'])) : ?><h3><?php echo esc_html($reel['caption']); ?></h3><?php endif; ?>
         </article>
         <?php endforeach; ?>

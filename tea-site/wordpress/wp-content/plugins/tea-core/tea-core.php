@@ -157,7 +157,7 @@ add_action('admin_menu', 'tea_core_simplify_admin', 999);
 
 /**
  * Facebook Reel links shown on the homepage.
- * One line per item: Facebook URL | optional caption
+ * One line per item: Facebook URL | optional caption | portrait/landscape
  */
 function tea_core_get_reels() {
     $items = get_option('tea_facebook_reels', []);
@@ -189,21 +189,22 @@ function tea_core_reels_settings_page() {
         foreach ($lines as $line) {
             $line = trim($line);
             if ($line === '') continue;
-            [$url, $caption] = array_pad(array_map('trim', explode('|', $line, 2)), 2, '');
+            [$url, $caption, $orientation] = array_pad(array_map('trim', explode('|', $line, 3)), 3, '');
             $host = strtolower((string) wp_parse_url($url, PHP_URL_HOST));
             if (!$url || !wp_http_validate_url($url) || !preg_match('/(^|\.)facebook\.com$|(^|\.)fb\.watch$/', $host)) continue;
-            $items[] = ['url' => esc_url_raw($url), 'caption' => sanitize_text_field($caption)];
+            $orientation = in_array(strtolower($orientation), ['landscape', 'แนวนอน'], true) ? 'landscape' : 'portrait';
+            $items[] = ['url' => esc_url_raw($url), 'caption' => sanitize_text_field($caption), 'orientation' => $orientation];
         }
         update_option('tea_facebook_reels', $items, false);
         echo '<div class="notice notice-success is-dismissible"><p>บันทึกลิงก์ Facebook Reel แล้ว</p></div>';
     }
     $lines = array_map(function ($item) {
-        return $item['url'] . (!empty($item['caption']) ? ' | ' . $item['caption'] : '');
+        return $item['url'] . (!empty($item['caption']) ? ' | ' . $item['caption'] : '') . ' | ' . (!empty($item['orientation']) ? $item['orientation'] : 'portrait');
     }, tea_core_get_reels());
     ?>
     <div class="wrap">
       <h1>Facebook Reels หน้าแรก</h1>
-      <p>ใส่ลิงก์ Reel สาธารณะของสมาคม บรรทัดละ 1 รายการ หากต้องการใส่ชื่อคลิปให้พิมพ์ต่อท้ายด้วยเครื่องหมาย <code>|</code></p>
+      <p>ใส่ลิงก์ Reel สาธารณะของสมาคม บรรทัดละ 1 รายการ รูปแบบ <code>ลิงก์ | ชื่อคลิป | portrait/landscape</code> เพื่อจัดคลิปแนวตั้งหรือแนวนอนให้พอดีเฟรม</p>
       <form method="post">
         <?php wp_nonce_field('tea_reels_save'); ?>
         <textarea name="tea_reels" rows="12" style="width: min(760px, 100%); font-family: monospace;" placeholder="https://www.facebook.com/reel/123456789/ | ชื่อกิจกรรม"><?php echo esc_textarea(implode("\n", $lines)); ?></textarea>

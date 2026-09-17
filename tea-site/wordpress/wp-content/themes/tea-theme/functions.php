@@ -164,7 +164,7 @@ function tea_design22_assets() {
     $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH), '/');
     $is_en_home = in_array($path, ['en', 'home-en', 'en/home-en'], true);
     if (is_front_page() || $is_en_home) {
-  wp_enqueue_style('tea-home', get_template_directory_uri() . '/assets/home.css', [], '1.18.11');
+  wp_enqueue_style('tea-home', get_template_directory_uri() . '/assets/home.css', [], '1.18.12');
     }
     wp_enqueue_style('tea-material-symbols', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap', [], null);
 }
