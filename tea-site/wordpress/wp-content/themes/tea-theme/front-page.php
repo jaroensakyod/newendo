@@ -1,6 +1,9 @@
 <?php if (!defined('ABSPATH')) exit; get_header();
 
 $img = function ($name) { return esc_url(get_template_directory_uri() . '/assets/' . $name); };
+$tea_is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
+$tea_documents_url = $tea_is_en ? home_url('/en/journal/#association-documents') : get_post_type_archive_link('document');
+$tea_research_application_url = content_url('/uploads/2026/09/tea-research-grant-form-2569.pdf');
 
 /* งานประชุมประจำปี: Dental Trauma 30 พ.ย. 2569 */
 $event_date_str = '2026-11-30T08:00:00+07:00';
@@ -34,13 +37,26 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
         $title = ($is_en && !empty($slide['หัวข้ออังกฤษ'])) ? $slide['หัวข้ออังกฤษ'] : ($slide['หัวข้อไทย'] ?? '');
         $detail = ($is_en && !empty($slide['รายละเอียดอังกฤษ'])) ? $slide['รายละเอียดอังกฤษ'] : ($slide['รายละเอียดไทย'] ?? '');
         $background = esc_url($slide['รูปพื้นหลัง URL'] ?? '');
+        $primary_label = $slide['ปุ่มหลัก'] ?? __('อ่านเพิ่มเติม', 'tea-theme');
+        $primary_url = $slide['ลิงก์ปุ่มหลัก'] ?? '';
+        /* The research-grant slide must always download the application PDF,
+         * even if an older Google Sheet row still contains /documents/. */
+        $is_research_slide = strpos(wp_strip_all_tags($title), 'ทุนอุดหนุนการวิจัย') !== false
+          || stripos(wp_strip_all_tags($title), 'Research Support Grant') !== false;
+        $is_application_button = $is_research_slide
+          || strpos(wp_strip_all_tags($primary_label), 'ดาวน์โหลดใบสมัคร') !== false
+          || stripos(wp_strip_all_tags($primary_label), 'Download application') !== false;
+        if ($is_application_button) {
+          $primary_url = $tea_research_application_url;
+          $primary_label = $is_en ? 'Download application form' : 'ดาวน์โหลดใบสมัคร';
+        }
       ?>
       <div class="pea-slide<?php echo $slide === $sheet_hero[0] ? ' is-active' : ''; ?>"<?php echo $background ? ' style="--bg:url(\'' . $background . '\')"' : ''; ?>>
         <div class="pea-shell pea-slide-in"><div class="pea-copy">
           <h1><?php echo esc_html($title); ?></h1>
           <?php if ($detail) : ?><p class="pea-sub"><?php echo esc_html($detail); ?></p><?php endif; ?>
           <div class="pea-actions">
-          <?php if (!empty($slide['ลิงก์ปุ่มหลัก'])) : ?><a class="pea-btn pea-btn-accent" href="<?php echo esc_url($slide['ลิงก์ปุ่มหลัก']); ?>"><?php echo esc_html($slide['ปุ่มหลัก'] ?: __('อ่านเพิ่มเติม', 'tea-theme')); ?></a><?php endif; ?>
+          <?php if (!empty($primary_url)) : ?><a class="pea-btn pea-btn-accent" href="<?php echo esc_url($primary_url); ?>"<?php echo $is_application_button ? ' download' : ''; ?>><?php echo esc_html($primary_label); ?></a><?php endif; ?>
           <?php if (!empty($slide['ลิงก์ปุ่มรอง'])) : ?><a class="pea-btn pea-btn-ghost" href="<?php echo esc_url($slide['ลิงก์ปุ่มรอง']); ?>"><?php echo esc_html($slide['ปุ่มรอง'] ?: __('รายละเอียด', 'tea-theme')); ?></a><?php endif; ?>
           </div>
         </div></div>
@@ -77,7 +93,7 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
               <span><span class="material-symbols-outlined">schedule</span> <?php esc_html_e('ไม่เกิน 2 ปี', 'tea-theme'); ?></span>
             </div>
             <div class="pea-actions">
-              <a class="pea-btn pea-btn-accent" href="<?php echo esc_url(get_post_type_archive_link('document')); ?>"><span class="material-symbols-outlined">download_for_offline</span><?php esc_html_e('ดาวน์โหลดใบสมัคร', 'tea-theme'); ?></a>
+              <a class="pea-btn pea-btn-accent" href="<?php echo esc_url($tea_research_application_url); ?>" download><span class="material-symbols-outlined">download_for_offline</span><?php esc_html_e('ดาวน์โหลดใบสมัคร', 'tea-theme'); ?></a>
               <a class="pea-btn pea-btn-ghost" href="<?php echo esc_url(get_post_type_archive_link('research_fund')); ?>"><span class="material-symbols-outlined">rule</span><?php esc_html_e('หลักเกณฑ์ทุนวิจัย', 'tea-theme'); ?></a>
             </div>
           </div>
@@ -100,7 +116,7 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
       <a href="<?php echo esc_url(get_post_type_archive_link('research_fund')); ?>"><span class="ic"><span class="material-symbols-outlined">science</span></span><b><?php esc_html_e('ทุนวิจัย', 'tea-theme'); ?></b></a>
       <a href="<?php echo esc_url(get_post_type_archive_link('journal')); ?>"><span class="ic"><span class="material-symbols-outlined">article</span></span><b><?php esc_html_e('วารสาร TEJ', 'tea-theme'); ?></b></a>
       <a href="https://www.thaiendodontics.com/cert" target="_blank" rel="noreferrer"><span class="ic"><span class="material-symbols-outlined">verified</span></span><b><?php esc_html_e('ตรวจสอบ CDEC', 'tea-theme'); ?></b></a>
-      <a href="<?php echo esc_url(get_post_type_archive_link('document')); ?>"><span class="ic"><span class="material-symbols-outlined">download</span></span><b><?php esc_html_e('เอกสารดาวน์โหลด', 'tea-theme'); ?></b></a>
+      <a href="<?php echo esc_url($tea_documents_url); ?>"><span class="ic"><span class="material-symbols-outlined">download</span></span><b><?php esc_html_e('เอกสารดาวน์โหลด', 'tea-theme'); ?></b></a>
       <a href="<?php echo esc_url(home_url('/contact/')); ?>"><span class="ic"><span class="material-symbols-outlined">forum</span></span><b><?php esc_html_e('ติดต่อสมาคม', 'tea-theme'); ?></b></a>
     </div>
   </div>
@@ -164,7 +180,7 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
         <a class="pea-sv" href="https://www.thaiendodontics.com/cert" target="_blank" rel="noreferrer"><span class="ic"><span class="material-symbols-outlined">verified</span></span><div><b><?php esc_html_e('ตรวจสอบใบประกาศ CDEC', 'tea-theme'); ?></b><small><?php esc_html_e('ตรวจสอบผลการอบรมหลักสูตรเพิ่มพูนทักษะ', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
         <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('research_fund')); ?>"><span class="ic"><span class="material-symbols-outlined">science</span></span><div><b><?php esc_html_e('ทุนอุดหนุนการวิจัย', 'tea-theme'); ?></b><small><?php esc_html_e('เปิดรับ 1 ก.ย. – 31 ต.ค. 2569 · ประกาศผล 1 ธ.ค. 2569', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
         <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('journal')); ?>"><span class="ic"><span class="material-symbols-outlined">rate_review</span></span><div><b><?php esc_html_e('วารสาร TEJ', 'tea-theme'); ?></b><small><?php esc_html_e('เปิดอ่านบทความและเอกสารของสมาคม', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
-        <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('document')); ?>"><span class="ic"><span class="material-symbols-outlined">download</span></span><div><b><?php esc_html_e('เอกสารและแบบฟอร์มสมาคม', 'tea-theme'); ?></b><small><?php esc_html_e('ระเบียบ หลักเกณฑ์ ใบสมัคร ดาวน์โหลด PDF', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
+        <a class="pea-sv" href="<?php echo esc_url($tea_documents_url); ?>"><span class="ic"><span class="material-symbols-outlined">download</span></span><div><b><?php esc_html_e('เอกสารและแบบฟอร์มสมาคม', 'tea-theme'); ?></b><small><?php esc_html_e('ระเบียบ หลักเกณฑ์ ใบสมัคร ดาวน์โหลด PDF', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
       </div>
 
       <div class="pea-panel" data-panel="events">
@@ -181,7 +197,6 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
       <div class="pea-panel" data-panel="research">
         <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('journal')); ?>"><span class="ic"><span class="material-symbols-outlined">auto_stories</span></span><div><b>Thai Endodontic Journal</b><small><?php esc_html_e('เปิดอ่านบทความฉบับปัจจุบันจากคลังสมาคม', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
         <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('research_fund')); ?>"><span class="ic"><span class="material-symbols-outlined">science</span></span><div><b><?php esc_html_e('ข้อเสนอโครงการทุนวิจัย 2569', 'tea-theme'); ?></b><small><?php esc_html_e('แนวปฏิบัติและรูปแบบเอกสารสำหรับนักวิจัย', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
-        <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('document')); ?>"><span class="ic"><span class="material-symbols-outlined">workspace_premium</span></span><div><b><?php esc_html_e('เกณฑ์สนับสนุนบทความวิชาการ', 'tea-theme'); ?></b><small><?php esc_html_e('หลักเกณฑ์การให้เงินสนับสนุนการตีพิมพ์', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
         <a class="pea-sv" href="<?php echo esc_url(get_post_type_archive_link('journal')); ?>"><span class="ic"><span class="material-symbols-outlined">newspaper</span></span><div><b><?php esc_html_e('ประกาศวารสารทั้งหมด', 'tea-theme'); ?></b><small><?php esc_html_e('เชิญชวนเขียนบทความและเว็บบินาร์ TEJ', 'tea-theme'); ?></small></div><span class="material-symbols-outlined arr">arrow_forward</span></a>
       </div>
 
@@ -383,7 +398,6 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
         <p><?php esc_html_e('รับข่าวสารวิชาการ สิทธิ์เข้าร่วมอบรม CDEC และลิงก์แหล่งข้อมูลทางวิชาชีพจากสมาคม', 'tea-theme'); ?></p>
       </div>
       <div class="pea-cta-btns">
-        <a class="pea-btn pea-btn-accent" href="<?php echo esc_url(home_url('/contact/')); ?>"><span class="material-symbols-outlined">how_to_reg</span><?php esc_html_e('สมัครสมาชิกเครือข่าย', 'tea-theme'); ?></a>
         <a class="pea-btn pea-btn-ghost" href="<?php echo esc_url(home_url('/contact/')); ?>"><span class="material-symbols-outlined">forum</span><?php esc_html_e('ติดต่อสมาคม', 'tea-theme'); ?></a>
       </div>
     </div>
@@ -414,36 +428,75 @@ $tea_reels = function_exists('tea_core_get_reels') ? tea_core_get_reels() : [];
 <script>
 (function () {
   /* ---------- Hero slider ---------- */
+  function initHeroSlider() {
   var track = document.getElementById('pea-track');
-  if (track) {
-    var slides = track.querySelectorAll('.pea-slide');
-    var dotsBox = document.getElementById('pea-dots');
-    var idx = 0, timer;
-    slides.forEach(function (_, i) {
-      var d = document.createElement('button');
-      d.type = 'button';
-      d.setAttribute('aria-label', 'slide ' + (i + 1));
-      if (i === 0) d.className = 'is-active';
-      d.addEventListener('click', function () { go(i, true); });
-      dotsBox.appendChild(d);
-    });
-    var dots = dotsBox.querySelectorAll('button');
+  var prevButton = document.getElementById('pea-prev');
+  var nextButton = document.getElementById('pea-next');
+  var dotsBox = document.getElementById('pea-dots');
+  if (track && prevButton && nextButton && dotsBox) {
+    if (document.documentElement.lang && document.documentElement.lang.indexOf('en') === 0) {
+      var enSlides = track.querySelectorAll('.pea-slide');
+      var enCopy = [
+        { title: 'Dental Trauma and Root Resorption', detail: 'Guideline Updates and Clinical Management', primary: 'View conference details', secondary: 'Event poster' },
+        { title: 'Dental Research Support Grant', detail: 'Round 1 applications: 1 September–31 October 2026. Results announced 1 December 2026.', primary: 'Download application', secondary: 'Grant guidelines' }
+      ];
+      Array.prototype.slice.call(enSlides).forEach(function (slide, i) {
+        var copy = enCopy[i];
+        if (!copy) return;
+        var heading = slide.querySelector('h1');
+        var detail = slide.querySelector('.pea-sub');
+        var buttons = slide.querySelectorAll('.pea-actions a');
+        if (heading) heading.textContent = copy.title;
+        if (detail) detail.textContent = copy.detail;
+        if (buttons[0]) buttons[0].textContent = copy.primary;
+        if (buttons[1]) buttons[1].textContent = copy.secondary;
+        if (buttons[0] && i === 0) buttons[0].setAttribute('href', '<?php echo esc_url($tea_conference_url); ?>');
+        if (buttons[0] && i === 1) buttons[0].setAttribute('href', '<?php echo esc_url($tea_documents_url); ?>');
+      });
+    }
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.pea-slide'));
+    var idx = 0, timer = null;
     function render() {
-      slides.forEach(function (s, i) { s.classList.toggle('is-active', i === idx); });
-      dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+      slides.forEach(function (slide, i) {
+        slide.classList.toggle('is-active', i === idx);
+        slide.setAttribute('aria-hidden', i === idx ? 'false' : 'true');
+      });
+      Array.prototype.slice.call(dotsBox.querySelectorAll('button')).forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === idx);
+        dot.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
     }
-    function go(i, manual) {
-      idx = (i + slides.length) % slides.length;
+    function restart() {
+      if (timer) window.clearTimeout(timer);
+      timer = window.setTimeout(function () { go(idx + 1); }, 6500);
+    }
+    function go(nextIndex) {
+      if (!slides.length) return;
+      idx = (nextIndex + slides.length) % slides.length;
       render();
-      if (manual) restart();
+      restart();
     }
-    function restart() { clearInterval(timer); timer = setInterval(function () { go(idx + 1); }, 6500); }
-    document.getElementById('pea-prev').addEventListener('click', function () { go(idx - 1, true); });
-    document.getElementById('pea-next').addEventListener('click', function () { go(idx + 1, true); });
-    track.addEventListener('mouseenter', function () { clearInterval(timer); });
-    track.addEventListener('mouseleave', restart);
+    dotsBox.innerHTML = '';
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'slide ' + (i + 1));
+      dot.setAttribute('data-slide-index', String(i));
+      dotsBox.appendChild(dot);
+    });
+    prevButton.addEventListener('click', function (event) { event.preventDefault(); event.stopPropagation(); go(idx - 1); });
+    nextButton.addEventListener('click', function (event) { event.preventDefault(); event.stopPropagation(); go(idx + 1); });
+    dotsBox.onclick = function (event) {
+      var target = event.target;
+      if (target && target.tagName === 'BUTTON') go(parseInt(target.getAttribute('data-slide-index'), 10) || 0);
+    };
+    render();
     restart();
   }
+  }
+  function startHeroSlider() { window.setTimeout(initHeroSlider, 0); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startHeroSlider);
+  else startHeroSlider();
 
   /* ---------- Tabs ---------- */
   document.querySelectorAll('.pea-tabs button').forEach(function (btn) {

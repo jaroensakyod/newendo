@@ -8,8 +8,8 @@ $asset = static function ($file) { return get_template_directory_uri() . '/asset
 $groups = [
   'president' => ['th' => 'นายกสมาคม', 'en' => 'President'],
   'advisors' => ['th' => 'ที่ปรึกษาสมาคม', 'en' => 'Association Advisors'],
-  'central' => ['th' => 'กรรมการกลาง', 'en' => 'Central Committee'],
   'executive' => ['th' => 'คณะกรรมการบริหาร', 'en' => 'Executive Committee'],
+  'central' => ['th' => 'กรรมการกลาง', 'en' => 'Central Committee'],
 ];
 ?>
 <section class="page-hero page-hero-compact">

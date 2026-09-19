@@ -2398,3 +2398,20 @@ html, body { overflow-x: clip; }
 .archive-news-head { padding: 50px 0 42px; }
 .archive-news-title-row > a { color: #fff0d4; }
 .archive-news-title-row > a .material-symbols-outlined { color: inherit; }
+
+/* English header: match the Thai wordmark size and keep the longer menu within the viewport. */
+@media (min-width: 901px) {
+  html[lang^="en"] .brand { flex: 0 0 307px; min-width: 307px; }
+  html[lang^="en"] .brand-logo-horizontal { width: 307px; max-width: 307px; max-height: 64px; }
+  html[lang^="en"] .main-nav ul { gap: 5px; }
+  html[lang^="en"] .main-nav a { font-size: 0.78rem; padding: 6px 5px; }
+}
+html[lang^="en"] .accessibility-tools { gap: 4px; }
+html[lang^="en"] .lang-switch { gap: 4px; }
+html[lang^="en"] .lang-switch a,
+html[lang^="en"] .accessibility-tools button {
+  min-width: 24px;
+  height: 22px;
+  padding: 0 6px;
+  font-size: 0.62rem;
+}

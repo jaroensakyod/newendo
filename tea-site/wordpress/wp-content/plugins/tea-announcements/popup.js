@@ -30,7 +30,7 @@
       var b = document.createElement('button');
       b.type = 'button';
       b.setAttribute('role', 'tab');
-      b.setAttribute('aria-label', 'ประกาศ ' + (n + 1));
+      b.setAttribute('aria-label', (window.tea_ann_is_en ? 'Announcement ' : 'ประกาศ ') + (n + 1));
       if (n === 0) b.classList.add('is-active');
       b.addEventListener('click', function () { go(n); });
       dotsWrap.appendChild(b);

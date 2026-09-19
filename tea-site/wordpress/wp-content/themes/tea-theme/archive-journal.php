@@ -2,6 +2,7 @@
 if (!defined('ABSPATH')) exit;
 get_header();
 $tea_is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
+$tea_ui = function ($th, $en) use ($tea_is_en) { return $tea_is_en ? $en : $th; };
 $tea_journal_en_titles = [
   'บทบาทของอีพิเจเนติกส์ต่อการเกิดและการรักษาโรค ของเนื้อเยื่อในโพรงฟันและโรครอบปลายรากฟัน' => 'The Role of Epigenetics in Pulpal and Periapical Diseases',
   'การรักษาคลองรากฟันที่มีรอยโรคร่วมระหว่างโรคเนื้อเยื่อในและโรคปริทันต์ : กรณีผู้ป่วยที่มีสาเหตุมาจากรอยโรคเนื้อเยื่อในปฐมภูมิตามด้วยโรคปริทันต์ทุติยภูมิในฟันกรามล่างขวาอันมีสาเหตุจากรอยร้าว' => 'Endodontic Treatment of Combined Endodontic-Periodontal Lesions: A Case Report',
@@ -39,27 +40,27 @@ $journal_articles = new WP_Query([
 ?>
 <section class="page-hero page-hero-compact">
   <div class="shell">
-    <nav class="breadcrumb" aria-label="<?php esc_attr_e('เส้นทาง', 'tea-theme'); ?>"><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('หน้าแรก', 'tea-theme'); ?></a><span aria-hidden="true">›</span><span><?php esc_html_e('วารสาร', 'tea-theme'); ?></span></nav>
+    <nav class="breadcrumb" aria-label="<?php echo esc_attr($tea_ui('เส้นทาง', 'Breadcrumb')); ?>"><a href="<?php echo esc_url(home_url('/')); ?>"><?php echo esc_html($tea_ui('หน้าแรก', 'Home')); ?></a><span aria-hidden="true">›</span><span><?php echo esc_html($tea_ui('วารสาร', 'Journal')); ?></span></nav>
     <span class="page-hero-kicker"><span class="material-symbols-outlined" aria-hidden="true">auto_stories</span> PUBLICATIONS &amp; DOCUMENTS</span>
-    <h1><?php esc_html_e('วารสารและเอกสารของสมาคม', 'tea-theme'); ?></h1>
-    <p><?php esc_html_e('Thai Endodontic Journal คลังเอ็นโดสาร และเอกสารสำคัญของสมาคมในหน้าเดียว', 'tea-theme'); ?></p>
+    <h1><?php echo esc_html($tea_ui('วารสารและเอกสารของสมาคม', 'Journals and Documents')); ?></h1>
+    <p><?php echo esc_html($tea_ui('Thai Endodontic Journal คลังเอ็นโดสาร และเอกสารสำคัญของสมาคมในหน้าเดียว', 'Thai Endodontic Journal, Endosarn archive and essential Association documents in one place.')); ?></p>
   </div>
 </section>
 
 <main class="journal-hub">
   <div class="shell">
     <div class="library-page-tabs" role="tablist" aria-label="<?php esc_attr_e('เลือกหมวดวารสารและเอกสาร', 'tea-theme'); ?>">
-      <button class="is-active" type="button" role="tab" aria-selected="true" data-library-page-tab="journal"><?php esc_html_e('วารสาร', 'tea-theme'); ?></button>
-      <button type="button" role="tab" aria-selected="false" data-library-page-tab="documents"><?php esc_html_e('เอกสาร', 'tea-theme'); ?></button>
+      <button class="is-active" type="button" role="tab" aria-selected="true" data-library-page-tab="journal"><?php echo esc_html($tea_ui('วารสาร', 'Journal')); ?></button>
+      <button type="button" role="tab" aria-selected="false" data-library-page-tab="documents"><?php echo esc_html($tea_ui('เอกสาร', 'Documents')); ?></button>
     </div>
-    <section class="library-pdf-section" id="association-documents" aria-label="<?php esc_attr_e('เอกสารและแบบฟอร์มสมาคม', 'tea-theme'); ?>">
+    <section class="library-pdf-section" id="association-documents" aria-label="<?php echo esc_attr($tea_ui('เอกสารและแบบฟอร์มสมาคม', 'Association documents and forms')); ?>">
       <div class="library-pdf-heading">
-        <div><span>ASSOCIATION LIBRARY</span><h2><?php esc_html_e('วารสารและเอกสาร', 'tea-theme'); ?></h2><p><?php esc_html_e('เลือกดูวารสารหรือเอกสาร เปิดดูหน้าแรกของไฟล์ แล้วกดอ่านหรือดาวน์โหลดฉบับเต็มตามต้องการ', 'tea-theme'); ?></p></div>
-        <a href="#top"><span class="material-symbols-outlined" aria-hidden="true">vertical_align_top</span><?php esc_html_e('กลับด้านบน', 'tea-theme'); ?></a>
+        <div><span>ASSOCIATION LIBRARY</span><h2><?php echo esc_html($tea_ui('วารสารและเอกสาร', 'Journals and Documents')); ?></h2><p><?php echo esc_html($tea_ui('เลือกดูวารสารหรือเอกสาร เปิดดูหน้าแรกของไฟล์ แล้วกดอ่านหรือดาวน์โหลดฉบับเต็มตามต้องการ', 'Browse journals or documents, preview the first page, then open or download the full file.')); ?></p></div>
+        <a href="#top"><span class="material-symbols-outlined" aria-hidden="true">vertical_align_top</span><?php echo esc_html($tea_ui('กลับด้านบน', 'Back to top')); ?></a>
       </div>
       <div class="library-pdf-tabs" role="tablist" aria-label="<?php esc_attr_e('เลือกหมวดคลังข้อมูล', 'tea-theme'); ?>">
-        <button class="is-active" type="button" role="tab" aria-selected="true" aria-controls="library-tab-journal" id="library-tab-button-journal" data-library-tab="journal"><?php esc_html_e('วารสาร', 'tea-theme'); ?></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="library-tab-documents" id="library-tab-button-documents" data-library-tab="documents"><?php esc_html_e('เอกสาร', 'tea-theme'); ?></button>
+        <button class="is-active" type="button" role="tab" aria-selected="true" aria-controls="library-tab-journal" id="library-tab-button-journal" data-library-tab="journal"><?php echo esc_html($tea_ui('วารสาร', 'Journal')); ?></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="library-tab-documents" id="library-tab-button-documents" data-library-tab="documents"><?php echo esc_html($tea_ui('เอกสาร', 'Documents')); ?></button>
       </div>
       <div class="library-tab-panel is-active" id="library-tab-journal" role="tabpanel" aria-labelledby="library-tab-button-journal" data-library-panel="journal">
         <?php
@@ -83,35 +84,40 @@ $journal_articles = new WP_Query([
             <a class="library-pdf-preview" href="<?php echo esc_url($file_url); ?>" target="_blank" rel="noreferrer">
               <?php if ($article['preview']) : ?><img src="<?php echo esc_url(home_url($article['preview'])); ?>" alt="<?php echo esc_attr($article['title']); ?>" loading="lazy"><?php else : ?><span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span><?php endif; ?>
             </a>
-            <div class="library-pdf-copy"><small><?php esc_html_e('บทความวารสาร', 'tea-theme'); ?></small><h3><?php echo esc_html($article['title']); ?></h3><a href="<?php echo esc_url($file_url); ?>" target="_blank" rel="noreferrer"><span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span><?php esc_html_e('เปิด PDF', 'tea-theme'); ?></a></div>
+            <div class="library-pdf-copy"><small><?php echo esc_html($tea_ui('บทความวารสาร', 'Journal article')); ?></small><h3><?php echo esc_html($article['title']); ?></h3><a href="<?php echo esc_url($file_url); ?>" target="_blank" rel="noreferrer"><span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span><?php echo esc_html($tea_ui('เปิด PDF', 'Open PDF')); ?></a></div>
           </article>
           <?php endforeach; ?>
           </div>
         </section>
-        <?php endforeach; if (!$journal_groups) : ?><p><?php esc_html_e('ยังไม่มีไฟล์วารสารในคลัง', 'tea-theme'); ?></p><?php endif; ?>
+        <?php endforeach; if (!$journal_groups) : ?><p><?php echo esc_html($tea_ui('ยังไม่มีไฟล์วารสารในคลัง', 'No journal files are currently available.')); ?></p><?php endif; ?>
         </div>
       <div class="library-tab-panel" id="library-tab-documents" role="tabpanel" aria-labelledby="library-tab-button-documents" data-library-panel="documents" hidden>
       <div class="library-pdf-grid">
-      <?php if ($library_documents->have_posts()) : while ($library_documents->have_posts()) : $library_documents->the_post();
+        <?php if ($library_documents->have_posts()) : while ($library_documents->have_posts()) : $library_documents->the_post();
         $file = get_post_meta(get_the_ID(), '_tea_file_url', true);
         $file_url = $file ? home_url($file) : '';
+        $document_title = get_the_title();
         $tea_pdf_previews = [
           'tea-article-support-form.pdf' => 'article-support-form.png',
-          'tea-article-support-rules.pdf' => 'article-support-rules.png',
           'tea-research-grant-rules-2569.pdf' => 'research-grant-rules-2569.png',
           'tea-research-grant-form-2569.pdf' => 'research-grant-form-2569.png',
         ];
+        if ($tea_is_en) {
+          $document_titles = ['tea-article-support-form.pdf' => 'Academic Support Application Form', 'tea-research-grant-rules-2569.pdf' => 'Research Grant Guidelines 2026', 'tea-research-grant-form-2569.pdf' => 'Research Grant Application Form 2026'];
+          $document_title = $document_titles[basename($file)] ?? $document_title;
+          if ($document_title === 'ระเบียบสมาคม พ.ศ. 2568') $document_title = 'Association Regulations B.E. 2568 (2025)';
+        }
         $preview = isset($tea_pdf_previews[basename($file)]) ? $tea_pdf_previews[basename($file)] : '';
       ?>
         <article class="library-pdf-card">
-          <a class="library-pdf-preview" href="<?php echo esc_url($file_url ?: get_permalink()); ?>"<?php echo $file_url ? ' target="_blank" rel="noreferrer"' : ''; ?> aria-label="<?php echo esc_attr(sprintf(__('เปิด %s', 'tea-theme'), get_the_title())); ?>">
+          <a class="library-pdf-preview" href="<?php echo esc_url($file_url ?: get_permalink()); ?>"<?php echo $file_url ? ' target="_blank" rel="noreferrer"' : ''; ?> aria-label="<?php echo esc_attr($tea_ui('เปิด ' . $document_title, 'Open ' . $document_title)); ?>">
             <?php if ($preview) : ?>
-              <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/pdf-previews/' . $preview); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" loading="lazy">
+              <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/pdf-previews/' . $preview); ?>" alt="<?php echo esc_attr($document_title); ?>" loading="lazy">
             <?php else : ?>
               <span class="material-symbols-outlined" aria-hidden="true">description</span>
             <?php endif; ?>
           </a>
-          <div class="library-pdf-copy"><small><?php tea_the_date(); ?></small><h3><?php the_title(); ?></h3><a href="<?php echo esc_url($file_url ?: get_permalink()); ?>"<?php echo $file_url ? ' target="_blank" rel="noreferrer"' : ''; ?>><span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span><?php echo $file_url ? esc_html__('เปิด PDF', 'tea-theme') : esc_html__('ดูรายละเอียด', 'tea-theme'); ?></a></div>
+          <div class="library-pdf-copy"><small><?php if ($tea_is_en) echo esc_html(get_the_date('j F Y')); else tea_the_date(); ?></small><h3><?php echo esc_html($document_title); ?></h3><a href="<?php echo esc_url($file_url ?: get_permalink()); ?>"<?php echo $file_url ? ' target="_blank" rel="noreferrer"' : ''; ?>><span class="material-symbols-outlined" aria-hidden="true">picture_as_pdf</span><?php echo esc_html($file_url ? $tea_ui('เปิด PDF', 'Open PDF') : $tea_ui('ดูรายละเอียด', 'View details')); ?></a></div>
         </article>
       <?php endwhile; wp_reset_postdata(); endif; ?>
       </div>

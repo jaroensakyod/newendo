@@ -21,7 +21,7 @@ function tea_theme_assets() {
         [],
         null
     );
-    wp_enqueue_style('tea-theme', get_stylesheet_uri(), ['tea-fonts'], '4.9.56');
+    wp_enqueue_style('tea-theme', get_stylesheet_uri(), ['tea-fonts'], '4.9.59');
     wp_enqueue_script('tea-main', get_template_directory_uri() . '/js/main.js', [], '4.0.1', true);
 }
 add_action('wp_enqueue_scripts', 'tea_theme_assets');
@@ -54,6 +54,42 @@ add_action('template_redirect', function () {
     exit;
   }
 });
+
+/* Keep the application-form CTA on the home-cover independent of any cached
+ * page-builder markup or old theme template. */
+add_action('template_redirect', function () {
+    if (!is_front_page()) return;
+    ob_start(function ($html) {
+        $application = esc_url(content_url('/uploads/2026/09/tea-research-grant-form-2569.pdf'));
+        return preg_replace_callback('~<a\b[^>]*>.*?</a>~us', function ($match) use ($application) {
+            $text = wp_strip_all_tags($match[0]);
+            if (strpos($text, 'ดาวน์โหลดใบสมัคร') === false && stripos($text, 'Download application form') === false) {
+                return $match[0];
+            }
+            return preg_replace('~\bhref=["\'][^"\']*["\']~u', 'href="' . $application . '" download', $match[0], 1);
+        }, $html);
+    });
+}, 1);
+
+/* The research-grant CTA must download the actual application form, rather
+ * than redirecting visitors to the combined journal/document library. */
+add_filter('the_content', function ($content) {
+    if (is_admin()) return $content;
+    if (get_post_type() === 'research_fund') {
+        $application = esc_url(content_url('/uploads/2026/09/tea-research-grant-form-2569.pdf'));
+        return preg_replace_callback('~<a\\b[^>]*>.*?</a>~us', function ($match) use ($application) {
+            $link_text = wp_strip_all_tags($match[0]);
+            if (strpos($link_text, 'ดาวน์โหลดเอกสาร') === false && stripos($link_text, 'Download documents') === false) {
+                return $match[0];
+            }
+            return preg_replace('~\\bhref=["\'][^"\']*["\']~u', 'href="' . $application . '" download', $match[0], 1);
+        }, $content);
+    }
+    if (get_post_type() === 'journal') {
+        return preg_replace('~<a\\b[^>]*>.*?เกณฑ์การสนับสนุน.*?</a>~us', '', $content);
+    }
+    return $content;
+}, 20);
 
 /** ปุ่มสลับภาษา (ใช้ Polylang ถ้ามี ไม่มีก็ไม่แสดง) */
 function tea_language_switcher() {
@@ -131,6 +167,10 @@ add_action('wp_footer', 'tea_cookie_consent', 5);
 
 /** วันที่ภาษาไทย พ.ศ. เช่น "13 กันยายน 2569" (ไม่ขึ้นกับ locale ของเว็บ) */
 function tea_thai_date($date_str = null) {
+    if (substr((string) $date_str, 0, 10) === '2026-08-27') {
+        $is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
+        return $is_en ? '27–30 August 2026' : '27 สิงหาคม - 30 สิงหาคม 2569';
+    }
     $ts = $date_str ? strtotime($date_str) : current_time('timestamp');
     if (!$ts) $ts = current_time('timestamp');
     $is_en = function_exists('pll_current_language') && pll_current_language() === 'en';
@@ -145,7 +185,15 @@ function tea_thai_date($date_str = null) {
 }
 
 function tea_the_date($post_id = 0) {
-    echo esc_html(tea_thai_date(get_post_field('post_date', $post_id ?: get_the_ID())));
+    $id = $post_id ?: get_the_ID();
+    if (get_post_type($id) === 'event') {
+        $event_date = get_post_meta($id, '_tea_event_date', true);
+        if ($event_date) {
+            echo esc_html(tea_thai_date($event_date));
+            return;
+        }
+    }
+    echo esc_html(tea_thai_date(get_post_field('post_date', $id)));
 }
 
 function tea_cpt_label($type, $default) {

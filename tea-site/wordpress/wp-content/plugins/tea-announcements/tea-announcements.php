@@ -80,13 +80,19 @@ function tea_ann_render() {
     $items = [];
     // กรองตามภาษาปัจจุบันเมื่อใช้ Polylang (โพสต์ไทยไม่โชว์บนหน้าอังกฤษ)
     $current_lang = function_exists('pll_current_language') ? pll_current_language() : null;
+    $is_en = ($current_lang === 'en');
     foreach ($q->posts as $p) {
         if ($current_lang && function_exists('pll_get_post_language')) {
             $plang = pll_get_post_language($p->ID);
             if ($plang && $plang !== $current_lang) continue;
         }
+        // Keep the legacy Thai grant notice in the news archive, but remove it from the popup rotation.
+        if ($current_lang === 'th' && (int) $p->ID === 7) continue;
         $end = get_post_meta($p->ID, '_tea_ann_end', true);
         if ($end && $end < $today) continue;
+        $raw_btn = get_post_meta($p->ID, '_tea_ann_btn_text', true);
+        $raw_kicker = get_post_meta($p->ID, '_tea_ann_kicker', true);
+        $raw_source = get_post_meta($p->ID, '_tea_ann_source', true);
         $items[] = [
             'id'      => $p->ID,
             'title'   => get_the_title($p),
@@ -96,10 +102,16 @@ function tea_ann_render() {
             // reliably and remains sharp in the popup.
             'image'   => get_the_post_thumbnail_url($p, 'medium_large') ?: get_post_meta($p->ID, '_tea_sheet_image_url', true),
             'link'    => get_post_meta($p->ID, '_tea_ann_link', true) ?: get_permalink($p),
-            'btnText' => get_post_meta($p->ID, '_tea_ann_btn_text', true) ?: __('อ่านรายละเอียด', 'tea-announcements'),
+            'btnText' => $is_en
+                ? (in_array($raw_btn, ['', 'อ่านรายละเอียด'], true) ? 'Read more' : $raw_btn)
+                : ($raw_btn ?: __('อ่านรายละเอียด', 'tea-announcements')),
             'freq'    => get_post_meta($p->ID, '_tea_ann_freq', true) ?: 'once',
-            'kicker'  => get_post_meta($p->ID, '_tea_ann_kicker', true) ?: __('ประกาศสำคัญ', 'tea-announcements'),
-            'source'  => get_post_meta($p->ID, '_tea_ann_source', true),
+            'kicker'  => $is_en
+                ? (in_array($raw_kicker, ['', 'ประกาศสำคัญ'], true) ? 'IMPORTANT ANNOUNCEMENT' : $raw_kicker)
+                : ($raw_kicker ?: __('ประกาศสำคัญ', 'tea-announcements')),
+            'source'  => $is_en
+                ? (in_array($raw_source, ['', 'สมาคมเอ็นโดดอนติกส์ไทย'], true) ? 'Thai Endodontic Association' : $raw_source)
+                : $raw_source,
             'memorial'=> (bool) get_post_meta($p->ID, '_tea_ann_memorial', true),
         ];
     }
@@ -108,7 +120,7 @@ function tea_ann_render() {
     ?>
     <div class="modal-backdrop" id="tea-popup-backdrop" hidden>
         <section class="announcement-modal" id="tea-announcement-modal" role="dialog" aria-modal="true" aria-labelledby="announcement-title">
-            <button class="modal-close" type="button" data-tea-close aria-label="<?php esc_attr_e('ปิดประกาศ', 'tea-announcements'); ?>">×</button>
+            <button class="modal-close" type="button" data-tea-close aria-label="<?php echo esc_attr(tea_ann_lang('ปิดประกาศ', 'Close announcement')); ?>">×</button>
             <div class="modal-image">
                 <?php foreach ($items as $i) : ?>
                 <div class="tea-modal-slide" data-slide-id="<?php echo esc_attr($i['id']); ?>"<?php echo $i === $items[0] ? '' : ' hidden'; ?>>
@@ -118,8 +130,8 @@ function tea_ann_render() {
                 </div>
                 <?php endforeach; ?>
                 <?php if (count($items) > 1) : ?>
-                <button class="slide-arrow previous" type="button" data-tea-dir="-1" aria-label="<?php esc_attr_e('ประกาศก่อนหน้า', 'tea-announcements'); ?>">‹</button>
-                <button class="slide-arrow next" type="button" data-tea-dir="1" aria-label="<?php esc_attr_e('ประกาศถัดไป', 'tea-announcements'); ?>">›</button>
+                <button class="slide-arrow previous" type="button" data-tea-dir="-1" aria-label="<?php echo esc_attr(tea_ann_lang('ประกาศก่อนหน้า', 'Previous announcement')); ?>">‹</button>
+                <button class="slide-arrow next" type="button" data-tea-dir="1" aria-label="<?php echo esc_attr(tea_ann_lang('ประกาศถัดไป', 'Next announcement')); ?>">›</button>
                 <?php endif; ?>
                 <span class="slide-source" data-tea-source><?php echo esc_html(tea_ann_lang('ที่มา', 'Source') . ': ' . ($items[0]['source'] ?: get_bloginfo('name'))); ?></span>
             </div>
@@ -132,7 +144,7 @@ function tea_ann_render() {
                     <a class="button primary" data-tea-btn href="<?php echo esc_url($items[0]['link']); ?>"><?php echo esc_html($items[0]['btnText']); ?></a>
                 </div>
                 <?php if (count($items) > 1) : ?>
-                <div class="slide-dots" role="tablist" aria-label="<?php esc_attr_e('เลือกประกาศ', 'tea-announcements'); ?>" data-tea-dots></div>
+                <div class="slide-dots" role="tablist" aria-label="<?php echo esc_attr(tea_ann_lang('เลือกประกาศ', 'Select announcement')); ?>" data-tea-dots></div>
                 <?php endif; ?>
                 <button class="remember-close" type="button" data-tea-close><?php echo tea_ann_lang('ปิดและไม่แสดงประกาศนี้อีก', "Close and don't show this again"); ?></button>
             </div>
@@ -146,6 +158,6 @@ add_action('wp_footer', 'tea_ann_render');
 
 function tea_ann_assets() {
     wp_enqueue_style('tea-popup', plugins_url('popup.css', __FILE__), [], '2.1.0');
-    wp_enqueue_script('tea-popup', plugins_url('popup.js', __FILE__), [], '2.1.2', true);
+    wp_enqueue_script('tea-popup', plugins_url('popup.js', __FILE__), [], '2.1.3', true);
 }
 add_action('wp_enqueue_scripts', 'tea_ann_assets');
